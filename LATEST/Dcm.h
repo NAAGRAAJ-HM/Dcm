@@ -1,37 +1,38 @@
 #pragma once
 
 #include "Std_Types.h"
+#include "Compiler_Cfg_Dcm.h"
 
 class class_Dcm{
    public:
-      void InitFunction                       (void);
-      void GetVersionInfo                     (void);
-      void DemTriggerOnDtcStatus              (void);
-      void GetVin                             (void);
-      void GetSecurityLevel                   (void);
-      void GetSesCtrlType                     (void);
-      void GetActiveProtocol                  (void);
-      void ResetToDefaultSession              (void);
-      void TriggerOnEvent                     (void);
-      void SetActiveDiagnostic                (void);
-      void StartOfReception                   (void);
-      void CopyRxData                         (void);
-      void TpRxIndication                     (void);
-      void CopyTxData                         (void);
-      void TpTxConfirmation                   (void);
-      void TxConfirmation                     (void);
-      void ComM_NoComModeEntered              (void);
-      void ComM_SilentComModeEntered          (void);
-      void ComM_FullComModeEntered            (void);
-      void CallOut_ReadMemory                 (void);
-      void CallOut_WriteMemory                (void);
-      void CallOut_SetProgConditions          (void);
-      void CallOut_GetProgConditions          (void);
-      void CallOut_ProcessRequestTransferExit (void);
-      void CallOut_ProcessRequestUpload       (void);
-      void CallOut_ProcessRequestDownload     (void);
-      void CallOut_ProcessRequestFileTransfer (void);
-      void MainFunction                       (void);
+      FUNC(void, DCM_CODE) InitFunction                       (void);
+      FUNC(void, DCM_CODE) GetVersionInfo                     (void);
+      FUNC(void, DCM_CODE) DemTriggerOnDtcStatus              (void);
+      FUNC(void, DCM_CODE) GetVin                             (void);
+      FUNC(void, DCM_CODE) GetSecurityLevel                   (void);
+      FUNC(void, DCM_CODE) GetSesCtrlType                     (void);
+      FUNC(void, DCM_CODE) GetActiveProtocol                  (void);
+      FUNC(void, DCM_CODE) ResetToDefaultSession              (void);
+      FUNC(void, DCM_CODE) TriggerOnEvent                     (void);
+      FUNC(void, DCM_CODE) SetActiveDiagnostic                (void);
+      FUNC(void, DCM_CODE) StartOfReception                   (void);
+      FUNC(void, DCM_CODE) CopyRxData                         (void);
+      FUNC(void, DCM_CODE) TpRxIndication                     (void);
+      FUNC(void, DCM_CODE) CopyTxData                         (void);
+      FUNC(void, DCM_CODE) TpTxConfirmation                   (void);
+      FUNC(void, DCM_CODE) TxConfirmation                     (void);
+      FUNC(void, DCM_CODE) ComM_NoComModeEntered              (void);
+      FUNC(void, DCM_CODE) ComM_SilentComModeEntered          (void);
+      FUNC(void, DCM_CODE) ComM_FullComModeEntered            (void);
+      FUNC(void, DCM_CODE) CallOut_ReadMemory                 (void);
+      FUNC(void, DCM_CODE) CallOut_WriteMemory                (void);
+      FUNC(void, DCM_CODE) CallOut_SetProgConditions          (void);
+      FUNC(void, DCM_CODE) CallOut_GetProgConditions          (void);
+      FUNC(void, DCM_CODE) CallOut_ProcessRequestTransferExit (void);
+      FUNC(void, DCM_CODE) CallOut_ProcessRequestUpload       (void);
+      FUNC(void, DCM_CODE) CallOut_ProcessRequestDownload     (void);
+      FUNC(void, DCM_CODE) CallOut_ProcessRequestFileTransfer (void);
+      FUNC(void, DCM_CODE) MainFunction                       (void);
 };
 
 extern class_Dcm Dcm;
