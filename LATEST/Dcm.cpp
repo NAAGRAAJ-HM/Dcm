@@ -8,15 +8,19 @@
 /*****************************************************/
 #include "Dcm.h"
 
+#include "Dcm_EcuM.h"
+
 /*****************************************************/
 /* OBJECTS                                           */
 /*****************************************************/
+class_Dcm_EcuM Dcm_EcuM;
+class_EcuM_Client *EcuM_Client_ptr_Dcm = &Dcm_EcuM;
 class_Dcm Dcm;
 
 /*****************************************************/
 /* FUNCTIONS                                         */
 /*****************************************************/
-FUNC(void, DCM_CODE) class_Dcm::InitFunction(void){
+FUNC(void, DCM_CODE) class_Dcm_EcuM::InitFunction(void){
 }
 
 FUNC(void, DCM_CODE) class_Dcm::GetVersionInfo(void){

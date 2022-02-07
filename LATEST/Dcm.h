@@ -18,7 +18,6 @@ class class_Dcm{
 /*****************************************************/
 /* FUNCTIONS                                         */
 /*****************************************************/
-      FUNC(void, DCM_CODE) InitFunction                       (void);
       FUNC(void, DCM_CODE) GetVersionInfo                     (void);
       FUNC(void, DCM_CODE) DemTriggerOnDtcStatus              (void);
       FUNC(void, DCM_CODE) GetVin                             (void);
