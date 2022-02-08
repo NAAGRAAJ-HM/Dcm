@@ -44,7 +44,6 @@ class class_Dcm{
       FUNC(void, DCM_CODE) CallOut_ProcessRequestUpload       (void);
       FUNC(void, DCM_CODE) CallOut_ProcessRequestDownload     (void);
       FUNC(void, DCM_CODE) CallOut_ProcessRequestFileTransfer (void);
-      FUNC(void, DCM_CODE) MainFunction                       (void);
 };
 
 /*****************************************************/

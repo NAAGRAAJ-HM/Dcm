@@ -9,18 +9,24 @@
 #include "Dcm.h"
 
 #include "Dcm_EcuM.h"
+#include "Dcm_SchM.h"
 
 /*****************************************************/
 /* OBJECTS                                           */
 /*****************************************************/
 class_Dcm_EcuM Dcm_EcuM;
 class_EcuM_Client *EcuM_Client_ptr_Dcm = &Dcm_EcuM;
+class_Dcm_SchM Dcm_SchM;
+class_SchM_Client *SchM_Client_ptr_Dcm = &Dcm_SchM;
 class_Dcm Dcm;
 
 /*****************************************************/
 /* FUNCTIONS                                         */
 /*****************************************************/
 FUNC(void, DCM_CODE) class_Dcm_EcuM::InitFunction(void){
+}
+
+FUNC(void, DCM_CODE) class_Dcm_SchM::MainFunction(void){
 }
 
 FUNC(void, DCM_CODE) class_Dcm::GetVersionInfo(void){
@@ -99,9 +105,6 @@ FUNC(void, DCM_CODE) class_Dcm::CallOut_ProcessRequestDownload(void){
 }
 
 FUNC(void, DCM_CODE) class_Dcm::CallOut_ProcessRequestFileTransfer(void){
-}
-
-FUNC(void, DCM_CODE) class_Dcm::MainFunction(void){
 }
 
 /*****************************************************/
