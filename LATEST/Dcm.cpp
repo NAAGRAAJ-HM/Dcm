@@ -14,19 +14,20 @@
 /*****************************************************/
 /* OBJECTS                                           */
 /*****************************************************/
-class_Dcm_EcuM Dcm_EcuM;
-class_EcuM_Client *EcuM_Client_ptr_Dcm = &Dcm_EcuM;
-class_Dcm_SchM Dcm_SchM;
-class_SchM_Client *SchM_Client_ptr_Dcm = &Dcm_SchM;
+interface_Dcm_EcuM_Init Dcm_EcuM_Init;
+interface_Dcm_SchM_Main Dcm_SchM_Main;
 class_Dcm Dcm;
+
+interface_EcuM_Init_Client *EcuM_Init_Client_ptr_Dcm = &Dcm_EcuM_Init;
+interface_SchM_Main_Client *SchM_Main_Client_ptr_Dcm = &Dcm_SchM_Main;
 
 /*****************************************************/
 /* FUNCTIONS                                         */
 /*****************************************************/
-FUNC(void, DCM_CODE) class_Dcm_EcuM::InitFunction(void){
+FUNC(void, DCM_CODE) interface_Dcm_EcuM_Init::InitFunction(void){
 }
 
-FUNC(void, DCM_CODE) class_Dcm_SchM::MainFunction(void){
+FUNC(void, DCM_CODE) interface_Dcm_SchM_Main::MainFunction(void){
 }
 
 FUNC(void, DCM_CODE) class_Dcm::GetVersionInfo(void){
