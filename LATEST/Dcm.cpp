@@ -7,7 +7,8 @@
 /* #INCLUDES                                         */
 /*****************************************************/
 #include "module.h"
-
+#include "Dcm_EcuM.h"
+#include "Dcm_SchM.h"
 #include "Dcm_Unused.h"
 
 /*****************************************************/
@@ -21,7 +22,11 @@
 /*****************************************************/
 /* TYPEDEFS                                          */
 /*****************************************************/
-class module_Dcm : public class_module{
+class module_Dcm:
+      public abstract_module
+   ,  public interface_Dcm_EcuM
+   ,  public interface_Dcm_SchM
+{
    public:
       FUNC(void, DCM_CODE) InitFunction   (void);
       FUNC(void, DCM_CODE) DeInitFunction (void);
@@ -33,13 +38,16 @@ class module_Dcm : public class_module{
 /*****************************************************/
 module_Dcm Dcm;
 
-interface_EcuM_Client *EcuM_Client_ptr_Dcm = &Dcm;
-interface_SchM_Client *SchM_Client_ptr_Dcm = &Dcm;
+interface_Dcm_EcuM *EcuM_Client_ptr_Dcm = &Dcm;
+interface_Dcm_SchM *SchM_Client_ptr_Dcm = &Dcm;
 
 /*****************************************************/
 /* FUNCTIONS                                         */
 /*****************************************************/
 FUNC(void, DCM_CODE) module_Dcm::InitFunction(void){
+}
+
+FUNC(void, DCM_CODE) module_Dcm::DeInitFunction(void){
 }
 
 FUNC(void, DCM_CODE) module_Dcm::MainFunction(void){
