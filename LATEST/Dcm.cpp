@@ -24,8 +24,6 @@
 /*****************************************************/
 class module_Dcm:
       public abstract_module
-   ,  public interface_Dcm_EcuM
-   ,  public interface_Dcm_SchM
 {
    public:
       FUNC(void, DCM_CODE) InitFunction   (void);
@@ -34,12 +32,19 @@ class module_Dcm:
 };
 
 /*****************************************************/
+/* CONSTS                                            */
+/*****************************************************/
+
+/*****************************************************/
+/* PARAMS                                            */
+/*****************************************************/
+
+/*****************************************************/
 /* OBJECTS                                           */
 /*****************************************************/
-module_Dcm Dcm;
-
-interface_Dcm_EcuM *EcuM_Client_ptr_Dcm = &Dcm;
-interface_Dcm_SchM *SchM_Client_ptr_Dcm = &Dcm;
+module_Dcm     Dcm;
+infEcuMClient* gptrinfEcuMClient_Dcm = &Dcm;
+infSchMClient* gptrinfSchMClient_Dcm = &Dcm;
 
 /*****************************************************/
 /* FUNCTIONS                                         */
