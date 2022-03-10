@@ -7,8 +7,8 @@
 /* #INCLUDES                                         */
 /*****************************************************/
 #include "module.h"
-#include "Dcm_EcuM.h"
-#include "Dcm_SchM.h"
+#include "infDcm_EcuM.h"
+#include "infDcm_SchM.h"
 #include "Dcm_Unused.h"
 
 /*****************************************************/
@@ -28,6 +28,7 @@ class module_Dcm:
    public:
       FUNC(void, DCM_CODE) InitFunction   (void);
       FUNC(void, DCM_CODE) DeInitFunction (void);
+      FUNC(void, DCM_CODE) GetVersionInfo (void);
       FUNC(void, DCM_CODE) MainFunction   (void);
 };
 
@@ -44,6 +45,7 @@ class module_Dcm:
 /*****************************************************/
 module_Dcm     Dcm;
 infEcuMClient* gptrinfEcuMClient_Dcm = &Dcm;
+infDcmClient*  gptrinfDcmClient_Dcm  = &Dcm;
 infSchMClient* gptrinfSchMClient_Dcm = &Dcm;
 
 /*****************************************************/
@@ -53,6 +55,9 @@ FUNC(void, DCM_CODE) module_Dcm::InitFunction(void){
 }
 
 FUNC(void, DCM_CODE) module_Dcm::DeInitFunction(void){
+}
+
+FUNC(void, DCM_CODE) module_Dcm::GetVersionInfo(void){
 }
 
 FUNC(void, DCM_CODE) module_Dcm::MainFunction(void){
