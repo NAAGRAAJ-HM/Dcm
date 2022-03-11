@@ -8,8 +8,8 @@
 /*****************************************************/
 #include "module.h"
 #include "infDcm_EcuM.h"
+#include "infDcm_Dcm.h"
 #include "infDcm_SchM.h"
-#include "Dcm_Unused.h"
 
 /*****************************************************/
 /* #DEFINES                                          */
@@ -63,8 +63,7 @@ FUNC(void, DCM_CODE) module_Dcm::GetVersionInfo(void){
 FUNC(void, DCM_CODE) module_Dcm::MainFunction(void){
 }
 
-FUNC(void, DCM_CODE) class_Dcm_Unused::GetVersionInfo(void){
-}
+#include "Dcm_Unused.h"
 
 FUNC(void, DCM_CODE) class_Dcm_Unused::DemTriggerOnDtcStatus(void){
 }
