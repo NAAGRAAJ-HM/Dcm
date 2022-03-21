@@ -6,9 +6,8 @@
 /******************************************************************************/
 /* #INCLUDES                                                                  */
 /******************************************************************************/
-#include "infDcm_Version.h"
-
 #include "module.h"
+#include "infDcm_Version.h"
 #include "infDcm_EcuM.h"
 #include "infDcm_Dcm.h"
 #include "infDcm_SchM.h"
@@ -45,31 +44,20 @@ class module_Dcm:
 /******************************************************************************/
 /* OBJECTS                                                                    */
 /******************************************************************************/
-
-/******************************************************************************/
-/* FUNCTIONS                                                                  */
-/******************************************************************************/
-
-/******************************************************************************/
-/* EOF                                                                        */
-/******************************************************************************/
-
-
-/*****************************************************/
-/* OBJECTS                                           */
-/*****************************************************/
 VAR(module_Dcm, DCM_VAR) Dcm;
 CONSTP2VAR(infEcuMClient, DCM_VAR, DCM_CONST) gptrinfEcuMClient_Dcm = &Dcm;
 CONSTP2VAR(infDcmClient,  DCM_VAR, DCM_CONST) gptrinfDcmClient_Dcm  = &Dcm;
 CONSTP2VAR(infSchMClient, DCM_VAR, DCM_CONST) gptrinfSchMClient_Dcm = &Dcm;
 
-/*****************************************************/
-/* FUNCTIONS                                         */
-/*****************************************************/
+/******************************************************************************/
+/* FUNCTIONS                                                                  */
+/******************************************************************************/
 FUNC(void, DCM_CODE) module_Dcm::InitFunction(void){
+   Dcm.IsInitDone = E_OK;
 }
 
 FUNC(void, DCM_CODE) module_Dcm::DeInitFunction(void){
+   Dcm.IsInitDone = E_NOT_OK;
 }
 
 FUNC(void, DCM_CODE) module_Dcm::GetVersionInfo(void){
@@ -155,7 +143,7 @@ FUNC(void, DCM_CODE) class_Dcm_Unused::CallOut_ProcessRequestDownload(void){
 FUNC(void, DCM_CODE) class_Dcm_Unused::CallOut_ProcessRequestFileTransfer(void){
 }
 
-/*****************************************************/
-/* EOF                                               */
-/*****************************************************/
+/******************************************************************************/
+/* EOF                                                                        */
+/******************************************************************************/
 
