@@ -7,7 +7,7 @@
 /* #INCLUDES                                                                  */
 /******************************************************************************/
 #include "module.h"
-#include "infDcm_Version.h"
+#include "Dcm_Cfg.h"
 #include "infDcm_EcuM.h"
 #include "infDcm_Dcm.h"
 #include "infDcm_SchM.h"
@@ -15,10 +15,19 @@
 /******************************************************************************/
 /* #DEFINES                                                                   */
 /******************************************************************************/
+#define DCM_AR_RELEASE_MAJOR_VERSION                                           4
+#define DCM_AR_RELEASE_MINOR_VERSION                                           3
 
 /******************************************************************************/
 /* MACROS                                                                     */
 /******************************************************************************/
+#if(DCM_AR_RELEASE_MAJOR_VERSION != STD_AR_RELEASE_MAJOR_VERSION)
+   #error "Incompatible DCM_AR_RELEASE_MAJOR_VERSION!"
+#endif
+
+#if(DCM_AR_RELEASE_MINOR_VERSION != STD_AR_RELEASE_MINOR_VERSION)
+   #error "Incompatible DCM_AR_RELEASE_MINOR_VERSION!"
+#endif
 
 /******************************************************************************/
 /* TYPEDEFS                                                                   */
@@ -61,6 +70,11 @@ FUNC(void, DCM_CODE) module_Dcm::DeInitFunction(void){
 }
 
 FUNC(void, DCM_CODE) module_Dcm::GetVersionInfo(void){
+#if(STD_ON == Dcm_DevErrorDetect)
+//TBD: API parameter check
+   Det_ReportError(
+   );
+#endif
 }
 
 FUNC(void, DCM_CODE) module_Dcm::MainFunction(void){
