@@ -6,11 +6,11 @@
 /******************************************************************************/
 /* #INCLUDES                                                                  */
 /******************************************************************************/
-#include "module.h"
-#include "CfgDcm.h"
-#include "infDcm_EcuM.h"
-#include "infDcm_Dcm.h"
-#include "infDcm_SchM.h"
+#include "module.hpp"
+#include "CfgDcm.hpp"
+#include "infDcm_EcuM.hpp"
+#include "infDcm_Dcm.hpp"
+#include "infDcm_SchM.hpp"
 
 /******************************************************************************/
 /* #DEFINES                                                                   */
@@ -90,7 +90,7 @@ FUNC(void, DCM_CODE) module_Dcm::GetVersionInfo(void){
 FUNC(void, DCM_CODE) module_Dcm::MainFunction(void){
 }
 
-#include "Dcm_Unused.h"
+#include "Dcm_Unused.hpp"
 
 FUNC(void, DCM_CODE) class_Dcm_Unused::DemTriggerOnDtcStatus(void){
 }
