@@ -7,7 +7,6 @@
 /* #INCLUDES                                                                  */
 /******************************************************************************/
 #include "module.hpp"
-#include "CfgDcm.hpp"
 #include "infDcm_EcuM.hpp"
 #include "infDcm_Dcm.hpp"
 #include "infDcm_SchM.hpp"
@@ -36,37 +35,40 @@ class module_Dcm:
       public abstract_module
 {
    public:
+      module_Dcm(Std_TypeVersionInfo lVersionInfo) : abstract_module(lVersionInfo){
+      }
       FUNC(void, DCM_CODE) InitFunction   (void);
       FUNC(void, DCM_CODE) DeInitFunction (void);
-      FUNC(void, DCM_CODE) GetVersionInfo (void);
       FUNC(void, DCM_CODE) MainFunction   (void);
-
-   private:
-      CONST(Std_TypeVersionInfo, DCM_CONST) VersionInfo = {
-            0x0000
-         ,  0xFFFF
-         ,  0x01
-         ,  '0'
-         ,  '1'
-         ,  '0'
-      };
 };
+
+extern VAR(module_Dcm, DCM_VAR) Dcm;
 
 /******************************************************************************/
 /* CONSTS                                                                     */
 /******************************************************************************/
+CONSTP2VAR(infEcuMClient, DCM_VAR, DCM_CONST) gptrinfEcuMClient_Dcm = &Dcm;
+CONSTP2VAR(infDcmClient,  DCM_VAR, DCM_CONST) gptrinfDcmClient_Dcm  = &Dcm;
+CONSTP2VAR(infSchMClient, DCM_VAR, DCM_CONST) gptrinfSchMClient_Dcm = &Dcm;
 
 /******************************************************************************/
 /* PARAMS                                                                     */
 /******************************************************************************/
+#include "CfgDcm.hpp"
 
 /******************************************************************************/
 /* OBJECTS                                                                    */
 /******************************************************************************/
-VAR(module_Dcm, DCM_VAR) Dcm;
-CONSTP2VAR(infEcuMClient, DCM_VAR, DCM_CONST) gptrinfEcuMClient_Dcm = &Dcm;
-CONSTP2VAR(infDcmClient,  DCM_VAR, DCM_CONST) gptrinfDcmClient_Dcm  = &Dcm;
-CONSTP2VAR(infSchMClient, DCM_VAR, DCM_CONST) gptrinfSchMClient_Dcm = &Dcm;
+VAR(module_Dcm, DCM_VAR) Dcm(
+   {
+         0x0000
+      ,  0xFFFF
+      ,  0x01
+      ,  '0'
+      ,  '1'
+      ,  '0'
+   }
+);
 
 /******************************************************************************/
 /* FUNCTIONS                                                                  */
@@ -77,14 +79,6 @@ FUNC(void, DCM_CODE) module_Dcm::InitFunction(void){
 
 FUNC(void, DCM_CODE) module_Dcm::DeInitFunction(void){
    Dcm.IsInitDone = E_NOT_OK;
-}
-
-FUNC(void, DCM_CODE) module_Dcm::GetVersionInfo(void){
-#if(STD_ON == Dcm_DevErrorDetect)
-//TBD: API parameter check
-   Det_ReportError(
-   );
-#endif
 }
 
 FUNC(void, DCM_CODE) module_Dcm::MainFunction(void){
@@ -192,6 +186,25 @@ FUNC(void, DCM_CODE) class_Dcm_Unused::CallOut_ProcessRequestDownload(void){
 }
 
 FUNC(void, DCM_CODE) class_Dcm_Unused::CallOut_ProcessRequestFileTransfer(void){
+}
+
+#include <cstring>
+FUNC(void, DCM_CODE) infDcmClient::GetVersionInfo(
+   CONSTP2VAR(Std_TypeVersionInfo, DCM_VAR, DCM_CONST) lptrVersionInfo
+){
+   if(NULL_PTR == lptrVersionInfo){
+#if(STD_ON == Dcm_DevErrorDetect)
+      Det_ReportError(
+      );
+#endif
+   }
+   else{
+      memcpy(
+            lptrVersionInfo
+         ,  &VersionInfo
+         ,  sizeof(VersionInfo)
+      );
+   }
 }
 
 /******************************************************************************/
