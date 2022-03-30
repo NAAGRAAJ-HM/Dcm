@@ -6,7 +6,7 @@
 /******************************************************************************/
 /* #INCLUDES                                                                  */
 /******************************************************************************/
-#include "module.hpp"
+#include "Module.hpp"
 #include "infDcm_EcuM.hpp"
 #include "infDcm_Dcm.hpp"
 #include "infDcm_SchM.hpp"
@@ -37,6 +37,9 @@ class module_Dcm:
    public:
       module_Dcm(Std_TypeVersionInfo lVersionInfo) : abstract_module(lVersionInfo){
       }
+      FUNC(void, _CODE) InitFunction(
+         CONSTP2CONST(CfgModule_TypeAbstract, _CONFIG_DATA, _APPL_CONST) lptrCfgModule
+      );
       FUNC(void, DCM_CODE) InitFunction   (void);
       FUNC(void, DCM_CODE) DeInitFunction (void);
       FUNC(void, DCM_CODE) MainFunction   (void);
@@ -73,7 +76,19 @@ VAR(module_Dcm, DCM_VAR) Dcm(
 /******************************************************************************/
 /* FUNCTIONS                                                                  */
 /******************************************************************************/
-FUNC(void, DCM_CODE) module_Dcm::InitFunction(void){
+FUNC(void, DCM_CODE) module_Dcm::InitFunction(
+   CONSTP2CONST(CfgDcm_Type, CFGDCM_CONFIG_DATA, CFGDCM_APPL_CONST) lptrCfgDcm
+){
+   if(NULL_PTR == lptrCfgDcm){
+#if(STD_ON == Dcm_DevErrorDetect)
+      Det_ReportError(
+      );
+#endif
+   }
+   else{
+// check lptrCfgDcm for memory faults
+// use PBcfg_Dcm as back-up configuration
+   }
    Dcm.IsInitDone = E_OK;
 }
 
