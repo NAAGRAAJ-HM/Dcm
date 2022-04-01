@@ -78,6 +78,7 @@ VAR(module_Dcm, DCM_VAR) Dcm(
 FUNC(void, DCM_CODE) module_Dcm::InitFunction(
    CONSTP2CONST(CfgModule_TypeAbstract, DCM_CONFIG_DATA, DCM_APPL_CONST) lptrCfgModule
 ){
+#if(STD_ON == Dcm_InitCheck)
    if(E_OK == IsInitDone){
 #if(STD_ON == Dcm_DevErrorDetect)
       Det_ReportError(
@@ -85,6 +86,7 @@ FUNC(void, DCM_CODE) module_Dcm::InitFunction(
 #endif
    }
    else{
+#endif
       if(NULL_PTR == lptrCfgModule){
 #if(STD_ON == Dcm_DevErrorDetect)
          Det_ReportError(
@@ -96,10 +98,13 @@ FUNC(void, DCM_CODE) module_Dcm::InitFunction(
 // use PBcfg_Dcm as back-up configuration
       }
       IsInitDone = E_OK;
+#if(STD_ON == Dcm_InitCheck)
    }
+#endif
 }
 
 FUNC(void, DCM_CODE) module_Dcm::DeInitFunction(void){
+#if(STD_ON == Dcm_InitCheck)
    if(E_OK != IsInitDone){
 #if(STD_ON == Dcm_DevErrorDetect)
       Det_ReportError(
@@ -107,11 +112,26 @@ FUNC(void, DCM_CODE) module_Dcm::DeInitFunction(void){
 #endif
    }
    else{
+#endif
       IsInitDone = E_NOT_OK;
+#if(STD_ON == Dcm_InitCheck)
    }
+#endif
 }
 
 FUNC(void, DCM_CODE) module_Dcm::MainFunction(void){
+#if(STD_ON == Dcm_InitCheck)
+   if(E_OK != IsInitDone){
+#if(STD_ON == Dcm_DevErrorDetect)
+      Det_ReportError(
+      );
+#endif
+   }
+   else{
+#endif
+#if(STD_ON == Dcm_InitCheck)
+   }
+#endif
 }
 
 class class_Dcm_Unused{
