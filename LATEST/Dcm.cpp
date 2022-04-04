@@ -238,6 +238,7 @@ FUNC(void, DCM_CODE) class_Dcm_Unused::CallOut_ProcessRequestDownload(void){
 FUNC(void, DCM_CODE) class_Dcm_Unused::CallOut_ProcessRequestFileTransfer(void){
 }
 
+#if(STD_ON == DCM_VERSION_INFO_API)
 #include <cstring>
 FUNC(void, DCM_CODE) infDcmClient::GetVersionInfo(
    CONSTP2VAR(Std_TypeVersionInfo, DCM_VAR, DCM_CONST) lptrVersionInfo
@@ -256,6 +257,7 @@ FUNC(void, DCM_CODE) infDcmClient::GetVersionInfo(
       );
    }
 }
+#endif
 
 /******************************************************************************/
 /* EOF                                                                        */
