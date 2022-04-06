@@ -14,18 +14,18 @@
 /******************************************************************************/
 /* #DEFINES                                                                   */
 /******************************************************************************/
-#define DCM_AR_RELEASE_MAJOR_VERSION                                           4
-#define DCM_AR_RELEASE_MINOR_VERSION                                           3
+#define DCM_AR_RELEASE_VERSION_MAJOR                                           4
+#define DCM_AR_RELEASE_VERSION_MINOR                                           3
 
 /******************************************************************************/
 /* MACROS                                                                     */
 /******************************************************************************/
-#if(DCM_AR_RELEASE_MAJOR_VERSION != STD_AR_RELEASE_MAJOR_VERSION)
-   #error "Incompatible DCM_AR_RELEASE_MAJOR_VERSION!"
+#if(DCM_AR_RELEASE_VERSION_MAJOR != STD_AR_RELEASE_VERSION_MAJOR)
+   #error "Incompatible DCM_AR_RELEASE_VERSION_MAJOR!"
 #endif
 
-#if(DCM_AR_RELEASE_MINOR_VERSION != STD_AR_RELEASE_MINOR_VERSION)
-   #error "Incompatible DCM_AR_RELEASE_MINOR_VERSION!"
+#if(DCM_AR_RELEASE_VERSION_MINOR != STD_AR_RELEASE_VERSION_MINOR)
+   #error "Incompatible DCM_AR_RELEASE_VERSION_MINOR!"
 #endif
 
 /******************************************************************************/
@@ -63,8 +63,10 @@ CONSTP2VAR(infSchMClient, DCM_VAR, DCM_CONST) gptrinfSchMClient_Dcm = &Dcm;
 /******************************************************************************/
 VAR(module_Dcm, DCM_VAR) Dcm(
    {
-         0x0000
-      ,  0xFFFF
+         DCM_AR_RELEASE_VERSION_MAJOR
+      ,  DCM_AR_RELEASE_VERSION_MINOR
+      ,  0x00
+      ,  0xFF
       ,  0x01
       ,  '0'
       ,  '1'
