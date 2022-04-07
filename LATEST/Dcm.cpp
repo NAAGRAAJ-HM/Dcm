@@ -101,8 +101,8 @@ FUNC(void, DCM_CODE) module_Dcm::InitFunction(
             lptrCfg = lptrCfgModule;
          }
          else{
-// use PBcfg_CanIf as back-up configuration
-            lptrCfg = PBcfg_CanIf;
+// use PBcfgCanIf as back-up configuration
+            lptrCfg = &PBcfgDcm;
          }
       }
       IsInitDone = E_OK;
