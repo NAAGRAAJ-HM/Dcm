@@ -31,8 +31,38 @@
 /******************************************************************************/
 /* TYPEDEFS                                                                   */
 /******************************************************************************/
+class class_Dcm_Functionality{
+   public:
+      FUNC(void, DCM_CODE) DemTriggerOnDtcStatus              (void);
+      FUNC(void, DCM_CODE) GetVin                             (void);
+      FUNC(void, DCM_CODE) GetSecurityLevel                   (void);
+      FUNC(void, DCM_CODE) GetSesCtrlType                     (void);
+      FUNC(void, DCM_CODE) GetActiveProtocol                  (void);
+      FUNC(void, DCM_CODE) ResetToDefaultSession              (void);
+      FUNC(void, DCM_CODE) TriggerOnEvent                     (void);
+      FUNC(void, DCM_CODE) SetActiveDiagnostic                (void);
+      FUNC(void, DCM_CODE) StartOfReception                   (void);
+      FUNC(void, DCM_CODE) CopyRxData                         (void);
+      FUNC(void, DCM_CODE) TpRxIndication                     (void);
+      FUNC(void, DCM_CODE) CopyTxData                         (void);
+      FUNC(void, DCM_CODE) TpTxConfirmation                   (void);
+      FUNC(void, DCM_CODE) TxConfirmation                     (void);
+      FUNC(void, DCM_CODE) ComM_NoComModeEntered              (void);
+      FUNC(void, DCM_CODE) ComM_SilentComModeEntered          (void);
+      FUNC(void, DCM_CODE) ComM_FullComModeEntered            (void);
+      FUNC(void, DCM_CODE) CallOut_ReadMemory                 (void);
+      FUNC(void, DCM_CODE) CallOut_WriteMemory                (void);
+      FUNC(void, DCM_CODE) CallOut_SetProgConditions          (void);
+      FUNC(void, DCM_CODE) CallOut_GetProgConditions          (void);
+      FUNC(void, DCM_CODE) CallOut_ProcessRequestTransferExit (void);
+      FUNC(void, DCM_CODE) CallOut_ProcessRequestUpload       (void);
+      FUNC(void, DCM_CODE) CallOut_ProcessRequestDownload     (void);
+      FUNC(void, DCM_CODE) CallOut_ProcessRequestFileTransfer (void);
+};
+
 class module_Dcm:
       public abstract_module
+   ,  public class_Dcm_Functionality
 {
    public:
       module_Dcm(Std_TypeVersionInfo lVersionInfo) : abstract_module(lVersionInfo){
@@ -84,6 +114,10 @@ FUNC(void, DCM_CODE) module_Dcm::InitFunction(
    if(E_OK == IsInitDone){
 #if(STD_ON == Dcm_DevErrorDetect)
       Det_ReportError(
+      0 //TBD: IdModule
+   ,  0 //TBD: IdInstance
+   ,  0 //TBD: IdApi
+   ,  0 //TBD: IdError
       );
 #endif
    }
@@ -92,6 +126,10 @@ FUNC(void, DCM_CODE) module_Dcm::InitFunction(
       if(NULL_PTR == lptrCfgModule){
 #if(STD_ON == Dcm_DevErrorDetect)
          Det_ReportError(
+      0 //TBD: IdModule
+   ,  0 //TBD: IdInstance
+   ,  0 //TBD: IdApi
+   ,  0 //TBD: IdError
          );
 #endif
       }
@@ -116,6 +154,10 @@ FUNC(void, DCM_CODE) module_Dcm::DeInitFunction(void){
    if(E_OK != IsInitDone){
 #if(STD_ON == Dcm_DevErrorDetect)
       Det_ReportError(
+      0 //TBD: IdModule
+   ,  0 //TBD: IdInstance
+   ,  0 //TBD: IdApi
+   ,  0 //TBD: IdError
       );
 #endif
    }
@@ -132,6 +174,10 @@ FUNC(void, DCM_CODE) module_Dcm::MainFunction(void){
    if(E_OK != IsInitDone){
 #if(STD_ON == Dcm_DevErrorDetect)
       Det_ReportError(
+      0 //TBD: IdModule
+   ,  0 //TBD: IdInstance
+   ,  0 //TBD: IdApi
+   ,  0 //TBD: IdError
       );
 #endif
    }
@@ -142,108 +188,79 @@ FUNC(void, DCM_CODE) module_Dcm::MainFunction(void){
 #endif
 }
 
-class class_Dcm_Unused{
-   public:
-      FUNC(void, DCM_CODE) DemTriggerOnDtcStatus              (void);
-      FUNC(void, DCM_CODE) GetVin                             (void);
-      FUNC(void, DCM_CODE) GetSecurityLevel                   (void);
-      FUNC(void, DCM_CODE) GetSesCtrlType                     (void);
-      FUNC(void, DCM_CODE) GetActiveProtocol                  (void);
-      FUNC(void, DCM_CODE) ResetToDefaultSession              (void);
-      FUNC(void, DCM_CODE) TriggerOnEvent                     (void);
-      FUNC(void, DCM_CODE) SetActiveDiagnostic                (void);
-      FUNC(void, DCM_CODE) StartOfReception                   (void);
-      FUNC(void, DCM_CODE) CopyRxData                         (void);
-      FUNC(void, DCM_CODE) TpRxIndication                     (void);
-      FUNC(void, DCM_CODE) CopyTxData                         (void);
-      FUNC(void, DCM_CODE) TpTxConfirmation                   (void);
-      FUNC(void, DCM_CODE) TxConfirmation                     (void);
-      FUNC(void, DCM_CODE) ComM_NoComModeEntered              (void);
-      FUNC(void, DCM_CODE) ComM_SilentComModeEntered          (void);
-      FUNC(void, DCM_CODE) ComM_FullComModeEntered            (void);
-      FUNC(void, DCM_CODE) CallOut_ReadMemory                 (void);
-      FUNC(void, DCM_CODE) CallOut_WriteMemory                (void);
-      FUNC(void, DCM_CODE) CallOut_SetProgConditions          (void);
-      FUNC(void, DCM_CODE) CallOut_GetProgConditions          (void);
-      FUNC(void, DCM_CODE) CallOut_ProcessRequestTransferExit (void);
-      FUNC(void, DCM_CODE) CallOut_ProcessRequestUpload       (void);
-      FUNC(void, DCM_CODE) CallOut_ProcessRequestDownload     (void);
-      FUNC(void, DCM_CODE) CallOut_ProcessRequestFileTransfer (void);
-};
-
-FUNC(void, DCM_CODE) class_Dcm_Unused::DemTriggerOnDtcStatus(void){
+FUNC(void, DCM_CODE) class_Dcm_Functionality::DemTriggerOnDtcStatus(void){
 }
 
-FUNC(void, DCM_CODE) class_Dcm_Unused::GetVin(void){
+FUNC(void, DCM_CODE) class_Dcm_Functionality::GetVin(void){
 }
 
-FUNC(void, DCM_CODE) class_Dcm_Unused::GetSecurityLevel(void){
+FUNC(void, DCM_CODE) class_Dcm_Functionality::GetSecurityLevel(void){
 }
 
-FUNC(void, DCM_CODE) class_Dcm_Unused::GetSesCtrlType(void){
+FUNC(void, DCM_CODE) class_Dcm_Functionality::GetSesCtrlType(void){
 }
 
-FUNC(void, DCM_CODE) class_Dcm_Unused::GetActiveProtocol(void){
+FUNC(void, DCM_CODE) class_Dcm_Functionality::GetActiveProtocol(void){
 }
 
-FUNC(void, DCM_CODE) class_Dcm_Unused::ResetToDefaultSession(void){
+FUNC(void, DCM_CODE) class_Dcm_Functionality::ResetToDefaultSession(void){
 }
 
-FUNC(void, DCM_CODE) class_Dcm_Unused::TriggerOnEvent(void){
+FUNC(void, DCM_CODE) class_Dcm_Functionality::TriggerOnEvent(void){
 }
 
-FUNC(void, DCM_CODE) class_Dcm_Unused::SetActiveDiagnostic(void){
+FUNC(void, DCM_CODE) class_Dcm_Functionality::SetActiveDiagnostic(void){
 }
 
-FUNC(void, DCM_CODE) class_Dcm_Unused::StartOfReception(void){
+FUNC(void, DCM_CODE) class_Dcm_Functionality::StartOfReception(void){
 }
 
-FUNC(void, DCM_CODE) class_Dcm_Unused::CopyRxData(void){
+FUNC(void, DCM_CODE) class_Dcm_Functionality::CopyRxData(void){
 }
 
-FUNC(void, DCM_CODE) class_Dcm_Unused::TpRxIndication(void){
+FUNC(void, DCM_CODE) class_Dcm_Functionality::TpRxIndication(void){
 }
 
-FUNC(void, DCM_CODE) class_Dcm_Unused::CopyTxData(void){
+FUNC(void, DCM_CODE) class_Dcm_Functionality::CopyTxData(void){
 }
 
-FUNC(void, DCM_CODE) class_Dcm_Unused::TpTxConfirmation(void){
+FUNC(void, DCM_CODE) class_Dcm_Functionality::TpTxConfirmation(void){
 }
 
-FUNC(void, DCM_CODE) class_Dcm_Unused::TxConfirmation(void){
+FUNC(void, DCM_CODE) class_Dcm_Functionality::TxConfirmation(void){
 }
 
-FUNC(void, DCM_CODE) class_Dcm_Unused::ComM_NoComModeEntered(void){
+FUNC(void, DCM_CODE) class_Dcm_Functionality::ComM_NoComModeEntered(void){
 }
 
-FUNC(void, DCM_CODE) class_Dcm_Unused::ComM_SilentComModeEntered(void){
+FUNC(void, DCM_CODE) class_Dcm_Functionality::ComM_SilentComModeEntered(void){
 }
 
-FUNC(void, DCM_CODE) class_Dcm_Unused::ComM_FullComModeEntered(void){
+FUNC(void, DCM_CODE) class_Dcm_Functionality::ComM_FullComModeEntered(void){
 }
 
-FUNC(void, DCM_CODE) class_Dcm_Unused::CallOut_ReadMemory(void){
+FUNC(void, DCM_CODE) class_Dcm_Functionality::CallOut_ReadMemory(void){
 }
 
-FUNC(void, DCM_CODE) class_Dcm_Unused::CallOut_WriteMemory(void){
+FUNC(void, DCM_CODE) class_Dcm_Functionality::CallOut_WriteMemory(void){
 }
 
-FUNC(void, DCM_CODE) class_Dcm_Unused::CallOut_SetProgConditions(void){
+FUNC(void, DCM_CODE) class_Dcm_Functionality::CallOut_SetProgConditions(void){
 }
 
-FUNC(void, DCM_CODE) class_Dcm_Unused::CallOut_GetProgConditions(void){
+FUNC(void, DCM_CODE) class_Dcm_Functionality::CallOut_GetProgConditions(void){
 }
 
-FUNC(void, DCM_CODE) class_Dcm_Unused::CallOut_ProcessRequestTransferExit(void){
+FUNC(void, DCM_CODE) class_Dcm_Functionality::CallOut_ProcessRequestTransferExit(void){
 }
 
-FUNC(void, DCM_CODE) class_Dcm_Unused::CallOut_ProcessRequestUpload(void){
+FUNC(void, DCM_CODE) class_Dcm_Functionality::CallOut_ProcessRequestUpload(void){
 }
 
-FUNC(void, DCM_CODE) class_Dcm_Unused::CallOut_ProcessRequestDownload(void){
+FUNC(void, DCM_CODE) class_Dcm_Functionality::CallOut_ProcessRequestDownload(void){
 }
 
-FUNC(void, DCM_CODE) class_Dcm_Unused::CallOut_ProcessRequestFileTransfer(void){
+FUNC(void, DCM_CODE) class_Dcm_Functionality::CallOut_ProcessRequestFileTransfer(void){
 }
 
 #if(STD_ON == DCM_VERSION_INFO_API)
@@ -254,6 +271,10 @@ FUNC(void, DCM_CODE) infDcmClient::GetVersionInfo(
    if(NULL_PTR == lptrVersionInfo){
 #if(STD_ON == Dcm_DevErrorDetect)
       Det_ReportError(
+      0 //TBD: IdModule
+   ,  0 //TBD: IdInstance
+   ,  0 //TBD: IdApi
+   ,  0 //TBD: IdError
       );
 #endif
    }
