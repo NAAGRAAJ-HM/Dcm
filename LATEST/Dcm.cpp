@@ -7,6 +7,7 @@
 /* #INCLUDES                                                                  */
 /******************************************************************************/
 #include "Module.hpp"
+#include "Dcm_core.hpp"
 #include "infDcm_EcuM.hpp"
 #include "infDcm_Dcm.hpp"
 #include "infDcm_SchM.hpp"
