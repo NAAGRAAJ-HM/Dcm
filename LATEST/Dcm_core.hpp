@@ -12,7 +12,7 @@
 /******************************************************************************/
 /* #DEFINES                                                                   */
 /******************************************************************************/
-#define DCM_COREFUNCTIONALITIES                                                \
+#define DCM_CORE_FUNCTIONALITIES                                               \
               FUNC(void, DCM_CODE) DemTriggerOnDtcStatus              (void);     \
               FUNC(void, DCM_CODE) GetVin                             (void);     \
               FUNC(void, DCM_CODE) GetSecurityLevel                   (void);     \
@@ -39,7 +39,7 @@
               FUNC(void, DCM_CODE) CallOut_ProcessRequestDownload     (void);     \
               FUNC(void, DCM_CODE) CallOut_ProcessRequestFileTransfer (void);     \
 
-#define DCM_COREFUNCTIONALITIES_VIRTUAL                                        \
+#define DCM_CORE_FUNCTIONALITIES_VIRTUAL                                       \
       virtual FUNC(void, DCM_CODE) DemTriggerOnDtcStatus              (void) = 0; \
       virtual FUNC(void, DCM_CODE) GetVin                             (void) = 0; \
       virtual FUNC(void, DCM_CODE) GetSecurityLevel                   (void) = 0; \
@@ -75,7 +75,7 @@
 /******************************************************************************/
 class class_Dcm_Functionality{
    public:
-      DCM_COREFUNCTIONALITIES_VIRTUAL
+      DCM_CORE_FUNCTIONALITIES_VIRTUAL
 };
 
 /******************************************************************************/

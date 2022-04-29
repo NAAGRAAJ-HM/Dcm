@@ -7,10 +7,9 @@
 /* #INCLUDES                                                                  */
 /******************************************************************************/
 #include "Module.hpp"
+#include "CfgDcm.hpp"
 #include "Dcm_core.hpp"
-#include "infDcm_EcuM.hpp"
-#include "infDcm_Dcm.hpp"
-#include "infDcm_SchM.hpp"
+#include "infDcm.hpp"
 
 /******************************************************************************/
 /* #DEFINES                                                                   */
@@ -44,6 +43,7 @@ class module_Dcm:
       );
       FUNC(void, DCM_CODE) DeInitFunction (void);
       FUNC(void, DCM_CODE) MainFunction   (void);
+      DCM_CORE_FUNCTIONALITIES
 };
 
 extern VAR(module_Dcm, DCM_VAR) Dcm;
@@ -58,7 +58,6 @@ CONSTP2VAR(infSchMClient, DCM_VAR, DCM_CONST) gptrinfSchMClient_Dcm = &Dcm;
 /******************************************************************************/
 /* PARAMS                                                                     */
 /******************************************************************************/
-#include "CfgDcm.hpp"
 
 /******************************************************************************/
 /* OBJECTS                                                                    */
