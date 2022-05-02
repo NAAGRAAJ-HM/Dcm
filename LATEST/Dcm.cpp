@@ -159,79 +159,79 @@ FUNC(void, DCM_CODE) module_Dcm::MainFunction(void){
 #endif
 }
 
-FUNC(void, DCM_CODE) class_Dcm_Functionality::DemTriggerOnDtcStatus(void){
+FUNC(void, DCM_CODE) module_Dcm::DemTriggerOnDtcStatus(void){
 }
 
-FUNC(void, DCM_CODE) class_Dcm_Functionality::GetVin(void){
+FUNC(void, DCM_CODE) module_Dcm::GetVin(void){
 }
 
-FUNC(void, DCM_CODE) class_Dcm_Functionality::GetSecurityLevel(void){
+FUNC(void, DCM_CODE) module_Dcm::GetSecurityLevel(void){
 }
 
-FUNC(void, DCM_CODE) class_Dcm_Functionality::GetSesCtrlType(void){
+FUNC(void, DCM_CODE) module_Dcm::GetSesCtrlType(void){
 }
 
-FUNC(void, DCM_CODE) class_Dcm_Functionality::GetActiveProtocol(void){
+FUNC(void, DCM_CODE) module_Dcm::GetActiveProtocol(void){
 }
 
-FUNC(void, DCM_CODE) class_Dcm_Functionality::ResetToDefaultSession(void){
+FUNC(void, DCM_CODE) module_Dcm::ResetToDefaultSession(void){
 }
 
-FUNC(void, DCM_CODE) class_Dcm_Functionality::TriggerOnEvent(void){
+FUNC(void, DCM_CODE) module_Dcm::TriggerOnEvent(void){
 }
 
-FUNC(void, DCM_CODE) class_Dcm_Functionality::SetActiveDiagnostic(void){
+FUNC(void, DCM_CODE) module_Dcm::SetActiveDiagnostic(void){
 }
 
-FUNC(void, DCM_CODE) class_Dcm_Functionality::StartOfReception(void){
+FUNC(void, DCM_CODE) module_Dcm::StartOfReception(void){
 }
 
-FUNC(void, DCM_CODE) class_Dcm_Functionality::CopyRxData(void){
+FUNC(void, DCM_CODE) module_Dcm::CopyRxData(void){
 }
 
-FUNC(void, DCM_CODE) class_Dcm_Functionality::TpRxIndication(void){
+FUNC(void, DCM_CODE) module_Dcm::TpRxIndication(void){
 }
 
-FUNC(void, DCM_CODE) class_Dcm_Functionality::CopyTxData(void){
+FUNC(void, DCM_CODE) module_Dcm::CopyTxData(void){
 }
 
-FUNC(void, DCM_CODE) class_Dcm_Functionality::TpTxConfirmation(void){
+FUNC(void, DCM_CODE) module_Dcm::TpTxConfirmation(void){
 }
 
-FUNC(void, DCM_CODE) class_Dcm_Functionality::TxConfirmation(void){
+FUNC(void, DCM_CODE) module_Dcm::TxConfirmation(void){
 }
 
-FUNC(void, DCM_CODE) class_Dcm_Functionality::ComM_NoComModeEntered(void){
+FUNC(void, DCM_CODE) module_Dcm::ComM_NoComModeEntered(void){
 }
 
-FUNC(void, DCM_CODE) class_Dcm_Functionality::ComM_SilentComModeEntered(void){
+FUNC(void, DCM_CODE) module_Dcm::ComM_SilentComModeEntered(void){
 }
 
-FUNC(void, DCM_CODE) class_Dcm_Functionality::ComM_FullComModeEntered(void){
+FUNC(void, DCM_CODE) module_Dcm::ComM_FullComModeEntered(void){
 }
 
-FUNC(void, DCM_CODE) class_Dcm_Functionality::CallOut_ReadMemory(void){
+FUNC(void, DCM_CODE) module_Dcm::CallOut_ReadMemory(void){
 }
 
-FUNC(void, DCM_CODE) class_Dcm_Functionality::CallOut_WriteMemory(void){
+FUNC(void, DCM_CODE) module_Dcm::CallOut_WriteMemory(void){
 }
 
-FUNC(void, DCM_CODE) class_Dcm_Functionality::CallOut_SetProgConditions(void){
+FUNC(void, DCM_CODE) module_Dcm::CallOut_SetProgConditions(void){
 }
 
-FUNC(void, DCM_CODE) class_Dcm_Functionality::CallOut_GetProgConditions(void){
+FUNC(void, DCM_CODE) module_Dcm::CallOut_GetProgConditions(void){
 }
 
-FUNC(void, DCM_CODE) class_Dcm_Functionality::CallOut_ProcessRequestTransferExit(void){
+FUNC(void, DCM_CODE) module_Dcm::CallOut_ProcessRequestTransferExit(void){
 }
 
-FUNC(void, DCM_CODE) class_Dcm_Functionality::CallOut_ProcessRequestUpload(void){
+FUNC(void, DCM_CODE) module_Dcm::CallOut_ProcessRequestUpload(void){
 }
 
-FUNC(void, DCM_CODE) class_Dcm_Functionality::CallOut_ProcessRequestDownload(void){
+FUNC(void, DCM_CODE) module_Dcm::CallOut_ProcessRequestDownload(void){
 }
 
-FUNC(void, DCM_CODE) class_Dcm_Functionality::CallOut_ProcessRequestFileTransfer(void){
+FUNC(void, DCM_CODE) module_Dcm::CallOut_ProcessRequestFileTransfer(void){
 }
 
 #if(STD_ON == DCM_VERSION_INFO_API)
