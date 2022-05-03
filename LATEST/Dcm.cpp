@@ -82,79 +82,79 @@ FUNC(void, DCM_CODE) module_Dcm::InitFunction(
    CONSTP2CONST(CfgModule_TypeAbstract, DCM_CONFIG_DATA, DCM_APPL_CONST) lptrCfgModule
 ){
 #if(STD_ON == Dcm_InitCheck)
-   if(E_OK == IsInitDone){
-#if(STD_ON == Dcm_DevErrorDetect)
-      Det_ReportError(
-      0 //TBD: IdModule
-   ,  0 //TBD: IdInstance
-   ,  0 //TBD: IdApi
-   ,  0 //TBD: IdError
-      );
+   if(E_OK != IsInitDone){
 #endif
-   }
-   else{
-#endif
-      if(NULL_PTR == lptrCfgModule){
-#if(STD_ON == Dcm_DevErrorDetect)
-         Det_ReportError(
-      0 //TBD: IdModule
-   ,  0 //TBD: IdInstance
-   ,  0 //TBD: IdApi
-   ,  0 //TBD: IdError
-         );
-#endif
-      }
-      else{
+      if(NULL_PTR != lptrCfgModule){
          if(STD_LOW){
-// check lptrCfgModule for memory faults
+            // check lptrCfgModule for memory faults
             lptrCfg = lptrCfgModule;
          }
          else{
-// use PBcfgCanIf as back-up configuration
+            // use PBcfgCanIf as back-up configuration
             lptrCfg = &PBcfgDcm;
          }
       }
-      IsInitDone = E_OK;
+      else{
+#if(STD_ON == Dcm_DevErrorDetect)
+         Det_ReportError(
+               0 //TBD: IdModule
+            ,  0 //TBD: IdInstance
+            ,  0 //TBD: IdApi
+            ,  0 //TBD: IdError
+         );
+#endif
+      }
 #if(STD_ON == Dcm_InitCheck)
+      IsInitDone = E_OK;
+   }
+   else{
+#if(STD_ON == Dcm_DevErrorDetect)
+      Det_ReportError(
+            0 //TBD: IdModule
+         ,  0 //TBD: IdInstance
+         ,  0 //TBD: IdApi
+         ,  0 //TBD: IdError
+      );
+#endif
    }
 #endif
 }
 
 FUNC(void, DCM_CODE) module_Dcm::DeInitFunction(void){
 #if(STD_ON == Dcm_InitCheck)
-   if(E_OK != IsInitDone){
-#if(STD_ON == Dcm_DevErrorDetect)
-      Det_ReportError(
-      0 //TBD: IdModule
-   ,  0 //TBD: IdInstance
-   ,  0 //TBD: IdApi
-   ,  0 //TBD: IdError
-      );
+   if(E_OK == IsInitDone){
 #endif
+#if(STD_ON == Dcm_InitCheck)
+      IsInitDone = E_NOT_OK;
    }
    else{
+#if(STD_ON == Dcm_DevErrorDetect)
+      Det_ReportError(
+            0 //TBD: IdModule
+         ,  0 //TBD: IdInstance
+         ,  0 //TBD: IdApi
+         ,  0 //TBD: IdError
+      );
 #endif
-      IsInitDone = E_NOT_OK;
-#if(STD_ON == Dcm_InitCheck)
    }
 #endif
 }
 
 FUNC(void, DCM_CODE) module_Dcm::MainFunction(void){
 #if(STD_ON == Dcm_InitCheck)
-   if(E_OK != IsInitDone){
-#if(STD_ON == Dcm_DevErrorDetect)
-      Det_ReportError(
-      0 //TBD: IdModule
-   ,  0 //TBD: IdInstance
-   ,  0 //TBD: IdApi
-   ,  0 //TBD: IdError
-      );
-#endif
-   }
-   else{
+   if(E_OK == IsInitDone){
 #endif
 #if(STD_ON == Dcm_InitCheck)
+   }
+   else{
+#if(STD_ON == Dcm_DevErrorDetect)
+      Det_ReportError(
+            0 //TBD: IdModule
+         ,  0 //TBD: IdInstance
+         ,  0 //TBD: IdApi
+         ,  0 //TBD: IdError
+      );
+#endif
    }
 #endif
 }
