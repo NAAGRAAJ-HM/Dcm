@@ -89,7 +89,10 @@ FUNC(void, DCM_CODE) module_Dcm::InitFunction(
    CONSTP2CONST(CfgModule_TypeAbstract, DCM_CONFIG_DATA, DCM_APPL_CONST) lptrCfgModule
 ){
 #if(STD_ON == Dcm_InitCheck)
-   if(E_OK != IsInitDone){
+   if(
+         E_OK
+      != IsInitDone
+   ){
 #endif
       if(NULL_PTR != lptrCfgModule){
          if(STD_HIGH){
@@ -127,7 +130,10 @@ FUNC(void, DCM_CODE) module_Dcm::InitFunction(
 
 FUNC(void, DCM_CODE) module_Dcm::DeInitFunction(void){
 #if(STD_ON == Dcm_InitCheck)
-   if(E_OK == IsInitDone){
+   if(
+         E_OK
+      == IsInitDone
+   ){
 #endif
 #if(STD_ON == Dcm_InitCheck)
       IsInitDone = E_NOT_OK;
@@ -147,7 +153,10 @@ FUNC(void, DCM_CODE) module_Dcm::DeInitFunction(void){
 
 FUNC(void, DCM_CODE) module_Dcm::MainFunction(void){
 #if(STD_ON == Dcm_InitCheck)
-   if(E_OK == IsInitDone){
+   if(
+         E_OK
+      == IsInitDone
+   ){
 #endif
 #if(STD_ON == Dcm_InitCheck)
    }
@@ -244,22 +253,25 @@ FUNC(void, DCM_CODE) module_Dcm::CallOut_ProcessRequestFileTransfer(void){
 FUNC(void, DCM_CODE) infDcmClient::GetVersionInfo(
    CONSTP2VAR(Std_TypeVersionInfo, DCM_VAR, DCM_CONST) lptrVersionInfo
 ){
-   if(NULL_PTR == lptrVersionInfo){
-#if(STD_ON == Dcm_DevErrorDetect)
-      Det_ReportError(
-      0 //TBD: IdModule
-   ,  0 //TBD: IdInstance
-   ,  0 //TBD: IdApi
-   ,  0 //TBD: IdError
-      );
-#endif
-   }
-   else{
+   if(
+         NULL_PTR
+      != lptrVersionInfo
+   ){
       memcpy(
             lptrVersionInfo
          ,  &VersionInfo
          ,  sizeof(VersionInfo)
       );
+   }
+   else{
+#if(STD_ON == Dcm_DevErrorDetect)
+      Det_ReportError(
+            0 //TBD: IdModule
+         ,  0 //TBD: IdInstance
+         ,  0 //TBD: IdApi
+         ,  DCM_E_PARAM_POINTER
+      );
+#endif
    }
 }
 #endif
