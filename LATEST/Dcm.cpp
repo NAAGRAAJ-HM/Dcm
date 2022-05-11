@@ -9,7 +9,7 @@
 #include "Module.hpp"
 #include "CfgDcm.hpp"
 #include "Dcm_core.hpp"
-#include "infDcm.hpp"
+#include "infDcm_Exp.hpp"
 
 /******************************************************************************/
 /* #DEFINES                                                                   */
@@ -32,6 +32,7 @@
 /* TYPEDEFS                                                                   */
 /******************************************************************************/
 class module_Dcm:
+   INTERFACES_EXPORTED_DCM
       public abstract_module
    ,  public class_Dcm_Functionality
 {
