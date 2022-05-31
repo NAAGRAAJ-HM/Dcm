@@ -32,7 +32,7 @@
 /* TYPEDEFS                                                                   */
 /******************************************************************************/
 class module_Dcm:
-   INTERFACES_EXPORTED_DCM
+      INTERFACES_EXPORTED_DCM
       public abstract_module
    ,  public class_Dcm_Functionality
 {
