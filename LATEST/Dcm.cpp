@@ -86,6 +86,80 @@ VAR(module_Dcm, DCM_VAR) Dcm(
 /******************************************************************************/
 /* FUNCTIONS                                                                  */
 /******************************************************************************/
+#include "infDcm_Imp.hpp"
+
+const infDcmClient* gaptrDcmClients[] = {
+      gptrinfDcmClient_CanIf
+   ,  gptrinfDcmClient_CryIf
+   ,  gptrinfDcmClient_Ea
+   ,  gptrinfDcmClient_EthIf
+   ,  gptrinfDcmClient_Fee
+   ,  gptrinfDcmClient_FrIf
+   ,  gptrinfDcmClient_LinIf
+   ,  gptrinfDcmClient_LinTp
+   ,  gptrinfDcmClient_MemIf
+   ,  gptrinfDcmClient_WdgIf
+   ,  gptrinfDcmClient_Adc
+   ,  gptrinfDcmClient_Can
+   ,  gptrinfDcmClient_Cry
+   ,  gptrinfDcmClient_Dio
+   ,  gptrinfDcmClient_Eep
+   ,  gptrinfDcmClient_Eth
+   ,  gptrinfDcmClient_Fls
+   ,  gptrinfDcmClient_Fr
+   ,  gptrinfDcmClient_Gpt
+   ,  gptrinfDcmClient_Icu
+   ,  gptrinfDcmClient_Lin
+   ,  gptrinfDcmClient_Mcu
+   ,  gptrinfDcmClient_Ocu
+   ,  gptrinfDcmClient_Port
+   ,  gptrinfDcmClient_Pwm
+   ,  gptrinfDcmClient_Spi
+   ,  gptrinfDcmClient_Wdg
+   ,  gptrinfDcmClient_BswM
+   ,  gptrinfDcmClient_Com
+   ,  gptrinfDcmClient_ComM
+   ,  gptrinfDcmClient_Csm
+   ,  gptrinfDcmClient_Dcm
+   ,  gptrinfDcmClient_Dem
+   ,  gptrinfDcmClient_Det
+   ,  gptrinfDcmClient_EcuM
+   ,  gptrinfDcmClient_FiM
+   ,  gptrinfDcmClient_Nm
+   ,  gptrinfDcmClient_NvM
+   ,  gptrinfDcmClient_Os
+   ,  gptrinfDcmClient_PduR
+   ,  gptrinfDcmClient_SchM
+   ,  gptrinfDcmClient_SecOC
+   ,  gptrinfDcmClient_SokFm
+   ,  gptrinfDcmClient_StartUp
+   ,  gptrinfDcmClient_StbM
+   ,  gptrinfDcmClient_Vkms
+   ,  gptrinfDcmClient_WdgM
+   ,  gptrinfDcmClient_Rte
+   ,  gptrinfDcmClient_SwcApplFoc
+   ,  gptrinfDcmClient_SwcServiceEcuM
+   ,  gptrinfDcmClient_SwcServiceOs
+};
+
+#if(STD_ON == _ReSIM)
+#include <iostream>
+using namespace std;
+void print_modules_version(void){
+   for(
+      uint8 lu8Index = 0;
+            lu8Index < sizeof(gaptrDcmClients)/sizeof(infDcmClient*);
+            lu8Index ++
+   ){
+      cout<<endl<<"R";
+      cout<<gaptrDcmClients[lu8Index]->VersionInfo.SwVersionMajor<<".";
+      cout<<gaptrDcmClients[lu8Index]->VersionInfo.SwVersionMinor<<".";
+      cout<<gaptrDcmClients[lu8Index]->VersionInfo.SwVersionPatch;
+   }
+}
+#else
+#endif
+
 FUNC(void, DCM_CODE) module_Dcm::InitFunction(
    CONSTP2CONST(CfgModule_TypeAbstract, DCM_CONFIG_DATA, DCM_APPL_CONST) lptrCfgModule
 ){
@@ -114,6 +188,10 @@ FUNC(void, DCM_CODE) module_Dcm::InitFunction(
 #endif
       }
 #if(STD_ON == Dcm_InitCheck)
+#if(STD_ON == _ReSIM)
+      print_modules_version();
+#else
+#endif
       IsInitDone = E_OK;
    }
    else{
