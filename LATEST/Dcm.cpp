@@ -72,6 +72,10 @@ CONSTP2VAR(infSchMClient, DCM_VAR, DCM_CONST) gptrinfSchMClient_Dcm = &Dcm;
 /******************************************************************************/
 VAR(module_Dcm, DCM_VAR) Dcm(
    {
+#if(STD_ON == _ReSIM)
+// char strModuleName[6];
+#else
+#endif
          DCM_AR_RELEASE_VERSION_MAJOR
       ,  DCM_AR_RELEASE_VERSION_MINOR
       ,  0x00
@@ -90,6 +94,7 @@ VAR(module_Dcm, DCM_VAR) Dcm(
 
 const infDcmClient* gaptrDcmClients[] = {
       gptrinfDcmClient_CanIf
+// ,  gptrinfDcmClient_CanTp
    ,  gptrinfDcmClient_CryIf
    ,  gptrinfDcmClient_Ea
    ,  gptrinfDcmClient_EthIf
