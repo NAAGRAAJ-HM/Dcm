@@ -8,7 +8,7 @@
 /* #INCLUDES                                                                  */
 /******************************************************************************/
 #include "infCanIf_Dcm.hpp"
-//#include "infCanTp_Dcm.hpp"
+#include "infCanTp_Dcm.hpp"
 #include "infCryIf_Dcm.hpp"
 #include "infEa_Dcm.hpp"
 #include "infEthIf_Dcm.hpp"

@@ -10,6 +10,7 @@
 #include "CfgDcm.hpp"
 #include "Dcm_core.hpp"
 #include "infDcm_Exp.hpp"
+#include "infDcm_Imp.hpp"
 
 /******************************************************************************/
 /* #DEFINES                                                                   */
@@ -90,11 +91,9 @@ VAR(module_Dcm, DCM_VAR) Dcm(
 /******************************************************************************/
 /* FUNCTIONS                                                                  */
 /******************************************************************************/
-#include "infDcm_Imp.hpp"
-
 const infDcmClient* gaptrDcmClients[] = {
       gptrinfDcmClient_CanIf
-// ,  gptrinfDcmClient_CanTp
+   ,  gptrinfDcmClient_CanTp
    ,  gptrinfDcmClient_CryIf
    ,  gptrinfDcmClient_Ea
    ,  gptrinfDcmClient_EthIf
