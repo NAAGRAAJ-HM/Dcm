@@ -74,7 +74,7 @@ CONSTP2VAR(infSchMClient, DCM_VAR, DCM_CONST) gptrinfSchMClient_Dcm = &Dcm;
 VAR(module_Dcm, DCM_VAR) Dcm(
    {
 #if(STD_ON == _ReSIM)
-// char strModuleName[6];
+   char strModuleName[6] = "DCM";
 #else
 #endif
          DCM_AR_RELEASE_VERSION_MAJOR
