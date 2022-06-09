@@ -74,10 +74,10 @@ CONSTP2VAR(infSchMClient, DCM_VAR, DCM_CONST) gptrinfSchMClient_Dcm = &Dcm;
 VAR(module_Dcm, DCM_VAR) Dcm(
    {
 #if(STD_ON == _ReSIM)
-         "Dcm"
+         "Dcm",
 #else
 #endif
-      ,  DCM_AR_RELEASE_VERSION_MAJOR
+         DCM_AR_RELEASE_VERSION_MAJOR
       ,  DCM_AR_RELEASE_VERSION_MINOR
       ,  0x00
       ,  0xFF
