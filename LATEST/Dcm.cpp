@@ -73,10 +73,6 @@ CONSTP2VAR(infSchMClient, DCM_VAR, DCM_CONST) gptrinfSchMClient_Dcm = &Dcm;
 /******************************************************************************/
 VAR(module_Dcm, DCM_VAR) Dcm(
    {
-#if(STD_ON == _ReSIM)
-         "Dcm",
-#else
-#endif
          DCM_AR_RELEASE_VERSION_MAJOR
       ,  DCM_AR_RELEASE_VERSION_MINOR
       ,  0x00
@@ -149,13 +145,68 @@ const infDcmClient* gaptrDcmClients[] = {
 #if(STD_ON == _ReSIM)
 #include <iostream>
 using namespace std;
+static const string lstrDcmClientNames[] = {
+      "CanIf"
+   ,  "CanTp"
+   ,  "CryIf"
+   ,  "Ea"
+   ,  "EthIf"
+   ,  "Fee"
+   ,  "FrIf"
+   ,  "LinIf"
+   ,  "LinTp"
+   ,  "MemIf"
+   ,  "WdgIf"
+   ,  "Adc"
+   ,  "Can"
+   ,  "Cry"
+   ,  "Dio"
+   ,  "Eep"
+   ,  "Eth"
+   ,  "Fls"
+   ,  "Fr"
+   ,  "Gpt"
+   ,  "Icu"
+   ,  "Lin"
+   ,  "Mcu"
+   ,  "Ocu"
+   ,  "Port"
+   ,  "Pwm"
+   ,  "Spi"
+   ,  "Wdg"
+   ,  "BswM"
+   ,  "Com"
+   ,  "ComM"
+   ,  "Csm"
+   ,  "Dcm"
+   ,  "Dem"
+   ,  "Det"
+   ,  "EcuM"
+   ,  "FiM"
+   ,  "Nm"
+   ,  "NvM"
+   ,  "Os"
+   ,  "PduR"
+   ,  "SchM"
+   ,  "SecOC"
+   ,  "SokFm"
+   ,  "StartUp"
+   ,  "StbM"
+   ,  "Vkms"
+   ,  "WdgM"
+   ,  "Rte"
+   ,  "SwcApplFoc"
+   ,  "SwcServiceEcuM"
+   ,  "SwcServiceOs"
+};
+
 void print_modules_version(void){
    for(
       uint8 lu8Index = 0;
             lu8Index < sizeof(gaptrDcmClients)/sizeof(infDcmClient*);
             lu8Index ++
    ){
-      cout<<endl<<"R";
+      cout<<endl<<lstrDcmClientNames[lu8Index]<<"\t\tR";
       cout<<gaptrDcmClients[lu8Index]->VersionInfo.SwVersionMajor<<".";
       cout<<gaptrDcmClients[lu8Index]->VersionInfo.SwVersionMinor<<".";
       cout<<gaptrDcmClients[lu8Index]->VersionInfo.SwVersionPatch;
