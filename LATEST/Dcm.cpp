@@ -95,6 +95,8 @@ const infDcmClient* gaptrDcmClients[] = {
    ,  gptrinfDcmClient_EthIf
    ,  gptrinfDcmClient_Fee
    ,  gptrinfDcmClient_FrIf
+   ,  gptrinfDcmClient_FrTp
+   ,  gptrinfDcmClient_J1939Tp
    ,  gptrinfDcmClient_LinIf
    ,  gptrinfDcmClient_LinTp
    ,  gptrinfDcmClient_MemIf
@@ -117,14 +119,19 @@ const infDcmClient* gaptrDcmClients[] = {
    ,  gptrinfDcmClient_Spi
    ,  gptrinfDcmClient_Wdg
    ,  gptrinfDcmClient_BswM
+   ,  gptrinfDcmClient_CanNm
+   ,  gptrinfDcmClient_CanSm
    ,  gptrinfDcmClient_Com
    ,  gptrinfDcmClient_ComM
    ,  gptrinfDcmClient_Csm
    ,  gptrinfDcmClient_Dcm
    ,  gptrinfDcmClient_Dem
    ,  gptrinfDcmClient_Det
+   ,  gptrinfDcmClient_Dlt
    ,  gptrinfDcmClient_EcuM
    ,  gptrinfDcmClient_FiM
+   ,  gptrinfDcmClient_FrNm
+   ,  gptrinfDcmClient_IpduM
    ,  gptrinfDcmClient_Nm
    ,  gptrinfDcmClient_NvM
    ,  gptrinfDcmClient_Os
@@ -153,6 +160,8 @@ static const string lstrDcmClientNames[] = {
    ,  "EthIf"
    ,  "Fee"
    ,  "FrIf"
+   ,  "FrTp"
+   ,  "J1939Tp"
    ,  "LinIf"
    ,  "LinTp"
    ,  "MemIf"
@@ -175,14 +184,19 @@ static const string lstrDcmClientNames[] = {
    ,  "Spi"
    ,  "Wdg"
    ,  "BswM"
+   ,  "CanNm"
+   ,  "CanSm"
    ,  "Com"
    ,  "ComM"
    ,  "Csm"
    ,  "Dcm"
    ,  "Dem"
    ,  "Det"
+   ,  "Dlt"
    ,  "EcuM"
    ,  "FiM"
+   ,  "FrNm"
+   ,  "IpduM"
    ,  "Nm"
    ,  "NvM"
    ,  "Os"
