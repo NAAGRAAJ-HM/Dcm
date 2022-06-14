@@ -87,143 +87,17 @@ VAR(module_Dcm, DCM_VAR) Dcm(
 /******************************************************************************/
 /* FUNCTIONS                                                                  */
 /******************************************************************************/
-const infDcmClient* gaptrDcmClients[] = {
-      gptrinfDcmClient_CanIf
-   ,  gptrinfDcmClient_CanTp
-   ,  gptrinfDcmClient_CryIf
-   ,  gptrinfDcmClient_Ea
-   ,  gptrinfDcmClient_EthIf
-   ,  gptrinfDcmClient_Fee
-   ,  gptrinfDcmClient_FrIf
-   ,  gptrinfDcmClient_FrTp
-   ,  gptrinfDcmClient_J1939Tp
-   ,  gptrinfDcmClient_LinIf
-   ,  gptrinfDcmClient_LinTp
-   ,  gptrinfDcmClient_MemIf
-   ,  gptrinfDcmClient_WdgIf
-   ,  gptrinfDcmClient_Adc
-   ,  gptrinfDcmClient_Can
-   ,  gptrinfDcmClient_Cry
-   ,  gptrinfDcmClient_Dio
-   ,  gptrinfDcmClient_Eep
-   ,  gptrinfDcmClient_Eth
-   ,  gptrinfDcmClient_Fls
-   ,  gptrinfDcmClient_Fr
-   ,  gptrinfDcmClient_Gpt
-   ,  gptrinfDcmClient_Icu
-   ,  gptrinfDcmClient_Lin
-   ,  gptrinfDcmClient_Mcu
-   ,  gptrinfDcmClient_Ocu
-   ,  gptrinfDcmClient_Port
-   ,  gptrinfDcmClient_Pwm
-   ,  gptrinfDcmClient_Spi
-   ,  gptrinfDcmClient_Wdg
-   ,  gptrinfDcmClient_BswM
-   ,  gptrinfDcmClient_CanNm
-   ,  gptrinfDcmClient_CanSm
-   ,  gptrinfDcmClient_Com
-   ,  gptrinfDcmClient_ComM
-   ,  gptrinfDcmClient_Csm
-   ,  gptrinfDcmClient_Dcm
-   ,  gptrinfDcmClient_Dem
-   ,  gptrinfDcmClient_Det
-   ,  gptrinfDcmClient_Dlt
-   ,  gptrinfDcmClient_EcuM
-   ,  gptrinfDcmClient_FiM
-   ,  gptrinfDcmClient_FrNm
-   ,  gptrinfDcmClient_IpduM
-   ,  gptrinfDcmClient_Nm
-   ,  gptrinfDcmClient_NvM
-   ,  gptrinfDcmClient_Os
-   ,  gptrinfDcmClient_PduR
-   ,  gptrinfDcmClient_SchM
-   ,  gptrinfDcmClient_SecOC
-   ,  gptrinfDcmClient_SokFm
-   ,  gptrinfDcmClient_StartUp
-   ,  gptrinfDcmClient_StbM
-   ,  gptrinfDcmClient_Vkms
-   ,  gptrinfDcmClient_WdgM
-   ,  gptrinfDcmClient_Rte
-   ,  gptrinfDcmClient_SwcApplFoc
-   ,  gptrinfDcmClient_SwcServiceEcuM
-   ,  gptrinfDcmClient_SwcServiceOs
-};
-
 #if(STD_ON == _ReSIM)
-#include <iostream>
-using namespace std;
-static const string lstrDcmClientNames[] = {
-      "CanIf"
-   ,  "CanTp"
-   ,  "CryIf"
-   ,  "Ea"
-   ,  "EthIf"
-   ,  "Fee"
-   ,  "FrIf"
-   ,  "FrTp"
-   ,  "J1939Tp"
-   ,  "LinIf"
-   ,  "LinTp"
-   ,  "MemIf"
-   ,  "WdgIf"
-   ,  "Adc"
-   ,  "Can"
-   ,  "Cry"
-   ,  "Dio"
-   ,  "Eep"
-   ,  "Eth"
-   ,  "Fls"
-   ,  "Fr"
-   ,  "Gpt"
-   ,  "Icu"
-   ,  "Lin"
-   ,  "Mcu"
-   ,  "Ocu"
-   ,  "Port"
-   ,  "Pwm"
-   ,  "Spi"
-   ,  "Wdg"
-   ,  "BswM"
-   ,  "CanNm"
-   ,  "CanSm"
-   ,  "Com"
-   ,  "ComM"
-   ,  "Csm"
-   ,  "Dcm"
-   ,  "Dem"
-   ,  "Det"
-   ,  "Dlt"
-   ,  "EcuM"
-   ,  "FiM"
-   ,  "FrNm"
-   ,  "IpduM"
-   ,  "Nm"
-   ,  "NvM"
-   ,  "Os"
-   ,  "PduR"
-   ,  "SchM"
-   ,  "SecOC"
-   ,  "SokFm"
-   ,  "StartUp"
-   ,  "StbM"
-   ,  "Vkms"
-   ,  "WdgM"
-   ,  "Rte"
-   ,  "SwcApplFoc"
-   ,  "SwcServiceEcuM"
-   ,  "SwcServiceOs"
-};
-
-void print_modules_version(void){
+void print_versions(void){
    for(
       uint8 lu8Index = 0;
-            lu8Index < sizeof(gaptrDcmClients)/sizeof(infDcmClient*);
+            lu8Index < sizeof(PBcfgDcm.gaptrDcmClients)/sizeof(infDcmClient*); //TBD: lptrCfg 
             lu8Index ++
    ){
-      cout<<endl<<lstrDcmClientNames[lu8Index]<<"\t\tR";
-      cout<<gaptrDcmClients[lu8Index]->VersionInfo.SwVersionMajor<<".";
-      cout<<gaptrDcmClients[lu8Index]->VersionInfo.SwVersionMinor<<".";
-      cout<<gaptrDcmClients[lu8Index]->VersionInfo.SwVersionPatch;
+      cout<<endl<<PBcfgDcm.lstrDcmClientNames[lu8Index]<<"\t\tR";
+      cout<<PBcfgDcm.gaptrDcmClients[lu8Index]->VersionInfo.SwVersionMajor<<".";
+      cout<<PBcfgDcm.gaptrDcmClients[lu8Index]->VersionInfo.SwVersionMinor<<".";
+      cout<<PBcfgDcm.gaptrDcmClients[lu8Index]->VersionInfo.SwVersionPatch;
    }
 }
 #else
@@ -258,7 +132,7 @@ FUNC(void, DCM_CODE) module_Dcm::InitFunction(
       }
 #if(STD_ON == Dcm_InitCheck)
 #if(STD_ON == _ReSIM)
-      print_modules_version();
+      print_versions();
 #else
 #endif
       IsInitDone = E_OK;
