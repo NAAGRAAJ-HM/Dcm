@@ -36,11 +36,9 @@ class infDcmClient{
       ) : VersionInfo(lVersionInfo){
       }
 
-#if(STD_ON == DCM_VERSION_INFO_API)
       FUNC(void, DCM_CODE) GetVersionInfo(
          CONSTP2VAR(Std_TypeVersionInfo, DCM_VAR, DCM_CONST) lptrVersionInfo
       );
-#endif
 };
 
 /******************************************************************************/
