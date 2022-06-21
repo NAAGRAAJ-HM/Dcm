@@ -34,7 +34,7 @@
 /******************************************************************************/
 class module_Dcm:
       INTERFACES_EXPORTED_DCM
-      public abstract_module
+   ,  public abstract_module
    ,  public class_Dcm_Functionality
 {
    private:
@@ -64,6 +64,7 @@ extern VAR(module_Dcm, DCM_VAR) Dcm;
 CONSTP2VAR(infEcuMClient, DCM_VAR, DCM_CONST) gptrinfEcuMClient_Dcm = &Dcm;
 CONSTP2VAR(infDcmClient,  DCM_VAR, DCM_CONST) gptrinfDcmClient_Dcm  = &Dcm;
 CONSTP2VAR(infSchMClient, DCM_VAR, DCM_CONST) gptrinfSchMClient_Dcm = &Dcm;
+CONSTP2VAR(infDcm_PduR,   DCM_VAR, DCM_CONST) gptrinfDcm_PduR       = &Dcm;
 
 /******************************************************************************/
 /* PARAMS                                                                     */
@@ -220,24 +221,6 @@ FUNC(void, DCM_CODE) module_Dcm::TriggerOnEvent(void){
 FUNC(void, DCM_CODE) module_Dcm::SetActiveDiagnostic(void){
 }
 
-FUNC(void, DCM_CODE) module_Dcm::StartOfReception(void){
-}
-
-FUNC(void, DCM_CODE) module_Dcm::CopyRxData(void){
-}
-
-FUNC(void, DCM_CODE) module_Dcm::TpRxIndication(void){
-}
-
-FUNC(void, DCM_CODE) module_Dcm::CopyTxData(void){
-}
-
-FUNC(void, DCM_CODE) module_Dcm::TpTxConfirmation(void){
-}
-
-FUNC(void, DCM_CODE) module_Dcm::TxConfirmation(void){
-}
-
 FUNC(void, DCM_CODE) module_Dcm::ComM_NoComModeEntered(void){
 }
 
@@ -269,6 +252,21 @@ FUNC(void, DCM_CODE) module_Dcm::CallOut_ProcessRequestDownload(void){
 }
 
 FUNC(void, DCM_CODE) module_Dcm::CallOut_ProcessRequestFileTransfer(void){
+}
+
+FUNC(void, DCM_CODE) module_Dcm::StartOfReception(void){
+}
+
+FUNC(void, DCM_CODE) module_Dcm::CopyRxData(void){
+}
+
+FUNC(void, DCM_CODE) module_Dcm::RxIndication(void){
+}
+
+FUNC(void, DCM_CODE) module_Dcm::CopyTxData(void){
+}
+
+FUNC(void, DCM_CODE) module_Dcm::TxConfirmation(void){
 }
 
 #include <cstring>
