@@ -90,7 +90,9 @@ VAR(module_Dcm, DCM_VAR) Dcm(
 /* FUNCTIONS                                                                  */
 /******************************************************************************/
 #if(STD_ON == _ReSIM)
-void print_versions(void){
+void print_versions(
+   void
+){
    for(
       uint8 lu8Index = 0;
             lu8Index < sizeof(PBcfgDcm.gaptrDcmClients)/sizeof(infDcmClient*); //TBD: lptrCfg 
@@ -152,7 +154,9 @@ FUNC(void, DCM_CODE) module_Dcm::InitFunction(
 #endif
 }
 
-FUNC(void, DCM_CODE) module_Dcm::DeInitFunction(void){
+FUNC(void, DCM_CODE) module_Dcm::DeInitFunction(
+   void
+){
 #if(STD_ON == Dcm_InitCheck)
    if(
          E_OK
@@ -175,7 +179,9 @@ FUNC(void, DCM_CODE) module_Dcm::DeInitFunction(void){
 #endif
 }
 
-FUNC(void, DCM_CODE) module_Dcm::MainFunction(void){
+FUNC(void, DCM_CODE) module_Dcm::MainFunction(
+   void
+){
 #if(STD_ON == Dcm_InitCheck)
    if(
          E_OK
@@ -197,76 +203,124 @@ FUNC(void, DCM_CODE) module_Dcm::MainFunction(void){
 #endif
 }
 
-FUNC(void, DCM_CODE) module_Dcm::DemTriggerOnDtcStatus(void){
+FUNC(void, DCM_CODE) module_Dcm::DemTriggerOnDtcStatus(
+   void
+){
 }
 
-FUNC(void, DCM_CODE) module_Dcm::GetVin(void){
+FUNC(void, DCM_CODE) module_Dcm::GetVin(
+   void
+){
 }
 
-FUNC(void, DCM_CODE) module_Dcm::GetSecurityLevel(void){
+FUNC(void, DCM_CODE) module_Dcm::GetSecurityLevel(
+   void
+){
 }
 
-FUNC(void, DCM_CODE) module_Dcm::GetSesCtrlType(void){
+FUNC(void, DCM_CODE) module_Dcm::GetSesCtrlType(
+   void
+){
 }
 
-FUNC(void, DCM_CODE) module_Dcm::GetActiveProtocol(void){
+FUNC(void, DCM_CODE) module_Dcm::GetActiveProtocol(
+   void
+){
 }
 
-FUNC(void, DCM_CODE) module_Dcm::ResetToDefaultSession(void){
+FUNC(void, DCM_CODE) module_Dcm::ResetToDefaultSession(
+   void
+){
 }
 
-FUNC(void, DCM_CODE) module_Dcm::TriggerOnEvent(void){
+FUNC(void, DCM_CODE) module_Dcm::TriggerOnEvent(
+   void
+){
 }
 
-FUNC(void, DCM_CODE) module_Dcm::SetActiveDiagnostic(void){
+FUNC(void, DCM_CODE) module_Dcm::SetActiveDiagnostic(
+   void
+){
 }
 
-FUNC(void, DCM_CODE) module_Dcm::ComM_NoComModeEntered(void){
+FUNC(void, DCM_CODE) module_Dcm::ComM_NoComModeEntered(
+   void
+){
 }
 
-FUNC(void, DCM_CODE) module_Dcm::ComM_SilentComModeEntered(void){
+FUNC(void, DCM_CODE) module_Dcm::ComM_SilentComModeEntered(
+   void
+){
 }
 
-FUNC(void, DCM_CODE) module_Dcm::ComM_FullComModeEntered(void){
+FUNC(void, DCM_CODE) module_Dcm::ComM_FullComModeEntered(
+   void
+){
 }
 
-FUNC(void, DCM_CODE) module_Dcm::CallOut_ReadMemory(void){
+FUNC(void, DCM_CODE) module_Dcm::CallOut_ReadMemory(
+   void
+){
 }
 
-FUNC(void, DCM_CODE) module_Dcm::CallOut_WriteMemory(void){
+FUNC(void, DCM_CODE) module_Dcm::CallOut_WriteMemory(
+   void
+){
 }
 
-FUNC(void, DCM_CODE) module_Dcm::CallOut_SetProgConditions(void){
+FUNC(void, DCM_CODE) module_Dcm::CallOut_SetProgConditions(
+   void
+){
 }
 
-FUNC(void, DCM_CODE) module_Dcm::CallOut_GetProgConditions(void){
+FUNC(void, DCM_CODE) module_Dcm::CallOut_GetProgConditions(
+   void
+){
 }
 
-FUNC(void, DCM_CODE) module_Dcm::CallOut_ProcessRequestTransferExit(void){
+FUNC(void, DCM_CODE) module_Dcm::CallOut_ProcessRequestTransferExit(
+   void
+){
 }
 
-FUNC(void, DCM_CODE) module_Dcm::CallOut_ProcessRequestUpload(void){
+FUNC(void, DCM_CODE) module_Dcm::CallOut_ProcessRequestUpload(
+   void
+){
 }
 
-FUNC(void, DCM_CODE) module_Dcm::CallOut_ProcessRequestDownload(void){
+FUNC(void, DCM_CODE) module_Dcm::CallOut_ProcessRequestDownload(
+   void
+){
 }
 
-FUNC(void, DCM_CODE) module_Dcm::CallOut_ProcessRequestFileTransfer(void){
+FUNC(void, DCM_CODE) module_Dcm::CallOut_ProcessRequestFileTransfer(
+   void
+){
 }
 
-FUNC(void, DCM_CODE) module_Dcm::StartOfReception(void){
+FUNC(void, DCM_CODE) module_Dcm::StartOfReception(
+   void
+){
 }
 
-FUNC(void, DCM_CODE) module_Dcm::CopyRxData(void){
+FUNC(void, DCM_CODE) module_Dcm::CopyRxData(
+   void
+){
 }
 
-FUNC(void, DCM_CODE) module_Dcm::RxIndication(void){
+FUNC(void, DCM_CODE) module_Dcm::RxIndication(
+   void
+){
 }
 
-FUNC(void, DCM_CODE) module_Dcm::CopyTxData(void){
+FUNC(void, DCM_CODE) module_Dcm::CopyTxData(
+   void
+){
 }
 
-FUNC(void, DCM_CODE) module_Dcm::TxConfirmation(void){
+FUNC(void, DCM_CODE) module_Dcm::TxConfirmation(
+   void
+){
 }
 
 #include <cstring>
