@@ -25,17 +25,21 @@ class infDcmClient{
 /* CONSTS                                                                     */
 /******************************************************************************/
    public:
-      CONST(Std_TypeVersionInfo, DCM_CONST) VersionInfo;
+      CONST(Std_TypeVersionInfo, DCM_CONST) VersionInfo = { //TBD: remove const
+            STD_AR_RELEASE_VERSION_MAJOR
+         ,  STD_AR_RELEASE_VERSION_MINOR
+         ,  0x00
+         ,  0x00
+         ,  0x01
+         ,  '0'
+         ,  '1'
+         ,  '0'
+      };
 
    public:
 /******************************************************************************/
 /* FUNCTIONS                                                                  */
 /******************************************************************************/
-      infDcmClient(
-         VAR(Std_TypeVersionInfo, DCM_VAR) lVersionInfo
-      ) : VersionInfo(lVersionInfo){
-      }
-
       FUNC(void, DCM_CODE) GetVersionInfo(
          CONSTP2VAR(Std_TypeVersionInfo, DCM_VAR, DCM_CONST) lptrVersionInfo
       );

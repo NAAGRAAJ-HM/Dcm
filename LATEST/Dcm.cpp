@@ -41,13 +41,9 @@ class module_Dcm:
 /******************************************************************************/
 /* OBJECTS                                                                    */
 /******************************************************************************/
-            Std_TypeReturn          IsInitDone{E_NOT_OK};
-      const CfgModule_TypeAbstract* lptrCfg{(CfgModule_TypeAbstract*)NULL_PTR};
             infPduRClient_Up        infPduRClient_Dcm;
 
    public:
-      module_Dcm(Std_TypeVersionInfo lVersionInfo) : abstract_module(lVersionInfo){
-      }
       FUNC(void, DCM_CODE) InitFunction(
          CONSTP2CONST(CfgModule_TypeAbstract, DCM_CONFIG_DATA, DCM_APPL_CONST) lptrCfgModule
       );
@@ -73,18 +69,7 @@ CONSTP2VAR(infDcm_PduR,   DCM_VAR, DCM_CONST) gptrinfDcm_PduR       = &Dcm;
 /******************************************************************************/
 /* OBJECTS                                                                    */
 /******************************************************************************/
-VAR(module_Dcm, DCM_VAR) Dcm(
-   {
-         DCM_AR_RELEASE_VERSION_MAJOR
-      ,  DCM_AR_RELEASE_VERSION_MINOR
-      ,  0x00
-      ,  0xFF
-      ,  0x01
-      ,  '0'
-      ,  '1'
-      ,  '0'
-   }
-);
+VAR(module_Dcm, DCM_VAR) Dcm;
 
 /******************************************************************************/
 /* FUNCTIONS                                                                  */
