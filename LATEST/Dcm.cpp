@@ -75,18 +75,19 @@ VAR(module_Dcm, DCM_VAR) Dcm;
 /* FUNCTIONS                                                                  */
 /******************************************************************************/
 #if(STD_ON == _ReSIM)
+#include "CfgGen.hpp"
 void print_versions(
    void
 ){
    for(
       uint8 lu8Index = 0;
-            lu8Index < sizeof(PBcfgDcm.gaptrDcmClients)/sizeof(infDcmClient*); //TBD: lptrCfg 
+            lu8Index < sizeof(CfgGen.CfgDcm.gaptrDcmClients)/sizeof(infDcmClient*); //TBD: lptrCfg 
             lu8Index ++
    ){
-      cout<<endl<<PBcfgDcm.lstrDcmClientNames[lu8Index]<<"\t\tR";
-      cout<<PBcfgDcm.gaptrDcmClients[lu8Index]->VersionInfo.SwVersionMajor<<".";
-      cout<<PBcfgDcm.gaptrDcmClients[lu8Index]->VersionInfo.SwVersionMinor<<".";
-      cout<<PBcfgDcm.gaptrDcmClients[lu8Index]->VersionInfo.SwVersionPatch;
+      cout<<endl<<CfgGen.CfgDcm.lstrDcmClientNames[lu8Index]<<"\t\tR";
+      cout<<CfgGen.CfgDcm.gaptrDcmClients[lu8Index]->VersionInfo.SwVersionMajor<<".";
+      cout<<CfgGen.CfgDcm.gaptrDcmClients[lu8Index]->VersionInfo.SwVersionMinor<<".";
+      cout<<CfgGen.CfgDcm.gaptrDcmClients[lu8Index]->VersionInfo.SwVersionPatch;
    }
 }
 #else
@@ -102,12 +103,7 @@ FUNC(void, DCM_CODE) module_Dcm::InitFunction(
    ){
 #endif
       if(NULL_PTR != lptrCfgModule){
-         if(STD_HIGH){
-            lptrCfg = lptrCfgModule;
-         }
-         else{
-            lptrCfg = &PBcfgDcm;
-         }
+         lptrCfg = lptrCfgModule;
       }
       else{
 #if(STD_ON == Dcm_DevErrorDetect)
