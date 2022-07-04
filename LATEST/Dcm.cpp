@@ -81,13 +81,13 @@ void print_versions(
 ){
    for(
       uint8 lu8Index = 0;
-            lu8Index < sizeof(CfgGen.CfgDcm.gaptrDcmClients)/sizeof(infDcmClient*); //TBD: lptrCfg 
+            lu8Index < sizeof(CfgGen_NvM.CfgDcm.gaptrDcmClients)/sizeof(infDcmClient*); //TBD: lptrCfg 
             lu8Index ++
    ){
-      cout<<endl<<CfgGen.CfgDcm.lstrDcmClientNames[lu8Index]<<"\t\tR";
-      cout<<CfgGen.CfgDcm.gaptrDcmClients[lu8Index]->VersionInfo.SwVersionMajor<<".";
-      cout<<CfgGen.CfgDcm.gaptrDcmClients[lu8Index]->VersionInfo.SwVersionMinor<<".";
-      cout<<CfgGen.CfgDcm.gaptrDcmClients[lu8Index]->VersionInfo.SwVersionPatch;
+      cout<<endl<<CfgGen_NvM.CfgDcm.lstrDcmClientNames[lu8Index]<<"\t\tR";
+      cout<<CfgGen_NvM.CfgDcm.gaptrDcmClients[lu8Index]->VersionInfo.SwVersionMajor<<".";
+      cout<<CfgGen_NvM.CfgDcm.gaptrDcmClients[lu8Index]->VersionInfo.SwVersionMinor<<".";
+      cout<<CfgGen_NvM.CfgDcm.gaptrDcmClients[lu8Index]->VersionInfo.SwVersionPatch;
    }
 }
 #else
