@@ -7,9 +7,7 @@
 /* #INCLUDES                                                                  */
 /******************************************************************************/
 #include "Module.hpp"
-#include "CfgDcm.hpp"
-#include "Dcm_core.hpp"
-#include "infDcm_Exp.hpp"
+#include "Dcm.hpp"
 #include "infDcm_Imp.hpp"
 
 /******************************************************************************/
@@ -32,27 +30,6 @@
 /******************************************************************************/
 /* TYPEDEFS                                                                   */
 /******************************************************************************/
-class module_Dcm:
-      INTERFACES_EXPORTED_DCM
-   ,  public abstract_module
-   ,  public class_Dcm_Functionality
-{
-   private:
-/******************************************************************************/
-/* OBJECTS                                                                    */
-/******************************************************************************/
-            infPduRClient_Up        infPduRClient_Dcm;
-
-   public:
-      FUNC(void, DCM_CODE) InitFunction(
-         CONSTP2CONST(CfgModule_TypeAbstract, DCM_CONFIG_DATA, DCM_APPL_CONST) lptrCfgModule
-      );
-      FUNC(void, DCM_CODE) DeInitFunction (void);
-      FUNC(void, DCM_CODE) MainFunction   (void);
-      DCM_CORE_FUNCTIONALITIES
-};
-
-extern VAR(module_Dcm, DCM_VAR) Dcm;
 
 /******************************************************************************/
 /* CONSTS                                                                     */
