@@ -35,8 +35,6 @@
 /* CONSTS                                                                     */
 /******************************************************************************/
 CONSTP2VAR(infEcuMClient, DCM_VAR, DCM_CONST) gptrinfEcuMClient_Dcm = &Dcm;
-CONSTP2VAR(infDcmClient,  DCM_VAR, DCM_CONST) gptrinfDcmClient_Dcm  = &Dcm;
-CONSTP2VAR(infSchMClient, DCM_VAR, DCM_CONST) gptrinfSchMClient_Dcm = &Dcm;
 CONSTP2VAR(infDcm_PduR,   DCM_VAR, DCM_CONST) gptrinfDcm_PduR       = &Dcm;
 
 /******************************************************************************/
@@ -52,7 +50,7 @@ VAR(module_Dcm, DCM_VAR) Dcm;
 /* FUNCTIONS                                                                  */
 /******************************************************************************/
 #if(STD_ON == _ReSIM)
-#include "CfgGen.hpp"
+#include "CfgGen.hpp"//TBD: through local configuration pointer
 void print_versions(
    void
 ){
