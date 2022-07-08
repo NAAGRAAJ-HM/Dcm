@@ -34,7 +34,7 @@
 /******************************************************************************/
 /* CONSTS                                                                     */
 /******************************************************************************/
-CONSTP2VAR(infDcm_PduR,   DCM_VAR, DCM_CONST) gptrinfDcm_PduR       = &Dcm;
+CONSTP2VAR(infDcm_PduR, DCM_VAR, DCM_CONST) gptrinfDcm_PduR = &Dcm;
 
 /******************************************************************************/
 /* PARAMS                                                                     */
@@ -49,19 +49,18 @@ VAR(module_Dcm, DCM_VAR) Dcm;
 /* FUNCTIONS                                                                  */
 /******************************************************************************/
 #if(STD_ON == _ReSIM)
-#include "CfgGen.hpp"//TBD: through local configuration pointer
-void print_versions(
+FUNC(void, DCM_CODE) module_Dcm::print_versions(
    void
 ){
    for(
       uint8 lu8Index = 0;
-            lu8Index < sizeof(CfgGen_NvM.CfgDcm.gaptrDcmClients)/sizeof(infDcmClient*); //TBD: lptrCfg 
+            lu8Index < sizeof(((CfgDcm_Type*)lptrCfg)->gaptrDcmClients)/sizeof(infDcmClient*);
             lu8Index ++
    ){
-      cout<<endl<<CfgGen_NvM.CfgDcm.lstrDcmClientNames[lu8Index]<<"\t\tR";
-      cout<<CfgGen_NvM.CfgDcm.gaptrDcmClients[lu8Index]->VersionInfo.SwVersionMajor<<".";
-      cout<<CfgGen_NvM.CfgDcm.gaptrDcmClients[lu8Index]->VersionInfo.SwVersionMinor<<".";
-      cout<<CfgGen_NvM.CfgDcm.gaptrDcmClients[lu8Index]->VersionInfo.SwVersionPatch;
+      cout<<endl<<((CfgDcm_Type*)lptrCfg)->lstrDcmClientNames[lu8Index]<<"\t\tR";
+      cout<<((CfgDcm_Type*)lptrCfg)->gaptrDcmClients[lu8Index]->VersionInfo.SwVersionMajor<<".";
+      cout<<((CfgDcm_Type*)lptrCfg)->gaptrDcmClients[lu8Index]->VersionInfo.SwVersionMinor<<".";
+      cout<<((CfgDcm_Type*)lptrCfg)->gaptrDcmClients[lu8Index]->VersionInfo.SwVersionPatch;
    }
 }
 #else

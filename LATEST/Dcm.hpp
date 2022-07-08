@@ -33,10 +33,13 @@ class module_Dcm:
 /******************************************************************************/
       infPduRClient_Up infPduRClient_Dcm;
 
-   public:
 /******************************************************************************/
 /* FUNCTIONS                                                                  */
 /******************************************************************************/
+   private:
+      FUNC(void, DCM_CODE) print_versions (void);
+
+   public:
       FUNC(void, DCM_CODE) InitFunction(
          CONSTP2CONST(CfgModule_TypeAbstract, DCM_CONFIG_DATA, DCM_APPL_CONST) lptrCfgModule
       );
