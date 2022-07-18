@@ -54,13 +54,13 @@ FUNC(void, DCM_CODE) module_Dcm::print_versions(
 ){
    for(
       uint8 lu8Index = 0;
-            lu8Index < sizeof(((CfgDcm_Type*)lptrCfg)->gaptrDcmClients)/sizeof(infDcmClient*);
+            lu8Index < sizeof(((CfgDcm_Type*)lptrCfg)->aptrDcmClients)/sizeof(infDcmClient*);
             lu8Index ++
    ){
-      cout<<endl<<((CfgDcm_Type*)lptrCfg)->lstrDcmClientNames[lu8Index]<<"\t\tR";
-      cout<<((CfgDcm_Type*)lptrCfg)->gaptrDcmClients[lu8Index]->VersionInfo.SwVersionMajor<<".";
-      cout<<((CfgDcm_Type*)lptrCfg)->gaptrDcmClients[lu8Index]->VersionInfo.SwVersionMinor<<".";
-      cout<<((CfgDcm_Type*)lptrCfg)->gaptrDcmClients[lu8Index]->VersionInfo.SwVersionPatch;
+      cout<<endl<<((CfgDcm_Type*)lptrCfg)->astrDcmClientNames[lu8Index]<<"\t\tR";
+      cout<<((CfgDcm_Type*)lptrCfg)->aptrDcmClients[lu8Index]->VersionInfo.SwVersionMajor<<".";
+      cout<<((CfgDcm_Type*)lptrCfg)->aptrDcmClients[lu8Index]->VersionInfo.SwVersionMinor<<".";
+      cout<<((CfgDcm_Type*)lptrCfg)->aptrDcmClients[lu8Index]->VersionInfo.SwVersionPatch;
    }
 }
 #else

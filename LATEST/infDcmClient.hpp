@@ -45,6 +45,10 @@ class infDcmClient{
       );
 };
 
+typedef FUNC(void, DCM_CODE) (*fptrGetVersionInfo)(
+   CONSTP2VAR(Std_TypeVersionInfo, DCM_VAR, DCM_CONST) lptrVersionInfo
+);
+
 /******************************************************************************/
 /* PARAMS                                                                     */
 /******************************************************************************/
