@@ -58,9 +58,9 @@ FUNC(void, DCM_CODE) module_Dcm::print_versions(
             lu8Index ++
    ){
       cout<<endl<<((CfgDcm_Type*)lptrCfg)->astrDcmClientNames[lu8Index]<<"\t\tR";
-      cout<<((CfgDcm_Type*)lptrCfg)->aptrDcmClients[lu8Index]->VersionInfo.SwVersionMajor<<".";
-      cout<<((CfgDcm_Type*)lptrCfg)->aptrDcmClients[lu8Index]->VersionInfo.SwVersionMinor<<".";
-      cout<<((CfgDcm_Type*)lptrCfg)->aptrDcmClients[lu8Index]->VersionInfo.SwVersionPatch;
+      cout<<((CfgDcm_Type*)lptrCfg)->aptrDcmClients[lu8Index]->VersionInfo.u8SwVersionMajor<<".";
+      cout<<((CfgDcm_Type*)lptrCfg)->aptrDcmClients[lu8Index]->VersionInfo.u8SwVersionMinor<<".";
+      cout<<((CfgDcm_Type*)lptrCfg)->aptrDcmClients[lu8Index]->VersionInfo.u8SwVersionPatch;
    }
 }
 #else
