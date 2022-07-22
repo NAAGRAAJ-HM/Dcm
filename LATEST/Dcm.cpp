@@ -53,13 +53,13 @@ FUNC(void, DCM_CODE) module_Dcm::print_versions(
 ){
    for(
       uint8 lu8Index = 0;
-            lu8Index < sizeof(((CfgDcm_Type*)lptrCfg)->aptrDcmClients)/sizeof(infDcmClient*);
+            lu8Index < lptrConstDcm->u8SizeinfDcmClients;
             lu8Index ++
    ){
-      cout<<endl<<((CfgDcm_Type*)lptrCfg)->astrDcmClientNames[lu8Index]<<"\t\tR";
-      cout<<((CfgDcm_Type*)lptrCfg)->aptrDcmClients[lu8Index]->VersionInfo.u8SwVersionMajor<<".";
-      cout<<((CfgDcm_Type*)lptrCfg)->aptrDcmClients[lu8Index]->VersionInfo.u8SwVersionMinor<<".";
-      cout<<((CfgDcm_Type*)lptrCfg)->aptrDcmClients[lu8Index]->VersionInfo.u8SwVersionPatch;
+      cout<<endl<<lptrConstDcm->astrDcmClientNames[lu8Index]<<"\t\tR";
+      cout<<lptrConstDcm->aptrDcmClients[lu8Index]->VersionInfo.u8SwVersionMajor<<".";
+      cout<<lptrConstDcm->aptrDcmClients[lu8Index]->VersionInfo.u8SwVersionMinor<<".";
+      cout<<lptrConstDcm->aptrDcmClients[lu8Index]->VersionInfo.u8SwVersionPatch;
    }
 }
 #else
