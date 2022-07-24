@@ -66,7 +66,8 @@ FUNC(void, DCM_CODE) module_Dcm::print_versions(
 #endif
 
 FUNC(void, DCM_CODE) module_Dcm::InitFunction(
-   CONSTP2CONST(CfgModule_TypeAbstract, DCM_CONFIG_DATA, DCM_APPL_CONST) lptrCfgModule
+      CONSTP2CONST(ConstModule_TypeAbstract, DCM_CONST,       DCM_APPL_CONST) lptrConstModule
+   ,  CONSTP2CONST(CfgModule_TypeAbstract,   DCM_CONFIG_DATA, DCM_APPL_CONST) lptrCfgModule
 ){
 #if(STD_ON == Dcm_InitCheck)
    if(
@@ -74,8 +75,12 @@ FUNC(void, DCM_CODE) module_Dcm::InitFunction(
       != IsInitDone
    ){
 #endif
-      if(NULL_PTR != lptrCfgModule){
-         lptrCfg = lptrCfgModule;
+      if(
+            (NULL_PTR != lptrConstModule)
+         && (NULL_PTR != lptrCfgModule)
+      ){
+         lptrConst = lptrConstModule;
+         lptrCfg   = lptrCfgModule;
       }
       else{
 #if(STD_ON == Dcm_DevErrorDetect)

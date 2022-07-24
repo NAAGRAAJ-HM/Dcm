@@ -32,8 +32,8 @@ class module_Dcm:
 /******************************************************************************/
 /* OBJECTS                                                                    */
 /******************************************************************************/
-      const ConstDcm_Type*   lptrConst;
-            infPduRClient_Up infPduRClient_Dcm;
+      const ConstDcm_Type* lptrConst = (ConstDcm_Type*)NULL_PTR;
+      infPduRClient_Up infPduRClient_Dcm;
 
 /******************************************************************************/
 /* FUNCTIONS                                                                  */
@@ -43,7 +43,8 @@ class module_Dcm:
 
    public:
       FUNC(void, DCM_CODE) InitFunction(
-         CONSTP2CONST(CfgModule_TypeAbstract, DCM_CONFIG_DATA, DCM_APPL_CONST) lptrCfgModule
+            CONSTP2CONST(ConstModule_TypeAbstract, DCM_CONST,       DCM_APPL_CONST) lptrConstModule
+         ,  CONSTP2CONST(CfgModule_TypeAbstract,   DCM_CONFIG_DATA, DCM_APPL_CONST) lptrCfgModule
       );
       FUNC(void, DCM_CODE) DeInitFunction (void);
       FUNC(void, DCM_CODE) MainFunction   (void);
