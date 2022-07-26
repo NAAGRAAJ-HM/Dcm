@@ -79,7 +79,7 @@ FUNC(void, DCM_CODE) module_Dcm::InitFunction(
             (NULL_PTR != lptrConstModule)
          && (NULL_PTR != lptrCfgModule)
       ){
-         lptrConst = lptrConstModule;
+         lptrConst = (const ConstDcm_Type*)lptrConstModule;
          lptrCfg   = lptrCfgModule;
       }
       else{
