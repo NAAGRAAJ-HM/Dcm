@@ -94,7 +94,7 @@ FUNC(void, DCM_CODE) module_Dcm::InitFunction(
       }
 #if(STD_ON == Dcm_InitCheck)
 #if(STD_ON == _ReSIM)
-      print_versions();
+//    print_versions();
 #else
 #endif
       IsInitDone = E_OK;
