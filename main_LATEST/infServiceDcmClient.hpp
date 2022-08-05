@@ -25,7 +25,7 @@ class infServiceDcmClient{
 /* CONSTS                                                                     */
 /******************************************************************************/
    public:
-      CONST(Std_TypeVersionInfo, DCM_CONST) VersionInfo = { //TBD: remove const
+      CONST(Std_TypeVersionInfo, SERVICEDCM_CONST) VersionInfo = { //TBD: remove const
             STD_AR_RELEASE_VERSION_MAJOR
          ,  STD_AR_RELEASE_VERSION_MINOR
          ,  0x00
@@ -40,13 +40,13 @@ class infServiceDcmClient{
 /******************************************************************************/
 /* FUNCTIONS                                                                  */
 /******************************************************************************/
-      FUNC(void, DCM_CODE) GetVersionInfo(
-         CONSTP2VAR(Std_TypeVersionInfo, DCM_VAR, DCM_CONST) lptrVersionInfo
+      FUNC(void, SERVICEDCM_CODE) GetVersionInfo(
+         CONSTP2VAR(Std_TypeVersionInfo, SERVICEDCM_VAR, SERVICEDCM_CONST) lptrVersionInfo
       );
 };
 
-typedef FUNC(void, DCM_CODE) (*fptrGetVersionInfo)(
-   CONSTP2VAR(Std_TypeVersionInfo, DCM_VAR, DCM_CONST) lptrVersionInfo
+typedef FUNC(void, SERVICEDCM_CODE) (*fptrGetVersionInfo)(
+   CONSTP2VAR(Std_TypeVersionInfo, SERVICEDCM_VAR, SERVICEDCM_CONST) lptrVersionInfo
 );
 
 /******************************************************************************/

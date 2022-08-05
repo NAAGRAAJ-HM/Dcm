@@ -14,7 +14,7 @@
 /******************************************************************************/
 /* #DEFINES                                                                   */
 /******************************************************************************/
-#define INTERFACES_EXPORTED_DCM                               public infServiceDcm_ServicePduR
+#define INTERFACES_EXMCALPORTED_SERVICEDCM                               public infServiceDcm_ServicePduR
 
 /******************************************************************************/
 /* MACROS                                                                     */

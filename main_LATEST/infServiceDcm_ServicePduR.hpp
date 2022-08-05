@@ -22,11 +22,11 @@
 /******************************************************************************/
 class infServiceDcm_ServicePduR{
    public:
-      virtual FUNC(void, DCM_CODE) StartOfReception (void) = 0;
-      virtual FUNC(void, DCM_CODE) CopyRxData       (void) = 0;
-      virtual FUNC(void, DCM_CODE) RxIndication     (void) = 0;
-      virtual FUNC(void, DCM_CODE) CopyTxData       (void) = 0;
-      virtual FUNC(void, DCM_CODE) TxConfirmation   (void) = 0;
+      virtual FUNC(void, SERVICEDCM_CODE) StartOfReception (void) = 0;
+      virtual FUNC(void, SERVICEDCM_CODE) CopyRxData       (void) = 0;
+      virtual FUNC(void, SERVICEDCM_CODE) RxIndication     (void) = 0;
+      virtual FUNC(void, SERVICEDCM_CODE) CopyTxData       (void) = 0;
+      virtual FUNC(void, SERVICEDCM_CODE) TxConfirmation   (void) = 0;
 };
 
 /******************************************************************************/

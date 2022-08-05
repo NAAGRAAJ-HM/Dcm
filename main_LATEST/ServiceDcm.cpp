@@ -13,18 +13,18 @@
 /******************************************************************************/
 /* #DEFINES                                                                   */
 /******************************************************************************/
-#define DCM_AR_RELEASE_VERSION_MAJOR                                           4
-#define DCM_AR_RELEASE_VERSION_MINOR                                           3
+#define SERVICEDCM_AR_RELEASE_VERSION_MAJOR                                           4
+#define SERVICEDCM_AR_RELEASE_VERSION_MINOR                                           3
 
 /******************************************************************************/
 /* MACROS                                                                     */
 /******************************************************************************/
-#if(DCM_AR_RELEASE_VERSION_MAJOR != STD_AR_RELEASE_VERSION_MAJOR)
-   #error "Incompatible DCM_AR_RELEASE_VERSION_MAJOR!"
+#if(SERVICEDCM_AR_RELEASE_VERSION_MAJOR != STD_AR_RELEASE_VERSION_MAJOR)
+   #error "Incompatible SERVICEDCM_AR_RELEASE_VERSION_MAJOR!"
 #endif
 
-#if(DCM_AR_RELEASE_VERSION_MINOR != STD_AR_RELEASE_VERSION_MINOR)
-   #error "Incompatible DCM_AR_RELEASE_VERSION_MINOR!"
+#if(SERVICEDCM_AR_RELEASE_VERSION_MINOR != STD_AR_RELEASE_VERSION_MINOR)
+   #error "Incompatible SERVICEDCM_AR_RELEASE_VERSION_MINOR!"
 #endif
 
 /******************************************************************************/
@@ -42,13 +42,13 @@
 /******************************************************************************/
 /* OBJECTS                                                                    */
 /******************************************************************************/
-VAR(module_ServiceDcm, DCM_VAR) ServiceDcm;
+VAR(module_ServiceDcm, SERVICEDCM_VAR) ServiceDcm;
 
 /******************************************************************************/
 /* FUNCTIONS                                                                  */
 /******************************************************************************/
 #if(STD_ON == _ReSIM)
-FUNC(void, DCM_CODE) module_ServiceDcm::print_versions(
+FUNC(void, SERVICEDCM_CODE) module_ServiceDcm::print_versions(
    void
 ){
    for(
@@ -65,9 +65,9 @@ FUNC(void, DCM_CODE) module_ServiceDcm::print_versions(
 #else
 #endif
 
-FUNC(void, DCM_CODE) module_ServiceDcm::InitFunction(
-      CONSTP2CONST(ConstModule_TypeAbstract, DCM_CONST,       DCM_APPL_CONST) lptrConstModule
-   ,  CONSTP2CONST(CfgModule_TypeAbstract,   DCM_CONFIG_DATA, DCM_APPL_CONST) lptrCfgModule
+FUNC(void, SERVICEDCM_CODE) module_ServiceDcm::InitFunction(
+      CONSTP2CONST(ConstModule_TypeAbstract, SERVICEDCM_CONST,       SERVICEDCM_APPL_CONST) lptrConstModule
+   ,  CONSTP2CONST(CfgModule_TypeAbstract,   SERVICEDCM_CONFIG_DATA, SERVICEDCM_APPL_CONST) lptrCfgModule
 ){
 #if(STD_ON == ServiceDcm_InitCheck)
    if(
@@ -105,14 +105,14 @@ FUNC(void, DCM_CODE) module_ServiceDcm::InitFunction(
             0 //TBD: IdModule
          ,  0 //TBD: IdInstance
          ,  0 //TBD: IdApi
-         ,  DCM_E_UNINIT
+         ,  SERVICEDCM_E_UNINIT
       );
 #endif
    }
 #endif
 }
 
-FUNC(void, DCM_CODE) module_ServiceDcm::DeInitFunction(
+FUNC(void, SERVICEDCM_CODE) module_ServiceDcm::DeInitFunction(
    void
 ){
 #if(STD_ON == ServiceDcm_InitCheck)
@@ -130,14 +130,14 @@ FUNC(void, DCM_CODE) module_ServiceDcm::DeInitFunction(
             0 //TBD: IdModule
          ,  0 //TBD: IdInstance
          ,  0 //TBD: IdApi
-         ,  DCM_E_UNINIT
+         ,  SERVICEDCM_E_UNINIT
       );
 #endif
    }
 #endif
 }
 
-FUNC(void, DCM_CODE) module_ServiceDcm::MainFunction(
+FUNC(void, SERVICEDCM_CODE) module_ServiceDcm::MainFunction(
    void
 ){
 #if(STD_ON == ServiceDcm_InitCheck)
@@ -154,136 +154,136 @@ FUNC(void, DCM_CODE) module_ServiceDcm::MainFunction(
             0 //TBD: IdModule
          ,  0 //TBD: IdInstance
          ,  0 //TBD: IdApi
-         ,  DCM_E_UNINIT
+         ,  SERVICEDCM_E_UNINIT
       );
 #endif
    }
 #endif
 }
 
-FUNC(void, DCM_CODE) module_ServiceDcm::ServiceDemTriggerOnDtcStatus(
+FUNC(void, SERVICEDCM_CODE) module_ServiceDcm::ServiceDemTriggerOnDtcStatus(
    void
 ){
 }
 
-FUNC(void, DCM_CODE) module_ServiceDcm::GetVin(
+FUNC(void, SERVICEDCM_CODE) module_ServiceDcm::GetVin(
    void
 ){
 }
 
-FUNC(void, DCM_CODE) module_ServiceDcm::GetSecurityLevel(
+FUNC(void, SERVICEDCM_CODE) module_ServiceDcm::GetSecurityLevel(
    void
 ){
 }
 
-FUNC(void, DCM_CODE) module_ServiceDcm::GetSesCtrlType(
+FUNC(void, SERVICEDCM_CODE) module_ServiceDcm::GetSesCtrlType(
    void
 ){
 }
 
-FUNC(void, DCM_CODE) module_ServiceDcm::GetActiveProtocol(
+FUNC(void, SERVICEDCM_CODE) module_ServiceDcm::GetActiveProtocol(
    void
 ){
 }
 
-FUNC(void, DCM_CODE) module_ServiceDcm::ResetToDefaultSession(
+FUNC(void, SERVICEDCM_CODE) module_ServiceDcm::ResetToDefaultSession(
    void
 ){
 }
 
-FUNC(void, DCM_CODE) module_ServiceDcm::TriggerOnEvent(
+FUNC(void, SERVICEDCM_CODE) module_ServiceDcm::TriggerOnEvent(
    void
 ){
 }
 
-FUNC(void, DCM_CODE) module_ServiceDcm::SetActiveDiagnostic(
+FUNC(void, SERVICEDCM_CODE) module_ServiceDcm::SetActiveDiagnostic(
    void
 ){
 }
 
-FUNC(void, DCM_CODE) module_ServiceDcm::ServiceComM_NoServiceComModeEntered(
+FUNC(void, SERVICEDCM_CODE) module_ServiceDcm::ServiceComM_NoServiceComModeEntered(
    void
 ){
 }
 
-FUNC(void, DCM_CODE) module_ServiceDcm::ServiceComM_SilentServiceComModeEntered(
+FUNC(void, SERVICEDCM_CODE) module_ServiceDcm::ServiceComM_SilentServiceComModeEntered(
    void
 ){
 }
 
-FUNC(void, DCM_CODE) module_ServiceDcm::ServiceComM_FullServiceComModeEntered(
+FUNC(void, SERVICEDCM_CODE) module_ServiceDcm::ServiceComM_FullServiceComModeEntered(
    void
 ){
 }
 
-FUNC(void, DCM_CODE) module_ServiceDcm::CallOut_ReadMemory(
+FUNC(void, SERVICEDCM_CODE) module_ServiceDcm::CallOut_ReadMemory(
    void
 ){
 }
 
-FUNC(void, DCM_CODE) module_ServiceDcm::CallOut_WriteMemory(
+FUNC(void, SERVICEDCM_CODE) module_ServiceDcm::CallOut_WriteMemory(
    void
 ){
 }
 
-FUNC(void, DCM_CODE) module_ServiceDcm::CallOut_SetProgConditions(
+FUNC(void, SERVICEDCM_CODE) module_ServiceDcm::CallOut_SetProgConditions(
    void
 ){
 }
 
-FUNC(void, DCM_CODE) module_ServiceDcm::CallOut_GetProgConditions(
+FUNC(void, SERVICEDCM_CODE) module_ServiceDcm::CallOut_GetProgConditions(
    void
 ){
 }
 
-FUNC(void, DCM_CODE) module_ServiceDcm::CallOut_ProcessRequestTransferExit(
+FUNC(void, SERVICEDCM_CODE) module_ServiceDcm::CallOut_ProcessRequestTransferExit(
    void
 ){
 }
 
-FUNC(void, DCM_CODE) module_ServiceDcm::CallOut_ProcessRequestUpload(
+FUNC(void, SERVICEDCM_CODE) module_ServiceDcm::CallOut_ProcessRequestUpload(
    void
 ){
 }
 
-FUNC(void, DCM_CODE) module_ServiceDcm::CallOut_ProcessRequestDownload(
+FUNC(void, SERVICEDCM_CODE) module_ServiceDcm::CallOut_ProcessRequestDownload(
    void
 ){
 }
 
-FUNC(void, DCM_CODE) module_ServiceDcm::CallOut_ProcessRequestFileTransfer(
+FUNC(void, SERVICEDCM_CODE) module_ServiceDcm::CallOut_ProcessRequestFileTransfer(
    void
 ){
 }
 
-FUNC(void, DCM_CODE) module_ServiceDcm::StartOfReception(
+FUNC(void, SERVICEDCM_CODE) module_ServiceDcm::StartOfReception(
    void
 ){
 }
 
-FUNC(void, DCM_CODE) module_ServiceDcm::CopyRxData(
+FUNC(void, SERVICEDCM_CODE) module_ServiceDcm::CopyRxData(
    void
 ){
 }
 
-FUNC(void, DCM_CODE) module_ServiceDcm::RxIndication(
+FUNC(void, SERVICEDCM_CODE) module_ServiceDcm::RxIndication(
    void
 ){
 }
 
-FUNC(void, DCM_CODE) module_ServiceDcm::CopyTxData(
+FUNC(void, SERVICEDCM_CODE) module_ServiceDcm::CopyTxData(
    void
 ){
 }
 
-FUNC(void, DCM_CODE) module_ServiceDcm::TxConfirmation(
+FUNC(void, SERVICEDCM_CODE) module_ServiceDcm::TxConfirmation(
    void
 ){
 }
 
 #include <cstring>
-FUNC(void, DCM_CODE) infServiceDcmClient::GetVersionInfo(
-   CONSTP2VAR(Std_TypeVersionInfo, DCM_VAR, DCM_CONST) lptrVersionInfo
+FUNC(void, SERVICEDCM_CODE) infServiceDcmClient::GetVersionInfo(
+   CONSTP2VAR(Std_TypeVersionInfo, SERVICEDCM_VAR, SERVICEDCM_CONST) lptrVersionInfo
 ){
    if(
          NULL_PTR
@@ -301,7 +301,7 @@ FUNC(void, DCM_CODE) infServiceDcmClient::GetVersionInfo(
             0 //TBD: IdModule
          ,  0 //TBD: IdInstance
          ,  0 //TBD: IdApi
-         ,  DCM_E_PARAM_POINTER
+         ,  SERVICEDCM_E_PARAM_POINTER
       );
 #endif
    }

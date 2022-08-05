@@ -21,8 +21,8 @@
 /* TYPEDEFS                                                                   */
 /******************************************************************************/
 typedef enum{
-      DCM_E_UNINIT
-   ,  DCM_E_PARAM_POINTER
+      SERVICEDCM_E_UNINIT
+   ,  SERVICEDCM_E_PARAM_POINTER
 }ServiceDcm_TypeServiceDetErrorCode;
 
 /******************************************************************************/
