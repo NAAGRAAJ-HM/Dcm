@@ -24,7 +24,7 @@
 /* TYPEDEFS                                                                   */
 /******************************************************************************/
 class module_ServiceDcm:
-      INTERFACES_EXMCALPORTED_SERVICEDCM
+      INTERFACES_EXPORTED_SERVICEDCM
    ,  public abstract_module
    ,  public class_ServiceDcm_Functionality
 {
