@@ -1,13 +1,13 @@
 #pragma once
 /******************************************************************************/
-/* File   : ServiceDcm.hpp                                                           */
+/* File   : ServiceDcm.hpp                                                    */
 /* Author : NAGARAJA HM (c) since 1982. All rights reserved.                  */
 /******************************************************************************/
 
 /******************************************************************************/
 /* #INCLUDES                                                                  */
 /******************************************************************************/
-#include "ConstServiceDcm.hpp"
+#include "infServiceDcm_ServiceNvM_Types.hpp"
 #include "CfgServiceDcm.hpp"
 #include "ServiceDcm_core.hpp"
 #include "infServiceDcm_Exp.hpp"
