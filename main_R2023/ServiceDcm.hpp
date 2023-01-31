@@ -32,7 +32,7 @@ class module_ServiceDcm:
 /******************************************************************************/
 /* OBJECTS                                                                    */
 /******************************************************************************/
-      const ConstServiceDcm_Type* lptrConst = (ConstServiceDcm_Type*)NULL_PTR;
+      const ConstModule_TypeAbstract* lptrNvMBlocksRom = (ConstModule_TypeAbstract*)NULL_PTR;
       infServicePduRClient_Up infServicePduRClient_ServiceDcm;
 
 /******************************************************************************/
@@ -43,7 +43,7 @@ class module_ServiceDcm:
 
    public:
       FUNC(void, SERVICEDCM_CODE) InitFunction(
-            CONSTP2CONST(ConstModule_TypeAbstract, SERVICEDCM_CONST,       SERVICEDCM_APPL_CONST) lptrConstModule
+            CONSTP2CONST(ConstModule_TypeAbstract, SERVICEDCM_CONST,       SERVICEDCM_APPL_CONST) lptrNvMBlocksRomModule
          ,  CONSTP2CONST(CfgModule_TypeAbstract,   SERVICEDCM_CONFIG_DATA, SERVICEDCM_APPL_CONST) lptrCfgModule
       );
       FUNC(void, SERVICEDCM_CODE) DeInitFunction (void);

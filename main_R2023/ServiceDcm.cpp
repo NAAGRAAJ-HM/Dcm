@@ -13,19 +13,10 @@
 /******************************************************************************/
 /* #DEFINES                                                                   */
 /******************************************************************************/
-#define SERVICEDCM_AR_RELEASE_VERSION_MAJOR                                    4
-#define SERVICEDCM_AR_RELEASE_VERSION_MINOR                                    3
 
 /******************************************************************************/
 /* MACROS                                                                     */
 /******************************************************************************/
-#if(SERVICEDCM_AR_RELEASE_VERSION_MAJOR != STD_AR_RELEASE_VERSION_MAJOR)
-   #error "Incompatible SERVICEDCM_AR_RELEASE_VERSION_MAJOR!"
-#endif
-
-#if(SERVICEDCM_AR_RELEASE_VERSION_MINOR != STD_AR_RELEASE_VERSION_MINOR)
-   #error "Incompatible SERVICEDCM_AR_RELEASE_VERSION_MINOR!"
-#endif
 
 /******************************************************************************/
 /* TYPEDEFS                                                                   */
@@ -53,20 +44,20 @@ FUNC(void, SERVICEDCM_CODE) module_ServiceDcm::print_versions(
 ){
    for(
       uint8 lu8Index = 0;
-            lu8Index < lptrConst->u8SizeinfServiceDcmClients;
+            lu8Index < ((NvM_BlocksRom_ServiceDcm_Type*)lptrNvMBlocksRom)->u8SizeinfServiceDcmClients; // TBD: OOPS concept
             lu8Index ++
    ){
-      cout<<endl<<lptrConst->astrServiceDcmClientNames[lu8Index]<<"\t\tR";
-      cout<<lptrConst->aptrServiceDcmClients[lu8Index]->VersionInfo.u8SwVersionMajor<<".";
-      cout<<lptrConst->aptrServiceDcmClients[lu8Index]->VersionInfo.u8SwVersionMinor<<".";
-      cout<<lptrConst->aptrServiceDcmClients[lu8Index]->VersionInfo.u8SwVersionPatch;
+      cout<<endl<<((NvM_BlocksRom_ServiceDcm_Type*)lptrNvMBlocksRom)->astrServiceDcmClientNames[lu8Index]<<"\t\tR";
+      cout<<((NvM_BlocksRom_ServiceDcm_Type*)lptrNvMBlocksRom)->aptrServiceDcmClients[lu8Index]->VersionInfo.u8SwVersionMajor<<".";
+      cout<<((NvM_BlocksRom_ServiceDcm_Type*)lptrNvMBlocksRom)->aptrServiceDcmClients[lu8Index]->VersionInfo.u8SwVersionMinor<<".";
+      cout<<((NvM_BlocksRom_ServiceDcm_Type*)lptrNvMBlocksRom)->aptrServiceDcmClients[lu8Index]->VersionInfo.u8SwVersionPatch;
    }
 }
 #else
 #endif
 
 FUNC(void, SERVICEDCM_CODE) module_ServiceDcm::InitFunction(
-      CONSTP2CONST(ConstModule_TypeAbstract, SERVICEDCM_CONST,       SERVICEDCM_APPL_CONST) lptrConstModule
+      CONSTP2CONST(ConstModule_TypeAbstract, SERVICEDCM_CONST,       SERVICEDCM_APPL_CONST) lptrNvMBlocksRomModule
    ,  CONSTP2CONST(CfgModule_TypeAbstract,   SERVICEDCM_CONFIG_DATA, SERVICEDCM_APPL_CONST) lptrCfgModule
 ){
 #if(STD_ON == ServiceDcm_InitCheck)
@@ -76,10 +67,10 @@ FUNC(void, SERVICEDCM_CODE) module_ServiceDcm::InitFunction(
    ){
 #endif
       if(
-            (NULL_PTR != lptrConstModule)
+            (NULL_PTR != lptrNvMBlocksRomModule)
          && (NULL_PTR != lptrCfgModule)
       ){
-         lptrConst = (const ConstServiceDcm_Type*)lptrConstModule;
+         lptrNvMBlocksRom = lptrNvMBlocksRomModule;
          lptrCfg   = lptrCfgModule;
       }
       else{
