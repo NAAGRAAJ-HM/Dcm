@@ -24,9 +24,6 @@ using namespace std;
 class NvM_BlocksRom_ServiceDcm_Type:
       public ConstModule_TypeAbstract
 {
-/******************************************************************************/
-/* CONSTS                                                                     */
-/******************************************************************************/
    public:
       uint8                u8SizeinfServiceDcmClients;
       infServiceDcmClient* aptrServiceDcmClients[ServiceDcm_SizeinfServiceDcmClients];
@@ -34,6 +31,11 @@ class NvM_BlocksRom_ServiceDcm_Type:
       string               astrServiceDcmClientNames[ServiceDcm_SizeinfServiceDcmClients];
 #else
 #endif
+};
+
+class NvM_BlocksNv_ServiceDcm_Type:
+      public CfgModule_TypeAbstract
+{
 };
 
 /******************************************************************************/
