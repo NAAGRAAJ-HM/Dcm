@@ -1,13 +1,15 @@
 #pragma once
 /******************************************************************************/
-/* File   : infServiceDcm_ServiceSwcEcuM.hpp                                  */
+/* File   : infServiceSwcDcmServiceSwcPduR.hpp                                */
 /* Author : NAGARAJA HM (c) since 1982. All rights reserved.                  */
 /******************************************************************************/
 
 /******************************************************************************/
 /* #INCLUDES                                                                  */
 /******************************************************************************/
-#include "CompilerCfg_ServiceDcm.hpp"
+#include "CompilerCfg_ServiceSwcDcm.hpp"
+
+#include "CanTypes.hpp" //TBD: change to ComStackTypes.hpp
 
 /******************************************************************************/
 /* #DEFINES                                                                   */
@@ -24,8 +26,7 @@
 /******************************************************************************/
 /* FUNCTIONS                                                                  */
 /******************************************************************************/
-extern FUNC(void, SERVICEDCM_CODE) ServiceDcm_InitFunction   (void);
-extern FUNC(void, SERVICEDCM_CODE) ServiceDcm_DeInitFunction (void);
+extern FUNC(teStatusRequestBuffer, SERVICESWCDCM_CODE) infServiceSwcDcmServiceSwcPduR_StartOfReception(uint8 lu8IndexBufferRx);
 
 /******************************************************************************/
 /* CONSTS                                                                     */

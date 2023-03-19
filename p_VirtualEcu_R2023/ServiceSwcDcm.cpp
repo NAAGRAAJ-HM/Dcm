@@ -1,12 +1,19 @@
-#pragma once
 /******************************************************************************/
-/* File   : ServiceDcm.hpp                                                    */
+/* File   : ServiceSwcDcm.cpp                                                 */
 /* Author : NAGARAJA HM (c) since 1982. All rights reserved.                  */
 /******************************************************************************/
 
 /******************************************************************************/
 /* #INCLUDES                                                                  */
 /******************************************************************************/
+#include "Std_Types.hpp"
+
+#include "ServiceSwcDcm.hpp"
+
+#include "infServiceSwcDcmServiceSwcEcuM.hpp"
+#include "infServiceSwcDcmServiceSwcPduR.hpp"
+
+#include "CfgServiceSwcDcm.hpp"
 
 /******************************************************************************/
 /* #DEFINES                                                                   */
@@ -21,14 +28,6 @@
 /******************************************************************************/
 
 /******************************************************************************/
-/* OBJECTS                                                                    */
-/******************************************************************************/
-
-/******************************************************************************/
-/* FUNCTIONS                                                                  */
-/******************************************************************************/
-
-/******************************************************************************/
 /* CONSTS                                                                     */
 /******************************************************************************/
 
@@ -39,6 +38,20 @@
 /******************************************************************************/
 /* OBJECTS                                                                    */
 /******************************************************************************/
+
+/******************************************************************************/
+/* FUNCTIONS                                                                  */
+/******************************************************************************/
+FUNC(void, SERVICESWCDCM_CODE) infServiceSwcDcmServiceSwcEcuM_InitFunction   (void){}
+FUNC(void, SERVICESWCDCM_CODE) infServiceSwcDcmServiceSwcEcuM_DeInitFunction (void){}
+FUNC(void, SERVICESWCDCM_CODE) infServiceSwcDcmServiceSwcSchM_MainFunction   (void){}
+
+FUNC(teStatusRequestBuffer, SERVICESWCDCM_CODE) infServiceSwcDcmServiceSwcPduR_StartOfReception(uint8 lu8IndexBufferRx){
+   UNUSED(lu8IndexBufferRx);
+
+   //TBD: if(Buffer[lu8IndexBufferRx].IdProtocol == ServiceSwcDcm_aeTableConnection[0])
+   return teStatusRequestBuffer_OK;
+}
 
 /******************************************************************************/
 /* EOF                                                                        */
