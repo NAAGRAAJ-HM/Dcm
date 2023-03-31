@@ -14,10 +14,12 @@
 #include "infServiceSwcDcmServiceSwcPduR.hpp"
 
 #include "CfgServiceSwcDcm.hpp"
+#include "LibAutosarFifo.hpp"
 
 /******************************************************************************/
 /* #DEFINES                                                                   */
 /******************************************************************************/
+#define ServiceSwcDcm_dIndexService                                            1
 
 /******************************************************************************/
 /* MACROS                                                                     */
@@ -30,6 +32,7 @@
 /******************************************************************************/
 /* CONSTS                                                                     */
 /******************************************************************************/
+const CfgServiceSwcDcm_tst* ServiceSwcDcm_pstConfig;
 
 /******************************************************************************/
 /* PARAMS                                                                     */
@@ -38,19 +41,41 @@
 /******************************************************************************/
 /* OBJECTS                                                                    */
 /******************************************************************************/
+LibAutosarFifo_t     ServiceSwcDcm_stFifoRequestUds;
+LibAutosarFifo_tItem ServiceSwcDcm_atBuffer[CfgServiceSwcDcm_dNumMaxRequests];
 
 /******************************************************************************/
 /* FUNCTIONS                                                                  */
 /******************************************************************************/
-FUNC(void, SERVICESWCDCM_CODE) infServiceSwcDcmServiceSwcEcuM_InitFunction   (void){}
-FUNC(void, SERVICESWCDCM_CODE) infServiceSwcDcmServiceSwcEcuM_DeInitFunction (void){}
-FUNC(void, SERVICESWCDCM_CODE) infServiceSwcDcmServiceSwcSchM_MainFunction   (void){}
+FUNC(void, SERVICESWCDCM_CODE) infServiceSwcDcmServiceSwcEcuM_InitFunction(const CfgServiceSwcDcm_tst* pstConfig){
+   ServiceSwcDcm_pstConfig = pstConfig;
+   (void)LibAutosarFifo_InitFunction( //TBD: Handle not OK cases
+         &ServiceSwcDcm_stFifoRequestUds
+      ,  &ServiceSwcDcm_atBuffer[0]
+      ,  CfgServiceSwcDcm_dNumMaxRequests
+   );
 
-FUNC(teStatusRequestBuffer, SERVICESWCDCM_CODE) infServiceSwcDcmServiceSwcPduR_StartOfReception(uint8 lu8IndexBufferRx){
-   UNUSED(lu8IndexBufferRx);
+}
 
-   //TBD: if(Buffer[lu8IndexBufferRx].IdProtocol == ServiceSwcDcm_aeTableConnection[0])
-   return teStatusRequestBuffer_OK;
+FUNC(void, SERVICESWCDCM_CODE) infServiceSwcDcmServiceSwcEcuM_DeInitFunction(void){}
+
+FUNC(void, SERVICESWCDCM_CODE) infServiceSwcDcmServiceSwcSchM_MainFunction(void){
+   uint8 lu8IndexBufferRx;
+   while(
+         LibAutosarFifo_eStatus_OK
+      == LibAutosarFifo_Get(&ServiceSwcDcm_stFifoRequestUds, &lu8IndexBufferRx)
+   ){
+      switch( //TBD: Configurable SID table
+         McalCan_astRxFifio[lu8IndexBufferRx].McalCan_stFrameExtended.data[ServiceSwcDcm_dIndexService] //TBD: Reduce complexity using unions of higher layers and Fifo APIs
+      ){
+         case 0x3E: //TBF: Implement tester present service handle here
+            break;
+      }
+   }
+}
+
+FUNC(void, SERVICESWCDCM_CODE) infServiceSwcDcmServiceSwcPduR_RxIndication(uint8 lu8IndexBufferRx){
+   (void)LibAutosarFifo_Put(&ServiceSwcDcm_stFifoRequestUds, lu8IndexBufferRx); //TBD: Handle not OK cases
 }
 
 /******************************************************************************/

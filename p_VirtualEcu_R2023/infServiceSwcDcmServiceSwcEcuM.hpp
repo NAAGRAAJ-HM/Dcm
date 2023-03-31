@@ -7,7 +7,7 @@
 /******************************************************************************/
 /* #INCLUDES                                                                  */
 /******************************************************************************/
-#include "CompilerCfg_ServiceSwcDcm.hpp"
+#include "CfgServiceSwcDcm.hpp"
 
 /******************************************************************************/
 /* #DEFINES                                                                   */
@@ -24,7 +24,7 @@
 /******************************************************************************/
 /* FUNCTIONS                                                                  */
 /******************************************************************************/
-extern FUNC(void, SERVICESWCDCM_CODE) infServiceSwcDcmServiceSwcEcuM_InitFunction   (void);
+extern FUNC(void, SERVICESWCDCM_CODE) infServiceSwcDcmServiceSwcEcuM_InitFunction(const CfgServiceSwcDcm_tst* pstConfig);
 extern FUNC(void, SERVICESWCDCM_CODE) infServiceSwcDcmServiceSwcEcuM_DeInitFunction (void);
 
 /******************************************************************************/

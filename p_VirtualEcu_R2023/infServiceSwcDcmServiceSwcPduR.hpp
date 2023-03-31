@@ -26,7 +26,6 @@
 /******************************************************************************/
 /* FUNCTIONS                                                                  */
 /******************************************************************************/
-extern FUNC(teStatusRequestBuffer, SERVICESWCDCM_CODE) infServiceSwcDcmServiceSwcPduR_StartOfReception(uint8 lu8IndexBufferRx);
 
 /******************************************************************************/
 /* CONSTS                                                                     */
@@ -39,6 +38,11 @@ extern FUNC(teStatusRequestBuffer, SERVICESWCDCM_CODE) infServiceSwcDcmServiceSw
 /******************************************************************************/
 /* OBJECTS                                                                    */
 /******************************************************************************/
+
+/******************************************************************************/
+/* FUNCTIONS                                                                  */
+/******************************************************************************/
+extern FUNC(void, SERVICESWCDCM_CODE) infServiceSwcDcmServiceSwcPduR_RxIndication(uint8 lu8IndexBufferRx);
 
 /******************************************************************************/
 /* EOF                                                                        */
