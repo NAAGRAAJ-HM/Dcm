@@ -1,13 +1,13 @@
 #pragma once
 /******************************************************************************/
-/* File   : infServiceSwcDcmServiceSwcPduR.hpp                                */
+/* File   : infSwcServiceDcmSwcServicePduR.hpp                                */
 /* Author : NAGARAJA HM (c) since 1982. All rights reserved.                  */
 /******************************************************************************/
 
 /******************************************************************************/
 /* #INCLUDES                                                                  */
 /******************************************************************************/
-#include "CompilerCfg_ServiceSwcDcm.hpp"
+#include "CompilerCfg_SwcServiceDcm.hpp"
 
 #include "CanTypes.hpp" //TBD: change to ComStackTypes.hpp
 
@@ -42,7 +42,7 @@
 /******************************************************************************/
 /* FUNCTIONS                                                                  */
 /******************************************************************************/
-extern FUNC(void, SERVICESWCDCM_CODE) infServiceSwcDcmServiceSwcPduR_RxIndication(uint8 lu8IndexBufferRx);
+extern FUNC(void, SWCSERVICEDCM_CODE) infSwcServiceDcmSwcServicePduR_RxIndication(uint8 lu8IndexBufferRx);
 
 /******************************************************************************/
 /* EOF                                                                        */
