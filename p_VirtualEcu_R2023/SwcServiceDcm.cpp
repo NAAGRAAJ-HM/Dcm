@@ -1,7 +1,7 @@
 /******************************************************************************/
 /* File   : SwcServiceDcm.cpp                                                 */
 /*                                                                            */
-/* Author : Nagaraja HULIYAPURADA MATA                                        */
+/* Author : Raajnaag HULIYAPURADA MATA                                        */
 /*                                                                            */
 /* License / Warranty / Terms and Conditions                                  */
 /*                                                                            */
@@ -13,10 +13,10 @@
 /* certain responsibilities, if you distribute copies of the software, or if  */
 /* you modify it: responsibilities to respect the freedom of others.          */
 /*                                                                            */
-/* All rights reserved. Copyright © 1982 Nagaraja HULIYAPURADA MATA           */
+/* All rights reserved. Copyright © 1982 Raajnaag HULIYAPURADA MATA           */
 /*                                                                            */
 /* Always refer latest software version from:                                 */
-/* https://github.com/NagarajaHuliyapuradaMata?tab=repositories               */
+/* https://github.com/RaajnaagHuliyapuradaMata?tab=repositories               */
 /*                                                                            */
 /******************************************************************************/
 
@@ -64,6 +64,12 @@ LibAutosarFifo_tItem SwcServiceDcm_atBuffer[CfgSwcServiceDcm_dNumMaxRequests];
 /******************************************************************************/
 /* FUNCTIONS                                                                  */
 /******************************************************************************/
+static const uint32 cu32MaxTimerP2 = 5000;
+static       uint32 u32TimerP2;
+static void TimerP2_Init     (void){u32TimerP2 = 0;}
+static void TimerP2_ReStart  (void){u32TimerP2 = cu32MaxTimerP2;/*Start current protocol*/}
+static void TimerP2_Runnable (void){if(0 == --u32TimerP2){/*Stop current protocol*/}}
+
 FUNC(void, SWCSERVICEDCM_CODE) infSwcServiceDcmSwcServiceEcuM_InitFunction(const CfgSwcServiceDcm_tst* pstConfig){
    SwcServiceDcm_pstConfig = pstConfig;
    (void)LibAutosarFifo_InitFunction( //TBD: Handle not OK cases
@@ -71,17 +77,19 @@ FUNC(void, SWCSERVICEDCM_CODE) infSwcServiceDcmSwcServiceEcuM_InitFunction(const
       ,  &SwcServiceDcm_atBuffer[0]
       ,  CfgSwcServiceDcm_dNumMaxRequests
    );
-
+   TimerP2_Init();
 }
 
 FUNC(void, SWCSERVICEDCM_CODE) infSwcServiceDcmSwcServiceEcuM_DeInitFunction(void){}
 
 FUNC(void, SWCSERVICEDCM_CODE) infSwcServiceDcmSwcServiceSchM_MainFunction(void){
+   TimerP2_Runnable();
    uint8 lu8IndexBufferRx;
    while(
          LibAutosarFifo_eStatus_OK
       == LibAutosarFifo_Get(&SwcServiceDcm_stFifoRequestUds, &lu8IndexBufferRx)
    ){
+      TimerP2_ReStart();
       switch( //TBD: Configurable SID table
          McalCan_astRxFifio[lu8IndexBufferRx].McalCan_stFrameExtended.data[SwcServiceDcm_dIndexService] //TBD: Reduce complexity using unions of higher layers and Fifo APIs
       ){
