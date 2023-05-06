@@ -91,6 +91,7 @@ FUNC(void, SWCSERVICEDCM_CODE) infSwcServiceDcmSwcServiceEcuM_DeInitFunction(voi
 void build_response(void){
 }
 
+extern void infSwcServiceOs_RequestShutdown(void); //TBD: Need interface?
 void ProcessIfDcmIsFree(uint8 lu8IndexBufferRx){
    SwcServiceDcm_eStatus = SwcServiceDcm_eStatusBusy;
    TimerP2_ReStart();
@@ -99,6 +100,10 @@ void ProcessIfDcmIsFree(uint8 lu8IndexBufferRx){
    ){
       case 0x3E: //TBF: Implement tester present service handle here
          build_response();
+         break;
+      case 0x11:
+         build_response();
+         infSwcServiceOs_RequestShutdown();
          break;
    }
    SwcServiceDcm_eStatus = SwcServiceDcm_eStatusFree;
