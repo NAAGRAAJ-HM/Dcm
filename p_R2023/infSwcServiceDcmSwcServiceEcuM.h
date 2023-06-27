@@ -25,6 +25,7 @@
 /******************************************************************************/
 /* #INCLUDES                                                                  */
 /******************************************************************************/
+#include "CompilerCfg_SwcServiceDcm.h"
 
 /******************************************************************************/
 /* #DEFINES                                                                   */
@@ -53,7 +54,7 @@
 /******************************************************************************/
 /* FUNCTIONS                                                                  */
 /******************************************************************************/
-void infSwcServiceDcmSwcServiceEcuM_vInitFunction(
+extern FUNC(void, SWCSERVICEDCM_CODE) infSwcServiceDcmSwcServiceEcuM_vInitFunction(
    const Dcm_ConfigType* ConfigPtr
 );
 

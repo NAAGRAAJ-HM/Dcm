@@ -25,6 +25,8 @@
 /******************************************************************************/
 /* #INCLUDES                                                                  */
 /******************************************************************************/
+#include "CompilerCfg_SwcServiceDcm.h" //TBD: Move to SwcApplDcm
+#include "CfgSwcServiceDcm.h"
 
 /******************************************************************************/
 /* #DEFINES                                                                   */
@@ -37,6 +39,19 @@
 /******************************************************************************/
 /* TYPEDEFS                                                                   */
 /******************************************************************************/
+typedef enum{ //TBD: ComM and all it's clients seem to have their own definitions of None/Silent/Full communication
+      SwcApplDcmDsld_eModeComM_None
+   ,  SwcApplDcmDsld_eModeComM_Silent
+   ,  SwcApplDcmDsld_eModeComM_Full
+}TypeSwcApplDcmDsld_eModeComM;
+
+typedef struct{
+   uint8                        u8IdChannelComM;
+   TypeSwcApplDcmDsld_eModeComM eModeComM;
+#if(CfgSwcServiceDcm_EnableDiagAdapt != DCM_CFG_OFF)
+   Dcm_DslDsd_MediumType_ten    IdMedium;
+#endif
+}TypeSwcApplDcmDsld_stChannelComM;
 
 /******************************************************************************/
 /* CONSTS                                                                     */
@@ -53,9 +68,9 @@
 /******************************************************************************/
 /* FUNCTIONS                                                                  */
 /******************************************************************************/
-extern void infSwcServiceDcmSwcServiceComM_FullComModeEntered   (uint8 NetworkId);
-extern void infSwcServiceDcmSwcServiceComM_NoComModeEntered     (uint8 NetworkId);
-extern void infSwcServiceDcmSwcServiceComM_SilentComModeEntered (uint8 NetworkId);
+extern FUNC(void, SWCSERVICEDCM_CODE) infSwcServiceDcmSwcServiceComM_vFullComModeEntered   (uint8 NetworkId);
+extern FUNC(void, SWCSERVICEDCM_CODE) infSwcServiceDcmSwcServiceComM_vNoComModeEntered     (uint8 NetworkId);
+extern FUNC(void, SWCSERVICEDCM_CODE) infSwcServiceDcmSwcServiceComM_vSilentComModeEntered (uint8 NetworkId);
 
 /******************************************************************************/
 /* EOF                                                                        */

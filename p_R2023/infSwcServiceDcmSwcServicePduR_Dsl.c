@@ -24,8 +24,12 @@
 /* #INCLUDES                                                                  */
 /******************************************************************************/
 #include "Std_Types.h"
-
+#include "CfgSwcServiceDcm.h"
+#include "ComStack_Cfg.h"   //TBD: Move header
+#include "ComStack_Types.h" //TBD: Move header
 #include "infSwcServiceDcmSwcServicePduR.h"
+
+#include "infSwcServiceDetSwcServiceDcm.h"
 
 /******************************************************************************/
 /* #DEFINES                                                                   */
@@ -38,33 +42,7 @@
 /******************************************************************************/
 /* TYPEDEFS                                                                   */
 /******************************************************************************/
-//TBD: Remove typedefs and include headers
-typedef enum{
-      BUFREQ_OK
-   ,  BUFREQ_E_NOT_OK
-   ,  BUFREQ_E_BUSY
-   ,  BUFREQ_E_OVFL
-}BufReq_ReturnType;
 
-typedef enum{
-      TP_DATACONF
-   ,  TP_DATARETRY
-   ,  TP_CONFPENDING
-}TpDataStateType;
-
-typedef uint16 PduIdType;
-typedef uint16 PduLengthType;
-
-typedef struct{
-   uint8*        SduDataPtr;
-   uint8*        MetaDataPtr;
-   PduLengthType SduLength;
-}PduInfoType;
-
-typedef struct{
-   TpDataStateType TpDataState;
-   PduLengthType   TxTpDataCnt;
-}RetryInfoType;
 
 /******************************************************************************/
 /* CONSTS                                                                     */
@@ -77,53 +55,161 @@ typedef struct{
 /******************************************************************************/
 /* OBJECTS                                                                    */
 /******************************************************************************/
+extern boolean Dcm_isObdRequestReceived_b;
 
 /******************************************************************************/
 /* FUNCTIONS                                                                  */
 /******************************************************************************/
-#define DCM_START_SEC_CODE
-#include "Dcm_MemMap.h"
-
-BufReq_ReturnType infSwcServiceDcmSwcServicePduR_CopyRxData(
-            PduIdType      id
-   ,  const PduInfoType*   PduInfoPtr
-   ,        PduLengthType* bufferSizePtr
+static boolean bCheckEnvironment_CopyRxData(
+            PduIdType      lIdPdu
+   ,  const PduInfoType*   lptrInfoPdu
+   ,  const PduLengthType* lptrLengthPdu
 ){
-   return 0;
+   boolean bStatusEnvironment = FALSE;
+   if(
+         lIdPdu
+      >= CfgSwcServiceDcmDsld_NnmPduIdRx
+   ){
+      (void)Det_ReportError(
+            DCM_MODULE_ID
+         ,  DCM_INSTANCE_ID
+         ,  DCM_COPYRXDATA_ID
+         ,  DCM_E_DCMRXPDUID_RANGE_EXCEED
+      );
+   }
+   else if(
+         (lptrInfoPdu   == NULL_PTR)
+      || (lptrLengthPdu == NULL_PTR)
+   ){
+      (void)Det_ReportError(
+            DCM_MODULE_ID
+         ,  DCM_INSTANCE_ID
+         ,  DCM_COPYRXDATA_ID
+         ,  DCM_E_PARAM_POINTER
+      );
+   }
+   else if(
+         (lptrInfoPdu->SduLength  != 0u)
+      && (lptrInfoPdu->SduDataPtr == NULL_PTR)
+   ){
+      (void)Det_ReportError(
+            DCM_MODULE_ID
+         ,  DCM_INSTANCE_ID
+         ,  DCM_COPYRXDATA_ID
+         ,  DCM_E_PARAM_POINTER
+      );
+   }
+   else{
+      bStatusEnvironment = TRUE;
+   }
+   return bStatusEnvironment;
 }
 
-BufReq_ReturnType infSwcServiceDcmSwcServicePduR_CopyTxData(
+#if(CfgSwcServiceDcm_EnableSharingPduRx != DCM_CFG_OFF)
+static boolean Dcm_Prv_isRxPduShared(
+      PduIdType lIdPdu
+   ,  uint8     lu8IdService
+){
+   return(
+         (lIdPdu        < (CfgSwcServiceDcmDsld_NnmPduIdRx-1u))
+   );
+}
+#endif
+
+#if(CfgSwcServiceDcm_EnableProcessingParallel != DCM_CFG_OFF)
+boolean Dcm_Prv_IsRxPduIdOBD(
+   PduIdType DcmRxPduId
+){
+   boolean IsRxPduIdObd_b = FALSE;
+   return IsRxPduIdObd_b;
+}
+
+boolean Dcm_Prv_IsTxPduIdOBD(
+   PduIdType DcmTxPduId
+){
+   boolean IsTxPduIdObd_b = FALSE;
+   return IsTxPduIdObd_b;
+}
+#endif
+
+FUNC(BufReq_ReturnType, SWCSERVICEDCM_CODE) infSwcServiceDcmSwcServicePduR_CopyRxData(
+            PduIdType      lIdPdu
+   ,  const PduInfoType*   lptrInfoPdu
+   ,        PduLengthType* lptrLengthPdu
+){
+   BufReq_ReturnType leRetValReqBuf = BUFREQ_E_NOT_OK;
+   if(
+         FALSE
+      != bCheckEnvironment_CopyRxData(
+               lIdPdu
+            ,  lptrInfoPdu
+            ,  lptrLengthPdu
+         )
+   ){
+#if(CfgSwcServiceDcm_EnableSharingPduRx != DCM_CFG_OFF)
+      if(
+            (NULL_PTR != lptrInfoPdu->SduDataPtr)
+         && (FALSE    != Dcm_isObdRequestReceived_b)
+      ){
+         if(
+               FALSE
+            != Dcm_Prv_isRxPduShared(
+                     lIdPdu
+                  ,  lptrInfoPdu->SduDataPtr[0]
+               )
+         ){
+            lIdPdu = (CfgSwcServiceDcmDsld_NnmPduIdRx-1u);
+         }
+      }
+#endif
+      {
+         if(lptrInfoPdu->SduLength == 0u){
+            leRetValReqBuf = BUFREQ_OK;
+         }
+         else{
+               (void)Det_ReportError(
+                        DCM_MODULE_ID
+                     ,  DCM_INSTANCE_ID
+                     ,  DCM_COPYRXDATA_ID
+                     ,  DCM_E_INTERFACE_BUFFER_OVERFLOW
+               );
+         }
+      }
+   }
+   return leRetValReqBuf;
+}
+
+FUNC(BufReq_ReturnType, SWCSERVICEDCM_CODE) infSwcServiceDcmSwcServicePduR_CopyTxData(
             PduIdType      id
    ,  const PduInfoType*   info
    ,        RetryInfoType* retry
    ,        PduLengthType* availableDataPtr
 ){
-   return 0;
+   BufReq_ReturnType bufRequestStatus_en = BUFREQ_E_NOT_OK;
+   return bufRequestStatus_en;
 }
 
-BufReq_ReturnType infSwcServiceDcmSwcServicePduR_StartOfReception(
+FUNC(BufReq_ReturnType, SWCSERVICEDCM_CODE) infSwcServiceDcmSwcServicePduR_StartOfReception(
             PduIdType      id
    ,  const PduInfoType*   info
    ,        PduLengthType  TpSduLength
    ,        PduLengthType* bufferSizePtr
 ){
-   return 0;
+   BufReq_ReturnType bufRequestStatus_en = BUFREQ_E_NOT_OK;
+   return bufRequestStatus_en;
 }
 
-void infSwcServiceDcmSwcServicePduR_vTpRxIndication(
+FUNC(void, SWCSERVICEDCM_CODE) infSwcServiceDcmSwcServicePduR_vTpRxIndication(
       PduIdType      id
    ,  Std_ReturnType result
 ){
 }
 
-void infSwcServiceDcmSwcServicePduR_vTpTxConfirmation(
+FUNC(void, SWCSERVICEDCM_CODE) infSwcServiceDcmSwcServicePduR_vTpTxConfirmation(
       PduIdType      id
    ,  Std_ReturnType result
 ){
 }
-
-#define DCM_STOP_SEC_CODE
-#include "Dcm_MemMap.h"
 
 /******************************************************************************/
 /* EOF                                                                        */

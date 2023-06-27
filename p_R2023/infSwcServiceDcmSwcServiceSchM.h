@@ -25,6 +25,7 @@
 /******************************************************************************/
 /* #INCLUDES                                                                  */
 /******************************************************************************/
+#include "CompilerCfg_SwcServiceDcm.h"
 
 /******************************************************************************/
 /* #DEFINES                                                                   */
@@ -53,9 +54,9 @@
 /******************************************************************************/
 /* FUNCTIONS                                                                  */
 /******************************************************************************/
-void infSwcApplDcmSwcServiceSchM_vMainFunction            (void); //TBD: Move to infSwcApplDcmSwcServiceSchM.h
-void infSwcServiceDcmSwcServiceSchM_vMainFunction         (void);
-void infSwcApplDcmSwcServiceSchM_vRunnableIncNonceCounter (void);
+extern FUNC(void, SWCSERVICEDCM_CODE) infSwcApplDcmSwcServiceSchM_vMainFunction            (void); //TBD: Move to infSwcApplDcmSwcServiceSchM.h
+extern FUNC(void, SWCSERVICEDCM_CODE) infSwcServiceDcmSwcServiceSchM_vMainFunction         (void);
+extern FUNC(void, SWCSERVICEDCM_CODE) infSwcApplDcmSwcServiceSchM_vRunnableIncNonceCounter (void);
 
 /******************************************************************************/
 /* EOF                                                                        */

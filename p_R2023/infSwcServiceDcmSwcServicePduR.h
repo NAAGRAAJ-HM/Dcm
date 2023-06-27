@@ -25,6 +25,7 @@
 /******************************************************************************/
 /* #INCLUDES                                                                  */
 /******************************************************************************/
+#include "CompilerCfg_SwcServiceDcm.h"
 
 /******************************************************************************/
 /* #DEFINES                                                                   */
@@ -53,32 +54,32 @@
 /******************************************************************************/
 /* FUNCTIONS                                                                  */
 /******************************************************************************/
-extern BufReq_ReturnType infSwcServiceDcmSwcServicePduR_CopyRxData(
+extern FUNC(BufReq_ReturnType, SWCSERVICEDCM_CODE) infSwcServiceDcmSwcServicePduR_CopyRxData(
             PduIdType      id
    ,  const PduInfoType*   PduInfoPtr
    ,        PduLengthType* bufferSizePtr
 );
 
-extern BufReq_ReturnType infSwcServiceDcmSwcServicePduR_CopyTxData(
+extern FUNC(BufReq_ReturnType, SWCSERVICEDCM_CODE) infSwcServiceDcmSwcServicePduR_CopyTxData(
             PduIdType      id
    ,  const PduInfoType*   info
    ,        RetryInfoType* retry
    ,        PduLengthType* availableDataPtr
 );
 
-extern BufReq_ReturnType infSwcServiceDcmSwcServicePduR_StartOfReception(
+extern FUNC(BufReq_ReturnType, SWCSERVICEDCM_CODE) infSwcServiceDcmSwcServicePduR_StartOfReception(
             PduIdType      id
    ,  const PduInfoType*   info
    ,        PduLengthType  TpSduLength
    ,        PduLengthType* bufferSizePtr
 );
 
-extern void infSwcServiceDcmSwcServicePduR_vTpRxIndication(
+extern FUNC(void, SWCSERVICEDCM_CODE) infSwcServiceDcmSwcServicePduR_vTpRxIndication(
       PduIdType      id
    ,  Std_ReturnType result
 );
 
-extern void infSwcServiceDcmSwcServicePduR_vTpTxConfirmation(
+extern FUNC(void, SWCSERVICEDCM_CODE) infSwcServiceDcmSwcServicePduR_vTpTxConfirmation(
       PduIdType      id
    ,  Std_ReturnType result
 );

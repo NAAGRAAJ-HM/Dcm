@@ -25,7 +25,9 @@
 /******************************************************************************/
 #include "Std_Types.h"
 
+#include "CfgSwcServiceDcm.h"
 #include "infSwcServiceDcmSwcServiceComM.h"
+#include "ComM_Cfg.h" //TBD: Move header
 
 /******************************************************************************/
 /* #DEFINES                                                                   */
@@ -50,24 +52,59 @@
 /******************************************************************************/
 /* OBJECTS                                                                    */
 /******************************************************************************/
+TypeSwcApplDcmDsld_stChannelComM SwcApplDcmDsld_ChannelComM[CfgSwcServiceDcmDsld_NumChannelComM] = {
+   {ComMConf_ComMChannel_ComMChannel_Can_Network_0_Channel, SwcApplDcmDsld_eModeComM_None}
+};
 
 /******************************************************************************/
 /* FUNCTIONS                                                                  */
 /******************************************************************************/
-#define DCM_START_SEC_CODE
-#include "Dcm_MemMap.h"
-void infSwcServiceDcmSwcServiceComM_FullComModeEntered(uint8 NetworkId){
+static void vSetComMState(
+      uint8                        lu8IdNetwork
+   ,  TypeSwcApplDcmDsld_eModeComM leModeComM
+){
+   uint8 u8IndexNetwork;
+   for(
+      u8IndexNetwork = 0;
+      u8IndexNetwork < CfgSwcServiceDcmDsld_NumChannelComM;
+      u8IndexNetwork ++
+   ){
+      if(SwcApplDcmDsld_ChannelComM[u8IndexNetwork].u8IdChannelComM == lu8IdNetwork){
+         break;
+      }
+   }
+   if(u8IndexNetwork < CfgSwcServiceDcmDsld_NumChannelComM){
+      SwcApplDcmDsld_ChannelComM[u8IndexNetwork].eModeComM = leModeComM;
+   }
 }
 
-void infSwcServiceDcmSwcServiceComM_NoComModeEntered(uint8 NetworkId){
+FUNC(void, SWCSERVICEDCM_CODE) infSwcServiceDcmSwcServiceComM_vFullComModeEntered(
+   uint8 lu8IdNetwork
+){
+   vSetComMState(
+         lu8IdNetwork
+      ,  SwcApplDcmDsld_eModeComM_Full
+   );
+}
+
+FUNC(void, SWCSERVICEDCM_CODE) infSwcServiceDcmSwcServiceComM_vNoComModeEntered(
+   uint8 lu8IdNetwork
+){
+   vSetComMState(
+         lu8IdNetwork
+      ,  SwcApplDcmDsld_eModeComM_None
+   );
 }
 
 
-void infSwcServiceDcmSwcServiceComM_SilentComModeEntered(uint8 NetworkId){
+FUNC(void, SWCSERVICEDCM_CODE) infSwcServiceDcmSwcServiceComM_vSilentComModeEntered(
+   uint8 lu8IdNetwork
+){
+   vSetComMState(
+         lu8IdNetwork
+      ,  SwcApplDcmDsld_eModeComM_Silent
+   );
 }
-
-#define DCM_STOP_SEC_CODE
-#include "Dcm_MemMap.h"
 
 /******************************************************************************/
 /* EOF                                                                        */

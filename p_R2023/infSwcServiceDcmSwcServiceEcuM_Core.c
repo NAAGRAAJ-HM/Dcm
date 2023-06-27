@@ -25,7 +25,7 @@
 /******************************************************************************/
 #include "Std_Types.h"
 
-#include "infSwcServiceDcmSwcServiceEcuM.h"
+#include "ComStack_Cfg.h"
 
 /******************************************************************************/
 /* #DEFINES                                                                   */
@@ -38,6 +38,11 @@
 /******************************************************************************/
 /* TYPEDEFS                                                                   */
 /******************************************************************************/
+typedef struct{ //TBD: Remove typedef and include header
+   uint8 ConfigSetId;
+}Dcm_ConfigType;
+
+#include "infSwcServiceDcmSwcServiceEcuM.h" //TBD: Move to include section
 
 /******************************************************************************/
 /* CONSTS                                                                     */
@@ -54,16 +59,17 @@
 /******************************************************************************/
 /* FUNCTIONS                                                                  */
 /******************************************************************************/
-#define DCM_START_SEC_CODE
-#include "Dcm_MemMap.h"
-
-void infSwcServiceDcmSwcServiceEcuM_vInitFunction(
+FUNC(void, SWCSERVICEDCM_CODE) infSwcServiceDcmSwcServiceEcuM_vInitFunction(
    const Dcm_ConfigType* ConfigPtr
 ){
+   PduIdType idxPduIndex_u8;
+   uint8     idxIndex_u8;
+#if(DCM_CFG_POSTBUILD_SUPPORT != DCM_CFG_OFF)
+   Dcm_ActiveConfigSet_Ptr = ConfigPtr;
+#else
+   (void)ConfigPtr;
+#endif
 }
-
-#define DCM_STOP_SEC_CODE
-#include "Dcm_MemMap.h"
 
 /******************************************************************************/
 /* EOF                                                                        */

@@ -54,20 +54,14 @@
 /******************************************************************************/
 /* FUNCTIONS                                                                  */
 /******************************************************************************/
-#define DCM_START_SEC_CODE
-#include "Dcm_MemMap.h"
-
-void infSwcApplDcmSwcServiceSchM_vRunnableIncNonceCounter(void){
+FUNC(void, SWCSERVICEDCM_CODE) infSwcApplDcmSwcServiceSchM_vRunnableIncNonceCounter(void){
 }
 
-void infSwcApplDcmSwcServiceSchM_vMainFunction(void){
+FUNC(void, SWCSERVICEDCM_CODE) infSwcApplDcmSwcServiceSchM_vMainFunction(void){
 }
 
-infSwcServiceDcmSwcServiceSchM_vMainFunction(void){
+FUNC(void, SWCSERVICEDCM_CODE) infSwcServiceDcmSwcServiceSchM_vMainFunction(void){
 }
-
-#define DCM_STOP_SEC_CODE
-#include "Dcm_MemMap.h"
 
 /******************************************************************************/
 /* EOF                                                                        */
