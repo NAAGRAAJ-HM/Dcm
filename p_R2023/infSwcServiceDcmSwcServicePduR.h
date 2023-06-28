@@ -26,6 +26,7 @@
 /* #INCLUDES                                                                  */
 /******************************************************************************/
 #include "CompilerCfg_SwcServiceDcm.h"
+#include "CfgSwcServiceDcm.h"
 
 /******************************************************************************/
 /* #DEFINES                                                                   */
@@ -38,6 +39,11 @@
 /******************************************************************************/
 /* TYPEDEFS                                                                   */
 /******************************************************************************/
+#if(CfgSwcServiceDcm_EnableProcessingParallel != CfgSwcServiceDcm_Disable)
+typedef uint8                               Type_SwcServiceDcmDsld_ItemMessage;
+typedef Type_SwcServiceDcmDsld_ItemMessage* Type_SwcServiceDcmDsld_Message;
+typedef uint32                              Type_SwcServiceDcmDsld_LengthMessage;
+#endif
 
 /******************************************************************************/
 /* CONSTS                                                                     */
@@ -50,6 +56,9 @@
 /******************************************************************************/
 /* OBJECTS                                                                    */
 /******************************************************************************/
+#if(CfgSwcServiceDcm_EnableProcessingParallel != CfgSwcServiceDcm_Disable)
+extern Type_SwcServiceDcmDsld_stInfoPduRxObd Dcm_DslOBDRxPduArray_ast[CfgSwcServiceDcmDsld_NumIdPduRx];
+#endif
 
 /******************************************************************************/
 /* FUNCTIONS                                                                  */

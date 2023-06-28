@@ -25,7 +25,9 @@
 /******************************************************************************/
 #include "Std_Types.h"
 
-#include "ComStack_Cfg.h"
+#include "infSwcServiceDcmSwcServiceEcuM.h" //TBD: Move to include section
+
+//#include "ComStack_Cfg.h"
 
 /******************************************************************************/
 /* #DEFINES                                                                   */
@@ -38,11 +40,6 @@
 /******************************************************************************/
 /* TYPEDEFS                                                                   */
 /******************************************************************************/
-typedef struct{ //TBD: Remove typedef and include header
-   uint8 ConfigSetId;
-}Dcm_ConfigType;
-
-#include "infSwcServiceDcmSwcServiceEcuM.h" //TBD: Move to include section
 
 /******************************************************************************/
 /* CONSTS                                                                     */
@@ -62,9 +59,7 @@ typedef struct{ //TBD: Remove typedef and include header
 FUNC(void, SWCSERVICEDCM_CODE) infSwcServiceDcmSwcServiceEcuM_vInitFunction(
    const Dcm_ConfigType* ConfigPtr
 ){
-   PduIdType idxPduIndex_u8;
-   uint8     idxIndex_u8;
-#if(DCM_CFG_POSTBUILD_SUPPORT != DCM_CFG_OFF)
+#if(CfgSwcServiceDcm_PBcfg != CfgSwcServiceDcm_Disable)
    Dcm_ActiveConfigSet_Ptr = ConfigPtr;
 #else
    (void)ConfigPtr;

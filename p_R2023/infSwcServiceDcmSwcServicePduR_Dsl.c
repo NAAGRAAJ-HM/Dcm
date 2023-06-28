@@ -55,7 +55,6 @@
 /******************************************************************************/
 /* OBJECTS                                                                    */
 /******************************************************************************/
-extern boolean Dcm_isObdRequestReceived_b;
 
 /******************************************************************************/
 /* FUNCTIONS                                                                  */
@@ -68,7 +67,7 @@ static boolean bCheckEnvironment_CopyRxData(
    boolean bStatusEnvironment = FALSE;
    if(
          lIdPdu
-      >= CfgSwcServiceDcmDsld_NnmPduIdRx
+      >= CfgSwcServiceDcmDsld_NumIdPduRx
    ){
       (void)Det_ReportError(
             DCM_MODULE_ID
@@ -105,30 +104,88 @@ static boolean bCheckEnvironment_CopyRxData(
    return bStatusEnvironment;
 }
 
-#if(CfgSwcServiceDcm_EnableSharingPduRx != DCM_CFG_OFF)
-static boolean Dcm_Prv_isRxPduShared(
+#if(CfgSwcServiceDcm_PduRxSharing != CfgSwcServiceDcm_Disable)
+extern boolean Dcm_isObdRequestReceived_b;
+static boolean bIsPduRxShared(
       PduIdType lIdPdu
    ,  uint8     lu8IdService
 ){
    return(
-         (lIdPdu        < (CfgSwcServiceDcmDsld_NnmPduIdRx-1u))
+         (lIdPdu       < (CfgSwcServiceDcmDsld_NumIdPduRx-1u))
+      && (lIdPdu       == CfgSwcServiceDcmDsld_IdPduRxShared)
+      && (lu8IdService >= CfgSwcServiceDcmDsld_IdServiceObd_0x01)
+      && (lu8IdService <= CfgSwcServiceDcmDsld_IdServiceObd_0x0A)
    );
 }
 #endif
 
-#if(CfgSwcServiceDcm_EnableProcessingParallel != DCM_CFG_OFF)
-boolean Dcm_Prv_IsRxPduIdOBD(
-   PduIdType DcmRxPduId
+#if(CfgSwcServiceDcm_EnableProcessingParallel != CfgSwcServiceDcm_Disable)
+#include "LibAutosar_FindElementInArray.h"
+static boolean bIsIdPduRxObd(
+   PduIdType lIdPdu
 ){
-   boolean IsRxPduIdObd_b = FALSE;
-   return IsRxPduIdObd_b;
+   return(
+      (
+            0
+         <  LibAutosar_u16FindElementInArray(
+                  &CfgSwcServiceDcmDsld_aIdPduRxObd[0]
+               ,  CfgSwcServiceDcmDsld_u8NumIdPduRxObd
+               ,  lIdPdu
+            )
+      )
+      ?  TRUE
+      :  FALSE
+   );
 }
 
-boolean Dcm_Prv_IsTxPduIdOBD(
-   PduIdType DcmTxPduId
+static void vGetLengthPduRxObd(
+      PduIdType      lIdPdu
+   ,  PduLengthType* lptrLengthPdu
 ){
-   boolean IsTxPduIdObd_b = FALSE;
-   return IsTxPduIdObd_b;
+}
+
+static BufReq_ReturnType CopyRxDataObd(
+            PduIdType      lIdPdu
+   ,  const PduInfoType*   lptrInfoPdu
+   ,        PduLengthType* lptrLengthPdu
+){
+   BufReq_ReturnType leRetValReqBuf = BUFREQ_E_NOT_OK;
+   if(
+         0u
+      == lptrInfoPdu->SduLength
+   ){
+      vGetLengthPduRxObd(
+            lIdPdu
+         ,  lptrLengthPdu
+      );
+      leRetValReqBuf = BUFREQ_OK;
+   }
+   else{
+         (void)Det_ReportError(
+               DCM_MODULE_ID
+            ,  DCM_INSTANCE_ID
+            ,  DCM_COPYRXDATA_ID
+            ,  DCM_E_INTERFACE_BUFFER_OVERFLOW
+         );
+   }
+   return leRetValReqBuf;
+}
+
+static boolean bIsIdPduTxObd(
+   PduIdType lIdPdu
+){
+   return(
+      (
+            0
+         <  LibAutosar_u16FindElementInArray(
+                  &CfgSwcServiceDcmDsld_aIdPduTxObd[0]
+               ,  CfgSwcServiceDcmDsld_u8NumIdPduTxObd
+               ,  lIdPdu
+            )
+      )
+      ?  TRUE
+      :  FALSE
+   );
 }
 #endif
 

@@ -48,7 +48,7 @@ typedef enum{ //TBD: ComM and all it's clients seem to have their own definition
 typedef struct{
    uint8                        u8IdChannelComM;
    TypeSwcApplDcmDsld_eModeComM eModeComM;
-#if(CfgSwcServiceDcm_EnableDiagAdapt != DCM_CFG_OFF)
+#if(CfgSwcServiceDcm_AdaptiveDiagnostics != CfgSwcServiceDcm_Disable)
    Dcm_DslDsd_MediumType_ten    IdMedium;
 #endif
 }TypeSwcApplDcmDsld_stChannelComM;
