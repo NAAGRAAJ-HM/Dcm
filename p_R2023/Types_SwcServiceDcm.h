@@ -25,239 +25,12 @@
 /******************************************************************************/
 /* #INCLUDES                                                                  */
 /******************************************************************************/
-#include "Rte_Dcm_Type.h"
+#include "CfgSwcServiceDcm.h"
+#include "ComStack_Cfg.h"
 
 /******************************************************************************/
 /* #DEFINES                                                                   */
 /******************************************************************************/
-#ifndef DCM_E_PENDING
-#define DCM_E_PENDING                                                        10u
-#endif
-
-#ifndef DCM_E_COMPARE_KEY_FAILED
-#define DCM_E_COMPARE_KEY_FAILED                                              11
-#endif
-
-#ifndef DCM_E_SESSION_NOT_ALLOWED
-#define DCM_E_SESSION_NOT_ALLOWED                                              4
-#endif
-
-#ifndef DCM_E_FORCE_RCRRP
-#define DCM_E_FORCE_RCRRP           12
-#endif
-
-#ifndef DCM_E_PROTOCOL_NOT_ALLOWED
-#define DCM_E_PROTOCOL_NOT_ALLOWED  5
-#endif
-
-#ifndef DCM_E_REQUEST_NOT_ACCEPTED
-#define DCM_E_REQUEST_NOT_ACCEPTED  8
-#endif
-
-#ifndef DCM_E_REQUEST_ENV_NOK
-#define DCM_E_REQUEST_ENV_NOK       9u
-#endif
-
-#ifndef DCM_E_RDBI_DATA_PENDING
-#define DCM_E_RDBI_DATA_PENDING  14
-#endif
-
-#define DCM_PRV_AR_4_0_2                    0u              /* RTE Version AR 4.0.2 */
-#define DCM_PRV_AR_4_0_2_HYBRID             1u              /* RTE Version AR 4.0.2 with some extensions from AR 4.0.3 */
-#define DCM_PRV_AR_3_2_1                    2u              /* RTE version AR 3.2.1 */
-#define DCM_PRV_AR_3_1_4                    3u              /* RTE version AR 3.1.4 */
-
-#ifndef DCM_E_GENERALREJECT
-#define DCM_E_GENERALREJECT 0x10
-#endif
-
-#ifndef DCM_E_SERVICENOTSUPPORTED
-#define DCM_E_SERVICENOTSUPPORTED 0x11
-#endif
-
-#ifndef DCM_E_SUBFUNCTIONNOTSUPPORTED
-#define DCM_E_SUBFUNCTIONNOTSUPPORTED 0x12u
-#endif
-
-#ifndef DCM_E_INCORRECTMESSAGELENGTHORINVALIDFORMAT
-#define DCM_E_INCORRECTMESSAGELENGTHORINVALIDFORMAT 0x13
-#endif
-
-#ifndef DCM_E_RESPONSETOOLONG
-#define DCM_E_RESPONSETOOLONG 0x14
-#endif
-
-#ifndef DCM_E_BUSYREPEATREQUEST
-#define DCM_E_BUSYREPEATREQUEST 0x21
-#endif
-
-#ifndef DCM_E_CONDITIONSNOTCORRECT
-#define DCM_E_CONDITIONSNOTCORRECT 0x22
-#endif
-
-#ifndef DCM_E_REQUESTSEQUENCEERROR
-#define DCM_E_REQUESTSEQUENCEERROR 0x24
-#endif
-
-#ifndef DCM_E_NORESPONSEFROMSUBNETCOMPONENT
-#define DCM_E_NORESPONSEFROMSUBNETCOMPONENT 0x25
-#endif
-
-#ifndef DCM_E_FAILUREPREVENTSEXECUTIONOFREQUESTEDACTION
-#define DCM_E_FAILUREPREVENTSEXECUTIONOFREQUESTEDACTION 0x26
-#endif
-
-#ifndef DCM_E_REQUESTOUTOFRANGE
-#define DCM_E_REQUESTOUTOFRANGE 0x31
-#endif
-
-#ifndef DCM_E_SECURITYACCESSDENIED
-#define DCM_E_SECURITYACCESSDENIED 0x33
-#endif
-
-#ifndef DCM_E_INVALIDKEY
-#define DCM_E_INVALIDKEY 0x35
-#endif
-
-#ifndef DCM_E_EXCEEDNUMBEROFATTEMPTS
-#define DCM_E_EXCEEDNUMBEROFATTEMPTS 0x36
-#endif
-
-#ifndef DCM_E_REQUIREDTIMEDELAYNOTEXPIRED
-#define DCM_E_REQUIREDTIMEDELAYNOTEXPIRED 0x37
-#endif
-
-#ifndef DCM_E_UPLOADDOWNLOADNOTACCEPTED
-#define DCM_E_UPLOADDOWNLOADNOTACCEPTED 0x70
-#endif
-
-#ifndef DCM_E_TRANSFERDATASUSPENDED
-#define DCM_E_TRANSFERDATASUSPENDED 0x71
-#endif
-
-#ifndef DCM_E_GENERALPROGRAMMINGFAILURE
-#define DCM_E_GENERALPROGRAMMINGFAILURE 0x72
-#endif
-
-#ifndef DCM_E_WRONGBLOCKSEQUENCECOUNTER
-#define DCM_E_WRONGBLOCKSEQUENCECOUNTER 0x73
-#endif
-
-#ifndef DCM_E_SUBFUNCTIONNOTSUPPORTEDINACTIVESESSION
-#define DCM_E_SUBFUNCTIONNOTSUPPORTEDINACTIVESESSION 0x7E
-#endif
-
-#ifndef DCM_E_SERVICENOTSUPPORTEDINACTIVESESSION
-#define DCM_E_SERVICENOTSUPPORTEDINACTIVESESSION 0x7F
-#endif
-
-#ifndef DCM_E_RPMTOOHIGH
-#define DCM_E_RPMTOOHIGH 0x81
-#endif
-
-#ifndef DCM_E_RPMTOOLOW
-#define DCM_E_RPMTOOLOW 0x82
-#endif
-
-#ifndef DCM_E_ENGINEISRUNNING
-#define DCM_E_ENGINEISRUNNING 0x83
-#endif
-
-#ifndef DCM_E_ENGINEISNOTRUNNING
-#define DCM_E_ENGINEISNOTRUNNING  0x84
-#endif
-
-#ifndef DCM_E_ENGINERUNTIMETOOLOW
-#define DCM_E_ENGINERUNTIMETOOLOW 0x85
-#endif
-
-#ifndef DCM_E_TEMPERATURETOOHIGH
-#define DCM_E_TEMPERATURETOOHIGH 0x86
-#endif
-
-#ifndef DCM_E_TEMPERATURETOOLOW
-#define DCM_E_TEMPERATURETOOLOW 0x87
-#endif
-
-#ifndef DCM_E_VEHICLESPEEDTOOHIGH
-#define DCM_E_VEHICLESPEEDTOOHIGH 0x88
-#endif
-
-#ifndef DCM_E_VEHICLESPEEDTOOLOW
-#define DCM_E_VEHICLESPEEDTOOLOW 0x89
-#endif
-
-#ifndef DCM_E_THROTTLE_PEDALTOOHIGH
-#define DCM_E_THROTTLE_PEDALTOOHIGH 0x8A
-#endif
-
-#ifndef DCM_E_THROTTLE_PEDALTOOLOW
-#define DCM_E_THROTTLE_PEDALTOOLOW 0x8B
-#endif
-
-#ifndef DCM_E_TRANSMISSIONRANGENOTINNEUTRAL
-#define DCM_E_TRANSMISSIONRANGENOTINNEUTRAL 0x8C
-#endif
-
-#ifndef DCM_E_TRANSMISSIONRANGENOTINGEAR
-#define DCM_E_TRANSMISSIONRANGENOTINGEAR 0x8D
-#endif
-
-#ifndef DCM_E_BRAKESWITCH_NOTCLOSED
-#define DCM_E_BRAKESWITCH_NOTCLOSED 0x8F
-#endif
-
-#ifndef DCM_E_SHIFTERLEVERNOTINPARK
-#define DCM_E_SHIFTERLEVERNOTINPARK 0x90
-#endif
-
-#ifndef DCM_E_TORQUECONVERTERCLUTCHLOCKED
-#define DCM_E_TORQUECONVERTERCLUTCHLOCKED 0x91
-#endif
-
-#ifndef DCM_E_VOLTAGETOOHIGH
-#define DCM_E_VOLTAGETOOHIGH 0x92
-#endif
-
-#ifndef DCM_E_VOLTAGETOOLOW
-#define DCM_E_VOLTAGETOOLOW 0x93
-#endif
-
-#ifndef DCM_INITIAL
-#define DCM_INITIAL 0x00    /* Indicates the initial call to the operation */
-#endif
-
-#ifndef DCM_PENDING
-#define DCM_PENDING 0x01    /* Indicates that a pending return has been done on the previous call of the operation */
-#endif
-
-#ifndef DCM_CANCEL
-#define DCM_CANCEL  0x02    /* Indicates that the DCM requests to cancel the pending operation */
-#endif
-
-#ifndef DCM_FORCE_RCRRP_OK
-#define DCM_FORCE_RCRRP_OK  0x03    /* Confirm a response pending transmission */
-#endif
-
-
-#ifndef DCM_CHECKDATA
-#define DCM_CHECKDATA 0x04
-#endif
-
-#ifndef DCM_PROCESSSERVICE
-#define DCM_PROCESSSERVICE  0x05
-#endif
-
-
-#ifndef     DCM_AR_4_0_2
-#define     DCM_AR_4_0_2                DCM_PRV_AR_4_0_2
-#endif
-#ifndef     DCM_AR_4_0_2_HYBRID
-#define     DCM_AR_4_0_2_HYBRID         DCM_PRV_AR_4_0_2_HYBRID
-#endif
-#ifndef     DCM_AR_3_2_1
-#define     DCM_AR_3_2_1                DCM_PRV_AR_3_2_1
-#endif
 
 /******************************************************************************/
 /* MACROS                                                                     */
@@ -266,6 +39,139 @@
 /******************************************************************************/
 /* TYPEDEFS                                                                   */
 /******************************************************************************/
+typedef struct{
+         uint8                                                u8NumProtocol;
+         PduIdType                                            tNumIdPduTx;
+         PduIdType                                            tIdPduTxType2Roe;
+         PduIdType                                            tIdPduTxType2Rdpi;
+         uint16                                               u16AddressTest;
+         uint8                                                u8IndexChannel;
+         uint8                                                u8IndexConnection;
+         uint8                                                u8NumberPduTx;
+}Type_SwcServiceDcmDsld_stConnection;
+
+typedef uint8                                                 Type_SwcServiceDcmDsld_tMessageItem;
+typedef Type_SwcServiceDcmDsld_tMessageItem*                  Type_SwcServiceDcmDsld_tMessage;
+typedef uint32                                                Type_SwcServiceDcmDsld_tMessageLength;
+
+typedef struct{
+         Type_SwcServiceDcmDsld_tMessage                      tMessage;
+         Type_SwcServiceDcmDsld_tMessage                      tMessageMainRx;
+#if(CfgSwcServiceDcm_QueueBuffer != CfgSwcServiceDcm_Disable)
+         Type_SwcServiceDcmDsld_tMessage                      tMessageReserveRx;
+#endif
+#if(CfgSwcServiceDcm_Roe != CfgSwcServiceDcm_Disable)
+   const Type_SwcServiceDcmDsld_stInfoProtocolExtended*       ptrcstInfoProtocolExtendedRoe;
+#endif
+#if(CfgSwcServiceDcm_Rdpi != CfgSwcServiceDcm_Disable)
+   const Type_SwcServiceDcmDsld_stInfoProtocolExtended*       ptrcstInfoProtocolExtendedRdpi;
+#endif
+         Type_SwcServiceDcmDsld_tMessageLength                tLengthMessageTx;
+         Type_SwcServiceDcmDsld_tMessageLength                tLengthMessageRx;
+#if(CfgSwcServiceDcm_BufferPaged != CfgSwcServiceDcm_Disable)
+         Type_SwcServiceDcmDsld_tMessageLength                maxResponseLength_u32;
+#endif
+         uint32                                               u32DataTimerP2Adjust;
+         uint32                                               u32DataTimerP2AdjustStart;
+         uint8                                                u8IdProtocol;
+         uint8                                                u8IdTableSid;
+         uint8                                                u8LevelPreemption;
+         uint8                                                u8IndexInfoPdu;
+#if(CfgSwcServiceDcm_Kwp != CfgSwcServiceDcm_Disable)
+         uint8                                                u8IndexTimingsLimit;
+         uint8                                                u8IndexTimings;
+#endif
+#if(CfgSwcServiceDcm_PBcfg != CfgSwcServiceDcm_Disable)
+         uint8                                                u8MaskConfig;
+#endif
+         uint8                                                u8IdClientDem;
+         boolean                                              bNrc21;
+         boolean                                              bBootResponsePending;
+}Type_SwcServiceDcmDsld_stProtocol;
+
+typedef uint8 Type_SwcServiceDcmDsld_tStatusOperationService;
+
+typedef struct{
+         uint8                                                u8TypeRequest;
+         boolean                                              bResponsePositiveSuppress;
+         uint8                                                u8RequestSource;
+}Type_SwcServiceDcmDsld_stInfoAddMessage;
+
+typedef uint8 Type_SwcServiceDcmDsld_tIdContext;
+
+typedef struct{
+         Type_SwcServiceDcmDsld_tMessage                      tMessageResponse;
+         Type_SwcServiceDcmDsld_tMessage                      tMessageRequest;
+         Type_SwcServiceDcmDsld_stInfoAddMessage              stInfoAddMessage;
+         Type_SwcServiceDcmDsld_tMessageLength                tMessageLengthResponse;
+         Type_SwcServiceDcmDsld_tMessageLength                tMessageLengthRequest;
+         Type_SwcServiceDcmDsld_tMessageLength                tMaxMessageLengthResponse;
+         Type_SwcServiceDcmDsld_tIdContext                    tIdContext;
+         PduIdType                                            tIdPduRxDcm;
+}Type_SwcServiceDcmDsld_stContextMessage;
+
+typedef uint8 Type_SwcServiceDcmDsld_tCodeResponseNegative;
+typedef boolean (*Type_SwcServiceDcmDsld_fptrRuleMode)(uint8* ptru8CodeResponseNegative);
+
+typedef struct{
+         uint32                                               u32AllowedSession;
+         uint32                                               u32AllowedSecurity;
+#if((CfgSwcServiceDcmDsld_ModeRuleSubService!=CfgSwcServiceDcm_Disable))
+         Type_SwcServiceDcmDsld_fptrRuleMode                  fptrRuleMode;
+#endif
+         Std_ReturnType (*adrUserSubServiceModeRule_pfct)(
+               Type_SwcServiceDcmDsld_tCodeResponseNegative*  ptrtCodeResponseNegative
+            ,  uint8                                          u8IdService
+            ,  uint8                                          u8IdSubService
+         );
+         Std_ReturnType (*SubFunc_fp)(
+               Type_SwcServiceDcmDsld_tStatusOperationService tStatusOperationService
+            ,  Type_SwcServiceDcmDsld_stContextMessage*       ptrstContextMessage
+            ,  Type_SwcServiceDcmDsld_tCodeResponseNegative*  ptrtCodeResponseNegative
+         );
+         uint8                                                u8IdSubService;
+         boolean                                              bIsSubServiceRdtcDsp;
+}Type_SwcServiceDcmDsld_stSubService;
+
+typedef uint8 Type_SwcServiceDcmDsld_tStatusConfirmation;
+
+typedef void (*Type_SwcServiceDcmDsld_fptrApiConfirmation)(
+               Type_SwcServiceDcmDsld_tIdContext              tIdContext
+            ,  PduIdType                                      tIdPduRx
+            ,  uint16                                         u16AddressSource
+            ,  Type_SwcServiceDcmDsld_tStatusConfirmation     tStatusConfirmation
+);
+
+typedef struct{
+         uint32                                               u32AllowedSession;
+         uint32                                               u32AllowedSecurity;
+#if((CfgSwcServiceDcmDsld_ModeRuleService != CfgSwcServiceDcm_Disable))
+         Type_SwcServiceDcmDsld_fptrRuleMode                  fptrRuleMode;
+#endif
+         Std_ReturnType (*fptrHandlerService)(
+               Type_SwcServiceDcmDsld_tStatusOperationService tStatusOperationService
+            ,  Type_SwcServiceDcmDsld_stContextMessage*       ptrstContextMessage
+            ,  Type_SwcServiceDcmDsld_tCodeResponseNegative*  ptrtCodeResponseNegative
+         );
+   void (*fptrServiceInit)(void);
+         uint8                                                u8IdService;
+         boolean                                              bIsExistSubService;
+         boolean                                              bIsServiceLocator;
+   const Type_SwcServiceDcmDsld_stSubService*                 ptrstTableSubService;
+         uint8                                                u8NumberSubService;
+         Std_ReturnType (*adrUserServiceModeRule_pfct)(
+               Type_SwcServiceDcmDsld_tCodeResponseNegative*  ptrtCodeResponseNegative
+            ,  uint8                                          u8IdService
+         );
+         Type_SwcServiceDcmDsld_fptrApiConfirmation           fptrServiceConfirmation;
+}Type_SwcServiceDcmDsld_stService;
+
+typedef struct{
+   const Type_SwcServiceDcmDsld_stService*                    ptrcstTableService;
+         uint8                                                u8NumberService;
+         uint8                                                u8CodeResponseNegativeSessionNotSupported;
+         uint8                                                u8IndexCDtc;
+}Type_SwcServiceDcmDsld_stTableSid;
 
 /******************************************************************************/
 /* CONSTS                                                                     */
@@ -287,4 +193,3 @@
 /* EOF                                                                        */
 /******************************************************************************/
 #endif
-

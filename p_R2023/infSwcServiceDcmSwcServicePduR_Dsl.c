@@ -25,10 +25,10 @@
 /******************************************************************************/
 #include "Std_Types.h"
 #include "CfgSwcServiceDcm.h"
-#include "ComStack_Cfg.h"   //TBD: Move header
 #include "ComStack_Types.h" //TBD: Move header
 #include "infSwcServiceDcmSwcServicePduR.h"
 
+#include "infSwcServiceDcmSwcServiceEcuM.h"
 #include "infSwcServiceDetSwcServiceDcm.h"
 
 /******************************************************************************/
@@ -138,10 +138,27 @@ static boolean bIsIdPduRxObd(
    );
 }
 
+const uint8*                                SwcServiceDcmDsld_pcu8TableRx;
+const Type_SwcServiceDcmDsld_stProtocol*    SwcServiceDcmDsld_pcstProtocol;
+      Type_SwcServiceDcmDsld_stInfoPduRxObd SwcServiceDcmDsld_astPduRxObd[CfgSwcServiceDcmDsld_NumIdPduRx];
 static void vGetLengthPduRxObd(
       PduIdType      lIdPdu
    ,  PduLengthType* lptrLengthPdu
 ){
+   uint8 u8IndexProtocol;
+   if (FALSE !=  SwcServiceDcmDsld_astPduRxObd[lIdPdu].bDataRxCopy){
+      *(lptrLengthPdu) = SwcServiceDcmDsld_astPduRxObd[lIdPdu].stInfoPduRx.SduLength;
+   }
+   else{
+      u8IndexProtocol  = SwcServiceDcmDsld_ptrcstTableConnection[SwcServiceDcmDsld_pcu8TableRx[lIdPdu]].u8NumProtocol;
+      *(lptrLengthPdu) = (PduLengthType)(SwcServiceDcmDsld_pcstProtocol[u8IndexProtocol].tLengthMessageRx);
+   }
+}
+
+static boolean bIsLowPriorityRequestReceived(PduIdType lIdPdu){
+   return(
+      0
+   );
 }
 
 static BufReq_ReturnType CopyRxDataObd(
@@ -161,12 +178,22 @@ static BufReq_ReturnType CopyRxDataObd(
       leRetValReqBuf = BUFREQ_OK;
    }
    else{
+      if(
+            (
+                  lptrInfoPdu->SduLength
+               <= SwcServiceDcmDsld_astPduRxObd[lIdPdu].stInfoPduRx.SduLength
+            )
+         || (bIsLowPriorityRequestReceived(lIdPdu))
+      ){
+      }
+      else{
          (void)Det_ReportError(
                DCM_MODULE_ID
             ,  DCM_INSTANCE_ID
             ,  DCM_COPYRXDATA_ID
             ,  DCM_E_INTERFACE_BUFFER_OVERFLOW
          );
+      }
    }
    return leRetValReqBuf;
 }
@@ -203,21 +230,31 @@ FUNC(BufReq_ReturnType, SWCSERVICEDCM_CODE) infSwcServiceDcmSwcServicePduR_CopyR
             ,  lptrLengthPdu
          )
    ){
-#if(CfgSwcServiceDcm_EnableSharingPduRx != DCM_CFG_OFF)
+#if(CfgSwcServiceDcm_PduRxSharing != CfgSwcServiceDcm_Disable)
       if(
             (NULL_PTR != lptrInfoPdu->SduDataPtr)
          && (FALSE    != Dcm_isObdRequestReceived_b)
       ){
          if(
                FALSE
-            != Dcm_Prv_isRxPduShared(
+            != bIsPduRxShared(
                      lIdPdu
                   ,  lptrInfoPdu->SduDataPtr[0]
                )
          ){
-            lIdPdu = (CfgSwcServiceDcmDsld_NnmPduIdRx-1u);
+            lIdPdu = (CfgSwcServiceDcmDsld_NumIdPduRx-1u);
          }
       }
+#endif
+#if(CfgSwcServiceDcm_EnableProcessingParallel != CfgSwcServiceDcm_Disable)
+      if(bIsIdPduRxObd(lIdPdu)){
+         leRetValReqBuf = CopyRxDataObd(
+               lIdPdu
+            ,  lptrInfoPdu
+            ,  lptrLengthPdu
+         );
+      }
+      else
 #endif
       {
          if(lptrInfoPdu->SduLength == 0u){

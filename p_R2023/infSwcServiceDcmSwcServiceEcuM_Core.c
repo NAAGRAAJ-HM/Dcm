@@ -25,9 +25,8 @@
 /******************************************************************************/
 #include "Std_Types.h"
 
-#include "infSwcServiceDcmSwcServiceEcuM.h" //TBD: Move to include section
-
-//#include "ComStack_Cfg.h"
+#include "infSwcServiceDcmSwcServiceEcuM.h"
+#include "PBcfgSwcServiceDcm.h"
 
 /******************************************************************************/
 /* #DEFINES                                                                   */
@@ -52,6 +51,7 @@
 /******************************************************************************/
 /* OBJECTS                                                                    */
 /******************************************************************************/
+const Type_SwcServiceDcmDsld_stConnection* SwcServiceDcmDsld_ptrcstTableConnection;
 
 /******************************************************************************/
 /* FUNCTIONS                                                                  */
@@ -64,6 +64,7 @@ FUNC(void, SWCSERVICEDCM_CODE) infSwcServiceDcmSwcServiceEcuM_vInitFunction(
 #else
    (void)ConfigPtr;
 #endif
+   SwcServiceDcmDsld_ptrcstTableConnection     = CfgSwcServiceDcmDsld_cst.ptr_conntable_pcs;
 }
 
 /******************************************************************************/

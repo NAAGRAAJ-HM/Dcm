@@ -27,6 +27,7 @@
 /******************************************************************************/
 #include "CompilerCfg_SwcServiceDcm.h" //TBD: Move to SwcApplDcm
 #include "CfgSwcServiceDcm.h"
+#include "Types_SwcServiceDcm.h"
 
 /******************************************************************************/
 /* #DEFINES                                                                   */

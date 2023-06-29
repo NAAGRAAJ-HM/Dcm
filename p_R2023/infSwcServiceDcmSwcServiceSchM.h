@@ -26,6 +26,8 @@
 /* #INCLUDES                                                                  */
 /******************************************************************************/
 #include "CompilerCfg_SwcServiceDcm.h"
+#include "CfgSwcServiceDcm.h"
+#include "Types_SwcServiceDcm.h"
 
 /******************************************************************************/
 /* #DEFINES                                                                   */

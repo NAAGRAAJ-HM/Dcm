@@ -27,6 +27,7 @@
 /******************************************************************************/
 #include "CompilerCfg_SwcServiceDcm.h"
 #include "CfgSwcServiceDcm.h"
+#include "Types_SwcServiceDcm.h"
 
 /******************************************************************************/
 /* #DEFINES                                                                   */
@@ -39,11 +40,11 @@
 /******************************************************************************/
 /* TYPEDEFS                                                                   */
 /******************************************************************************/
-#if(CfgSwcServiceDcm_EnableProcessingParallel != CfgSwcServiceDcm_Disable)
-typedef uint8                               Type_SwcServiceDcmDsld_ItemMessage;
-typedef Type_SwcServiceDcmDsld_ItemMessage* Type_SwcServiceDcmDsld_Message;
-typedef uint32                              Type_SwcServiceDcmDsld_LengthMessage;
-#endif
+typedef struct{
+   PduInfoType stInfoPduRx;
+   uint8       u8IdService;
+   boolean     bDataRxCopy;
+}Type_SwcServiceDcmDsld_stInfoPduRxObd;
 
 /******************************************************************************/
 /* CONSTS                                                                     */
@@ -57,7 +58,7 @@ typedef uint32                              Type_SwcServiceDcmDsld_LengthMessage
 /* OBJECTS                                                                    */
 /******************************************************************************/
 #if(CfgSwcServiceDcm_EnableProcessingParallel != CfgSwcServiceDcm_Disable)
-extern Type_SwcServiceDcmDsld_stInfoPduRxObd Dcm_DslOBDRxPduArray_ast[CfgSwcServiceDcmDsld_NumIdPduRx];
+extern Type_SwcServiceDcmDsld_stInfoPduRxObd SwcServiceDcmDsld_astPduRxObd[CfgSwcServiceDcmDsld_NumIdPduRx];
 #endif
 
 /******************************************************************************/

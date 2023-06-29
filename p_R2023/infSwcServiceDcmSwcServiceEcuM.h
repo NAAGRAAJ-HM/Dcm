@@ -26,6 +26,8 @@
 /* #INCLUDES                                                                  */
 /******************************************************************************/
 #include "CompilerCfg_SwcServiceDcm.h"
+#include "CfgSwcServiceDcm.h"
+#include "Types_SwcServiceDcm.h"
 
 /******************************************************************************/
 /* #DEFINES                                                                   */
@@ -45,6 +47,7 @@ typedef struct{
 /******************************************************************************/
 /* CONSTS                                                                     */
 /******************************************************************************/
+extern const Type_SwcServiceDcmDsld_stConnection* SwcServiceDcmDsld_ptrcstTableConnection;
 
 /******************************************************************************/
 /* PARAMS                                                                     */
