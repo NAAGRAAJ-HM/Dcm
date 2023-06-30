@@ -59,7 +59,7 @@ const Type_SwcServiceDcmDsld_stConnection* SwcServiceDcmDsld_ptrcstTableConnecti
 FUNC(void, SWCSERVICEDCM_CODE) infSwcServiceDcmSwcServiceEcuM_vInitFunction(
    const Dcm_ConfigType* ConfigPtr
 ){
-#if(CfgSwcServiceDcm_PBcfg != CfgSwcServiceDcm_Disable)
+#if(CfgSwcServiceDcm_fPBcfg != CfgSwcServiceDcm_dbDisable)
    Dcm_ActiveConfigSet_Ptr = ConfigPtr;
 #else
    (void)ConfigPtr;

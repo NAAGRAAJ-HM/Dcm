@@ -32,6 +32,8 @@
 /******************************************************************************/
 /* #DEFINES                                                                   */
 /******************************************************************************/
+#define SwcServiceDcmDsld_eContextObd                                      TRUE
+#define SwcServiceDcmDsld_eContextUds                                      FALSE
 
 /******************************************************************************/
 /* MACROS                                                                     */
@@ -41,9 +43,9 @@
 /* TYPEDEFS                                                                   */
 /******************************************************************************/
 typedef struct{
-   PduInfoType stInfoPduRx;
+   PduInfoType stInfoPdu;
    uint8       u8IdService;
-   boolean     bDataRxCopy;
+   boolean     bPduCopy;
 }Type_SwcServiceDcmDsld_stInfoPduRxObd;
 
 /******************************************************************************/
@@ -57,27 +59,27 @@ typedef struct{
 /******************************************************************************/
 /* OBJECTS                                                                    */
 /******************************************************************************/
-#if(CfgSwcServiceDcm_EnableProcessingParallel != CfgSwcServiceDcm_Disable)
+#if(CfgSwcServiceDcm_fProcessingParallel != CfgSwcServiceDcm_dbDisable)
 extern Type_SwcServiceDcmDsld_stInfoPduRxObd SwcServiceDcmDsld_astPduRxObd[CfgSwcServiceDcmDsld_NumIdPduRx];
 #endif
 
 /******************************************************************************/
 /* FUNCTIONS                                                                  */
 /******************************************************************************/
-extern FUNC(BufReq_ReturnType, SWCSERVICEDCM_CODE) infSwcServiceDcmSwcServicePduR_CopyRxData(
+extern FUNC(BufReq_ReturnType, SWCSERVICEDCM_CODE) infSwcServiceDcmSwcServicePduR_eCopyPduRx(
             PduIdType      id
    ,  const PduInfoType*   PduInfoPtr
    ,        PduLengthType* bufferSizePtr
 );
 
-extern FUNC(BufReq_ReturnType, SWCSERVICEDCM_CODE) infSwcServiceDcmSwcServicePduR_CopyTxData(
+extern FUNC(BufReq_ReturnType, SWCSERVICEDCM_CODE) infSwcServiceDcmSwcServicePduR_eCopyPduTx(
             PduIdType      id
    ,  const PduInfoType*   info
    ,        RetryInfoType* retry
    ,        PduLengthType* availableDataPtr
 );
 
-extern FUNC(BufReq_ReturnType, SWCSERVICEDCM_CODE) infSwcServiceDcmSwcServicePduR_StartOfReception(
+extern FUNC(BufReq_ReturnType, SWCSERVICEDCM_CODE) infSwcServiceDcmSwcServicePduR_eStartReception(
             PduIdType      id
    ,  const PduInfoType*   info
    ,        PduLengthType  TpSduLength

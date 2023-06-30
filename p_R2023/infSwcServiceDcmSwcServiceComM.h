@@ -49,7 +49,7 @@ typedef enum{ //TBD: ComM and all it's clients seem to have their own definition
 typedef struct{
    uint8                        u8IdChannelComM;
    TypeSwcApplDcmDsld_eModeComM eModeComM;
-#if(CfgSwcServiceDcm_AdaptiveDiagnostics != CfgSwcServiceDcm_Disable)
+#if(CfgSwcServiceDcm_fAdaptiveDiagnostics != CfgSwcServiceDcm_dbDisable)
    Dcm_DslDsd_MediumType_ten    IdMedium;
 #endif
 }TypeSwcApplDcmDsld_stChannelComM;
@@ -65,6 +65,7 @@ typedef struct{
 /******************************************************************************/
 /* OBJECTS                                                                    */
 /******************************************************************************/
+extern TypeSwcApplDcmDsld_stChannelComM SwcApplDcmDsld_ChannelComM[CfgSwcServiceDcmDsld_NumChannelComM];
 
 /******************************************************************************/
 /* FUNCTIONS                                                                  */

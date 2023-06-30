@@ -27,6 +27,7 @@
 /******************************************************************************/
 #include "CfgSwcServiceDcm.h"
 #include "ComStack_Cfg.h"
+#include "ComStack_Types.h"
 
 /******************************************************************************/
 /* #DEFINES                                                                   */
@@ -57,18 +58,18 @@ typedef uint32                                                Type_SwcServiceDcm
 typedef struct{
          Type_SwcServiceDcmDsld_tMessage                      tMessage;
          Type_SwcServiceDcmDsld_tMessage                      tMessageMainRx;
-#if(CfgSwcServiceDcm_QueueBuffer != CfgSwcServiceDcm_Disable)
+#if(CfgSwcServiceDcm_fQueueBuffer != CfgSwcServiceDcm_dbDisable)
          Type_SwcServiceDcmDsld_tMessage                      tMessageReserveRx;
 #endif
-#if(CfgSwcServiceDcm_Roe != CfgSwcServiceDcm_Disable)
+#if(CfgSwcServiceDcm_fRoe != CfgSwcServiceDcm_dbDisable)
    const Type_SwcServiceDcmDsld_stInfoProtocolExtended*       ptrcstInfoProtocolExtendedRoe;
 #endif
-#if(CfgSwcServiceDcm_Rdpi != CfgSwcServiceDcm_Disable)
+#if(CfgSwcServiceDcm_fRdpi != CfgSwcServiceDcm_dbDisable)
    const Type_SwcServiceDcmDsld_stInfoProtocolExtended*       ptrcstInfoProtocolExtendedRdpi;
 #endif
          Type_SwcServiceDcmDsld_tMessageLength                tLengthMessageTx;
          Type_SwcServiceDcmDsld_tMessageLength                tLengthMessageRx;
-#if(CfgSwcServiceDcm_BufferPaged != CfgSwcServiceDcm_Disable)
+#if(CfgSwcServiceDcm_fPagedBuffer != CfgSwcServiceDcm_dbDisable)
          Type_SwcServiceDcmDsld_tMessageLength                maxResponseLength_u32;
 #endif
          uint32                                               u32DataTimerP2Adjust;
@@ -77,11 +78,11 @@ typedef struct{
          uint8                                                u8IdTableSid;
          uint8                                                u8LevelPreemption;
          uint8                                                u8IndexInfoPdu;
-#if(CfgSwcServiceDcm_Kwp != CfgSwcServiceDcm_Disable)
+#if(CfgSwcServiceDcm_fKwp != CfgSwcServiceDcm_dbDisable)
          uint8                                                u8IndexTimingsLimit;
          uint8                                                u8IndexTimings;
 #endif
-#if(CfgSwcServiceDcm_PBcfg != CfgSwcServiceDcm_Disable)
+#if(CfgSwcServiceDcm_fPBcfg != CfgSwcServiceDcm_dbDisable)
          uint8                                                u8MaskConfig;
 #endif
          uint8                                                u8IdClientDem;
@@ -116,7 +117,7 @@ typedef boolean (*Type_SwcServiceDcmDsld_fptrRuleMode)(uint8* ptru8CodeResponseN
 typedef struct{
          uint32                                               u32AllowedSession;
          uint32                                               u32AllowedSecurity;
-#if((CfgSwcServiceDcmDsld_ModeRuleSubService!=CfgSwcServiceDcm_Disable))
+#if((CfgSwcServiceDcmDsld_fModeRuleSubService!=CfgSwcServiceDcm_dbDisable))
          Type_SwcServiceDcmDsld_fptrRuleMode                  fptrRuleMode;
 #endif
          Std_ReturnType (*adrUserSubServiceModeRule_pfct)(
@@ -145,7 +146,7 @@ typedef void (*Type_SwcServiceDcmDsld_fptrApiConfirmation)(
 typedef struct{
          uint32                                               u32AllowedSession;
          uint32                                               u32AllowedSecurity;
-#if((CfgSwcServiceDcmDsld_ModeRuleService != CfgSwcServiceDcm_Disable))
+#if((CfgSwcServiceDcmDsld_fModeRuleService != CfgSwcServiceDcm_dbDisable))
          Type_SwcServiceDcmDsld_fptrRuleMode                  fptrRuleMode;
 #endif
          Std_ReturnType (*fptrHandlerService)(
@@ -172,6 +173,16 @@ typedef struct{
          uint8                                                u8CodeResponseNegativeSessionNotSupported;
          uint8                                                u8IndexCDtc;
 }Type_SwcServiceDcmDsld_stTableSid;
+
+typedef struct{
+         PduInfoType                                          stInfoPdu;
+#if(CfgSwcServiceDcm_fQueueBuffer != CfgSwcServiceDcm_dbDisable)
+         Type_SwcServiceDcmDsld_tMessage                      tMessage;
+#endif
+         uint8                                                u8IdService;
+         boolean                                              bPresentTester;
+         boolean                                              bPduCopy;
+}Type_SwcServiceDcmDsld_stPduRxElement;
 
 /******************************************************************************/
 /* CONSTS                                                                     */
