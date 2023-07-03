@@ -70,9 +70,10 @@ extern TypeSwcApplDcmDsld_stChannelComM SwcApplDcmDsld_ChannelComM[CfgSwcService
 /******************************************************************************/
 /* FUNCTIONS                                                                  */
 /******************************************************************************/
-extern FUNC(void, SWCSERVICEDCM_CODE) infSwcServiceDcmSwcServiceComM_vFullComModeEntered   (uint8 NetworkId);
-extern FUNC(void, SWCSERVICEDCM_CODE) infSwcServiceDcmSwcServiceComM_vNoComModeEntered     (uint8 NetworkId);
-extern FUNC(void, SWCSERVICEDCM_CODE) infSwcServiceDcmSwcServiceComM_vSilentComModeEntered (uint8 NetworkId);
+extern FUNC(void,    SWCSERVICEDCM_CODE) infSwcServiceDcmSwcServiceComM_vFullComModeEntered   (uint8 NetworkId);
+extern FUNC(void,    SWCSERVICEDCM_CODE) infSwcServiceDcmSwcServiceComM_vNoComModeEntered     (uint8 NetworkId);
+extern FUNC(void,    SWCSERVICEDCM_CODE) infSwcServiceDcmSwcServiceComM_vSilentComModeEntered (uint8 NetworkId);
+extern FUNC(boolean, SWCSERVICEDCM_CODE) SwcServiceDcmDsld_bIsModeComMChannelFull             (uint8 lu8IndexChannel);
 
 /******************************************************************************/
 /* EOF                                                                        */

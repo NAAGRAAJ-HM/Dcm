@@ -1,5 +1,5 @@
 /******************************************************************************/
-/* File   : infSwcServiceDcmSwcServiceComM_Dsl.c                              */
+/* File   : infSwcServiceDcmSwcServicePduR_eCopyPduTx.c                       */
 /*                                                                            */
 /* Author : Raajnaag HULIYAPURADA MATA                                        */
 /*                                                                            */
@@ -24,10 +24,17 @@
 /* #INCLUDES                                                                  */
 /******************************************************************************/
 #include "Std_Types.h"
-
 #include "CfgSwcServiceDcm.h"
+#include "ComStack_Types.h"
+#include "infSwcServiceDcmSwcServicePduR.h"
+
 #include "infSwcServiceDcmSwcServiceComM.h"
-#include "CfgSwcServiceComM.h"
+#include "infSwcServiceDcmSwcServiceEcuM.h"
+#include "infSwcServiceDetSwcServiceDcm.h"
+
+#if(CfgSwcServiceDcm_fProcessingParallel != CfgSwcServiceDcm_dbDisable)
+#include "LibAutosar_FindElementInArray.h"
+#endif
 
 /******************************************************************************/
 /* #DEFINES                                                                   */
@@ -41,6 +48,7 @@
 /* TYPEDEFS                                                                   */
 /******************************************************************************/
 
+
 /******************************************************************************/
 /* CONSTS                                                                     */
 /******************************************************************************/
@@ -52,69 +60,43 @@
 /******************************************************************************/
 /* OBJECTS                                                                    */
 /******************************************************************************/
-TypeSwcApplDcmDsld_stChannelComM SwcApplDcmDsld_ChannelComM[CfgSwcServiceDcmDsld_NumChannelComM] = {
-   {ComMConf_ComMChannel_ComMChannel_Can_Network_0_Channel, SwcApplDcmDsld_eModeComM_None}
-};
 
 /******************************************************************************/
 /* FUNCTIONS                                                                  */
 /******************************************************************************/
-static void vSetComMState(
-      uint8                        lu8IdNetwork
-   ,  TypeSwcApplDcmDsld_eModeComM leModeComM
+#if(CfgSwcServiceDcm_fProcessingParallel != CfgSwcServiceDcm_dbDisable)
+static boolean lbIsIdPduTxObd(
+   PduIdType ltIdPdu
 ){
-   uint8 u8IndexNetwork;
-   for(
-      u8IndexNetwork = 0;
-      u8IndexNetwork < CfgSwcServiceDcmDsld_NumChannelComM;
-      u8IndexNetwork ++
-   ){
-      if(SwcApplDcmDsld_ChannelComM[u8IndexNetwork].u8IdChannelComM == lu8IdNetwork){
-         break;
-      }
-   }
-   if(u8IndexNetwork < CfgSwcServiceDcmDsld_NumChannelComM){
-      SwcApplDcmDsld_ChannelComM[u8IndexNetwork].eModeComM = leModeComM;
-   }
-}
-
-FUNC(void, SWCSERVICEDCM_CODE) infSwcServiceDcmSwcServiceComM_vFullComModeEntered(
-   uint8 lu8IdNetwork
-){
-   vSetComMState(
-         lu8IdNetwork
-      ,  SwcApplDcmDsld_eModeComM_Full
-   );
-}
-
-FUNC(void, SWCSERVICEDCM_CODE) infSwcServiceDcmSwcServiceComM_vNoComModeEntered(
-   uint8 lu8IdNetwork
-){
-   vSetComMState(
-         lu8IdNetwork
-      ,  SwcApplDcmDsld_eModeComM_None
-   );
-}
-
-
-FUNC(void, SWCSERVICEDCM_CODE) infSwcServiceDcmSwcServiceComM_vSilentComModeEntered(
-   uint8 lu8IdNetwork
-){
-   vSetComMState(
-         lu8IdNetwork
-      ,  SwcApplDcmDsld_eModeComM_Silent
-   );
-}
-
-FUNC(boolean, SWCSERVICEDCM_CODE) SwcServiceDcmDsld_bIsModeComMChannelFull(uint8 lu8IndexChannel){
    return(
       (
-            SwcApplDcmDsld_eModeComM_Full
-         == SwcApplDcmDsld_ChannelComM[lu8IndexChannel].eModeComM
+            0
       )
       ?  TRUE
       :  FALSE
    );
+}
+#endif
+
+FUNC(BufReq_ReturnType, SWCSERVICEDCM_CODE) infSwcServiceDcmSwcServicePduR_eCopyPduTx(
+            PduIdType      ltIdPdu
+   ,  const PduInfoType*   lptrcstInfoPdu
+   ,        RetryInfoType* retry
+   ,        PduLengthType* availableDataPtr
+){
+   BufReq_ReturnType leValueReturnStatusRequestBuffer = BUFREQ_E_NOT_OK;
+   UNUSED(lptrcstInfoPdu);
+   UNUSED(retry);
+   UNUSED(availableDataPtr);
+#if(CfgSwcServiceDcm_fProcessingParallel != CfgSwcServiceDcm_dbDisable)
+   boolean lbContext = lbIsIdPduTxObd(ltIdPdu)
+                     ?  SwcServiceDcmDsld_eContextObd
+                     :  SwcServiceDcmDsld_eContextUds
+                     ;
+#else
+   UNUSED(ltIdPdu);
+#endif
+   return leValueReturnStatusRequestBuffer;
 }
 
 /******************************************************************************/
