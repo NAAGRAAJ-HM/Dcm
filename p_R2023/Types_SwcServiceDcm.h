@@ -15,7 +15,7 @@
 /* certain responsibilities, if you distribute copies of the software, or if  */
 /* you modify it: responsibilities to respect the freedom of others.          */
 /*                                                                            */
-/* All rights reserved. Copyright © 1982 Raajnaag HULIYAPURADA MATA           */
+/* All rights reserved. Copyright ï¿½ 1982 Raajnaag HULIYAPURADA MATA           */
 /*                                                                            */
 /* Always refer latest software version from:                                 */
 /* git@github.com:RaajnaagHuliyapuradaMata/<module_name>.git                  */
@@ -42,9 +42,9 @@
 /******************************************************************************/
 typedef struct{
          uint8                                                u8NumProtocol;
-         PduIdType                                            tNumIdPduTx;
-         PduIdType                                            tIdPduTxType2Roe;
-         PduIdType                                            tIdPduTxType2Rdpi;
+         Type_tIdPdu                                          tNumIdPduTx;
+         Type_tIdPdu                                          tIdPduTxType2Roe;
+         Type_tIdPdu                                          tIdPduTxType2Rdpi;
          uint16                                               u16AddressTest;
          uint8                                                u8IndexChannel;
          uint8                                                u8IndexConnection;
@@ -108,7 +108,7 @@ typedef struct{
          Type_SwcServiceDcmDsld_tMessageLength                tMessageLengthRequest;
          Type_SwcServiceDcmDsld_tMessageLength                tMaxMessageLengthResponse;
          Type_SwcServiceDcmDsld_tIdContext                    tIdContext;
-         PduIdType                                            tIdPduRxDcm;
+         Type_tIdPdu                                          tIdPduRxDcm;
 }Type_SwcServiceDcmDsld_stContextMessage;
 
 typedef uint8 Type_SwcServiceDcmDsld_tCodeResponseNegative;
@@ -138,7 +138,7 @@ typedef uint8 Type_SwcServiceDcmDsld_tStatusConfirmation;
 
 typedef void (*Type_SwcServiceDcmDsld_fptrApiConfirmation)(
                Type_SwcServiceDcmDsld_tIdContext              tIdContext
-            ,  PduIdType                                      tIdPduRx
+            ,  Type_tIdPdu                                    tIdPduRx
             ,  uint16                                         u16AddressSource
             ,  Type_SwcServiceDcmDsld_tStatusConfirmation     tStatusConfirmation
 );
@@ -175,7 +175,7 @@ typedef struct{
 }Type_SwcServiceDcmDsld_stTableSid;
 
 typedef struct{
-         PduInfoType                                          stInfoPdu;
+         Type_stInfoPdu                                       stInfoPdu;
 #if(CfgSwcServiceDcm_fQueueBuffer != CfgSwcServiceDcm_dbDisable)
          Type_SwcServiceDcmDsld_tMessage                      tMessage;
 #endif

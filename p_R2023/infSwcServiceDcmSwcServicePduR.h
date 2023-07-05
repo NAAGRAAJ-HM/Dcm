@@ -43,7 +43,7 @@
 /* TYPEDEFS                                                                   */
 /******************************************************************************/
 typedef struct{
-   PduInfoType stInfoPdu;
+   Type_stInfoPdu stInfoPdu;
    uint8       u8IdService;
    boolean     bPduCopy;
 }Type_SwcServiceDcmDsld_stInfoPduRxObd;
@@ -67,32 +67,32 @@ extern Type_SwcServiceDcmDsld_stInfoPduRxObd SwcServiceDcmDsld_astPduRxObd[CfgSw
 /* FUNCTIONS                                                                  */
 /******************************************************************************/
 extern FUNC(BufReq_ReturnType, SWCSERVICEDCM_CODE) infSwcServiceDcmSwcServicePduR_eCopyPduRx(
-            PduIdType      id
-   ,  const PduInfoType*   PduInfoPtr
-   ,        PduLengthType* bufferSizePtr
+            Type_tIdPdu      id
+   ,  const Type_stInfoPdu*  PduInfoPtr
+   ,        Type_tLengthPdu* bufferSizePtr
 );
 
 extern FUNC(BufReq_ReturnType, SWCSERVICEDCM_CODE) infSwcServiceDcmSwcServicePduR_eCopyPduTx(
-            PduIdType      id
-   ,  const PduInfoType*   info
-   ,        RetryInfoType* retry
-   ,        PduLengthType* availableDataPtr
+            Type_tIdPdu      id
+   ,  const Type_stInfoPdu*  info
+   ,        RetryInfoType*   retry
+   ,        Type_tLengthPdu* availableDataPtr
 );
 
 extern FUNC(BufReq_ReturnType, SWCSERVICEDCM_CODE) infSwcServiceDcmSwcServicePduR_eStartReception(
-            PduIdType      id
-   ,  const PduInfoType*   info
-   ,        PduLengthType  TpSduLength
-   ,        PduLengthType* bufferSizePtr
+            Type_tIdPdu      id
+   ,  const Type_stInfoPdu*  info
+   ,        Type_tLengthPdu  TptLengthSdu
+   ,        Type_tLengthPdu* bufferSizePtr
 );
 
 extern FUNC(void, SWCSERVICEDCM_CODE) infSwcServiceDcmSwcServicePduR_vTpRxIndication(
-      PduIdType      id
+      Type_tIdPdu    id
    ,  Std_ReturnType result
 );
 
 extern FUNC(void, SWCSERVICEDCM_CODE) infSwcServiceDcmSwcServicePduR_vTpTxConfirmation(
-      PduIdType      id
+      Type_tIdPdu    id
    ,  Std_ReturnType result
 );
 

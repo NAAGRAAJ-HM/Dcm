@@ -65,8 +65,8 @@
 /* FUNCTIONS                                                                  */
 /******************************************************************************/
 static boolean lbCheckEnvironment_CopyPduTx(
-            PduIdType    ltIdPdu
-   ,  const PduInfoType* lptrcstInfoPdu
+            Type_tIdPdu     ltIdPdu
+   ,  const Type_stInfoPdu* lptrcstInfoPdu
 ){
    boolean lbValueReturnStatusEnvironment = FALSE;
    if(
@@ -89,8 +89,8 @@ static boolean lbCheckEnvironment_CopyPduTx(
       );
    }
    else if(
-         (lptrcstInfoPdu->SduLength  != 0u)
-      && (lptrcstInfoPdu->SduDataPtr == NULL_PTR)
+         (lptrcstInfoPdu->tLengthSdu  != 0u)
+      && (lptrcstInfoPdu->ptru8DataSdu == NULL_PTR)
    ){
       (void)Det_ReportError(
             DCM_MODULE_ID
@@ -107,14 +107,14 @@ static boolean lbCheckEnvironment_CopyPduTx(
 
 #if(CfgSwcServiceDcm_fProcessingParallel != CfgSwcServiceDcm_dbDisable)
 static boolean lbIsIdPduTxObd(
-   PduIdType ltIdPdu
+   Type_tIdPdu ltIdPdu
 ){
    return(
       (
             0
          <  LibAutosar_u16FindElementInArray(
-                  0
-               ,  0
+                 &CfgSwcServiceDcmDsld_aIdPduTxObd[0]
+               ,  CfgSwcServiceDcmDsld_u8NumIdPduTxObd
                ,  ltIdPdu
             )
       )
@@ -122,17 +122,80 @@ static boolean lbIsIdPduTxObd(
       :  FALSE
    );
 }
+
+#include "PBcfgSwcServiceDcm.h"
+#define DCM_NEGRESPONSE_INDICATOR                                          0x7Fu
+#define DCM_E_BUSYREPEATREQUEST                                            0x21u
+#define DCM_NEGATIVE_RESPONSE_LENGTH                                       0x03u
+typedef enum{
+      DCM_DSLD_POS_RESPONSE
+   ,  DCM_DSLD_NEG_RESPONSE
+}Type_SwcServiceDcmDsld_eTypeResponse;
+
+typedef struct{
+   Type_tIdPdu                          tIdPduRxActive;
+   uint8                                u8NumConnectionActive;
+   uint8                                u8IndexProtocolCurrent;
+   Type_tIdPdu                          tIdPduTxActive;
+   uint8                                u8TableServiceActive;
+   boolean                              bIsCommunicationActive;
+   uint8                                u8CounterPendingWait;
+   Type_SwcServiceDcmDsld_eTypeResponse eTypeResponse;
+   Std_ReturnType                       u8Result;
+   uint8                                u8IndexService;
+   boolean                              bIsResponseByDsd;
+   uint8                                u8IdService;
+   Type_tLengthPdu                      tLengthPduRequest;
+   Type_tIdPdu                          tIdPduTxOld;
+   Type_SwcServiceDcmDsld_tMessage      tMessageTxActive;
+   uint32                               u32TimeoutMonitor;
+}Type_SwcServiceDcmDsld_stInternalObd;
+
+Type_SwcServiceDcmDsld_stInternalObd SwcServiceDcmDsld_stInternalObd;
+Type_stInfoPdu                       SwcServiceDcmDsld_stInfoPduObd;
+static boolean bIsNrc21ResponseSetObd;
+static BufReq_ReturnType    leCopyPduTxObd(
+            Type_tIdPdu     ltIdPdu
+   ,  const Type_stInfoPdu* lptrcstInfoPdu
+){
+   BufReq_ReturnType leValueReturnStatusRequestBuffer = BUFREQ_E_NOT_OK;
+   Type_stInfoPdu    lstInfoPdu;
+   uint8             lau8Nrc[3];
+   uint8             u8IdService = 0u;
+
+   bIsNrc21ResponseSetObd = FALSE;
+   if(
+         (
+               CfgSwcServiceDcmDsld_cst.ptrctTableIdPduTx[ltIdPdu]
+            == SwcServiceDcmDsld_stInternalObd.tIdPduTxActive
+         )
+   ){
+      lptrcstInfoPdu                   = &SwcServiceDcmDsld_stInfoPduObd;
+      leValueReturnStatusRequestBuffer = BUFREQ_OK;
+   }
+   else{
+         bIsNrc21ResponseSetObd           = TRUE;
+         leValueReturnStatusRequestBuffer = BUFREQ_OK;
+         lau8Nrc[0]                       = DCM_NEGRESPONSE_INDICATOR;
+         lau8Nrc[1]                       = u8IdService;
+         lau8Nrc[2]                       = DCM_E_BUSYREPEATREQUEST;
+         lstInfoPdu.tLengthSdu            = DCM_NEGATIVE_RESPONSE_LENGTH;
+         lstInfoPdu.ptru8DataSdu          = &lau8Nrc[0];
+         lptrcstInfoPdu                   = &lstInfoPdu;
+   }
+   return leValueReturnStatusRequestBuffer;
+}
 #endif
 
 FUNC(BufReq_ReturnType, SWCSERVICEDCM_CODE) infSwcServiceDcmSwcServicePduR_eCopyPduTx(
-            PduIdType      ltIdPdu
-   ,  const PduInfoType*   lptrcstInfoPdu
-   ,        RetryInfoType* retry
-   ,        PduLengthType* availableDataPtr
+            Type_tIdPdu      ltIdPdu
+   ,  const Type_stInfoPdu*  lptrcstInfoPdu
+   ,        RetryInfoType*   retry
+   ,        Type_tLengthPdu* lptrtLengthPdu
 ){
    BufReq_ReturnType leValueReturnStatusRequestBuffer = BUFREQ_E_NOT_OK;
    UNUSED(retry);
-   UNUSED(availableDataPtr);
+   UNUSED(lptrtLengthPdu);
    if(
          FALSE
       != lbCheckEnvironment_CopyPduTx(
@@ -142,6 +205,11 @@ FUNC(BufReq_ReturnType, SWCSERVICEDCM_CODE) infSwcServiceDcmSwcServicePduR_eCopy
    ){
 #if(CfgSwcServiceDcm_fProcessingParallel != CfgSwcServiceDcm_dbDisable)
       if(lbIsIdPduTxObd(ltIdPdu)){
+         leValueReturnStatusRequestBuffer = leCopyPduTxObd(
+               ltIdPdu
+            ,  lptrcstInfoPduTemp
+         );
+         lbIsNrc21ResponseSet = bIsNrc21ResponseSetObd;
       }
       else
 #endif

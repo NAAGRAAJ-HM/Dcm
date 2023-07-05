@@ -61,15 +61,15 @@
 /* FUNCTIONS                                                                  */
 /******************************************************************************/
 FUNC(BufReq_ReturnType, SWCSERVICEDCM_CODE) infSwcServiceDcmSwcServicePduR_eStartReception(
-            PduIdType      id
-   ,  const PduInfoType*   info
-   ,        PduLengthType  TpSduLength
-   ,        PduLengthType* bufferSizePtr
+            Type_tIdPdu      id
+   ,  const Type_stInfoPdu*  info
+   ,        Type_tLengthPdu  TptLengthSdu
+   ,        Type_tLengthPdu* bufferSizePtr
 ){
    BufReq_ReturnType leValueReturnStatusRequestBuffer = BUFREQ_E_NOT_OK;
    UNUSED(id);
    UNUSED(info);
-   UNUSED(TpSduLength);
+   UNUSED(TptLengthSdu);
    UNUSED(bufferSizePtr);
    return leValueReturnStatusRequestBuffer;
 }

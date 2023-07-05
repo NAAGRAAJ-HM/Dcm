@@ -61,7 +61,7 @@
 /* FUNCTIONS                                                                  */
 /******************************************************************************/
 FUNC(void, SWCSERVICEDCM_CODE) infSwcServiceDcmSwcServicePduR_vTpRxIndication(
-      PduIdType      id
+      Type_tIdPdu    id
    ,  Std_ReturnType result
 ){
    UNUSED(id);
