@@ -28,10 +28,10 @@
 #include "ComStack_Types.h"
 #include "infSwcServiceDcmSwcServicePduR.h"
 
+#include "infSwcApplDcmSwcServiceDcm.h"
 #include "infSwcServiceDcmSwcServiceComM.h"
-#include "infSwcServiceDcmSwcServiceEcuM.h"
 #include "infSwcServiceDetSwcServiceDcm.h"
-
+#include "infSwcServiceDcmSwcServiceEcuM.h"
 #if(CfgSwcServiceDcm_fProcessingParallel != CfgSwcServiceDcm_dbDisable)
 #include "LibAutosar_FindElementInArray.h"
 #endif
@@ -40,6 +40,7 @@
 /******************************************************************************/
 /* #DEFINES                                                                   */
 /******************************************************************************/
+#define SwcServiceDcmDsld_dIdServiceValueDefault                         (0xFFu)
 #define SwcServiceDcmDsld_vMemCopy(ptrvDestination,ptrcvSource,u32NumByte) (void)LibAutosar_ptrvMemCopy((ptrvDestination),(ptrcvSource),(uint32)(u32NumByte))
 
 /******************************************************************************/
@@ -152,8 +153,8 @@ static boolean lbIsIdPduRxObd(
       (
             0
          <  LibAutosar_u16FindElementInArray(
-                  0
-               ,  0
+                  &CfgSwcServiceDcmDsld_aIdPduRxObd[0]
+               ,  CfgSwcServiceDcmDsld_u8NumIdPduRxObd
                ,  ltIdPdu
             )
       )
@@ -177,7 +178,6 @@ static void lvGetLengthPduRxObd(
    }
 }
 
-#include "infSwcApplDcmSwcServiceDcm.h"
 static void lvCopyPduRxObd(
             PduIdType      ltIdPdu
    ,  const PduInfoType*   lptrcstInfoPdu
@@ -199,7 +199,6 @@ static void lvCopyPduRxObd(
    *(lptrtLengthPdu) = SwcServiceDcmDsld_astPduRxObd[ltIdPdu].stInfoPdu.SduLength;
 }
 
-#define SwcServiceDcmDsld_dIdServiceValueDefault                         (0xFFu)
 static BufReq_ReturnType leCheckPduRxObd(
             PduIdType      ltIdPdu
    ,  const PduInfoType*   lptrcstInfoPdu
@@ -308,6 +307,7 @@ static boolean lbIsReceivedRequestValid(
    );
 }
 
+#if(CfgSwcServiceDcm_fQueueBuffer != CfgSwcServiceDcm_dbDisable)
 typedef enum{
       SwcServiceDcmDsld_eStatusQueueIdle
    ,  SwcServiceDcmDsld_eStatusQueueRunning
@@ -323,6 +323,7 @@ typedef struct{
 }Type_SwcServiceDcmDsld_stQueue;
 
 Type_SwcServiceDcmDsld_stQueue SwcServiceDcmDsld_stQueue;
+#endif
 static void lvCopyPduRx(
             PduIdType      ltIdPdu
    ,  const PduInfoType*   lptrcstInfoPdu
@@ -336,8 +337,14 @@ static void lvCopyPduRx(
    SwcServiceDcmDsld_astTablePduRx[ltIdPdu].stInfoPdu.SduDataPtr += lptrcstInfoPdu->SduLength;
    SwcServiceDcmDsld_astTablePduRx[ltIdPdu].stInfoPdu.SduLength  -= lptrcstInfoPdu->SduLength;
 #if(CfgSwcServiceDcmDsld_fCallApplRxRequest != CfgSwcServiceDcm_dbDisable)
+#if(CfgSwcServiceDcm_fQueueBuffer != CfgSwcServiceDcm_dbDisable)
    if(SwcServiceDcmDsld_stQueue.eStatus == SwcServiceDcmDsld_eStatusQueueIdle)
+#endif
    {
+      (void)infSwcApplDcmSwcServiceDcm_vCopyPduRx(
+            ltIdPdu
+         ,  lptrcstInfoPdu->SduLength
+      );
    }
 #endif
    *(lptrtLengthPdu) = SwcServiceDcmDsld_astTablePduRx[ltIdPdu].stInfoPdu.SduLength;
@@ -365,6 +372,12 @@ static BufReq_ReturnType leCopyPduRx(
             FALSE
          != lbIsReceivedRequestPriorityLow(ltIdPdu)
       ){
+         if(
+               SwcServiceDcmDsld_astTablePduRx[ltIdPdu].u8IdService
+            == SwcServiceDcmDsld_dIdServiceValueDefault
+         ){
+            SwcServiceDcmDsld_astTablePduRx[ltIdPdu].u8IdService = (uint8)lptrcstInfoPdu->SduDataPtr[0];
+         }
          leValueReturnRequestBuffer = BUFREQ_OK;
       }
    }

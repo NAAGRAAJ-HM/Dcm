@@ -64,6 +64,47 @@
 /******************************************************************************/
 /* FUNCTIONS                                                                  */
 /******************************************************************************/
+static boolean lbCheckEnvironment_CopyPduTx(
+            PduIdType    ltIdPdu
+   ,  const PduInfoType* lptrcstInfoPdu
+){
+   boolean lbValueReturnStatusEnvironment = FALSE;
+   if(
+         ltIdPdu
+      >= CfgSwcServiceDcmDsld_NumIdPduTx
+   ){
+      (void)Det_ReportError(
+            DCM_MODULE_ID
+         ,  DCM_INSTANCE_ID
+         ,  DCM_COPYTXDATA_ID
+         ,  DCM_E_DCMTXPDUID_RANGE_EXCEED
+      );
+   }
+   else if(lptrcstInfoPdu == NULL_PTR){
+      (void)Det_ReportError(
+            DCM_MODULE_ID
+         ,  DCM_INSTANCE_ID
+         ,  DCM_COPYTXDATA_ID
+         ,  DCM_E_PARAM_POINTER
+      );
+   }
+   else if(
+         (lptrcstInfoPdu->SduLength  != 0u)
+      && (lptrcstInfoPdu->SduDataPtr == NULL_PTR)
+   ){
+      (void)Det_ReportError(
+            DCM_MODULE_ID
+         ,  DCM_INSTANCE_ID
+         ,  DCM_COPYTXDATA_ID
+         ,  DCM_E_PARAM_POINTER
+      );
+   }
+   else{
+      lbValueReturnStatusEnvironment = TRUE;
+   }
+   return lbValueReturnStatusEnvironment;
+}
+
 #if(CfgSwcServiceDcm_fProcessingParallel != CfgSwcServiceDcm_dbDisable)
 static boolean lbIsIdPduTxObd(
    PduIdType ltIdPdu
@@ -71,6 +112,11 @@ static boolean lbIsIdPduTxObd(
    return(
       (
             0
+         <  LibAutosar_u16FindElementInArray(
+                  0
+               ,  0
+               ,  ltIdPdu
+            )
       )
       ?  TRUE
       :  FALSE
@@ -85,17 +131,23 @@ FUNC(BufReq_ReturnType, SWCSERVICEDCM_CODE) infSwcServiceDcmSwcServicePduR_eCopy
    ,        PduLengthType* availableDataPtr
 ){
    BufReq_ReturnType leValueReturnStatusRequestBuffer = BUFREQ_E_NOT_OK;
-   UNUSED(lptrcstInfoPdu);
    UNUSED(retry);
    UNUSED(availableDataPtr);
+   if(
+         FALSE
+      != lbCheckEnvironment_CopyPduTx(
+               ltIdPdu
+            ,  lptrcstInfoPdu
+         )
+   ){
 #if(CfgSwcServiceDcm_fProcessingParallel != CfgSwcServiceDcm_dbDisable)
-   boolean lbContext = lbIsIdPduTxObd(ltIdPdu)
-                     ?  SwcServiceDcmDsld_eContextObd
-                     :  SwcServiceDcmDsld_eContextUds
-                     ;
-#else
-   UNUSED(ltIdPdu);
+      if(lbIsIdPduTxObd(ltIdPdu)){
+      }
+      else
 #endif
+      {
+      }
+   }
    return leValueReturnStatusRequestBuffer;
 }
 
