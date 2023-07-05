@@ -64,7 +64,7 @@ FUNC(void, SWCSERVICEDCM_CODE) infSwcServiceDcmSwcServiceEcuM_vInitFunction(
 #else
    (void)ConfigPtr;
 #endif
-   SwcServiceDcmDsld_ptrcstTableConnection     = CfgSwcServiceDcmDsld_cst.ptr_conntable_pcs;
+   SwcServiceDcmDsld_ptrcstTableConnection     = CfgSwcServiceDcmDsld_cst.ptrcstTableConnection;
 }
 
 /******************************************************************************/
