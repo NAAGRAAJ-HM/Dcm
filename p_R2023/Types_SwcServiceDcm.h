@@ -27,7 +27,7 @@
 /******************************************************************************/
 #include "CfgSwcServiceDcm.h"
 #include "ComStack_Cfg.h"
-#include "ComStack_Types.h"
+#include "Types_StackCom.h"
 
 /******************************************************************************/
 /* #DEFINES                                                                   */
@@ -175,7 +175,7 @@ typedef struct{
 }Type_SwcServiceDcmDsld_stTableSid;
 
 typedef struct{
-         Type_stInfoPdu                                       stInfoPdu;
+         Type_StackCom_stInfoPdu                              stInfoPdu;
 #if(CfgSwcServiceDcm_fQueueBuffer != CfgSwcServiceDcm_dbDisable)
          Type_SwcServiceDcmDsld_tMessage                      tMessage;
 #endif

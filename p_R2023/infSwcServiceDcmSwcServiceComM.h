@@ -65,7 +65,7 @@ typedef struct{
 /******************************************************************************/
 /* OBJECTS                                                                    */
 /******************************************************************************/
-extern TypeSwcApplDcmDsld_stChannelComM SwcApplDcmDsld_ChannelComM[CfgSwcServiceDcmDsld_NumChannelComM];
+extern TypeSwcApplDcmDsld_stChannelComM SwcApplDcmDsld_ChannelComM[CfgSwcServiceDcmDsld_dNumChannelComM];
 
 /******************************************************************************/
 /* FUNCTIONS                                                                  */

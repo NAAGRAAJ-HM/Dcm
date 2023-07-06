@@ -52,7 +52,7 @@
 /******************************************************************************/
 /* OBJECTS                                                                    */
 /******************************************************************************/
-TypeSwcApplDcmDsld_stChannelComM SwcApplDcmDsld_ChannelComM[CfgSwcServiceDcmDsld_NumChannelComM] = {
+TypeSwcApplDcmDsld_stChannelComM SwcApplDcmDsld_ChannelComM[CfgSwcServiceDcmDsld_dNumChannelComM] = {
    {ComMConf_ComMChannel_ComMChannel_Can_Network_0_Channel, SwcApplDcmDsld_eModeComM_None}
 };
 
@@ -66,14 +66,14 @@ static void vSetComMState(
    uint8 u8IndexNetwork;
    for(
       u8IndexNetwork = 0;
-      u8IndexNetwork < CfgSwcServiceDcmDsld_NumChannelComM;
+      u8IndexNetwork < CfgSwcServiceDcmDsld_dNumChannelComM;
       u8IndexNetwork ++
    ){
       if(SwcApplDcmDsld_ChannelComM[u8IndexNetwork].u8IdChannelComM == lu8IdNetwork){
          break;
       }
    }
-   if(u8IndexNetwork < CfgSwcServiceDcmDsld_NumChannelComM){
+   if(u8IndexNetwork < CfgSwcServiceDcmDsld_dNumChannelComM){
       SwcApplDcmDsld_ChannelComM[u8IndexNetwork].eModeComM = leModeComM;
    }
 }

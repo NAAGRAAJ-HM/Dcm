@@ -25,7 +25,7 @@
 /******************************************************************************/
 #include "Std_Types.h"
 #include "CfgSwcServiceDcm.h"
-#include "ComStack_Types.h" //TBD: Move header
+#include "Types_StackCom.h"
 #include "infSwcServiceDcmSwcServicePduR.h"
 
 #include "infSwcServiceDcmSwcServiceComM.h"

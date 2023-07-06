@@ -25,7 +25,7 @@
 /******************************************************************************/
 #include "Std_Types.h"
 #include "CfgSwcServiceDcm.h"
-#include "ComStack_Types.h"
+#include "Types_StackCom.h"
 #include "infSwcServiceDcmSwcServicePduR.h"
 
 #include "infSwcServiceDcmSwcServiceComM.h"
@@ -60,13 +60,13 @@
 /******************************************************************************/
 /* FUNCTIONS                                                                  */
 /******************************************************************************/
-FUNC(BufReq_ReturnType, SWCSERVICEDCM_CODE) infSwcServiceDcmSwcServicePduR_eStartReception(
-            Type_tIdPdu      id
-   ,  const Type_stInfoPdu*  info
-   ,        Type_tLengthPdu  TptLengthSdu
-   ,        Type_tLengthPdu* bufferSizePtr
+FUNC(Type_StackCom_eResultBufferRequest, SWCSERVICEDCM_CODE) infSwcServiceDcmSwcServicePduR_eStartReception(
+            Type_tIdPdu              id
+   ,  const Type_StackCom_stInfoPdu* info
+   ,        Type_tLengthPdu          TptLengthSdu
+   ,        Type_tLengthPdu*         bufferSizePtr
 ){
-   BufReq_ReturnType leValueReturnStatusRequestBuffer = BUFREQ_E_NOT_OK;
+   Type_StackCom_eResultBufferRequest leValueReturnStatusRequestBuffer = eResultBufferRequest_Nok;
    UNUSED(id);
    UNUSED(info);
    UNUSED(TptLengthSdu);

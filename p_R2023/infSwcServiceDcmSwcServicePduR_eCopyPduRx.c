@@ -25,7 +25,7 @@
 /******************************************************************************/
 #include "Std_Types.h"
 #include "CfgSwcServiceDcm.h"
-#include "ComStack_Types.h"
+#include "Types_StackCom.h"
 #include "infSwcServiceDcmSwcServicePduR.h"
 
 #include "infSwcApplDcmSwcServiceDcm.h"
@@ -40,7 +40,6 @@
 /******************************************************************************/
 /* #DEFINES                                                                   */
 /******************************************************************************/
-#define SwcServiceDcmDsld_dIdServiceValueDefault                         (0xFFu)
 #define SwcServiceDcmDsld_vMemCopy(ptrvDestination,ptrcvSource,u32NumByte) (void)LibAutosar_ptrvMemCopy((ptrvDestination),(ptrcvSource),(uint32)(u32NumByte))
 
 /******************************************************************************/
@@ -55,8 +54,9 @@
 /******************************************************************************/
 /* CONSTS                                                                     */
 /******************************************************************************/
-const uint8*                             SwcServiceDcmDsld_pcu8TableRx;
-const Type_SwcServiceDcmDsld_stProtocol* SwcServiceDcmDsld_pcstProtocol;
+         const uint8*                             SwcServiceDcmDsld_pcu8TableRx;
+         const Type_SwcServiceDcmDsld_stProtocol* SwcServiceDcmDsld_pcstProtocol;
+//extern const Type_SwcServiceDcmDsld_stProtocol* SwcServiceDcmDsld_pcstProtocol;
 
 /******************************************************************************/
 /* PARAMS                                                                     */
@@ -70,14 +70,14 @@ const Type_SwcServiceDcmDsld_stProtocol* SwcServiceDcmDsld_pcstProtocol;
 /* FUNCTIONS                                                                  */
 /******************************************************************************/
 static boolean lbCheckEnvironment_CopyPduRx(
-            Type_tIdPdu      ltIdPdu
-   ,  const Type_stInfoPdu*  lptrcstInfoPdu
-   ,  const Type_tLengthPdu* lptrtLengthPdu
+            Type_tIdPdu               ltIdPdu
+   ,  const Type_StackCom_stInfoPdu*  lptrcstInfoPdu
+   ,  const Type_tLengthPdu*          lptrtLengthPdu
 ){
    boolean lbValueReturnStatusEnvironment = FALSE;
    if(
          ltIdPdu
-      >= CfgSwcServiceDcmDsld_NumIdPduRx
+      >= CfgSwcServiceDcmDsld_dNumIdPduRx
    ){
       (void)Det_ReportError(
             DCM_MODULE_ID
@@ -136,10 +136,10 @@ static boolean lbIsPduRxShared(
    ,  uint8     lu8IdService
 ){
    return(
-         (ltIdPdu      < (CfgSwcServiceDcmDsld_NumIdPduRx-1u))
+         (ltIdPdu      < (CfgSwcServiceDcmDsld_dNumIdPduRx-1u))
       && (ltIdPdu      == CfgSwcServiceDcmDsld_IdPduRxShared)
-      && (lu8IdService >= CfgSwcServiceDcmDsld_IdServiceObd_0x01)
-      && (lu8IdService <= CfgSwcServiceDcmDsld_IdServiceObd_0x0A)
+      && (lu8IdService >= CfgSwcServiceDcmDsld_dIdServiceObd_0x01)
+      && (lu8IdService <= CfgSwcServiceDcmDsld_dIdServiceObd_0x0A)
    );
 }
 #endif
@@ -163,7 +163,7 @@ static boolean lbIsIdPduRxObd(
    );
 }
 
-Type_SwcServiceDcmDsld_stInfoPduRxObd SwcServiceDcmDsld_astPduRxObd[CfgSwcServiceDcmDsld_NumIdPduRx];
+Type_SwcServiceDcmDsld_stInfoPduRxObd SwcServiceDcmDsld_astPduRxObd[CfgSwcServiceDcmDsld_dNumIdPduRx];
 static void lvGetLengthPduRxObd(
       Type_tIdPdu      ltIdPdu
    ,  Type_tLengthPdu* lptrtLengthPdu
@@ -179,9 +179,9 @@ static void lvGetLengthPduRxObd(
 }
 
 static void lvCopyPduRxObd(
-            Type_tIdPdu      ltIdPdu
-   ,  const Type_stInfoPdu*  lptrcstInfoPdu
-   ,        Type_tLengthPdu* lptrtLengthPdu
+            Type_tIdPdu              ltIdPdu
+   ,  const Type_StackCom_stInfoPdu* lptrcstInfoPdu
+   ,        Type_tLengthPdu*         lptrtLengthPdu
 ){
    SwcServiceDcmDsld_vMemCopy(
          SwcServiceDcmDsld_astPduRxObd[ltIdPdu].stInfoPdu.ptru8DataSdu
@@ -199,12 +199,12 @@ static void lvCopyPduRxObd(
    *(lptrtLengthPdu) = SwcServiceDcmDsld_astPduRxObd[ltIdPdu].stInfoPdu.tLengthSdu;
 }
 
-static BufReq_ReturnType leCheckPduRxObd(
-            Type_tIdPdu      ltIdPdu
-   ,  const Type_stInfoPdu*  lptrcstInfoPdu
-   ,        Type_tLengthPdu* lptrtLengthPdu
+static Type_StackCom_eResultBufferRequest leCheckPduRxObd(
+            Type_tIdPdu              ltIdPdu
+   ,  const Type_StackCom_stInfoPdu* lptrcstInfoPdu
+   ,        Type_tLengthPdu*         lptrtLengthPdu
 ){
-   BufReq_ReturnType leValueReturnStatusRequestBuffer = BUFREQ_E_NOT_OK;
+   Type_StackCom_eResultBufferRequest leValueReturn = eResultBufferRequest_Nok;
    if(
          FALSE
       != SwcServiceDcmDsld_astPduRxObd[ltIdPdu].bPduCopy
@@ -214,7 +214,7 @@ static BufReq_ReturnType leCheckPduRxObd(
          ,  lptrcstInfoPdu
          ,  lptrtLengthPdu
       );
-      leValueReturnStatusRequestBuffer = BUFREQ_OK;
+      leValueReturn = eResultBufferRequest_Ok;
    }
    else{
       if(
@@ -227,18 +227,18 @@ static BufReq_ReturnType leCheckPduRxObd(
          ){
             SwcServiceDcmDsld_astPduRxObd[ltIdPdu].u8IdService = (uint8)lptrcstInfoPdu->ptru8DataSdu[0];
          }
-         leValueReturnStatusRequestBuffer = BUFREQ_OK;
+         leValueReturn = eResultBufferRequest_Ok;
       }
    }
-   return leValueReturnStatusRequestBuffer;
+   return leValueReturn;
 }
 
-static BufReq_ReturnType leCopyPduRxObd(
-            Type_tIdPdu      ltIdPdu
-   ,  const Type_stInfoPdu*  lptrcstInfoPdu
-   ,        Type_tLengthPdu* lptrtLengthPdu
+static Type_StackCom_eResultBufferRequest leCopyPduRxObd(
+            Type_tIdPdu              ltIdPdu
+   ,  const Type_StackCom_stInfoPdu* lptrcstInfoPdu
+   ,        Type_tLengthPdu*         lptrtLengthPdu
 ){
-   BufReq_ReturnType leValueReturnStatusRequestBuffer = BUFREQ_E_NOT_OK;
+   Type_StackCom_eResultBufferRequest leValueReturn = eResultBufferRequest_Nok;
    if(
          0u
       == lptrcstInfoPdu->tLengthSdu
@@ -247,7 +247,7 @@ static BufReq_ReturnType leCopyPduRxObd(
             ltIdPdu
          ,  lptrtLengthPdu
       );
-      leValueReturnStatusRequestBuffer = BUFREQ_OK;
+      leValueReturn = eResultBufferRequest_Ok;
    }
    else{
       if(
@@ -257,7 +257,7 @@ static BufReq_ReturnType leCopyPduRxObd(
             )
          || (lbIsReceivedRequestPriorityLow(ltIdPdu))
       ){
-         leValueReturnStatusRequestBuffer = leCheckPduRxObd(
+         leValueReturn = leCheckPduRxObd(
                ltIdPdu
             ,  lptrcstInfoPdu
             ,  lptrtLengthPdu
@@ -272,11 +272,11 @@ static BufReq_ReturnType leCopyPduRxObd(
          );
       }
    }
-   return leValueReturnStatusRequestBuffer;
+   return leValueReturn;
 }
 #endif
 
-Type_SwcServiceDcmDsld_stPduRxElement SwcServiceDcmDsld_astTablePduRx[CfgSwcServiceDcmDsld_NumIdPduRx];
+Type_SwcServiceDcmDsld_stPduRxElement SwcServiceDcmDsld_astTablePduRx[CfgSwcServiceDcmDsld_dNumIdPduRx];
 
 static void lvUpdateLengthPdu(
       Type_tIdPdu      ltIdPdu
@@ -325,9 +325,9 @@ typedef struct{
 Type_SwcServiceDcmDsld_stQueue SwcServiceDcmDsld_stQueue;
 #endif
 static void lvCopyPduRx(
-            Type_tIdPdu      ltIdPdu
-   ,  const Type_stInfoPdu*  lptrcstInfoPdu
-   ,        Type_tLengthPdu* lptrtLengthPdu
+            Type_tIdPdu              ltIdPdu
+   ,  const Type_StackCom_stInfoPdu* lptrcstInfoPdu
+   ,        Type_tLengthPdu*         lptrtLengthPdu
 ){
    SwcServiceDcmDsld_vMemCopy(
          SwcServiceDcmDsld_astTablePduRx[ltIdPdu].stInfoPdu.ptru8DataSdu
@@ -350,12 +350,12 @@ static void lvCopyPduRx(
    *(lptrtLengthPdu) = SwcServiceDcmDsld_astTablePduRx[ltIdPdu].stInfoPdu.tLengthSdu;
 }
 
-static BufReq_ReturnType leCopyPduRx(
-            Type_tIdPdu      ltIdPdu
-   ,  const Type_stInfoPdu*  lptrcstInfoPdu
-   ,        Type_tLengthPdu* lptrtLengthPdu
+static Type_StackCom_eResultBufferRequest leCopyPduRx(
+            Type_tIdPdu              ltIdPdu
+   ,  const Type_StackCom_stInfoPdu* lptrcstInfoPdu
+   ,        Type_tLengthPdu*         lptrtLengthPdu
 ){
-   BufReq_ReturnType leValueReturnStatusRequestBuffer = BUFREQ_E_NOT_OK;
+   Type_StackCom_eResultBufferRequest leValueReturn = eResultBufferRequest_Nok;
    if(
          FALSE
       != lbIsReceivedRequestValid(ltIdPdu)
@@ -365,7 +365,7 @@ static BufReq_ReturnType leCopyPduRx(
          ,  lptrcstInfoPdu
          ,  lptrtLengthPdu
       );
-      leValueReturnStatusRequestBuffer = BUFREQ_OK;
+      leValueReturn = eResultBufferRequest_Ok;
    }
    else{
       if(
@@ -378,18 +378,18 @@ static BufReq_ReturnType leCopyPduRx(
          ){
             SwcServiceDcmDsld_astTablePduRx[ltIdPdu].u8IdService = (uint8)lptrcstInfoPdu->ptru8DataSdu[0];
          }
-         leValueReturnStatusRequestBuffer = BUFREQ_OK;
+         leValueReturn = eResultBufferRequest_Ok;
       }
    }
-   return leValueReturnStatusRequestBuffer;
+   return leValueReturn;
 }
 
-FUNC(BufReq_ReturnType, SWCSERVICEDCM_CODE) infSwcServiceDcmSwcServicePduR_eCopyPduRx(
-            Type_tIdPdu      ltIdPdu
-   ,  const Type_stInfoPdu*  lptrcstInfoPdu
-   ,        Type_tLengthPdu* lptrtLengthPdu
+FUNC(Type_StackCom_eResultBufferRequest, SWCSERVICEDCM_CODE) infSwcServiceDcmSwcServicePduR_eCopyPduRx(
+            Type_tIdPdu              ltIdPdu
+   ,  const Type_StackCom_stInfoPdu* lptrcstInfoPdu
+   ,        Type_tLengthPdu*         lptrtLengthPdu
 ){
-   BufReq_ReturnType leValueReturnStatusRequestBuffer = BUFREQ_E_NOT_OK;
+   Type_StackCom_eResultBufferRequest leValueReturn = eResultBufferRequest_Nok;
    if(
          FALSE
       != lbCheckEnvironment_CopyPduRx(
@@ -410,13 +410,13 @@ FUNC(BufReq_ReturnType, SWCSERVICEDCM_CODE) infSwcServiceDcmSwcServicePduR_eCopy
                   ,  lptrcstInfoPdu->ptru8DataSdu[0]
                )
          ){
-            ltIdPdu = (CfgSwcServiceDcmDsld_NumIdPduRx-1u);
+            ltIdPdu = (CfgSwcServiceDcmDsld_dNumIdPduRx-1u);
          }
       }
 #endif
 #if(CfgSwcServiceDcm_fProcessingParallel != CfgSwcServiceDcm_dbDisable)
       if(lbIsIdPduRxObd(ltIdPdu)){
-         leValueReturnStatusRequestBuffer = leCopyPduRxObd(
+         leValueReturn = leCopyPduRxObd(
                ltIdPdu
             ,  lptrcstInfoPdu
             ,  lptrtLengthPdu
@@ -430,13 +430,13 @@ FUNC(BufReq_ReturnType, SWCSERVICEDCM_CODE) infSwcServiceDcmSwcServicePduR_eCopy
                   ltIdPdu
                ,  lptrtLengthPdu
             );
-            leValueReturnStatusRequestBuffer = BUFREQ_OK;
+            leValueReturn = eResultBufferRequest_Ok;
          }
          else if(
                FALSE
             != lIsReceivedRequestPresentTesterFunctional(ltIdPdu)
          ){
-            leValueReturnStatusRequestBuffer = BUFREQ_OK;
+            leValueReturn = eResultBufferRequest_Ok;
          }
          else{
             if(
@@ -446,7 +446,7 @@ FUNC(BufReq_ReturnType, SWCSERVICEDCM_CODE) infSwcServiceDcmSwcServicePduR_eCopy
                   )
                || (FALSE != lbIsReceivedRequestPriorityLow(ltIdPdu))
             ){
-               leValueReturnStatusRequestBuffer = leCopyPduRx(
+               leValueReturn = leCopyPduRx(
                      ltIdPdu
                   ,  lptrcstInfoPdu
                   ,  lptrtLengthPdu
@@ -463,9 +463,10 @@ FUNC(BufReq_ReturnType, SWCSERVICEDCM_CODE) infSwcServiceDcmSwcServicePduR_eCopy
          }
       }
    }
-   return leValueReturnStatusRequestBuffer;
+   return leValueReturn;
 }
 
 /******************************************************************************/
 /* EOF                                                                        */
 /******************************************************************************/
+
