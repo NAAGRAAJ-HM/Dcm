@@ -74,16 +74,16 @@ static boolean lbCheckEnvironment_CopyPduTx(
          ltIdPdu
       >= CfgSwcServiceDcmDsld_dNumIdPduTx
    ){
-      (void)Det_ReportError(
-            DCM_MODULE_ID
+      (void)SwcServiceDet_tReportError(
+            SwcServiceDet_eIdModuleSwcServiceDcm
          ,  DCM_INSTANCE_ID
          ,  DCM_COPYTXDATA_ID
          ,  DCM_E_DCMTXPDUID_RANGE_EXCEED
       );
    }
    else if(lptrcstInfoPdu == NULL_PTR){
-      (void)Det_ReportError(
-            DCM_MODULE_ID
+      (void)SwcServiceDet_tReportError(
+            SwcServiceDet_eIdModuleSwcServiceDcm
          ,  DCM_INSTANCE_ID
          ,  DCM_COPYTXDATA_ID
          ,  DCM_E_PARAM_POINTER
@@ -93,8 +93,8 @@ static boolean lbCheckEnvironment_CopyPduTx(
          (lptrcstInfoPdu->tLengthSdu  != 0u)
       && (lptrcstInfoPdu->ptru8DataSdu == NULL_PTR)
    ){
-      (void)Det_ReportError(
-            DCM_MODULE_ID
+      (void)SwcServiceDet_tReportError(
+            SwcServiceDet_eIdModuleSwcServiceDcm
          ,  DCM_INSTANCE_ID
          ,  DCM_COPYTXDATA_ID
          ,  DCM_E_PARAM_POINTER

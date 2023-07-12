@@ -79,8 +79,8 @@ static boolean lbCheckEnvironment_CopyPduRx(
          ltIdPdu
       >= CfgSwcServiceDcmDsld_dNumIdPduRx
    ){
-      (void)Det_ReportError(
-            DCM_MODULE_ID
+      (void)SwcServiceDet_tReportError(
+            SwcServiceDet_eIdModuleSwcServiceDcm
          ,  DCM_INSTANCE_ID
          ,  DCM_COPYRXDATA_ID
          ,  DCM_E_DCMRXPDUID_RANGE_EXCEED
@@ -90,8 +90,8 @@ static boolean lbCheckEnvironment_CopyPduRx(
          (lptrcstInfoPdu == NULL_PTR)
       || (lptrtLengthPdu == NULL_PTR)
    ){
-      (void)Det_ReportError(
-            DCM_MODULE_ID
+      (void)SwcServiceDet_tReportError(
+            SwcServiceDet_eIdModuleSwcServiceDcm
          ,  DCM_INSTANCE_ID
          ,  DCM_COPYRXDATA_ID
          ,  DCM_E_PARAM_POINTER
@@ -101,8 +101,8 @@ static boolean lbCheckEnvironment_CopyPduRx(
          (lptrcstInfoPdu->tLengthSdu  != 0u)
       && (lptrcstInfoPdu->ptru8DataSdu == NULL_PTR)
    ){
-      (void)Det_ReportError(
-            DCM_MODULE_ID
+      (void)SwcServiceDet_tReportError(
+            SwcServiceDet_eIdModuleSwcServiceDcm
          ,  DCM_INSTANCE_ID
          ,  DCM_COPYRXDATA_ID
          ,  DCM_E_PARAM_POINTER
@@ -264,8 +264,8 @@ static Type_StackCom_eResultBufferRequest leCopyPduRxObd(
          );
       }
       else{
-         (void)Det_ReportError(
-               DCM_MODULE_ID
+         (void)SwcServiceDet_tReportError(
+               SwcServiceDet_eIdModuleSwcServiceDcm
             ,  DCM_INSTANCE_ID
             ,  DCM_COPYRXDATA_ID
             ,  DCM_E_INTERFACE_BUFFER_OVERFLOW
@@ -453,8 +453,8 @@ FUNC(Type_StackCom_eResultBufferRequest, SWCSERVICEDCM_CODE) infSwcServiceDcmSwc
                );
             }
             else{
-               (void)Det_ReportError(
-                        DCM_MODULE_ID
+               (void)SwcServiceDet_tReportError(
+                        SwcServiceDet_eIdModuleSwcServiceDcm
                      ,  DCM_INSTANCE_ID
                      ,  DCM_COPYRXDATA_ID
                      ,  DCM_E_INTERFACE_BUFFER_OVERFLOW
