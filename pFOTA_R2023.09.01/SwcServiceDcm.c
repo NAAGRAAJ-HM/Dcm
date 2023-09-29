@@ -88,10 +88,10 @@ extern uint16 FblDiagGetLengthOfDataForRoutineControl(uint16 ushRid);
 
 #if(SEED_KEY_ALGORITHM == SEED_KEY_USE_HMAC_SHA256)
 static const uint16 aushAuthList[NO_OF_SID][NO_OF_DID_RID] = {
-   { cSidReadDataByIdent     , cDidBootSwFingerprint, cDidApplSwFingerprint, cDidProgImgBL      , cDidProgImgAPP1  , cDidManufSuppMode   , cDidBoardPartNumber   , cDidBoardSerNumber       , cDidSerialNumber, cDidRivianHwPN, cDidAuxId , cDidModeId, cDidVin },
-   { cSidWriteDataByIdent    , cDidBootSwFingerprint, cDidApplSwFingerprint, cDidModuleToProgram, cDidManufSuppMode, cDidBoardPartNumber , cDidBoardSerNumber    , cDidSerialNumber         , cDidRivianHwPN  , cDidAuxId     , cDidModeId, cDidVin   , 0 },
-   { cSidRoutineControl      , cRidSelfTest         , cRidEraseMemory      , cRidKeyExchange    , cRidAppHwidCheck , cRidCheckValidModule, cRidInitGenealogyBlock, cRidCompAndStoreSignature, 0, 0, 0, 0, 0 },
-   { cSidEcuReset            , cSubFuncHardReset    , cSubFuncSoftReset    , cSubFuncHRwoResp   , cSubFuncSRwoResp , cSubFuncResUDSTimer , 0, 0, 0, 0, 0, 0, 0 }
+   { cSidReadDataByIdent     , cDidBootSwFingerprint, cDidApplSwFingerprint, cDidProgImgBL      , cDidProgImgAPP1  , cDidManufSuppMode   , cDidBoardPartNumber   , cDidBoardSerNumber       , cDidSerialNumber, cDidRivianHwPN, cDidAuxId , cDidModeId, cDidVin }
+   ,  { cSidWriteDataByIdent    , cDidBootSwFingerprint, cDidApplSwFingerprint, cDidModuleToProgram, cDidManufSuppMode, cDidBoardPartNumber , cDidBoardSerNumber    , cDidSerialNumber         , cDidRivianHwPN  , cDidAuxId     , cDidModeId, cDidVin   , 0 }
+   ,  { cSidRoutineControl      , cRidSelfTest         , cRidEraseMemory      , cRidKeyExchange    , cRidAppHwidCheck , cRidCheckValidModule, cRidInitGenealogyBlock, cRidCompAndStoreSignature, 0, 0, 0, 0, 0 }
+   ,  { cSidEcuReset            , cSubFuncHardReset    , cSubFuncSoftReset    , cSubFuncHRwoResp   , cSubFuncSRwoResp , cSubFuncResUDSTimer , 0, 0, 0, 0, 0, 0, 0 }
 };
 #endif
 
@@ -116,7 +116,7 @@ uint8 DcmCheckMessageAuthentication(uint8 ucSid, const uint8* aucMessage, uint16
 				ushLength -= cSIZE_OF_HASH;
 				hmac_sha256(aucKey, kEepSizeSecKey_UDSMSGKEY, aucMessage, ushLength, aucHash, cSIZE_OF_HASH);
 				ucRetVal = MSG_AUTH_SUCCESSFUL;
-				for (i = 0; i < cSIZE_OF_HASH; i++){
+				for(i = 0; i < cSIZE_OF_HASH; i++){
 					if(aucMessage[ushLength + i] != aucHash[i]){
 						ucRetVal = MSG_REJECTED;
 					}
@@ -146,7 +146,7 @@ uint8 DcmAppendMessageAuthentication(uint8 ucSid, uint8* aucMessage, uint32 ushL
 			FEEFBL_GetUdsMsgKey(aucKey);
 			if(DcmKeyExist(aucKey, kEepSizeSecKey_UDSMSGKEY) == TRUE){
 				hmac_sha256(aucKey, kEepSizeSecKey_UDSMSGKEY, aucMessage, ushLength, aucHash, cSIZE_OF_HASH);
-				for (i = 0; i < cSIZE_OF_HASH; i++){
+				for(i = 0; i < cSIZE_OF_HASH; i++){
 					aucMessage[ushLength + i] = aucHash[i];
 				}
 				ucRetVal = cSIZE_OF_HASH;
@@ -227,9 +227,9 @@ static boolean DcmAuthenticationNeeded(uint8 ucSid, uint16 ushDidRid, uint8 ucRe
   uint8 j;
   boolean ucRetVal = FALSE;
 
-  for (i=0; i<NO_OF_SID; i++){
+  for(i=0; i<NO_OF_SID; i++){
     if(ucSid == aushAuthList[i][0]){
-      for (j=0; j<NO_OF_DID_RID; j++)
+      for(j=0; j<NO_OF_DID_RID; j++)
       {
         if(ushDidRid == aushAuthList[i][j])
         {
@@ -253,7 +253,7 @@ static boolean DcmKeyExist(uint8* aucKey, uint8 ucLength){
   uint8 i;
   boolean ucRetVal = FALSE;
 
-  for (i=0; i<ucLength; i++){
+  for(i=0; i<ucLength; i++){
     if(aucKey[i] != 0xff){
       ucRetVal = TRUE;
     }
