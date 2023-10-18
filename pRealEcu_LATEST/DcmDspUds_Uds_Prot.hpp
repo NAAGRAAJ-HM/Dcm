@@ -9,7 +9,7 @@
 
 #if(RBA_DCMPMA_CFG_PLANTMODEACTIVATION_ENABLED !=  DCM_CFG_OFF)
 
-extern FUNC(Std_ReturnType,DCM_CODE) Dcm_SetActiveServiceTable(VAR(uint8,AUTOMATIC) Sid_tableid_u8);
+extern FUNC(Std_ReturnType,DCM_CODE) Dcm_SetActiveServiceTable(VAR(uint8, AUTOMATIC) Sid_tableid_u8);
 #endif
 
 #if( (DCM_CFG_DSPUDSSUPPORT_ENABLED != DCM_CFG_OFF) && (DCM_CFG_DSP_CONTROLDTCSETTING_ENABLED != DCM_CFG_OFF) )
@@ -21,7 +21,7 @@ extern FUNC(void,DCM_CODE) Dcm_ControlDtcSettingExit(void);
      (DCM_CFG_DSP_DYNAMICALLYDEFINEIDENTIFIER_ENABLED != DCM_CFG_OFF)   ||  \
      (DCM_CFG_RDPI_ENABLED != DCM_CFG_OFF)                              ||  \
      (DCM_CFG_DSP_IOCBI_ENABLED != DCM_CFG_OFF))
-extern FUNC(void,DCM_CODE) Dcm_ResetDIDIndexstruct (P2VAR(Dcm_DIDIndexType_tst ,AUTOMATIC,DCM_INTERN_DATA) idxDidIndexType_st);
+extern FUNC(void,DCM_CODE) Dcm_ResetDIDIndexstruct (P2VAR(Dcm_DIDIndexType_tst , AUTOMATIC, DCM_INTERN_DATA) idxDidIndexType_st);
 #endif
 
 #if(DCM_CFG_DSP_READ_ASP_ENABLED != DCM_CFG_OFF)
@@ -33,7 +33,7 @@ extern FUNC (void,DCM_CODE) Dcm_ResetAsynchSecaFlag(void);
 #endif
 
 #if((DCM_CFG_DIDRANGE_EXTENSION != DCM_CFG_OFF)||(DCM_CFG_DIDSUPPORT != DCM_CFG_OFF ))
-extern FUNC(void,DCM_CODE) Dcm_ConvBitsToBytes(P2VAR (uint32,AUTOMATIC,DCM_INTERN_DATA)DataLenInBits) ;
+extern FUNC(void,DCM_CODE) Dcm_ConvBitsToBytes(P2VAR (uint32, AUTOMATIC, DCM_INTERN_DATA)DataLenInBits) ;
 #endif
 #define DCM_STOP_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"
@@ -115,7 +115,7 @@ typedef enum{
 
 #if(DCM_CFG_DSP_ROEDID_ENABLED != DCM_CFG_OFF)
 typedef struct{
-   P2FUNC(Std_ReturnType,TYPEDEF,ROEDID_fp)    (VAR(Dcm_DspRoeEventState_ten,AUTOMATIC));
+   P2FUNC(Std_ReturnType,TYPEDEF,ROEDID_fp)    (VAR(Dcm_DspRoeEventState_ten, AUTOMATIC));
    uint16 RoeEventDid_u16;
    uint8 RoeEventId_u8;
 }DcmDspRoeDidEvents_tst;
@@ -137,7 +137,7 @@ typedef struct{
 
 #endif
 typedef struct{
-   P2FUNC(Std_ReturnType,TYPEDEF,ROEDTC_fp)    (VAR(Dcm_DspRoeEventState_ten,AUTOMATIC));
+   P2FUNC(Std_ReturnType,TYPEDEF,ROEDTC_fp)    (VAR(Dcm_DspRoeEventState_ten, AUTOMATIC));
    uint8 RoeEventId_u8;
 }DcmDspRoeOnDtcStatusChg_tst;
 
@@ -185,25 +185,25 @@ typedef struct{
 #if((DCM_CFG_DSP_READDATABYIDENTIFIER_ENABLED != DCM_CFG_OFF) || (DCM_CFG_DSP_DYNAMICALLYDEFINEIDENTIFIER_ENABLED != DCM_CFG_OFF))
   uint32 dataAllowedSessRead_u32;
   uint32 dataAllowedSecRead_u32;
-  P2FUNC(Std_ReturnType,TYPEDEF,adrUserReadModeRule_pfct) (P2VAR(Dcm_NegativeResponseCodeType,AUTOMATIC,DCM_INTERN_DATA),VAR(uint16,AUTOMATIC),VAR(Dcm_Direction_t,AUTOMATIC));
+  P2FUNC(Std_ReturnType,TYPEDEF,adrUserReadModeRule_pfct) (P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA),VAR(uint16, AUTOMATIC),VAR(Dcm_Direction_t, AUTOMATIC));
 #if(DCM_CFG_DSP_MODERULEFORDIDREAD != DCM_CFG_OFF )
-  P2FUNC(boolean,TYPEDEF,adrRdbiModeRuleChkFnc_pfct)(P2VAR(Dcm_NegativeResponseCodeType,AUTOMATIC,DCM_INTERN_DATA) Nrc_u8);
+  P2FUNC(boolean,TYPEDEF,adrRdbiModeRuleChkFnc_pfct)(P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) Nrc_u8);
 #endif
 #endif
 #if(DCM_CFG_DSP_WRITEDATABYIDENTIFIER_ENABLED != DCM_CFG_OFF)
   uint32 dataAllowedSessWrite_u32;
   uint32 dataAllowedSecWrite_u32;
-  P2FUNC(Std_ReturnType,TYPEDEF,adrUserWriteModeRule_pfct) (P2VAR(Dcm_NegativeResponseCodeType,AUTOMATIC,DCM_INTERN_DATA),VAR(uint16,AUTOMATIC),VAR(Dcm_Direction_t,AUTOMATIC));
+  P2FUNC(Std_ReturnType,TYPEDEF,adrUserWriteModeRule_pfct) (P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA),VAR(uint16, AUTOMATIC),VAR(Dcm_Direction_t, AUTOMATIC));
 #if(DCM_CFG_DSP_MODERULEFORDIDWRITE != DCM_CFG_OFF )
-  P2FUNC(boolean,TYPEDEF,adrWdbiModeRuleChkFnc_pfct)(P2VAR(Dcm_NegativeResponseCodeType,AUTOMATIC,DCM_INTERN_DATA) Nrc_u8);
+  P2FUNC(boolean,TYPEDEF,adrWdbiModeRuleChkFnc_pfct)(P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) Nrc_u8);
 #endif
 #endif
 #if(DCM_CFG_DSP_IOCBI_ENABLED != DCM_CFG_OFF)
   uint32  dataSessBitMask_u32;
   uint32  dataSecBitMask_u32;
-  P2FUNC(Std_ReturnType,TYPEDEF,adrUserControlModeRule_pfct) (P2VAR(Dcm_NegativeResponseCodeType,AUTOMATIC,DCM_INTERN_DATA),VAR(uint16,AUTOMATIC),VAR(Dcm_Direction_t,AUTOMATIC));
+  P2FUNC(Std_ReturnType,TYPEDEF,adrUserControlModeRule_pfct) (P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA),VAR(uint16, AUTOMATIC),VAR(Dcm_Direction_t, AUTOMATIC));
 #if(DCM_CFG_DSP_MODERULEFORDIDCONTROL != DCM_CFG_OFF )
-  P2FUNC(boolean,TYPEDEF,adrIocbiModeRuleChkFnc_pfct)(P2VAR(Dcm_NegativeResponseCodeType,AUTOMATIC,DCM_INTERN_DATA) Nrc_u8);
+  P2FUNC(boolean,TYPEDEF,adrIocbiModeRuleChkFnc_pfct)(P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) Nrc_u8);
 #endif
   Dcm_Dsp_IocbiCtrlMask_ten dataCtrlMask_en;
   uint8     dataCtrlMaskSize_u8;
@@ -243,7 +243,7 @@ typedef struct{
 #endif
 #endif
 #if(DCM_CFG_DSP_IOCBI_ENABLED != DCM_CFG_OFF)
-  VAR(uint16,AUTOMATIC) idxDcmDspIocbiInfo_u16;
+  VAR(uint16, AUTOMATIC) idxDcmDspIocbiInfo_u16;
 #endif
 }Dcm_SignalDIDSubStructConfig_tst;
 
@@ -269,7 +269,7 @@ typedef struct{
   uint16 idxDcmDspDatainfo_u16;
 }Dcm_SignalDIDConfig_tst;
 #if(DCM_CFG_DSP_NUMISDIDAVAIL > 0)
-typedef P2FUNC(Std_ReturnType,TYPEDEF,IsDIDAvailFnc_pf) (VAR(uint16,AUTOMATIC) DID_u16);
+typedef P2FUNC(Std_ReturnType,TYPEDEF,IsDIDAvailFnc_pf) (VAR(uint16, AUTOMATIC) DID_u16);
 #define DCM_START_SEC_CONST_UNSPECIFIED
 #include "Dcm_Cfg_MemMap.hpp"
 extern CONST (IsDIDAvailFnc_pf,DCM_CONST) Dcm_DIDIsAvail[DCM_CFG_DSP_NUMISDIDAVAIL];
@@ -294,13 +294,13 @@ uint16      idxDIDSupportedFnc_u16;
 }Dcm_DIDConfig_tst;
 
 typedef struct{
-  P2FUNC(Std_ReturnType,TYPEDEF,adrDIDAvailableFnc_pfct)( VAR(uint16,AUTOMATIC) DID, VAR(Dcm_OpStatusType,AUTOMATIC) OpStatus
-   ,     P2VAR(Dcm_DidSupportedType,AUTOMATIC,DCM_INTERN_DATA) supported);
-  P2FUNC(Std_ReturnType,TYPEDEF,adrReadFnc_pfct)( VAR(uint16,AUTOMATIC) DID
-   ,     CONSTP2VAR(uint8,AUTOMATIC,DCM_INTERN_DATA) Data
-   ,     VAR(Dcm_OpStatusType,AUTOMATIC) OpStatus
-   ,     CONSTP2VAR(uint16,AUTOMATIC,DCM_INTERN_DATA) DataLength
-   ,     CONSTP2VAR(Dcm_NegativeResponseCodeType,AUTOMATIC,DCM_INTERN_DATA) ErrorCode
+  P2FUNC(Std_ReturnType,TYPEDEF,adrDIDAvailableFnc_pfct)( VAR(uint16, AUTOMATIC) DID, VAR(Dcm_OpStatusType, AUTOMATIC) OpStatus
+   ,     P2VAR(Dcm_DidSupportedType, AUTOMATIC, DCM_INTERN_DATA) supported);
+  P2FUNC(Std_ReturnType,TYPEDEF,adrReadFnc_pfct)( VAR(uint16, AUTOMATIC) DID
+   ,     CONSTP2VAR(uint8, AUTOMATIC, DCM_INTERN_DATA) Data
+   ,     VAR(Dcm_OpStatusType, AUTOMATIC) OpStatus
+   ,     CONSTP2VAR(uint16, AUTOMATIC, DCM_INTERN_DATA) DataLength
+   ,     CONSTP2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) ErrorCode
                                             );
 
   void* const adrReadDataLengthFnc_pfct;
@@ -313,88 +313,88 @@ typedef struct{
   boolean nrRangeUsePort_b;
 }Dcm_DIDRangeConfig_tst;
 
-typedef P2FUNC(Std_ReturnType,TYPEDEF,ReadDataLengthFnc1_pf) (P2VAR(uint16,AUTOMATIC,DCM_INTERN_DATA) DataLength);
+typedef P2FUNC(Std_ReturnType,TYPEDEF,ReadDataLengthFnc1_pf) (P2VAR(uint16, AUTOMATIC, DCM_INTERN_DATA) DataLength);
 
-typedef P2FUNC(Std_ReturnType,TYPEDEF,ReadDataLengthFnc4_pf) (VAR(Dcm_OpStatusType,AUTOMATIC) OpStatus,P2VAR(uint16,AUTOMATIC,DCM_INTERN_DATA) DataLength);
+typedef P2FUNC(Std_ReturnType,TYPEDEF,ReadDataLengthFnc4_pf) (VAR(Dcm_OpStatusType, AUTOMATIC) OpStatus,P2VAR(uint16, AUTOMATIC, DCM_INTERN_DATA) DataLength);
 
-typedef P2FUNC(Std_ReturnType,TYPEDEF,ReadDataLengthFnc2_pf) (P2VAR(uint32,AUTOMATIC,DCM_INTERN_DATA) DataLength);
+typedef P2FUNC(Std_ReturnType,TYPEDEF,ReadDataLengthFnc2_pf) (P2VAR(uint32, AUTOMATIC, DCM_INTERN_DATA) DataLength);
 
-typedef P2FUNC(Std_ReturnType,TYPEDEF,ReaddatalengthFnc3_pf)( VAR(uint16,AUTOMATIC) DID,VAR(Dcm_OpStatusType,AUTOMATIC) OpStatus
-   ,     P2VAR(uint16,AUTOMATIC,DCM_INTERN_DATA) DataLength);
+typedef P2FUNC(Std_ReturnType,TYPEDEF,ReaddatalengthFnc3_pf)( VAR(uint16, AUTOMATIC) DID,VAR(Dcm_OpStatusType, AUTOMATIC) OpStatus
+   ,     P2VAR(uint16, AUTOMATIC, DCM_INTERN_DATA) DataLength);
 
 typedef P2FUNC(Std_ReturnType,TYPEDEF,ReaddatalengthFnc5_pf)(void);
 
-typedef P2FUNC(Std_ReturnType,TYPEDEF,ReadDataLengthFnc6_pf) (VAR(Dcm_OpStatusType,AUTOMATIC) OpStatus);
+typedef P2FUNC(Std_ReturnType,TYPEDEF,ReadDataLengthFnc6_pf) (VAR(Dcm_OpStatusType, AUTOMATIC) OpStatus);
 
 typedef P2FUNC(Std_ReturnType,TYPEDEF,CondChkReadFunc1_pfct)
-                                   (P2VAR(Dcm_NegativeResponseCodeType,AUTOMATIC,DCM_INTERN_DATA) ErrorCode);
+                                   (P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) ErrorCode);
 
 typedef P2FUNC(Std_ReturnType,TYPEDEF,CondChkReadFunc2_pfct)
-                                   (VAR(Dcm_OpStatusType,AUTOMATIC) OpStatus
-   ,     P2VAR(Dcm_NegativeResponseCodeType,AUTOMATIC,DCM_INTERN_DATA) ErrorCode);
+                                   (VAR(Dcm_OpStatusType, AUTOMATIC) OpStatus
+   ,     P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) ErrorCode);
 
 typedef P2FUNC(Std_ReturnType,TYPEDEF,CondChkReadFunc3_pfct)
-                                   (VAR(Dcm_OpStatusType,AUTOMATIC) OpStatus);
+                                   (VAR(Dcm_OpStatusType, AUTOMATIC) OpStatus);
 
-typedef P2FUNC(Std_ReturnType,TYPEDEF,ReadFunc1_pfct)(P2VAR(uint8,AUTOMATIC,DCM_INTERN_DATA) Data);
+typedef P2FUNC(Std_ReturnType,TYPEDEF,ReadFunc1_pfct)(P2VAR(uint8, AUTOMATIC, DCM_INTERN_DATA) Data);
 
-typedef P2FUNC(Std_ReturnType,TYPEDEF,ReadFunc10_pfct)(P2VAR(uint8,AUTOMATIC,DCM_INTERN_DATA) Data,P2VAR(Dcm_NegativeResponseCodeType,AUTOMATIC,DCM_INTERN_DATA) ErrorCode);
+typedef P2FUNC(Std_ReturnType,TYPEDEF,ReadFunc10_pfct)(P2VAR(uint8, AUTOMATIC, DCM_INTERN_DATA) Data,P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) ErrorCode);
 
-typedef P2FUNC(Std_ReturnType,TYPEDEF,ReadFunc2_ptr)(VAR(Dcm_OpStatusType,AUTOMATIC) OpStatus
-   ,     P2VAR(uint8,AUTOMATIC,DCM_INTERN_DATA) Data);
+typedef P2FUNC(Std_ReturnType,TYPEDEF,ReadFunc2_ptr)(VAR(Dcm_OpStatusType, AUTOMATIC) OpStatus
+   ,     P2VAR(uint8, AUTOMATIC, DCM_INTERN_DATA) Data);
 
-typedef P2FUNC(Std_ReturnType,TYPEDEF,ReadFunc3_pfct)(P2VAR(boolean,AUTOMATIC,DCM_INTERN_DATA) Data);
-typedef P2FUNC(Std_ReturnType,TYPEDEF,ReadFunc4_pfct)(P2VAR(uint16, AUTOMATIC,DCM_INTERN_DATA) Data);
-typedef P2FUNC(Std_ReturnType,TYPEDEF,ReadFunc5_pfct)(P2VAR(uint32, AUTOMATIC,DCM_INTERN_DATA) Data);
-typedef P2FUNC(Std_ReturnType,TYPEDEF,ReadFunc6_pfct)(P2VAR(sint8,  AUTOMATIC,DCM_INTERN_DATA) Data);
-typedef P2FUNC(Std_ReturnType,TYPEDEF,ReadFunc7_pfct)(P2VAR(sint16, AUTOMATIC,DCM_INTERN_DATA) Data);
-typedef P2FUNC(Std_ReturnType,TYPEDEF,ReadFunc8_pfct)(P2VAR(sint32, AUTOMATIC,DCM_INTERN_DATA) Data);
+typedef P2FUNC(Std_ReturnType,TYPEDEF,ReadFunc3_pfct)(P2VAR(boolean, AUTOMATIC, DCM_INTERN_DATA) Data);
+typedef P2FUNC(Std_ReturnType,TYPEDEF,ReadFunc4_pfct)(P2VAR(uint16, AUTOMATIC, DCM_INTERN_DATA) Data);
+typedef P2FUNC(Std_ReturnType,TYPEDEF,ReadFunc5_pfct)(P2VAR(uint32, AUTOMATIC, DCM_INTERN_DATA) Data);
+typedef P2FUNC(Std_ReturnType,TYPEDEF,ReadFunc6_pfct)(P2VAR(sint8,  AUTOMATIC, DCM_INTERN_DATA) Data);
+typedef P2FUNC(Std_ReturnType,TYPEDEF,ReadFunc7_pfct)(P2VAR(sint16, AUTOMATIC, DCM_INTERN_DATA) Data);
+typedef P2FUNC(Std_ReturnType,TYPEDEF,ReadFunc8_pfct)(P2VAR(sint32, AUTOMATIC, DCM_INTERN_DATA) Data);
 
 #if(DCM_CFG_DSP_READ_ASP_ENABLED != DCM_CFG_OFF)
 
-typedef P2FUNC(Std_ReturnType,TYPEDEF,ReadFunc11_ptr)(VAR(Dcm_OpStatusType,AUTOMATIC) OpStatus);
+typedef P2FUNC(Std_ReturnType,TYPEDEF,ReadFunc11_ptr)(VAR(Dcm_OpStatusType, AUTOMATIC) OpStatus);
 #endif
 
 #if(DCM_CFG_RDBIPAGEDBUFFERSUPPORT != DCM_CFG_OFF)
 
-typedef P2FUNC(Std_ReturnType,TYPEDEF,ReadFunc9_ptr)(VAR(Dcm_OpStatusType,AUTOMATIC) OpStatus,     \
-                                                     P2VAR(uint8,AUTOMATIC,DCM_INTERN_DATA) Data,   \
-                                                     P2VAR(uint32,AUTOMATIC,DCM_INTERN_DATA) BufSize,   \
-                                                     P2VAR(Dcm_NegativeResponseCodeType,AUTOMATIC,DCM_INTERN_DATA) ErrorCode);
+typedef P2FUNC(Std_ReturnType,TYPEDEF,ReadFunc9_ptr)(VAR(Dcm_OpStatusType, AUTOMATIC) OpStatus,     \
+                                                     P2VAR(uint8, AUTOMATIC, DCM_INTERN_DATA) Data,   \
+                                                     P2VAR(uint32, AUTOMATIC, DCM_INTERN_DATA) BufSize,   \
+                                                     P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) ErrorCode);
 #endif
 
 #if(DCM_CFG_DSP_READDATABYIDENTIFIER_ENABLED != DCM_CFG_OFF)
 #define DCM_START_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"
-extern FUNC(Std_ReturnType,DCM_CODE) Dcm_GetActiveRDBIDid(P2VAR(uint16,AUTOMATIC,DCM_INTERN_DATA) dataDid_u16);
+extern FUNC(Std_ReturnType,DCM_CODE) Dcm_GetActiveRDBIDid(P2VAR(uint16, AUTOMATIC, DCM_INTERN_DATA) dataDid_u16);
 #define DCM_STOP_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"
 #endif
 #if(DCM_CFG_DSP_WRITEDATABYIDENTIFIER_ENABLED != DCM_CFG_OFF)
 #define DCM_START_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"
-extern FUNC(Std_ReturnType,DCM_CODE) Dcm_GetActiveWDBIDid(P2VAR(uint16,AUTOMATIC,DCM_INTERN_DATA) dataDid_u16);
+extern FUNC(Std_ReturnType,DCM_CODE) Dcm_GetActiveWDBIDid(P2VAR(uint16, AUTOMATIC, DCM_INTERN_DATA) dataDid_u16);
 #define DCM_STOP_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"
 #endif
 #if(DCM_CFG_DSP_IOCBI_ENABLED != DCM_CFG_OFF)
 #define DCM_START_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"
-extern FUNC(Std_ReturnType,DCM_CODE) Dcm_GetActiveIOCBIDid(P2VAR(uint16,AUTOMATIC,DCM_INTERN_DATA) dataDid_u16);
+extern FUNC(Std_ReturnType,DCM_CODE) Dcm_GetActiveIOCBIDid(P2VAR(uint16, AUTOMATIC, DCM_INTERN_DATA) dataDid_u16);
 #define DCM_STOP_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"
 #endif
 #if(DCM_CFG_DSP_READDATABYPERIODICIDENTIFIER_ENABLED != DCM_CFG_OFF)
 #define DCM_START_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"
-extern FUNC(Std_ReturnType,DCM_CODE) Dcm_RdpiIsDidCondtionChkReadSupported(P2VAR(Dcm_DIDIndexType_tst ,AUTOMATIC,DCM_INTERN_DATA) idxDidIndexType_st);
+extern FUNC(Std_ReturnType,DCM_CODE) Dcm_RdpiIsDidCondtionChkReadSupported(P2VAR(Dcm_DIDIndexType_tst , AUTOMATIC, DCM_INTERN_DATA) idxDidIndexType_st);
 #define DCM_STOP_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"
 #endif
 #if(DCM_CFG_DSP_DYNAMICALLYDEFINEIDENTIFIER_ENABLED != DCM_CFG_OFF)
 #define DCM_START_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"
-extern FUNC(Std_ReturnType,DCM_CODE) Dcm_GetActiveDDDid(P2VAR (uint16,AUTOMATIC,DCM_INTERN_DATA) dataDid_u16);
+extern FUNC(Std_ReturnType,DCM_CODE) Dcm_GetActiveDDDid(P2VAR (uint16, AUTOMATIC, DCM_INTERN_DATA) dataDid_u16);
 #define DCM_STOP_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"
 #endif

@@ -21,7 +21,7 @@ typedef struct{
 }Dcm_DataTransfer_tst;
 #define DCM_START_SEC_VAR_CLEARED_UNSPECIFIED
 #include "Dcm_Cfg_MemMap.hpp"
-extern VAR(Dcm_DataTransfer_tst,AUTOMATIC) Dcm_DataTransfer_st;
+extern VAR(Dcm_DataTransfer_tst, AUTOMATIC) Dcm_DataTransfer_st;
 #define DCM_STOP_SEC_VAR_CLEARED_UNSPECIFIED
 #include "Dcm_Cfg_MemMap.hpp"
 #endif
@@ -59,19 +59,19 @@ extern FUNC(void,DCM_CODE) Dcm_UpdateTransferRequestCount(void);
 #define DCM_START_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"
 extern FUNC(void,DCM_CODE) Dcm_Lok_DspReqUploadConfirmation(
-   VAR(Dcm_IdContextType,AUTOMATIC) dataIdContext_u8
-   ,  VAR(Type_SwcServiceCom_tIdPdu,AUTOMATIC) dataRxPduId_u8
-   ,  VAR(uint16,AUTOMATIC)dataSourceAddress_u16
-   ,  VAR(Dcm_ConfirmationStatusType,AUTOMATIC) status_u8
+   VAR(Dcm_IdContextType, AUTOMATIC) dataIdContext_u8
+   ,  VAR(Type_SwcServiceCom_tIdPdu, AUTOMATIC) dataRxPduId_u8
+   ,  VAR(uint16, AUTOMATIC)dataSourceAddress_u16
+   ,  VAR(Dcm_ConfirmationStatusType, AUTOMATIC) status_u8
    													);
 #define DCM_STOP_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"
 
 #define DCM_START_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"
-extern FUNC(void,DCM_CODE) Dcm_GetMemoryInfo(VAR(uint8,AUTOMATIC) dataSize_u8
-   ,   P2CONST (uint8,AUTOMATIC,DCM_INTERN_DATA) adrReqBuf_pcu8
-   ,   P2VAR (uint32,AUTOMATIC,DCM_INTERN_DATA) adrMemAddrLength_pu32);
+extern FUNC(void,DCM_CODE) Dcm_GetMemoryInfo(VAR(uint8, AUTOMATIC) dataSize_u8
+   ,   P2CONST (uint8, AUTOMATIC, DCM_INTERN_DATA) adrReqBuf_pcu8
+   ,   P2VAR (uint32, AUTOMATIC, DCM_INTERN_DATA) adrMemAddrLength_pu32);
 #define DCM_STOP_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"
 
@@ -81,10 +81,10 @@ extern FUNC(void,DCM_CODE) Dcm_GetMemoryInfo(VAR(uint8,AUTOMATIC) dataSize_u8
 #define DCM_START_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"
 extern FUNC(void,DCM_CODE) Dcm_Lok_DspReqTrfExitConfirmation(
-   VAR(Dcm_IdContextType,AUTOMATIC) dataIdContext_u8
-   ,  VAR(Type_SwcServiceCom_tIdPdu,AUTOMATIC) dataRxPduId_u8
-   ,  VAR(uint16,AUTOMATIC)dataSourceAddress_u16
-   ,  VAR(Dcm_ConfirmationStatusType,AUTOMATIC)status_u8
+   VAR(Dcm_IdContextType, AUTOMATIC) dataIdContext_u8
+   ,  VAR(Type_SwcServiceCom_tIdPdu, AUTOMATIC) dataRxPduId_u8
+   ,  VAR(uint16, AUTOMATIC)dataSourceAddress_u16
+   ,  VAR(Dcm_ConfirmationStatusType, AUTOMATIC)status_u8
    									                   );
 #define DCM_STOP_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"
@@ -94,10 +94,10 @@ extern FUNC(void,DCM_CODE) Dcm_Lok_DspReqTrfExitConfirmation(
 #define DCM_START_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"
 extern FUNC(void,DCM_CODE) Dcm_Lok_DspReqDownloadConfirmation(
-   VAR(Dcm_IdContextType,AUTOMATIC) dataIdContext_u8
-   ,  VAR(Type_SwcServiceCom_tIdPdu,AUTOMATIC) dataRxPduId_u8
-   ,  VAR(uint16,AUTOMATIC)dataSourceAddress_u16
-   ,  VAR(Dcm_ConfirmationStatusType,AUTOMATIC)status_u8
+   VAR(Dcm_IdContextType, AUTOMATIC) dataIdContext_u8
+   ,  VAR(Type_SwcServiceCom_tIdPdu, AUTOMATIC) dataRxPduId_u8
+   ,  VAR(uint16, AUTOMATIC)dataSourceAddress_u16
+   ,  VAR(Dcm_ConfirmationStatusType, AUTOMATIC)status_u8
    													     );
 #define DCM_STOP_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"

@@ -9,7 +9,7 @@
 #if(DCM_CFG_DSP_SECA_ATTEMPT_COUNTER!=DCM_CFG_OFF)
 #define DCM_START_SEC_VAR_CLEARED_8
 #include "Dcm_Cfg_MemMap.hpp"
-VAR(uint8,AUTOMATIC) Dcm_GetattemptCounterWaitCycle_u8;
+VAR(uint8, AUTOMATIC) Dcm_GetattemptCounterWaitCycle_u8;
 #define DCM_STOP_SEC_VAR_CLEARED_8
 #include "Dcm_Cfg_MemMap.hpp"
 #endif
@@ -17,11 +17,11 @@ VAR(uint8,AUTOMATIC) Dcm_GetattemptCounterWaitCycle_u8;
 #define DCM_START_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"
 
-static VAR(boolean,AUTOMATIC) waitRequested_b;
+static VAR(boolean, AUTOMATIC) waitRequested_b;
 
-static VAR(uint8,AUTOMATIC) waitRequestedIdx_qu8[DCM_CFG_DSP_NUMSECURITY];
-static VAR(Std_ReturnType,AUTOMATIC)     dataRetValue_u8;
-static VAR(uint8,AUTOMATIC) attemptCounter_u8;
+static VAR(uint8, AUTOMATIC) waitRequestedIdx_qu8[DCM_CFG_DSP_NUMSECURITY];
+static VAR(Std_ReturnType, AUTOMATIC)     dataRetValue_u8;
+static VAR(uint8, AUTOMATIC) attemptCounter_u8;
 
 static FUNC(void,DCM_CODE) Dcm_Lok_SecaGetattemptCounterCheck(void){
 
@@ -38,7 +38,7 @@ static FUNC(void,DCM_CODE) Dcm_Lok_SecaGetattemptCounterCheck(void){
 }
 
 static FUNC(void,DCM_CODE) Dcm_Lok_GetattemptCounterWaitCycleExhaused(void){
-   VAR(uint8_least,AUTOMATIC) l_idxSeca_qu8;  
+   VAR(uint8_least, AUTOMATIC) l_idxSeca_qu8;  
 
    for(l_idxSeca_qu8 = 0x0; l_idxSeca_qu8 < DCM_CFG_DSP_NUMSECURITY; l_idxSeca_qu8++)
    {
@@ -65,7 +65,7 @@ static FUNC(void,DCM_CODE) Dcm_Lok_GetattemptCounterWaitCycleExhaused(void){
 }
 
 static FUNC(void,DCM_CODE) Dcm_Lok_SecaDelayCountRead(void){
-   static  VAR(uint8_least,AUTOMATIC) idxSeca_qu8;  
+   static  VAR(uint8_least, AUTOMATIC) idxSeca_qu8;  
 
    for(idxSeca_qu8 = 0x0; idxSeca_qu8 < DCM_CFG_DSP_NUMSECURITY; idxSeca_qu8++)
    {

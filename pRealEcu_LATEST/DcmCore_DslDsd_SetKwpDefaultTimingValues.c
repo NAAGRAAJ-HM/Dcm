@@ -6,7 +6,7 @@
 #define DCM_START_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"
 FUNC(void,DCM_CODE) Dcm_SetKwpDefaultTimingValues(void){
-   VAR(uint8,AUTOMATIC) idxDefaultTmg_u8;
+   VAR(uint8, AUTOMATIC) idxDefaultTmg_u8;
 
    if(DCM_IS_KWPPROT_ACTIVE() != FALSE)
    {

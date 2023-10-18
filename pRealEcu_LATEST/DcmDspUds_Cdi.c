@@ -12,16 +12,16 @@ static VAR(uint32,DCM_VAR) Dcm_dataDspReqDTCId_u32;
 
 #define DCM_START_SEC_VAR_CLEARED_8
 #include "Dcm_Cfg_MemMap.hpp"
-static VAR(Std_ReturnType,AUTOMATIC)  s_dataRetVal_u8;
+static VAR(Std_ReturnType, AUTOMATIC)  s_dataRetVal_u8;
 #define DCM_STOP_SEC_VAR_CLEARED_8
 #include "Dcm_Cfg_MemMap.hpp"
 
 #define DCM_START_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"
 
-static FUNC(void,DCM_CODE) Dcm_PrivDTCLengthCheck(P2VAR(Dcm_SrvOpStatusType,AUTOMATIC,DCM_INTERN_DATA) OpStatus,\
-                                                  P2CONST(Dcm_MsgContextType,AUTOMATIC,DCM_INTERN_CONST) pMsgContext,\
-                                                  P2VAR(Dcm_NegativeResponseCodeType,AUTOMATIC,DCM_INTERN_DATA) dataNegRespCode_u8)
+static FUNC(void,DCM_CODE) Dcm_PrivDTCLengthCheck(P2VAR(Dcm_SrvOpStatusType, AUTOMATIC, DCM_INTERN_DATA) OpStatus,\
+                                                  P2CONST(Dcm_MsgContextType, AUTOMATIC,DCM_INTERN_CONST) pMsgContext,\
+                                                  P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8)
 {
    if(pMsgContext->reqDataLen == DCM_CDI_REQ_LEN)
    {
@@ -47,11 +47,11 @@ static FUNC(void,DCM_CODE) Dcm_PrivDTCLengthCheck(P2VAR(Dcm_SrvOpStatusType,AUTO
    }
 }
 
-static FUNC(void,DCM_CODE) Dcm_PrivClearDTCInformation( P2VAR(Dcm_SrvOpStatusType,AUTOMATIC,DCM_INTERN_DATA) OpStatus,\
-                                                        P2VAR(Dcm_MsgContextType,AUTOMATIC,DCM_INTERN_DATA) pMsgContext,\
-                                                        P2VAR(Dcm_NegativeResponseCodeType,AUTOMATIC,DCM_INTERN_DATA) dataNegRespCode_u8)
+static FUNC(void,DCM_CODE) Dcm_PrivClearDTCInformation( P2VAR(Dcm_SrvOpStatusType, AUTOMATIC, DCM_INTERN_DATA) OpStatus,\
+                                                        P2VAR(Dcm_MsgContextType, AUTOMATIC, DCM_INTERN_DATA) pMsgContext,\
+                                                        P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8)
 {
-   VAR(Dcm_ReturnClearDTCType_tu8,AUTOMATIC) dataDemClrRetVal_u8;
+   VAR(Dcm_ReturnClearDTCType_tu8, AUTOMATIC) dataDemClrRetVal_u8;
 
     dataDemClrRetVal_u8 = Dem_ClearDTC( Dcm_dataDspReqDTCId_u32, DEM_DTC_FORMAT_UDS,DEM_DTC_ORIGIN_PRIMARY_MEMORY);
    switch(dataDemClrRetVal_u8)
@@ -90,12 +90,12 @@ static FUNC(void,DCM_CODE) Dcm_PrivClearDTCInformation( P2VAR(Dcm_SrvOpStatusTyp
    }
 }
 
-static FUNC(void,DCM_CODE)  DCM_PrivDTCConditionCheckfunc(P2VAR(Dcm_SrvOpStatusType,AUTOMATIC,DCM_INTERN_DATA) OpStatus,\
-                                                          P2VAR(Dcm_NegativeResponseCodeType,AUTOMATIC,DCM_INTERN_DATA) dataNegRespCode_u8)
+static FUNC(void,DCM_CODE)  DCM_PrivDTCConditionCheckfunc(P2VAR(Dcm_SrvOpStatusType, AUTOMATIC, DCM_INTERN_DATA) OpStatus,\
+                                                          P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8)
 {
-VAR(Dcm_ReturnClearDTCType_tu8,AUTOMATIC) dataDemClrRetVal_u8;
+VAR(Dcm_ReturnClearDTCType_tu8, AUTOMATIC) dataDemClrRetVal_u8;
 #if(DCM_CFG_DSP_CDI_CONDITIONCHECK_ENABLED!=DCM_CFG_OFF)
-       VAR(Std_ReturnType,AUTOMATIC)  retVal_u8;
+       VAR(Std_ReturnType, AUTOMATIC)  retVal_u8;
        VAR(boolean , AUTOMATIC) isModeChkRetval_b;
        VAR(boolean , AUTOMATIC) isConditionChkflag_b;
        retVal_u8 = E_OK;
@@ -190,9 +190,9 @@ FUNC(void,DCM_CODE) Dcm_Dsp_CDIIni(void){
     Dcm_SrvOpstatus_u8 = DCM_INITIAL;
 }
 
-FUNC(Std_ReturnType,DCM_CODE) SwcServiceDcm_tClearDiagnosticInformation (VAR(Dcm_SrvOpStatusType,AUTOMATIC) OpStatus,\
-                                                                 P2VAR(Dcm_MsgContextType,AUTOMATIC,DCM_INTERN_DATA) pMsgContext,\
-                                                                 P2VAR(Dcm_NegativeResponseCodeType,AUTOMATIC,DCM_INTERN_DATA) dataNegRespCode_u8)
+FUNC(Std_ReturnType,DCM_CODE) SwcServiceDcm_tClearDiagnosticInformation (VAR(Dcm_SrvOpStatusType, AUTOMATIC) OpStatus,\
+                                                                 P2VAR(Dcm_MsgContextType, AUTOMATIC, DCM_INTERN_DATA) pMsgContext,\
+                                                                 P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8)
 {
 
     *dataNegRespCode_u8   = 0x0u;

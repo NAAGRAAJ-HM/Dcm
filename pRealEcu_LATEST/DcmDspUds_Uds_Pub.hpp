@@ -92,9 +92,9 @@ typedef struct{
 }Dcm_DddiIdContext_tst;
 
 typedef struct{
-  P2VAR(Dcm_DddiRecord_tst,TYPEDEF,DCM_INTERN_DATA) addrRecord_pst;
-  P2VAR(Dcm_DddiIdContext_tst,TYPEDEF,DCM_INTERN_DATA) dataDDDIRecordContext_pst;
-  P2VAR(Dcm_DddiIdContext_tst,TYPEDEF,DCM_INTERN_DATA) dataPDIRecordContext_pst;
+  P2VAR(Dcm_DddiRecord_tst,TYPEDEF, DCM_INTERN_DATA) addrRecord_pst;
+  P2VAR(Dcm_DddiIdContext_tst,TYPEDEF, DCM_INTERN_DATA) dataDDDIRecordContext_pst;
+  P2VAR(Dcm_DddiIdContext_tst,TYPEDEF, DCM_INTERN_DATA) dataPDIRecordContext_pst;
   uint16 dataDddId_u16;
   uint16 nrMaxNumOfRecords_u16;
 }Dcm_DddiMainConfig_tst;
@@ -148,17 +148,17 @@ typedef struct{
 #include "Dcm_Cfg_MemMap.hpp"
 
 extern FUNC (Std_ReturnType,DCM_CODE) Dcm_GetIndexOfDID (
-   													VAR (uint16,AUTOMATIC) did
-   ,  P2VAR (Dcm_DIDIndexType_tst,AUTOMATIC,DCM_INTERN_DATA) idxDidIndexType_st
+   													VAR (uint16, AUTOMATIC) did
+   ,  P2VAR (Dcm_DIDIndexType_tst, AUTOMATIC, DCM_INTERN_DATA) idxDidIndexType_st
    													 );
 
 #if((DCM_CFG_DSP_READDATABYIDENTIFIER_ENABLED != DCM_CFG_OFF)				||		\
     (DCM_CFG_DSP_WRITEDATABYIDENTIFIER_ENABLED != DCM_CFG_OFF)				||		\
     (DCM_CFG_DSP_DYNAMICALLYDEFINEIDENTIFIER_ENABLED != DCM_CFG_OFF))
 
-extern FUNC (Dcm_SupportRet_t,DCM_CODE) Dcm_GetSupportOfIndex( P2VAR   (Dcm_DIDIndexType_tst , AUTOMATIC,DCM_INTERN_DATA) 	idxDidIndexType_st
-   ,     VAR (Dcm_Direction_t,AUTOMATIC) 		direction
-   ,     P2VAR (Dcm_NegativeResponseCodeType, AUTOMATIC,DCM_INTERN_DATA) dataNegRespCode_u8);
+extern FUNC (Dcm_SupportRet_t,DCM_CODE) Dcm_GetSupportOfIndex( P2VAR   (Dcm_DIDIndexType_tst , AUTOMATIC, DCM_INTERN_DATA) 	idxDidIndexType_st
+   ,     VAR (Dcm_Direction_t, AUTOMATIC) 		direction
+   ,     P2VAR (Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8);
 
 #endif
 
@@ -167,20 +167,20 @@ extern FUNC (Dcm_SupportRet_t,DCM_CODE) Dcm_GetSupportOfIndex( P2VAR   (Dcm_DIDI
      (DCM_CFG_DSP_DYNAMICALLYDEFINEIDENTIFIER_ENABLED != DCM_CFG_OFF))
 
 extern FUNC(Std_ReturnType,DCM_CODE) Dcm_GetDIDRangeStatus (
-                                                            VAR (uint16,AUTOMATIC) did
-   ,     P2VAR (Dcm_DIDIndexType_tst,AUTOMATIC,DCM_INTERN_DATA) idxDidIndexType_st
+                                                            VAR (uint16, AUTOMATIC) did
+   ,     P2VAR (Dcm_DIDIndexType_tst, AUTOMATIC, DCM_INTERN_DATA) idxDidIndexType_st
                                                             );
 #endif
 
-extern 	FUNC (Std_ReturnType,DCM_CODE) Dcm_GetLengthOfDIDIndex(P2VAR   (Dcm_DIDIndexType_tst ,AUTOMATIC,DCM_INTERN_DATA)idxDidIndexType_st
-   ,     													   P2VAR (uint32,AUTOMATIC,DCM_INTERN_DATA)	length_u32
-   ,     													   VAR   (uint16,AUTOMATIC) did_u16);
+extern 	FUNC (Std_ReturnType,DCM_CODE) Dcm_GetLengthOfDIDIndex(P2VAR   (Dcm_DIDIndexType_tst , AUTOMATIC, DCM_INTERN_DATA)idxDidIndexType_st
+   ,     													   P2VAR (uint32, AUTOMATIC, DCM_INTERN_DATA)	length_u32
+   ,     													   VAR   (uint16, AUTOMATIC) did_u16);
 
 #if((DCM_CFG_DSP_READDATABYIDENTIFIER_ENABLED != DCM_CFG_OFF)|| (DCM_CFG_DSP_WRITEDATABYIDENTIFIER_ENABLED != DCM_CFG_OFF) ||(DCM_CFG_DSP_IOCBI_ENABLED != DCM_CFG_OFF))
 
-extern FUNC(Std_ReturnType,DCM_CODE) Dcm_GetActiveDid(P2VAR(uint16,AUTOMATIC,DCM_INTERN_DATA) dataDid_u16);
+extern FUNC(Std_ReturnType,DCM_CODE) Dcm_GetActiveDid(P2VAR(uint16, AUTOMATIC, DCM_INTERN_DATA) dataDid_u16);
 
-extern FUNC(Std_ReturnType,DCM_CODE) Dcm_GetActiveSourceDataId(P2VAR(uint16,AUTOMATIC,DCM_INTERN_DATA) dataSrcDid_u16,P2VAR(uint8,AUTOMATIC,DCM_INTERN_DATA) posnSrcDataRec_u8, P2VAR(uint8,AUTOMATIC,DCM_INTERN_DATA) adrMemSize_u8);
+extern FUNC(Std_ReturnType,DCM_CODE) Dcm_GetActiveSourceDataId(P2VAR(uint16, AUTOMATIC, DCM_INTERN_DATA) dataSrcDid_u16,P2VAR(uint8, AUTOMATIC, DCM_INTERN_DATA) posnSrcDataRec_u8, P2VAR(uint8, AUTOMATIC, DCM_INTERN_DATA) adrMemSize_u8);
 
 #endif
 
@@ -189,8 +189,8 @@ extern FUNC(Std_ReturnType,DCM_CODE) Dcm_GetActiveSourceDataId(P2VAR(uint16,AUTO
    		 (DCM_CFG_DSP_READDATABYPERIODICIDENTIFIER_ENABLED != DCM_CFG_OFF) ||   \
    		 (DCM_CFG_DSP_READDATABYIDENTIFIER_ENABLED != DCM_CFG_OFF))
 
-extern FUNC (Std_ReturnType,DCM_CODE) Dcm_GetDIDData (P2VAR (Dcm_DIDIndexType_tst,AUTOMATIC,DCM_INTERN_DATA) idxDidIndexType_st,
- 	  	   	   	   	   	   	   	   	   	   	   	   	  P2VAR (uint8, AUTOMATIC,DCM_INTERN_DATA) targetBuffer);
+extern FUNC (Std_ReturnType,DCM_CODE) Dcm_GetDIDData (P2VAR (Dcm_DIDIndexType_tst, AUTOMATIC, DCM_INTERN_DATA) idxDidIndexType_st,
+ 	  	   	   	   	   	   	   	   	   	   	   	   	  P2VAR (uint8, AUTOMATIC, DCM_INTERN_DATA) targetBuffer);
 #endif
 
 #define DCM_STOP_SEC_CODE
@@ -200,7 +200,7 @@ extern FUNC (Std_ReturnType,DCM_CODE) Dcm_GetDIDData (P2VAR (Dcm_DIDIndexType_ts
 #if(DCM_CFG_DSP_ROUTINECONTROL_ENABLED != DCM_CFG_OFF)
 #define DCM_START_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"
-extern FUNC(Std_ReturnType,DCM_CODE) Dcm_GetActiveRid(P2VAR(uint16,AUTOMATIC,DCM_INTERN_DATA) dataRid_u16);
+extern FUNC(Std_ReturnType,DCM_CODE) Dcm_GetActiveRid(P2VAR(uint16, AUTOMATIC, DCM_INTERN_DATA) dataRid_u16);
 #define DCM_STOP_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"
 #endif

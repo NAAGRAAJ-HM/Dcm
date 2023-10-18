@@ -10,18 +10,18 @@
 #define DCM_START_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"
 
-FUNC(Std_ReturnType,DCM_CODE) Dcm_DcmObdMode37A (VAR(Dcm_SrvOpStatusType,AUTOMATIC) OpStatus,P2VAR(Dcm_MsgContextType,AUTOMATIC,DCM_INTERN_DATA) pMsgContext,P2VAR(Dcm_NegativeResponseCodeType,AUTOMATIC,DCM_INTERN_DATA) dataNegRespCode_u8)
+FUNC(Std_ReturnType,DCM_CODE) Dcm_DcmObdMode37A (VAR(Dcm_SrvOpStatusType, AUTOMATIC) OpStatus,P2VAR(Dcm_MsgContextType, AUTOMATIC, DCM_INTERN_DATA) pMsgContext,P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8)
 {
 
    VAR(uint32_least,   AUTOMATIC)  cntrLoop_qu32;
    VAR(uint32,     AUTOMATIC)  dataMode37ADtc_u32;
-   VAR(Dcm_MsgLenType,AUTOMATIC)  nrResMaxDataLen_u32;
-   VAR(Dcm_MsgLenType,AUTOMATIC)  nrResDTCDataLen_u32;
+   VAR(Dcm_MsgLenType, AUTOMATIC)  nrResMaxDataLen_u32;
+   VAR(Dcm_MsgLenType, AUTOMATIC)  nrResDTCDataLen_u32;
    VAR(uint8,     AUTOMATIC)  dataDTCStatusMask_u8;
-   VAR(Dem_DTCOriginType,AUTOMATIC)    dataDTCOrigin_u8;
-   VAR(Dem_ReturnSetFilterType,AUTOMATIC) dataRetSetDTCFilter_u8;
+   VAR(Dem_DTCOriginType, AUTOMATIC)    dataDTCOrigin_u8;
+   VAR(Dem_ReturnSetFilterType, AUTOMATIC) dataRetSetDTCFilter_u8;
    VAR(uint8,     AUTOMATIC)     stMode37ADTC_u8;
-   VAR(Dem_ReturnGetNextFilteredDTCType,AUTOMATIC)   dataRetGetNextFilt_u8;
+   VAR(Dem_ReturnGetNextFilteredDTCType, AUTOMATIC)   dataRetGetNextFilt_u8;
    VAR(Std_ReturnType,     AUTOMATIC)  dataRetVal_u8;
 
     DCM_UNUSED_PARAM(OpStatus);

@@ -8,8 +8,8 @@
 #define DCM_START_SEC_VAR_INIT_UNSPECIFIED
 #include "Dcm_Cfg_MemMap.hpp"
 
-extern P2FUNC(boolean,DCM_APPL_CODE,Dcm_CdiModeRuleRef_pf) (P2VAR(Dcm_NegativeResponseCodeType,AUTOMATIC,DCM_INTERN_DATA) Nrc_u8);
-extern P2FUNC(Std_ReturnType,DCM_APPL_CODE,Dcm_CDIUserConditionCheck_pf)(VAR(uint32,AUTOMATIC) GoDTC,P2VAR(Dcm_NegativeResponseCodeType,DCM_INTERN_DATA,AUTOMATIC) ErrorCode);
+extern P2FUNC(boolean, DCM_APPL_CODE,Dcm_CdiModeRuleRef_pf) (P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) Nrc_u8);
+extern P2FUNC(Std_ReturnType, DCM_APPL_CODE,Dcm_CDIUserConditionCheck_pf)(VAR(uint32, AUTOMATIC) GoDTC,P2VAR(Dcm_NegativeResponseCodeType, DCM_INTERN_DATA, AUTOMATIC) ErrorCode);
 
 #define DCM_STOP_SEC_VAR_INIT_UNSPECIFIED
 #include "Dcm_Cfg_MemMap.hpp"

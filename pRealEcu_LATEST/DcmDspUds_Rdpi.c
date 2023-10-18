@@ -24,8 +24,8 @@ FUNC(void,DCM_CODE)Dcm_Dsp_RdpiIni   (void){
    s_Dcm_DspCondChkRdOpStatus_u8=DCM_INITIAL;
 }
 
-static FUNC(Std_ReturnType,DCM_CODE)Dcm_RdpiIsTransmissionModeSupported(VAR(uint8,AUTOMATIC) dataTransmissionMode_u8);
-static FUNC(Std_ReturnType,DCM_CODE)Dcm_RdpiIsTransmissionModeSupported(VAR(uint8,AUTOMATIC) dataTransmissionMode_u8)
+static FUNC(Std_ReturnType,DCM_CODE)Dcm_RdpiIsTransmissionModeSupported(VAR(uint8, AUTOMATIC) dataTransmissionMode_u8);
+static FUNC(Std_ReturnType,DCM_CODE)Dcm_RdpiIsTransmissionModeSupported(VAR(uint8, AUTOMATIC) dataTransmissionMode_u8)
 {
    VAR(Std_ReturnType,     AUTOMATIC) dataRetVal_u8;
 
@@ -52,14 +52,14 @@ static FUNC(Std_ReturnType,DCM_CODE)Dcm_RdpiIsTransmissionModeSupported(VAR(uint
     return dataRetVal_u8;
 }
 
-FUNC(Std_ReturnType,DCM_CODE) Dcm_RdpiIsDidCondtionChkReadSupported(P2VAR(Dcm_DIDIndexType_tst ,AUTOMATIC,DCM_INTERN_DATA) idxDidIndexType_st)
+FUNC(Std_ReturnType,DCM_CODE) Dcm_RdpiIsDidCondtionChkReadSupported(P2VAR(Dcm_DIDIndexType_tst , AUTOMATIC, DCM_INTERN_DATA) idxDidIndexType_st)
 {
    VAR(uint16,     AUTOMATIC) idxIndex_u16;
    VAR (Std_ReturnType,   AUTOMATIC) dataCondChkRetVal_u8;
-   P2CONST(Dcm_DIDConfig_tst,AUTOMATIC, DCM_INTERN_DATA)ptrDidConfig;
-   P2CONST(Dcm_DataInfoConfig_tst,AUTOMATIC, DCM_INTERN_DATA)ptrSigConfig;
-   P2CONST(Dcm_SignalDIDSubStructConfig_tst,AUTOMATIC, DCM_INTERN_DATA) ptrControlSigConfig;
-   P2VAR(void,AUTOMATIC, DCM_INTERN_DATA)  ptrDIDFnc;
+   P2CONST(Dcm_DIDConfig_tst, AUTOMATIC, DCM_INTERN_DATA)ptrDidConfig;
+   P2CONST(Dcm_DataInfoConfig_tst, AUTOMATIC, DCM_INTERN_DATA)ptrSigConfig;
+   P2CONST(Dcm_SignalDIDSubStructConfig_tst, AUTOMATIC, DCM_INTERN_DATA) ptrControlSigConfig;
+   P2VAR(void, AUTOMATIC, DCM_INTERN_DATA)  ptrDIDFnc;
     dataCondChkRetVal_u8=E_OK;
     ptrDIDFnc=NULL_PTR;
     ptrDidConfig = &Dcm_DIDConfig[idxDidIndexType_st->idxIndex_u16];
@@ -105,12 +105,12 @@ FUNC(Std_ReturnType,DCM_CODE) Dcm_RdpiIsDidCondtionChkReadSupported(P2VAR(Dcm_DI
     return dataCondChkRetVal_u8;
 }
 
-static FUNC(void,DCM_CODE) Dcm_ResetRdpiStateVariables(VAR(uint8,AUTOMATIC)idxIndex_u8, VAR(Dcm_RdpiTxModeType_ten, AUTOMATIC) dataOverflowValue_en
-   ,     VAR(uint16,AUTOMATIC)dataId_u16, VAR(uint16, AUTOMATIC) idxPeriodicId_u16
-   ,     VAR(uint32,AUTOMATIC) cntrTime_u32,VAR(boolean,AUTOMATIC) dataRange_b);
-static FUNC(void,DCM_CODE) Dcm_ResetRdpiStateVariables(VAR(uint8,AUTOMATIC)idxIndex_u8, VAR(Dcm_RdpiTxModeType_ten, AUTOMATIC) dataOverflowValue_en
-   ,     VAR(uint16,AUTOMATIC)dataId_u16, VAR(uint16, AUTOMATIC) idxPeriodicId_u16
-   ,     VAR(uint32,AUTOMATIC) cntrTime_u32,VAR(boolean,AUTOMATIC) dataRange_b)
+static FUNC(void,DCM_CODE) Dcm_ResetRdpiStateVariables(VAR(uint8, AUTOMATIC)idxIndex_u8, VAR(Dcm_RdpiTxModeType_ten, AUTOMATIC) dataOverflowValue_en
+   ,     VAR(uint16, AUTOMATIC)dataId_u16, VAR(uint16, AUTOMATIC) idxPeriodicId_u16
+   ,     VAR(uint32, AUTOMATIC) cntrTime_u32,VAR(boolean, AUTOMATIC) dataRange_b);
+static FUNC(void,DCM_CODE) Dcm_ResetRdpiStateVariables(VAR(uint8, AUTOMATIC)idxIndex_u8, VAR(Dcm_RdpiTxModeType_ten, AUTOMATIC) dataOverflowValue_en
+   ,     VAR(uint16, AUTOMATIC)dataId_u16, VAR(uint16, AUTOMATIC) idxPeriodicId_u16
+   ,     VAR(uint32, AUTOMATIC) cntrTime_u32,VAR(boolean, AUTOMATIC) dataRange_b)
 {
                     Dcm_PeriodicInfo_st[idxIndex_u8].dataOverflowValue_en= dataOverflowValue_en;
                     Dcm_PeriodicInfo_st[idxIndex_u8].dataId_u16=dataId_u16;
@@ -119,22 +119,22 @@ static FUNC(void,DCM_CODE) Dcm_ResetRdpiStateVariables(VAR(uint8,AUTOMATIC)idxIn
                     Dcm_PeriodicInfo_st[idxIndex_u8].dataRange_b=dataRange_b;
 }
 
-FUNC(Std_ReturnType,DCM_CODE) Dcm_DcmReadDataByPeriodicIdentifier(VAR(Dcm_SrvOpStatusType,AUTOMATIC) OpStatus,P2VAR(Dcm_MsgContextType,AUTOMATIC,DCM_INTERN_DATA) pMsgContext,P2VAR(Dcm_NegativeResponseCodeType,AUTOMATIC,DCM_INTERN_DATA) dataNegRespCode_u8)
+FUNC(Std_ReturnType,DCM_CODE) Dcm_DcmReadDataByPeriodicIdentifier(VAR(Dcm_SrvOpStatusType, AUTOMATIC) OpStatus,P2VAR(Dcm_MsgContextType, AUTOMATIC, DCM_INTERN_DATA) pMsgContext,P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8)
 {
    VAR (Dcm_DIDIndexType_tst,     AUTOMATIC) s_Dcm_idxDidIndexType_st;
-   VAR (uint32,AUTOMATIC) dataSessionMask_u32;
-   VAR (uint32,AUTOMATIC) dataSecurityMask_u32;
-   P2CONST(Dcm_ExtendedDIDConfig_tst,AUTOMATIC,DCM_INTERN_CONST) adrExtendedConfig_pcst;
+   VAR (uint32, AUTOMATIC) dataSessionMask_u32;
+   VAR (uint32, AUTOMATIC) dataSecurityMask_u32;
+   P2CONST(Dcm_ExtendedDIDConfig_tst, AUTOMATIC,DCM_INTERN_CONST) adrExtendedConfig_pcst;
    VAR(uint8,     AUTOMATIC) idxIndex_u8;
    VAR(uint8,     AUTOMATIC) dataTransmissionMode_u8;
    VAR(Dcm_RdpiTxModeType_ten,     AUTOMATIC) dataOverflowValue_en;
    VAR(boolean,     AUTOMATIC) isValidId_b;
-   VAR(Std_ReturnType,AUTOMATIC) retVal_u8;
+   VAR(Std_ReturnType, AUTOMATIC) retVal_u8;
    VAR (Std_ReturnType,   AUTOMATIC) dataCondChkRetVal_u8;
-   P2CONST(Dcm_DIDConfig_tst,AUTOMATIC, DCM_INTERN_DATA)ptrDidConfig;
+   P2CONST(Dcm_DIDConfig_tst, AUTOMATIC, DCM_INTERN_DATA)ptrDidConfig;
    static VAR(uint32,DCM_VAR) s_idxLoop_qu32;
 #if(DCM_CFG_DSP_NUMISDIDAVAIL>0)
-   VAR (Std_ReturnType,AUTOMATIC) IsDIDAvailFnc_u8 = E_NOT_OK;
+   VAR (Std_ReturnType, AUTOMATIC) IsDIDAvailFnc_u8 = E_NOT_OK;
 #endif
 
     *dataNegRespCode_u8        = 0x00;

@@ -15,21 +15,21 @@ typedef enum{
 
 #if((DCM_CFG_DSPUDSSUPPORT_ENABLED != DCM_CFG_OFF)&& (DCM_CFG_DSP_COMMUNICATIONCONTROL_ENABLED != DCM_CFG_OFF))
 extern FUNC(void, DCM_CODE) Dcm_Lok_DspCommCntrlConfirmation(
-   VAR(Dcm_IdContextType ,AUTOMATIC)dataIdContext_u8
-   ,  VAR(Type_SwcServiceCom_tIdPdu,AUTOMATIC)dataRxPduId_u8
-   ,  VAR(uint16,AUTOMATIC)dataSourceAddress_u16
-   ,  VAR(Dcm_ConfirmationStatusType,AUTOMATIC)status_u8
+   VAR(Dcm_IdContextType , AUTOMATIC)dataIdContext_u8
+   ,  VAR(Type_SwcServiceCom_tIdPdu, AUTOMATIC)dataRxPduId_u8
+   ,  VAR(uint16, AUTOMATIC)dataSourceAddress_u16
+   ,  VAR(Dcm_ConfirmationStatusType, AUTOMATIC)status_u8
    													 );
 
 LOCAL_INLINE boolean Dcm_Lok_CC_IsSupportedInSession( VAR(Dcm_SesCtrlType,DCM_VAR) ActiveSession_u8)
 {
 
-   VAR(uint8_least,AUTOMATIC) idxIndex_qu8;
-   VAR(uint8,AUTOMATIC) nrSessions_u8;
-   VAR(boolean,AUTOMATIC)  flgStatus_b;
+   VAR(uint8_least, AUTOMATIC) idxIndex_qu8;
+   VAR(uint8, AUTOMATIC) nrSessions_u8;
+   VAR(boolean, AUTOMATIC)  flgStatus_b;
 
-   VAR(uint32,AUTOMATIC) dataSessionsAllowed_u32;
-   VAR(uint8,AUTOMATIC) nrService_u8;
+   VAR(uint32, AUTOMATIC) dataSessionsAllowed_u32;
+   VAR(uint8, AUTOMATIC) nrService_u8;
 
     flgStatus_b = TRUE;
 

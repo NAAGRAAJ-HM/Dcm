@@ -7,16 +7,16 @@
 #if(DCM_CFG_DSP_SECURITYACCESS_ENABLED != DCM_CFG_OFF)
 #if(DCM_CFG_RESTORING_ENABLED != DCM_CFG_OFF)
 
-   static VAR(uint8,AUTOMATIC)   Dcm_Lok_idxSec_qu8;
-   static VAR(uint32,AUTOMATIC)  Dcm_Lok_dataSecaGlobaltimer_u32;
+   static VAR(uint8, AUTOMATIC)   Dcm_Lok_idxSec_qu8;
+   static VAR(uint32, AUTOMATIC)  Dcm_Lok_dataSecaGlobaltimer_u32;
 
 #if((DCM_CFG_SECURITY_STOREDELAYCOUNTANDTIMERONJUMP == DCM_CFG_OFF))
-   static VAR(uint32,AUTOMATIC)  Dcm_Lok_nrPowerOnDelay_u32;
+   static VAR(uint32, AUTOMATIC)  Dcm_Lok_nrPowerOnDelay_u32;
 #endif
 
 #if((DCM_CFG_SECURITY_STOREDELAYCOUNTANDTIMERONJUMP != DCM_CFG_ON))
 static FUNC(void,DCM_CODE) Dcm_Lok_SecaPowerOnDelayExpired(void){
-   VAR(uint32,AUTOMATIC)       nrDelay_u32;
+   VAR(uint32, AUTOMATIC)       nrDelay_u32;
 
    if(Dcm_Dsp_Seca[Dcm_Lok_idxSec_qu8].FailedAtm_cnt_u8 >= Dcm_Dsp_Security[Dcm_Lok_idxSec_qu8].NumAttDelay_u8)
    {
@@ -68,10 +68,10 @@ static FUNC(void,DCM_CODE) Dcm_Lok_SecaPowerOnDelayNotExpired(void){
 #endif
 
 static FUNC(void,DCM_CODE)Dcm_Lok_SecaWarmStart(void){
-   VAR(uint8,AUTOMATIC)  dataNumBootSeclev_u8;
-   VAR(uint8,AUTOMATIC)  l_idxSec_qu8;
+   VAR(uint8, AUTOMATIC)  dataNumBootSeclev_u8;
+   VAR(uint8, AUTOMATIC)  l_idxSec_qu8;
 #if((DCM_CFG_SECURITY_STOREDELAYCOUNTANDTIMERONJUMP != DCM_CFG_OFF))
-   VAR(uint8,AUTOMATIC)  idxDcmSeclevel_u8;
+   VAR(uint8, AUTOMATIC)  idxDcmSeclevel_u8;
     dataNumBootSeclev_u8=Dcm_ProgConditions_st.NumOfSecurityLevels;
 #else
     dataNumBootSeclev_u8 = DCM_CFG_DSP_NUMSECURITY;

@@ -20,7 +20,7 @@ FUNC(Std_ReturnType,DCM_CODE) Dcm_GetActiveProtocol(
 
 FUNC(Std_ReturnType,DCM_CODE) Dcm_GetActiveProtocolRxBufferSize(
    CONSTP2VAR(Dcm_MsgLenType, AUTOMATIC, DCM_APPL_DATA) rxBufferLength){
-   VAR(Std_ReturnType,AUTOMATIC) bufferSizeStatus = E_NOT_OK;
+   VAR(Std_ReturnType, AUTOMATIC) bufferSizeStatus = E_NOT_OK;
 
    if(NULL_PTR != rxBufferLength){
       if(FALSE != Dcm_Lok_isProtocolStarted()){

@@ -5,7 +5,7 @@
 #if(DCM_CFG_STORING_ENABLED != DCM_CFG_OFF)
 #define DCM_START_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"
-FUNC(void,DCM_CODE) Dcm_Lok_ConfirmationRespPendForBootloader(VAR(Dcm_ConfirmationStatusType,AUTOMATIC) Status_u8)
+FUNC(void,DCM_CODE) Dcm_Lok_ConfirmationRespPendForBootloader(VAR(Dcm_ConfirmationStatusType, AUTOMATIC) Status_u8)
 {
    if(Status_u8 == DCM_RES_NEG_OK)
    {

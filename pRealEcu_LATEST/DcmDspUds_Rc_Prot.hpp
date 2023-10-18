@@ -32,11 +32,11 @@ typedef struct{
 typedef struct{
    uint32  dataSecBitMask_u32;
    uint32  dataSessBitMask_u32;
-   P2FUNC(Std_ReturnType,TYPEDEF,adrUserRidModeRule_pfct) (P2VAR(Dcm_NegativeResponseCodeType,AUTOMATIC,DCM_INTERN_DATA),VAR(uint16,AUTOMATIC),VAR(uint8,AUTOMATIC));
+   P2FUNC(Std_ReturnType,TYPEDEF,adrUserRidModeRule_pfct) (P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA),VAR(uint16, AUTOMATIC),VAR(uint8, AUTOMATIC));
 #if((DCM_CFG_DSP_MODERULEFORROUTINES !=DCM_CFG_OFF) || (DCM_CFG_DSP_MODERULEFORRCRANGE!=DCM_CFG_OFF))
-   P2FUNC(boolean,TYPEDEF,adrModeRuleForStart_pfct) (P2VAR(uint8,AUTOMATIC,DCM_INTERN_DATA));
-   P2FUNC(boolean,TYPEDEF,adrModeRuleForStop_pfct) (P2VAR(uint8,AUTOMATIC,DCM_INTERN_DATA));
-   P2FUNC(boolean,TYPEDEF,adrModeRuleForRequestResult_pfct) (P2VAR(uint8,AUTOMATIC,DCM_INTERN_DATA));
+   P2FUNC(boolean,TYPEDEF,adrModeRuleForStart_pfct) (P2VAR(uint8, AUTOMATIC, DCM_INTERN_DATA));
+   P2FUNC(boolean,TYPEDEF,adrModeRuleForStop_pfct) (P2VAR(uint8, AUTOMATIC, DCM_INTERN_DATA));
+   P2FUNC(boolean,TYPEDEF,adrModeRuleForRequestResult_pfct) (P2VAR(uint8, AUTOMATIC, DCM_INTERN_DATA));
 #endif
    CONSTP2CONST(Dcm_DspRoutineSignalInfo_tst, TYPEDEF, DCM_INTERN_CONST) adrStartInSignalRef_cpcst;
    CONSTP2CONST(Dcm_DspRoutineSignalInfo_tst, TYPEDEF, DCM_INTERN_CONST) adrStopInSignalRef_cpcst;
@@ -73,7 +73,7 @@ typedef enum{
 
 #if(DCM_CFG_RC_NUMRIDS > 0u)
 #if(DCM_CFG_DSP_NUMISRIDAVAIL > 0)
-typedef P2FUNC(Std_ReturnType,TYPEDEF,IsRIDAvailFnc_pf) (VAR(uint16,AUTOMATIC) RID_u16);
+typedef P2FUNC(Std_ReturnType,TYPEDEF,IsRIDAvailFnc_pf) (VAR(uint16, AUTOMATIC) RID_u16);
 #endif
 typedef struct{
    uint16    	dataRId_u16;
@@ -112,8 +112,8 @@ typedef struct{
 #endif
   uint16 RidRangeUpperLimit_u16;
   uint16 RidRangeLowerLimit_u16;
-  P2FUNC(Std_ReturnType,TYPEDEF,IsRIDRangeAvailFnc_pf) (VAR(uint16,AUTOMATIC),P2VAR(Dcm_NegativeResponseCodeType,AUTOMATIC,DCM_INTERN_DATA));
-  P2FUNC(Std_ReturnType,TYPEDEF,adrCallRoutine_pfct)(VAR(uint8,AUTOMATIC));
+  P2FUNC(Std_ReturnType,TYPEDEF,IsRIDRangeAvailFnc_pf) (VAR(uint16, AUTOMATIC),P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA));
+  P2FUNC(Std_ReturnType,TYPEDEF,adrCallRoutine_pfct)(VAR(uint8, AUTOMATIC));
   CONSTP2CONST(Dcm_DspRoutineInfoType_tst, TYPEDEF, DCM_INTERN_CONST) adrRoutineInfoRef_cpcst;
 }Dcm_DspRoutineRangeType_tst;
 #endif
@@ -158,20 +158,20 @@ extern VAR(Dcm_OpStatusType,DCM_VAR)									Dcm_RCOpStatus_u8;
 #include "Dcm_Cfg_MemMap.hpp"
 #define DCM_START_SEC_VAR_CLEARED_UNSPECIFIED
 #include "Dcm_Cfg_MemMap.hpp"
-extern P2VAR(uint8,DCM_VAR,DCM_INTERN_DATA) 							Dcm_RCInPtr_pu8;
-extern P2VAR(uint8,DCM_VAR,DCM_INTERN_DATA) 							Dcm_RCOutPtr_pu8;
+extern P2VAR(uint8,DCM_VAR, DCM_INTERN_DATA) 							Dcm_RCInPtr_pu8;
+extern P2VAR(uint8,DCM_VAR, DCM_INTERN_DATA) 							Dcm_RCOutPtr_pu8;
 #define DCM_STOP_SEC_VAR_CLEARED_UNSPECIFIED
 #include "Dcm_Cfg_MemMap.hpp"
 #define DCM_START_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"
-extern FUNC(uint32,DCM_CODE) Dcm_RCGetSigVal_u32 ( VAR(uint8,AUTOMATIC) dataSigType_en, VAR(uint16,AUTOMATIC) idxSignalIndex_u16);
-extern FUNC(void,DCM_CODE) Dcm_RCSetSigVal ( VAR(uint8,AUTOMATIC) dataSigType_en, VAR(uint16,AUTOMATIC) idxSignalIndex_u16, VAR(uint32,AUTOMATIC) dataSigVal_u32);
+extern FUNC(uint32,DCM_CODE) Dcm_RCGetSigVal_u32 ( VAR(uint8, AUTOMATIC) dataSigType_en, VAR(uint16, AUTOMATIC) idxSignalIndex_u16);
+extern FUNC(void,DCM_CODE) Dcm_RCSetSigVal ( VAR(uint8, AUTOMATIC) dataSigType_en, VAR(uint16, AUTOMATIC) idxSignalIndex_u16, VAR(uint32, AUTOMATIC) dataSigVal_u32);
 extern FUNC(void,DCM_CODE) Dcm_RoutineSetSesCtrlType (VAR(Dcm_SesCtrlType, AUTOMATIC) dataSesCtrlType_u8);
 extern FUNC(void, DCM_CODE) Dcm_Lok_DspRCConfirmation(
-   VAR(Dcm_IdContextType ,AUTOMATIC)dataIdContext_u8
-   ,  VAR(Type_SwcServiceCom_tIdPdu,AUTOMATIC)dataRxPduId_u8
-   ,  VAR(uint16,AUTOMATIC)dataSourceAddress_u16
-   ,  VAR(Dcm_ConfirmationStatusType,AUTOMATIC)status_u8
+   VAR(Dcm_IdContextType , AUTOMATIC)dataIdContext_u8
+   ,  VAR(Type_SwcServiceCom_tIdPdu, AUTOMATIC)dataRxPduId_u8
+   ,  VAR(uint16, AUTOMATIC)dataSourceAddress_u16
+   ,  VAR(Dcm_ConfirmationStatusType, AUTOMATIC)status_u8
    											   );
 #if(DCM_CFG_ROUTINEARRAY_INSIG != DCM_CFG_OFF)
 extern FUNC(void,DCM_CODE) Dcm_RcSetSignalArray(P2CONST(Dcm_DspRoutineSignalInfo_tst, AUTOMATIC, DCM_INTERN_DATA) adrSignal_pcst,P2CONST(uint8, AUTOMATIC, DCM_INTERN_DATA) adrReqBuffer_u8);

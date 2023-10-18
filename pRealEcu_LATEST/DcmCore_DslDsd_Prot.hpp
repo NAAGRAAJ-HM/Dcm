@@ -390,21 +390,21 @@ extern FUNC(void, DCM_CODE) Dcm_Lok_CC_Mainfunction(void);
 extern FUNC(void, DCM_CODE) Dcm_Lok_CC_TxConfirmation(void);
 extern FUNC(void, DCM_CODE) Dcm_Lok_SendResponse(P2CONST(Type_SwcServiceCom_stInfoPdu, AUTOMATIC, DCM_INTERN_DATA) adrPduStrucutre_pcst);
 extern FUNC(void, DCM_CODE) Dcm_DslDsdRestoreSecaTimer(void);
-extern FUNC(P2VAR(Dcm_MsgItemType,AUTOMATIC, DCM_INTERN_DATA), DCM_CODE) Dcm_GetActiveBuffer(void);
+extern FUNC(P2VAR(Dcm_MsgItemType, AUTOMATIC, DCM_INTERN_DATA), DCM_CODE) Dcm_GetActiveBuffer(void);
 
 #if(DCM_CFG_RESTORING_ENABLED != DCM_CFG_OFF)
 extern FUNC(uint8, DCM_CODE) Dcm_GetActiveConnectionIdx_u8 (void);
 extern FUNC(void, DCM_CODE) Dcm_DslDsdWarmStart(void);
 #endif
 
-extern FUNC(void, DCM_CODE) Dcm_Lok_ResetCopyRxDataStatus ( VAR(Type_SwcServiceCom_tIdPdu,AUTOMATIC) RxPduId );
+extern FUNC(void, DCM_CODE) Dcm_Lok_ResetCopyRxDataStatus ( VAR(Type_SwcServiceCom_tIdPdu, AUTOMATIC) RxPduId );
 
 #if(((DCM_CFG_DSP_WRITEDATABYIDENTIFIER_ENABLED != DCM_CFG_OFF) && (DCM_CFG_DSP_WRITE_SR_ENABLED != DCM_CFG_OFF ))   ||     \
      (DCM_CFG_DSP_ROUTINECONTROL_ENABLED != DCM_CFG_OFF) && (DCM_CFG_ROUTINEVARLENGTH==DCM_CFG_OFF))
-extern FUNC(uint32, DCM_CODE) Dcm_GetSignal_u32(VAR(uint8,AUTOMATIC) xDataType_u8
-   ,     VAR(uint16,AUTOMATIC) posnStart_u16
+extern FUNC(uint32, DCM_CODE) Dcm_GetSignal_u32(VAR(uint8, AUTOMATIC) xDataType_u8
+   ,     VAR(uint16, AUTOMATIC) posnStart_u16
    ,     P2CONST(uint8, AUTOMATIC, DCM_INTERN_DATA) adrReqBuffer_u8
-   ,     VAR(uint8,AUTOMATIC) dataEndianness_u8);
+   ,     VAR(uint8, AUTOMATIC) dataEndianness_u8);
 #endif
 
 #if( \

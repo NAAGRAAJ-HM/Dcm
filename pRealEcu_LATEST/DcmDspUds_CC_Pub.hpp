@@ -7,7 +7,7 @@
 
 typedef struct{
 #if(DCM_CFG_RTESUPPORT_ENABLED!=DCM_CFG_OFF)
-   P2FUNC(Std_ReturnType,TYPEDEF,switch_fp)	(VAR(Dcm_CommunicationModeType,AUTOMATIC));
+   P2FUNC(Std_ReturnType,TYPEDEF,switch_fp)	(VAR(Dcm_CommunicationModeType, AUTOMATIC));
    P2FUNC(boolean,TYPEDEF,checkmode_fp)	(void);
 #endif
    NetworkHandleType 						SpecificSubNetId_u8;
@@ -16,7 +16,7 @@ typedef struct{
 
 typedef struct{
 #if(DCM_CFG_RTESUPPORT_ENABLED!=DCM_CFG_OFF)
-   P2FUNC(Std_ReturnType,TYPEDEF,switch_fp)	(VAR(Dcm_CommunicationModeType,AUTOMATIC));
+   P2FUNC(Std_ReturnType,TYPEDEF,switch_fp)	(VAR(Dcm_CommunicationModeType, AUTOMATIC));
    P2FUNC(boolean,TYPEDEF,checkmode_fp)	(void);
 #endif
 
@@ -41,7 +41,7 @@ extern CONST(Dcm_Dsld_AllChannelsInfoType, DCM_CONST) Dcm_AllChannels_ForModeInf
 #define DCM_START_SEC_VAR_INIT_UNSPECIFIED
 #include "Dcm_Cfg_MemMap.hpp"
 
-extern P2FUNC(boolean,DCM_APPL_CODE,Dcm_ComMReEnableModeRuleRef) (P2VAR(Dcm_NegativeResponseCodeType,AUTOMATIC,DCM_INTERN_DATA) Nrc_u8);
+extern P2FUNC(boolean, DCM_APPL_CODE,Dcm_ComMReEnableModeRuleRef) (P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) Nrc_u8);
 
 #define DCM_STOP_SEC_VAR_INIT_UNSPECIFIED
 #include "Dcm_Cfg_MemMap.hpp"
@@ -50,7 +50,7 @@ extern P2FUNC(boolean,DCM_APPL_CODE,Dcm_ComMReEnableModeRuleRef) (P2VAR(Dcm_Nega
 #define DCM_START_SEC_VAR_INIT_UNSPECIFIED
 #include "Dcm_Cfg_MemMap.hpp"
 
-extern P2FUNC(Std_ReturnType,DCM_APPL_CODE,Dcm_ComMUserReEnableModeRuleRef) (void);
+extern P2FUNC(Std_ReturnType, DCM_APPL_CODE,Dcm_ComMUserReEnableModeRuleRef) (void);
 #define DCM_STOP_SEC_VAR_INIT_UNSPECIFIED
 #include "Dcm_Cfg_MemMap.hpp"
 

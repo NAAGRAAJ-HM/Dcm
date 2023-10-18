@@ -7,7 +7,7 @@
 #include "DcmDspUds_TransferData_Priv.hpp"
 #define DCM_START_SEC_VAR_CLEARED_UNSPECIFIED
 #include "Dcm_Cfg_MemMap.hpp"
-VAR(Dcm_DataTransfer_tst,AUTOMATIC) Dcm_DataTransfer_st;
+VAR(Dcm_DataTransfer_tst, AUTOMATIC) Dcm_DataTransfer_st;
 static VAR(Dcm_DspTransferDataStates_ten,     DCM_VAR  ) s_stTransferDataState_en;
 VAR (Dcm_TransferData_tst,DCM_VAR) Dcm_TransferData_st;
 #define DCM_STOP_SEC_VAR_CLEARED_UNSPECIFIED
@@ -30,8 +30,8 @@ static VAR(Dcm_OpStatusType,  DCM_VAR) s_stTransferOpstatus_u8;
 #if(DCM_CFG_DSP_FLEXIBLEDATA_ENABLED == DCM_CFG_OFF)
 static FUNC(uint32,DCM_CODE) Dcm_GetLastBlockSize(void);
 #endif
-static FUNC(Std_ReturnType,AUTOMATIC)Dcm_CheckNRCfromApplication(VAR(uint32,AUTOMATIC) dataLengthReceived_u32
-   ,     P2VAR (Dcm_NegativeResponseCodeType,AUTOMATIC,DCM_INTERN_DATA) dataNegResponseCode_u8);
+static FUNC(Std_ReturnType, AUTOMATIC)Dcm_CheckNRCfromApplication(VAR(uint32, AUTOMATIC) dataLengthReceived_u32
+   ,     P2VAR (Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegResponseCode_u8);
 
 FUNC(void,DCM_CODE) Dcm_Dsp_TransferDataIni(void){
 
@@ -70,16 +70,16 @@ FUNC(void,DCM_CODE) Dcm_Dsp_TransferDataIni(void){
     Dcm_DspDeactivateRequestUploadDownloadPermission();
 }
 
-static FUNC(void,DCM_CODE) Dcm_CheckNrcForTransferData(P2CONST(Dcm_MsgContextType,AUTOMATIC,DCM_INTERN_DATA) pMsgContext
-   ,     P2VAR (Dcm_NegativeResponseCodeType,AUTOMATIC,DCM_INTERN_DATA) dataNegResponseCode_u8);
-static FUNC(void,DCM_CODE) Dcm_CheckNrcForTransferData(P2CONST(Dcm_MsgContextType,AUTOMATIC,DCM_INTERN_DATA) pMsgContext
-   ,     P2VAR (Dcm_NegativeResponseCodeType,AUTOMATIC,DCM_INTERN_DATA) dataNegResponseCode_u8)
+static FUNC(void,DCM_CODE) Dcm_CheckNrcForTransferData(P2CONST(Dcm_MsgContextType, AUTOMATIC, DCM_INTERN_DATA) pMsgContext
+   ,     P2VAR (Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegResponseCode_u8);
+static FUNC(void,DCM_CODE) Dcm_CheckNrcForTransferData(P2CONST(Dcm_MsgContextType, AUTOMATIC, DCM_INTERN_DATA) pMsgContext
+   ,     P2VAR (Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegResponseCode_u8)
 {
-   VAR(uint8,AUTOMATIC) dataReceivedBlockSequenceNr_u8;
-   VAR(uint32,AUTOMATIC) dataLengthReceived_u32;
+   VAR(uint8, AUTOMATIC) dataReceivedBlockSequenceNr_u8;
+   VAR(uint32, AUTOMATIC) dataLengthReceived_u32;
 
 #if(DCM_CFG_DSP_FLEXIBLEDATA_ENABLED == DCM_CFG_OFF)
-   VAR(uint32,AUTOMATIC) lastDataBlockSize_u32;
+   VAR(uint32, AUTOMATIC) lastDataBlockSize_u32;
 #endif
 
     dataReceivedBlockSequenceNr_u8 = pMsgContext->reqData[0];
@@ -166,16 +166,16 @@ static FUNC(void,DCM_CODE) Dcm_CheckNrcForTransferData(P2CONST(Dcm_MsgContextTyp
    }
 }
 
-FUNC(Std_ReturnType,DCM_CODE) SwcServiceDcm_tTransferData(VAR(Dcm_SrvOpStatusType,AUTOMATIC) OpStatus
-   ,     P2VAR(Dcm_MsgContextType,AUTOMATIC,DCM_INTERN_DATA) pMsgContext
-   ,     P2VAR(Dcm_NegativeResponseCodeType,AUTOMATIC,DCM_INTERN_DATA) dataNegRespCode_u8)
+FUNC(Std_ReturnType,DCM_CODE) SwcServiceDcm_tTransferData(VAR(Dcm_SrvOpStatusType, AUTOMATIC) OpStatus
+   ,     P2VAR(Dcm_MsgContextType, AUTOMATIC, DCM_INTERN_DATA) pMsgContext
+   ,     P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8)
 {
    VAR(Dcm_TrasferDirection_en, AUTOMATIC) dataTransferDirection_ten = DCM_TRANSFER_NOT_AVAILABLE;
-   VAR(Dcm_ReadMemoryRet_t,AUTOMATIC) dataReadMemRetValue_en = DCM_READ_NOT_AVAILABLE;
-   VAR(Dcm_WriteMemoryRet_t,AUTOMATIC)dataWriteMemRetValue_en = DCM_WRITE_NOT_AVAILABLE;
-   VAR(Std_ReturnType,AUTOMATIC) dataReturnValue_u8;
-   VAR(Std_ReturnType,AUTOMATIC) dataServRetValue_u8;
-   VAR(uint8,AUTOMATIC) dataReceivedBlockSequenceNr_u8;
+   VAR(Dcm_ReadMemoryRet_t, AUTOMATIC) dataReadMemRetValue_en = DCM_READ_NOT_AVAILABLE;
+   VAR(Dcm_WriteMemoryRet_t, AUTOMATIC)dataWriteMemRetValue_en = DCM_WRITE_NOT_AVAILABLE;
+   VAR(Std_ReturnType, AUTOMATIC) dataReturnValue_u8;
+   VAR(Std_ReturnType, AUTOMATIC) dataServRetValue_u8;
+   VAR(uint8, AUTOMATIC) dataReceivedBlockSequenceNr_u8;
 
     *dataNegRespCode_u8 = 0u;
 
@@ -474,8 +474,8 @@ FUNC(Std_ReturnType,DCM_CODE) SwcServiceDcm_tTransferData(VAR(Dcm_SrvOpStatusTyp
 
 #if(DCM_CFG_DSP_FLEXIBLEDATA_ENABLED == DCM_CFG_OFF)
 
-static FUNC(uint32,AUTOMATIC) Dcm_GetLastBlockSize(void){
-   VAR(uint32,AUTOMATIC) dataLastBlockSize_u32;
+static FUNC(uint32, AUTOMATIC) Dcm_GetLastBlockSize(void){
+   VAR(uint32, AUTOMATIC) dataLastBlockSize_u32;
 
    if((Dcm_DataTransfer_st.dataMemorySize_u32 % (Dcm_DataTransfer_st.dataMaxBlockLength_u32 - 2u))==0u)
    {
@@ -490,10 +490,10 @@ static FUNC(uint32,AUTOMATIC) Dcm_GetLastBlockSize(void){
 
 #endif
 
-static FUNC(Std_ReturnType,AUTOMATIC)Dcm_CheckNRCfromApplication(VAR(uint32,AUTOMATIC) dataLengthReceived_u32
-   ,     P2VAR (Dcm_NegativeResponseCodeType,AUTOMATIC,DCM_INTERN_DATA) dataNegResponseCode_u8)
+static FUNC(Std_ReturnType, AUTOMATIC)Dcm_CheckNRCfromApplication(VAR(uint32, AUTOMATIC) dataLengthReceived_u32
+   ,     P2VAR (Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegResponseCode_u8)
 {
-   VAR(uint8,AUTOMATIC) dataReturnValue_u8;
+   VAR(uint8, AUTOMATIC) dataReturnValue_u8;
    VAR(Dcm_TrasferDirection_en, AUTOMATIC) dataTransferDirection_ten = DCM_TRANSFER_NOT_AVAILABLE;
     dataReturnValue_u8 = E_OK;
    if(Dcm_DataTransfer_st.isUploadStarted_b != FALSE)
@@ -534,10 +534,10 @@ FUNC(void,DCM_CODE) Dcm_DspDeactivateRequestUploadDownloadPermission(void){
 }
 
  FUNC(void, DCM_CODE) Dcm_Lok_DspReqTrfExitConfirmation(
-   VAR(Dcm_IdContextType ,AUTOMATIC)dataIdContext_u8
-   ,  VAR(Type_SwcServiceCom_tIdPdu,AUTOMATIC)dataRxPduId_u8
-   ,  VAR(uint16,AUTOMATIC)dataSourceAddress_u16
-   ,  VAR(Dcm_ConfirmationStatusType,AUTOMATIC)status_u8)
+   VAR(Dcm_IdContextType , AUTOMATIC)dataIdContext_u8
+   ,  VAR(Type_SwcServiceCom_tIdPdu, AUTOMATIC)dataRxPduId_u8
+   ,  VAR(uint16, AUTOMATIC)dataSourceAddress_u16
+   ,  VAR(Dcm_ConfirmationStatusType, AUTOMATIC)status_u8)
 {
 #if( DCM_CFG_DSP_REQUESTTRANSFEREXIT_ENABLED != DCM_CFG_OFF)
             if(status_u8 == DCM_RES_POS_OK)

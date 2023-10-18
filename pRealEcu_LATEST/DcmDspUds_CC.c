@@ -19,20 +19,20 @@ static VAR(Dcm_CommunicationModeType,DCM_VAR) Dcm_stCommunicationMode_u8 ;
 
 static VAR(uint8,DCM_VAR) Dcm_idxCommChannel_u8 ;
 
-static VAR(NetworkHandleType,AUTOMATIC) Dcm_nrSubNet_u8;
+static VAR(NetworkHandleType, AUTOMATIC) Dcm_nrSubNet_u8;
 #define DCM_STOP_SEC_VAR_CLEARED_8
 #include "Dcm_Cfg_MemMap.hpp"
 
 #define DCM_START_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"
 
-static FUNC(Dcm_CommunicationModeType,DCM_CODE) Dcm_Lok_GetCommModeType_u8(VAR(uint8,AUTOMATIC) ControlType_u8
-   ,     VAR(uint8,AUTOMATIC) dataCommType_u8 )
+static FUNC(Dcm_CommunicationModeType,DCM_CODE) Dcm_Lok_GetCommModeType_u8(VAR(uint8, AUTOMATIC) ControlType_u8
+   ,     VAR(uint8, AUTOMATIC) dataCommType_u8 )
 {
 
-   VAR(uint8,AUTOMATIC) adrComModeIndex_au8[4]={0,0,4,8};
+   VAR(uint8, AUTOMATIC) adrComModeIndex_au8[4]={0,0,4,8};
 
-   VAR(Dcm_CommunicationModeType,AUTOMATIC) CommModeType[12] =
+   VAR(Dcm_CommunicationModeType, AUTOMATIC) CommModeType[12] =
    {
             DCM_ENABLE_RX_TX_NORM
    ,     DCM_ENABLE_RX_DISABLE_TX_NORM
@@ -52,11 +52,11 @@ static FUNC(Dcm_CommunicationModeType,DCM_CODE) Dcm_Lok_GetCommModeType_u8(VAR(u
 }
 
 #if( DCM_CFG_NUM_SPECIFIC_SUBNETS != 0 )
-static FUNC(uint8,DCM_CODE) Dcm_Lok_DspChkSubnetID_u8(VAR(NetworkHandleType,AUTOMATIC) dataSubnetID_u8
-   ,     P2VAR(Dcm_NegativeResponseCodeType,AUTOMATIC,DCM_INTERN_DATA) dataNegRespCode_u8)
+static FUNC(uint8,DCM_CODE) Dcm_Lok_DspChkSubnetID_u8(VAR(NetworkHandleType, AUTOMATIC) dataSubnetID_u8
+   ,     P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8)
 {
-   VAR(uint8,AUTOMATIC) idxIndex_u8;
-   VAR(uint8,AUTOMATIC) dataReturnVal_u8;
+   VAR(uint8, AUTOMATIC) idxIndex_u8;
+   VAR(uint8, AUTOMATIC) dataReturnVal_u8;
 
    for(idxIndex_u8 =0;idxIndex_u8<DCM_CFG_NUM_SPECIFIC_SUBNETS;idxIndex_u8++)
    {
@@ -82,11 +82,11 @@ static FUNC(uint8,DCM_CODE) Dcm_Lok_DspChkSubnetID_u8(VAR(NetworkHandleType,AUTO
 
 #endif
 
-static FUNC(Std_ReturnType,DCM_CODE) Dcm_Lok_CC_Check(P2CONST(Dcm_MsgContextType,AUTOMATIC,DCM_INTERN_DATA) pMsgContext
-   ,     P2VAR(Dcm_NegativeResponseCodeType,AUTOMATIC,DCM_INTERN_DATA) dataNegRespCode_u8)
+static FUNC(Std_ReturnType,DCM_CODE) Dcm_Lok_CC_Check(P2CONST(Dcm_MsgContextType, AUTOMATIC, DCM_INTERN_DATA) pMsgContext
+   ,     P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8)
 {
-   VAR(uint8,AUTOMATIC) dataCommType_u8;
-   VAR(Std_ReturnType,AUTOMATIC) retVal_u8;
+   VAR(uint8, AUTOMATIC) dataCommType_u8;
+   VAR(Std_ReturnType, AUTOMATIC) retVal_u8;
 
    if(pMsgContext->reqDataLen== DCM_DSP_CC_REQLEN)
    {
@@ -159,12 +159,12 @@ static FUNC(Std_ReturnType,DCM_CODE) Dcm_Lok_CC_Check(P2CONST(Dcm_MsgContextType
    return retVal_u8;
 }
 
-FUNC(Std_ReturnType,DCM_CODE) SwcServiceDcm_tCommunicationControl (VAR(Dcm_SrvOpStatusType,AUTOMATIC) OpStatus
-   ,     P2VAR(Dcm_MsgContextType,AUTOMATIC,DCM_INTERN_DATA) pMsgContext
-   ,     P2VAR(Dcm_NegativeResponseCodeType,AUTOMATIC,DCM_INTERN_DATA) dataNegRespCode_u8)
+FUNC(Std_ReturnType,DCM_CODE) SwcServiceDcm_tCommunicationControl (VAR(Dcm_SrvOpStatusType, AUTOMATIC) OpStatus
+   ,     P2VAR(Dcm_MsgContextType, AUTOMATIC, DCM_INTERN_DATA) pMsgContext
+   ,     P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8)
 {
 
-   VAR(Std_ReturnType,AUTOMATIC) retVal_u8;
+   VAR(Std_ReturnType, AUTOMATIC) retVal_u8;
     *dataNegRespCode_u8 = 0x00;
     retVal_u8 = E_NOT_OK;
 
@@ -190,7 +190,7 @@ FUNC(Std_ReturnType,DCM_CODE) SwcServiceDcm_tCommunicationControl (VAR(Dcm_SrvOp
 }
 
 static FUNC(void,DCM_CODE) Dcm_Lok_DspCommunicationControlSwitchMode(void){
-   VAR(uint8,AUTOMATIC)idxIndex_u8;
+   VAR(uint8, AUTOMATIC)idxIndex_u8;
    if( Dcm_nrSubNet_u8 == 0)
    {
         for(idxIndex_u8=0;idxIndex_u8 < DCM_CFG_NUM_ALLCHANNELS_MODE_INFO;idxIndex_u8++)
@@ -242,10 +242,10 @@ static FUNC(void,DCM_CODE) Dcm_Lok_DspCommunicationControlSwitchMode(void){
 }
 
 FUNC(void, DCM_CODE) Dcm_Lok_DspCommCntrlConfirmation(
-   VAR(Dcm_IdContextType ,AUTOMATIC)dataIdContext_u8
-   ,  VAR(Type_SwcServiceCom_tIdPdu,AUTOMATIC)dataRxPduId_u8
-   ,  VAR(uint16,AUTOMATIC)dataSourceAddress_u16
-   ,  VAR(Dcm_ConfirmationStatusType,AUTOMATIC)status_u8)
+   VAR(Dcm_IdContextType , AUTOMATIC)dataIdContext_u8
+   ,  VAR(Type_SwcServiceCom_tIdPdu, AUTOMATIC)dataRxPduId_u8
+   ,  VAR(uint16, AUTOMATIC)dataSourceAddress_u16
+   ,  VAR(Dcm_ConfirmationStatusType, AUTOMATIC)status_u8)
 {
    if((status_u8 == DCM_RES_POS_OK)||(status_u8 == DCM_RES_POS_NOT_OK))
    {
@@ -256,9 +256,9 @@ FUNC(void, DCM_CODE) Dcm_Lok_DspCommCntrlConfirmation(
 
 static FUNC(boolean, DCM_CODE) Dcm_Lok_CCMmodeStatusCheck(void){
 
-   VAR(uint8,AUTOMATIC)    dataNRC_u8;
-   VAR(boolean,AUTOMATIC)  flgStatus_b;
-   VAR(Std_ReturnType,AUTOMATIC) retVal_u8;
+   VAR(uint8, AUTOMATIC)    dataNRC_u8;
+   VAR(boolean, AUTOMATIC)  flgStatus_b;
+   VAR(Std_ReturnType, AUTOMATIC) retVal_u8;
 
     flgStatus_b = TRUE;
     dataNRC_u8 = 0x00;
@@ -293,8 +293,8 @@ static FUNC(boolean, DCM_CODE) Dcm_Lok_CCMmodeStatusCheck(void){
 }
 
 static FUNC(void,DCM_CODE) Dcm_Lok_ResetCommunicationMode(void){
-   VAR(uint8,AUTOMATIC)    idxLoop_u8;
-   VAR(boolean,AUTOMATIC)  stStatus_b;
+   VAR(uint8, AUTOMATIC)    idxLoop_u8;
+   VAR(boolean, AUTOMATIC)  stStatus_b;
 
    for(idxLoop_u8=0;idxLoop_u8 < DCM_CFG_NUM_ALLCHANNELS_MODE_INFO;idxLoop_u8++)
    {
@@ -356,10 +356,10 @@ static FUNC(void,DCM_CODE) Dcm_Lok_ResetCommunicationMode(void){
 FUNC(void,DCM_CODE) Dcm_Lok_CC_Mainfunction (void){
 
    VAR(Dcm_SesCtrlType,DCM_VAR) ActiveSession_u8;
-   VAR(Std_ReturnType,AUTOMATIC) retVal_u8;
+   VAR(Std_ReturnType, AUTOMATIC) retVal_u8;
 
-   VAR(boolean,AUTOMATIC)  CC_Resetmoderuleflg_b;
-   VAR(boolean,AUTOMATIC)  CC_Resetsessionflg_b;
+   VAR(boolean, AUTOMATIC)  CC_Resetmoderuleflg_b;
+   VAR(boolean, AUTOMATIC)  CC_Resetsessionflg_b;
 
    CC_Resetsessionflg_b = TRUE;
    CC_Resetmoderuleflg_b = Dcm_Lok_CCMmodeStatusCheck();

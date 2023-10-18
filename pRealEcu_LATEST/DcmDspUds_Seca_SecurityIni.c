@@ -35,12 +35,12 @@ FUNC (void,DCM_CODE) Dcm_Dsp_SecaIni (void){
 
 #if((DCM_CFG_DSP_USE_ASYNCH_CLIENT_SERVER != DCM_CFG_OFF) || (DCM_CFG_DSP_USE_ASYNCH_FNC != DCM_CFG_OFF))
 
-   P2VAR(void,AUTOMATIC, DCM_INTERN_DATA) ptrSecaFnc;
-   P2CONST(Dcm_Dsp_Security_t,AUTOMATIC,DCM_INTERN_DATA) ptrSecurityConfig;
-   VAR(Dcm_NegativeResponseCodeType,AUTOMATIC) dataNegRespCode_u8;
+   P2VAR(void, AUTOMATIC, DCM_INTERN_DATA) ptrSecaFnc;
+   P2CONST(Dcm_Dsp_Security_t, AUTOMATIC, DCM_INTERN_DATA) ptrSecurityConfig;
+   VAR(Dcm_NegativeResponseCodeType, AUTOMATIC) dataNegRespCode_u8;
 #endif
 #if(DCM_CFG_DSP_USE_ASYNCH_FNC != DCM_CFG_OFF)
-   VAR(Dcm_SecLevelType,AUTOMATIC)   dataSecLevel_u8;
+   VAR(Dcm_SecLevelType, AUTOMATIC)   dataSecLevel_u8;
 #endif
 
 #if((DCM_CFG_DSP_USE_ASYNCH_CLIENT_SERVER != DCM_CFG_OFF)|| (DCM_CFG_DSP_USE_ASYNCH_FNC != DCM_CFG_OFF))
@@ -153,8 +153,8 @@ FUNC (void,DCM_CODE) Dcm_Dsp_SecaIni (void){
 }
 
 FUNC (void,DCM_CODE) Dcm_Dsp_SecaPowerOnDelayIni (void){
-   VAR (uint8_least,AUTOMATIC) idxSecTab_qu8;
-   VAR (uint32,AUTOMATIC) dataDelayOnPowerOn_u32;
+   VAR (uint8_least, AUTOMATIC) idxSecTab_qu8;
+   VAR (uint32, AUTOMATIC) dataDelayOnPowerOn_u32;
 
    for(idxSecTab_qu8=0;idxSecTab_qu8 < DCM_CFG_DSP_NUMSECURITY;idxSecTab_qu8++)
    {

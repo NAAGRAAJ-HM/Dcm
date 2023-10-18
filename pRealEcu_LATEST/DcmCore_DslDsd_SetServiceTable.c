@@ -5,11 +5,11 @@
 #if(RBA_DCMPMA_CFG_PLANTMODEACTIVATION_ENABLED !=  DCM_CFG_OFF)
 #define DCM_START_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"
-FUNC(Std_ReturnType,DCM_CODE) Dcm_SetActiveServiceTable(VAR(uint8,AUTOMATIC) Sid_tableid_u8){
-   VAR(Std_ReturnType,AUTOMATIC) dataReturnValue_u8;
-   VAR(uint8,AUTOMATIC) tempNrc_u8;
-   VAR(Std_ReturnType,AUTOMATIC) stCancelTx_u8;
-   VAR(Dcm_DsdStatesType_ten,AUTOMATIC) DsdState_en = Dcm_Lok_GetDsdState();
+FUNC(Std_ReturnType,DCM_CODE) Dcm_SetActiveServiceTable(VAR(uint8, AUTOMATIC) Sid_tableid_u8){
+   VAR(Std_ReturnType, AUTOMATIC) dataReturnValue_u8;
+   VAR(uint8, AUTOMATIC) tempNrc_u8;
+   VAR(Std_ReturnType, AUTOMATIC) stCancelTx_u8;
+   VAR(Dcm_DsdStatesType_ten, AUTOMATIC) DsdState_en = Dcm_Lok_GetDsdState();
    if(DCM_CFG_NUM_SID_TABLE > Sid_tableid_u8){
         if( Dcm_DsldGlobal_st.idxActiveSession_u8 != DCM_DEFAULT_SESSION_IDX ){
 

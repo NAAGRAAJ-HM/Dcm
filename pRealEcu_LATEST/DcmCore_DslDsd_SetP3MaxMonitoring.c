@@ -5,7 +5,7 @@
 #define DCM_START_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"
 
-FUNC(void, DCM_CODE) Dcm_SetP3MaxMonitoring (VAR(boolean,AUTOMATIC) active)
+FUNC(void, DCM_CODE) Dcm_SetP3MaxMonitoring (VAR(boolean, AUTOMATIC) active)
 {
 
     Dcm_DsldGlobal_st.flgMonitorP3timer_b = active;

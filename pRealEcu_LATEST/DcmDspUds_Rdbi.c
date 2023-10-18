@@ -36,7 +36,7 @@ VAR (Dcm_LenCalc_ten, DCM_VAR) Dcm_StLenCalc_en;
 #include "Dcm_Cfg_MemMap.hpp"
 #define DCM_START_SEC_VAR_CLEARED_UNSPECIFIED
 #include "Dcm_Cfg_MemMap.hpp"
-P2VAR (uint8,DCM_VAR,DCM_INTERN_DATA) Dcm_IdxList_pu8;
+P2VAR (uint8,DCM_VAR, DCM_INTERN_DATA) Dcm_IdxList_pu8;
 #define DCM_STOP_SEC_VAR_CLEARED_UNSPECIFIED
 #include "Dcm_Cfg_MemMap.hpp"
 #define DCM_START_SEC_VAR_CLEARED_32
@@ -87,12 +87,12 @@ static VAR (uint32,DCM_VAR) s_datalengthinfo_u32;
 #define DCM_START_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"
 FUNC (void,DCM_CODE) Dcm_Dsp_RdbiIni (void){
-   VAR(Dcm_NegativeResponseCodeType,AUTOMATIC) dataNegResCode_u8;
-   VAR(Std_ReturnType,AUTOMATIC) dataCondChkRetVal_u8;
-   VAR(Std_ReturnType,AUTOMATIC) dataReadIfcRetVal_u8;
-   P2CONST(Dcm_DIDConfig_tst,AUTOMATIC, DCM_INTERN_DATA)ptrDidConfig;
-   P2CONST(Dcm_DataInfoConfig_tst,AUTOMATIC, DCM_INTERN_DATA)ptrSigConfig;
-   P2CONST(Dcm_SignalDIDSubStructConfig_tst,AUTOMATIC, DCM_INTERN_DATA) ptrControlSigConfig;
+   VAR(Dcm_NegativeResponseCodeType, AUTOMATIC) dataNegResCode_u8;
+   VAR(Std_ReturnType, AUTOMATIC) dataCondChkRetVal_u8;
+   VAR(Std_ReturnType, AUTOMATIC) dataReadIfcRetVal_u8;
+   P2CONST(Dcm_DIDConfig_tst, AUTOMATIC, DCM_INTERN_DATA)ptrDidConfig;
+   P2CONST(Dcm_DataInfoConfig_tst, AUTOMATIC, DCM_INTERN_DATA)ptrSigConfig;
+   P2CONST(Dcm_SignalDIDSubStructConfig_tst, AUTOMATIC, DCM_INTERN_DATA) ptrControlSigConfig;
 
    dataCondChkRetVal_u8 = E_OK;
    dataReadIfcRetVal_u8 = E_OK;
@@ -131,14 +131,14 @@ FUNC (void,DCM_CODE) Dcm_Dsp_RdbiIni (void){
    (void)ptrControlSigConfig;
 }
 
-FUNC (Dcm_LenCalcRet_ten,DCM_CODE) Dcm_DspGetTotalLengthOfDIDs_en (P2VAR (uint8,AUTOMATIC,DCM_INTERN_DATA) adrSourceIds_pu8
-   ,     VAR (uint16,AUTOMATIC) nrDids_u16
-   ,     P2VAR (uint16,AUTOMATIC,DCM_INTERN_DATA) adrNumOfIndices_pu16
-   ,     P2VAR (uint32,AUTOMATIC,DCM_INTERN_DATA) adrTotalLength_pu32
-   ,     P2VAR (Dcm_NegativeResponseCodeType, AUTOMATIC,DCM_INTERN_DATA) dataNegRespCode_u8)
+FUNC (Dcm_LenCalcRet_ten,DCM_CODE) Dcm_DspGetTotalLengthOfDIDs_en (P2VAR (uint8, AUTOMATIC, DCM_INTERN_DATA) adrSourceIds_pu8
+   ,     VAR (uint16, AUTOMATIC) nrDids_u16
+   ,     P2VAR (uint16, AUTOMATIC, DCM_INTERN_DATA) adrNumOfIndices_pu16
+   ,     P2VAR (uint32, AUTOMATIC, DCM_INTERN_DATA) adrTotalLength_pu32
+   ,     P2VAR (Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8)
 {
    VAR (Dcm_LenCalcRet_ten, AUTOMATIC) dataRetVal_u8;
-   P2CONST(Dcm_DIDConfig_tst,AUTOMATIC, DCM_INTERN_DATA)ptrDidConfig;
+   P2CONST(Dcm_DIDConfig_tst, AUTOMATIC, DCM_INTERN_DATA)ptrDidConfig;
     dataRetVal_u8 = DCM_LENCALC_RETVAL_OK;
     ptrDidConfig =&Dcm_DIDConfig[s_Dcm_idxRdbiDidIndexType_st.idxIndex_u16];
 
@@ -218,7 +218,7 @@ FUNC (Dcm_LenCalcRet_ten,DCM_CODE) Dcm_DspGetTotalLengthOfDIDs_en (P2VAR (uint8,
             }
         }
       if(Dcm_StLenCalc_en == DCM_LENCALC_STATUS_GETLENGTH){
-            VAR (uint32,AUTOMATIC) dataLength_u32;
+            VAR (uint32, AUTOMATIC) dataLength_u32;
             VAR (Std_ReturnType, AUTOMATIC) dataFuncRetVal_en;
             ptrDidConfig =&Dcm_DIDConfig[s_Dcm_idxRdbiDidIndexType_st.idxIndex_u16];
             dataFuncRetVal_en=Dcm_GetLengthOfDIDIndex(&s_Dcm_idxRdbiDidIndexType_st,&dataLength_u32,s_dataDID_u16);
@@ -270,16 +270,16 @@ FUNC (Dcm_LenCalcRet_ten,DCM_CODE) Dcm_DspGetTotalLengthOfDIDs_en (P2VAR (uint8,
 }
 
 FUNC (Dcm_GetDataRet_ten,DCM_CODE) Dcm_GetData_en (P2CONST (uint8, AUTOMATIC,DCM_INTERN_CONST) adrIdBuffer_pcu8
-   ,     P2VAR (uint8, AUTOMATIC,DCM_INTERN_DATA) adrTargetBuffer_pu8
-   ,     VAR (uint16,DCM_INTERN_DATA) nrIndex_u16
-   ,     P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC,DCM_INTERN_DATA) dataNegRespCode_u8
-   ,     VAR (uint32,DCM_INTERN_DATA) adrTotalLength_pu32
+   ,     P2VAR (uint8, AUTOMATIC, DCM_INTERN_DATA) adrTargetBuffer_pu8
+   ,     VAR (uint16, DCM_INTERN_DATA) nrIndex_u16
+   ,     P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8
+   ,     VAR (uint32, DCM_INTERN_DATA) adrTotalLength_pu32
 ){
-   P2CONST(Dcm_DIDConfig_tst,AUTOMATIC, DCM_INTERN_DATA)ptrDidConfig;
-   P2CONST(Dcm_DataInfoConfig_tst,AUTOMATIC, DCM_INTERN_DATA)ptrSigConfig;
-   P2CONST(Dcm_SignalDIDSubStructConfig_tst,AUTOMATIC, DCM_INTERN_DATA) ptrControlSigConfig;
-   P2VAR(void,AUTOMATIC, DCM_INTERN_DATA)  ptrRDBIFnc;
-   VAR (Std_ReturnType,AUTOMATIC) dataNrcRetval_u8;
+   P2CONST(Dcm_DIDConfig_tst, AUTOMATIC, DCM_INTERN_DATA)ptrDidConfig;
+   P2CONST(Dcm_DataInfoConfig_tst, AUTOMATIC, DCM_INTERN_DATA)ptrSigConfig;
+   P2CONST(Dcm_SignalDIDSubStructConfig_tst, AUTOMATIC, DCM_INTERN_DATA) ptrControlSigConfig;
+   P2VAR(void, AUTOMATIC, DCM_INTERN_DATA)  ptrRDBIFnc;
+   VAR (Std_ReturnType, AUTOMATIC) dataNrcRetval_u8;
    VAR (Dcm_GetDataRet_ten, AUTOMATIC) dataRetVal_u8;
    static VAR(uint32 ,DCM_VAR)  Dcm_GetDataLengthOfCurrentData_u32;
     dataRetVal_u8     = DCM_GETDATA_RETVAL_OK;
@@ -330,7 +330,7 @@ FUNC (Dcm_GetDataRet_ten,DCM_CODE) Dcm_GetData_en (P2CONST (uint8, AUTOMATIC,DCM
             }
         }
       if(Dcm_GetDataState_en == DCM_GETDATA_STATUS_GETDATA){
-            VAR (uint32,AUTOMATIC) posnTarget_u32= (Dcm_GetDataTotalLength_u32 - Dcm_GetDataLengthOfCurrentData_u32);
+            VAR (uint32, AUTOMATIC) posnTarget_u32= (Dcm_GetDataTotalLength_u32 - Dcm_GetDataLengthOfCurrentData_u32);
             VAR (uint32, AUTOMATIC) dataSignallength_u32;
             ptrDidConfig =&Dcm_DIDConfig[s_Dcm_idxRdbiDidIndexType_st.idxIndex_u16];
             dataSignallength_u32 = 0x0;
@@ -444,10 +444,10 @@ FUNC (Dcm_GetDataRet_ten,DCM_CODE) Dcm_GetData_en (P2CONST (uint8, AUTOMATIC,DCM
 }
 
 FUNC (Std_ReturnType,DCM_CODE) SwcServiceDcm_tReadDataByIdentifier(
-   VAR(Dcm_SrvOpStatusType,AUTOMATIC) OpStatus,
-   P2VAR(Dcm_MsgContextType,AUTOMATIC,DCM_INTERN_DATA) pMsgContext,
-   P2VAR(Dcm_NegativeResponseCodeType,AUTOMATIC,DCM_INTERN_DATA) dataNegRespCode_u8){
-   VAR(Std_ReturnType,AUTOMATIC)  dataRetVal_u8;
+   VAR(Dcm_SrvOpStatusType, AUTOMATIC) OpStatus,
+   P2VAR(Dcm_MsgContextType, AUTOMATIC, DCM_INTERN_DATA) pMsgContext,
+   P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8){
+   VAR(Std_ReturnType, AUTOMATIC)  dataRetVal_u8;
     *dataNegRespCode_u8   = 0x0u;
     dataRetVal_u8=DCM_E_PENDING;
    if(OpStatus == DCM_CANCEL){
@@ -580,9 +580,9 @@ FUNC (Std_ReturnType,DCM_CODE) SwcServiceDcm_tReadDataByIdentifier(
 }
 
 FUNC(Std_ReturnType,DCM_CODE) Dcm_GetActiveRDBIDid(
-   P2VAR(uint16,AUTOMATIC,DCM_INTERN_DATA) dataDid_u16){
-   VAR(Std_ReturnType,AUTOMATIC) dataRetVal_u8;
-   P2CONST(Dcm_DIDConfig_tst,AUTOMATIC, DCM_INTERN_DATA)ptrDidConfig;
+   P2VAR(uint16, AUTOMATIC, DCM_INTERN_DATA) dataDid_u16){
+   VAR(Std_ReturnType, AUTOMATIC) dataRetVal_u8;
+   P2CONST(Dcm_DIDConfig_tst, AUTOMATIC, DCM_INTERN_DATA)ptrDidConfig;
     ptrDidConfig =&Dcm_DIDConfig[s_Dcm_idxRdbiDidIndexType_st.idxIndex_u16];
     dataRetVal_u8 = E_NOT_OK;
    if(s_Dcm_idxRdbiDidIndexType_st.dataRange_b == FALSE){
@@ -595,10 +595,10 @@ FUNC(Std_ReturnType,DCM_CODE) Dcm_GetActiveRDBIDid(
 }
 
 FUNC(void, DCM_CODE) Dcm_Lok_DspRdbiConfirmation(
-   VAR(Dcm_IdContextType ,AUTOMATIC)dataIdContext_u8
-   ,  VAR(Type_SwcServiceCom_tIdPdu,AUTOMATIC)dataRxPduId_u8
-   ,  VAR(uint16,AUTOMATIC)dataSourceAddress_u16
-   ,  VAR(Dcm_ConfirmationStatusType,AUTOMATIC)status_u8)
+   VAR(Dcm_IdContextType , AUTOMATIC)dataIdContext_u8
+   ,  VAR(Type_SwcServiceCom_tIdPdu, AUTOMATIC)dataRxPduId_u8
+   ,  VAR(uint16, AUTOMATIC)dataSourceAddress_u16
+   ,  VAR(Dcm_ConfirmationStatusType, AUTOMATIC)status_u8)
 {
 DcmAppl_DcmConfirmation(dataIdContext_u8,dataRxPduId_u8,dataSourceAddress_u16
    ,  status_u8);

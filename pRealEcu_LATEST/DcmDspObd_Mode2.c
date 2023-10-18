@@ -9,16 +9,16 @@
 #define DCM_START_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"
 
-FUNC(Std_ReturnType, DCM_CODE) Dcm_DcmObdMode02 (VAR(Dcm_SrvOpStatusType,AUTOMATIC) OpStatus,P2VAR(Dcm_MsgContextType,AUTOMATIC,DCM_INTERN_DATA) pMsgContext,P2VAR(Dcm_NegativeResponseCodeType,AUTOMATIC,DCM_INTERN_DATA) dataNegRespCode_u8)
+FUNC(Std_ReturnType, DCM_CODE) Dcm_DcmObdMode02 (VAR(Dcm_SrvOpStatusType, AUTOMATIC) OpStatus,P2VAR(Dcm_MsgContextType, AUTOMATIC, DCM_INTERN_DATA) pMsgContext,P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8)
 {
-   P2VAR(uint8,AUTOMATIC,DCM_INTERN_DATA) adrRespBuf_pu8;
-   P2VAR(uint8,AUTOMATIC,DCM_INTERN_DATA) adrReqBuf_pu8;
+   P2VAR(uint8, AUTOMATIC, DCM_INTERN_DATA) adrRespBuf_pu8;
+   P2VAR(uint8, AUTOMATIC, DCM_INTERN_DATA) adrReqBuf_pu8;
    VAR(uint32,     AUTOMATIC)   dataPIDBitMask_u32;
    VAR(uint32,     AUTOMATIC)   dataCalBitMask_u32;
    VAR(uint32,     AUTOMATIC)   nrDTC_u32;
-   VAR(Dcm_MsgLenType,AUTOMATIC)   nrResDataLen_u32;
-   VAR(Dcm_MsgLenType,AUTOMATIC)   nrReqDataLen_u32;
-   VAR(Dcm_MsgLenType,AUTOMATIC)   nrResMaxDataLen_u32;
+   VAR(Dcm_MsgLenType, AUTOMATIC)   nrResDataLen_u32;
+   VAR(Dcm_MsgLenType, AUTOMATIC)   nrReqDataLen_u32;
+   VAR(Dcm_MsgLenType, AUTOMATIC)   nrResMaxDataLen_u32;
    VAR(uint16,		   AUTOMATIC)   idxDataSource_u16;
    VAR(uint8_least,   AUTOMATIC)   nrPIDChk_qu8;
    VAR(uint8_least,   AUTOMATIC)   nrPIDValid_qu8;
@@ -29,8 +29,8 @@ FUNC(Std_ReturnType, DCM_CODE) Dcm_DcmObdMode02 (VAR(Dcm_SrvOpStatusType,AUTOMAT
    VAR(uint8,     AUTOMATIC)   adrTmpBuf_au8[3];
    VAR(uint8,     AUTOMATIC)   nrBufSize_u8;
    VAR(uint8,     AUTOMATIC)   nrPid_u8;
-   VAR(Std_ReturnType,AUTOMATIC)   dataRetGet_u8;
-   VAR(Std_ReturnType,AUTOMATIC)   dataRetVal_u8;
+   VAR(Std_ReturnType, AUTOMATIC)   dataRetGet_u8;
+   VAR(Std_ReturnType, AUTOMATIC)   dataRetVal_u8;
    VAR(boolean,     AUTOMATIC)   isPIDFound_b;
    VAR(boolean,     AUTOMATIC)   flgGetDTCNum_b;
 

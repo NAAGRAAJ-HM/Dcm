@@ -13,8 +13,8 @@ static VAR(Dcm_OpStatusType,  DCM_VAR) Dcm_stRequestTranferExitOpstatus_u8;
 #include "Dcm_Cfg_MemMap.hpp"
 
 FUNC(void,DCM_CODE) Dcm_Dsp_RequestTransferExit_Ini (void){
-   VAR(Dcm_NegativeResponseCodeType,AUTOMATIC) dataNegResCode_u8;
-   VAR(uint32,AUTOMATIC) transferResponseParameterRecordSize_u32;
+   VAR(Dcm_NegativeResponseCodeType, AUTOMATIC) dataNegResCode_u8;
+   VAR(uint32, AUTOMATIC) transferResponseParameterRecordSize_u32;
 
    if(Dcm_stRequestTranferExitOpstatus_u8 == DCM_PENDING)
    {
@@ -29,13 +29,13 @@ FUNC(void,DCM_CODE) Dcm_Dsp_RequestTransferExit_Ini (void){
     Dcm_DspDeactivateRequestUploadDownloadPermission();
 }
 
-FUNC(Std_ReturnType,DCM_CODE) SwcServiceDcm_tRequestTransferExit (VAR(Dcm_SrvOpStatusType,AUTOMATIC) OpStatus,P2VAR(Dcm_MsgContextType,AUTOMATIC,DCM_INTERN_DATA) pMsgContext,P2VAR(Dcm_NegativeResponseCodeType,AUTOMATIC,DCM_INTERN_DATA) dataNegRespCode_u8)
+FUNC(Std_ReturnType,DCM_CODE) SwcServiceDcm_tRequestTransferExit (VAR(Dcm_SrvOpStatusType, AUTOMATIC) OpStatus,P2VAR(Dcm_MsgContextType, AUTOMATIC, DCM_INTERN_DATA) pMsgContext,P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8)
 {
-   VAR(Std_ReturnType,AUTOMATIC)  dataRetVal_u8;
-   VAR(uint32,AUTOMATIC) transferRequestParameterRecordSize_u32;
-   VAR(uint32,AUTOMATIC) transferResponseParameterRecordSize_u32;
-   VAR(boolean,AUTOMATIC) getDownloadStatus_b = FALSE;
-   VAR(boolean,AUTOMATIC) getUploadStatus_b = FALSE;
+   VAR(Std_ReturnType, AUTOMATIC)  dataRetVal_u8;
+   VAR(uint32, AUTOMATIC) transferRequestParameterRecordSize_u32;
+   VAR(uint32, AUTOMATIC) transferResponseParameterRecordSize_u32;
+   VAR(boolean, AUTOMATIC) getDownloadStatus_b = FALSE;
+   VAR(boolean, AUTOMATIC) getUploadStatus_b = FALSE;
 
     *dataNegRespCode_u8 = 0x00;
     transferResponseParameterRecordSize_u32 = 0x00;

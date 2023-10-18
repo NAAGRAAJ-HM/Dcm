@@ -46,7 +46,7 @@ VAR (boolean,DCM_VAR) Dcm_isObdRequestReceived_b;
 #if(DCM_CFG_POSTBUILD_SUPPORT != DCM_CFG_OFF)
 
 LOCAL_INLINE FUNC(boolean,DCM_CODE) Dcm_Lok_isProtocolSupprortedInActiveConfig(
-        P2CONST(Dcm_Dsld_protocol_tableType,AUTOMATIC,DCM_INTERN_CONST) adrArrivedProt_pcst)
+        P2CONST(Dcm_Dsld_protocol_tableType, AUTOMATIC,DCM_INTERN_CONST) adrArrivedProt_pcst)
 {
     return((adrArrivedProt_pcst->Config_Mask) & (Dcm_ActiveConfiguration_u8) != 0u);
 }
@@ -81,8 +81,8 @@ LOCAL_INLINE FUNC(boolean,DCM_CODE) Dcm_Lok_isRxQueueFree(
 
 #if(DCM_ROE_ENABLED != DCM_CFG_OFF)
 
-LOCAL_INLINE FUNC(boolean,DCM_CODE) Dcm_Lok_isDcmProcessingRoeEvent(VAR(uint8,AUTOMATIC) idxProtocol_u8
-   ,     VAR(uint8,AUTOMATIC) connectionId_u8)
+LOCAL_INLINE FUNC(boolean,DCM_CODE) Dcm_Lok_isDcmProcessingRoeEvent(VAR(uint8, AUTOMATIC) idxProtocol_u8
+   ,     VAR(uint8, AUTOMATIC) connectionId_u8)
 {
    VAR(boolean, AUTOMATIC) isRoeEventOn_b = FALSE;
 
@@ -112,12 +112,12 @@ LOCAL_INLINE FUNC(boolean,DCM_CODE) Dcm_Lok_isDcmProcessingRoeEvent(VAR(uint8,AU
 #if(DCM_CFG_PROTOCOL_PREMPTION_ENABLED != DCM_CFG_OFF)
 
 static FUNC(BufReq_ReturnType, DCM_CODE) Dcm_Lok_PremptionHandling(
-        P2CONST(Dcm_Dsld_protocol_tableType,AUTOMATIC,DCM_INTERN_CONST) ArrivedProtocol_pcst
-   ,     VAR(Type_SwcServiceCom_tLengthPdu,AUTOMATIC) TpSduLength,VAR(Type_SwcServiceCom_tIdPdu,AUTOMATIC) RxpduId)
+        P2CONST(Dcm_Dsld_protocol_tableType, AUTOMATIC,DCM_INTERN_CONST) ArrivedProtocol_pcst
+   ,     VAR(Type_SwcServiceCom_tLengthPdu, AUTOMATIC) TpSduLength,VAR(Type_SwcServiceCom_tIdPdu, AUTOMATIC) RxpduId)
 {
-   VAR(BufReq_ReturnType,AUTOMATIC) bufRequestStatus_en = BUFREQ_E_NOT_OK;
-   VAR(uint8,AUTOMATIC) idxProtocol_u8  = Dcm_DsldGlobal_st.idxCurrentProtocol_u8;
-   VAR(uint8,AUTOMATIC) connectionId_u8 = 0u;
+   VAR(BufReq_ReturnType, AUTOMATIC) bufRequestStatus_en = BUFREQ_E_NOT_OK;
+   VAR(uint8, AUTOMATIC) idxProtocol_u8  = Dcm_DsldGlobal_st.idxCurrentProtocol_u8;
+   VAR(uint8, AUTOMATIC) connectionId_u8 = 0u;
 
    if(ArrivedProtocol_pcst->rx_buffer_size_u32 < (uint32)TpSduLength)
    {
@@ -178,8 +178,8 @@ static FUNC(BufReq_ReturnType,DCM_CODE) Dcm_Lok_InformApplication(VAR(Type_SwcSe
    ,     P2VAR(Type_SwcServiceCom_tLengthPdu, AUTOMATIC, DCM_APPL_DATA) RxBufferSizePtr
    ,     VAR(BufReq_ReturnType, AUTOMATIC) BufRequestStatus_en)
 {
-   VAR(uint8,AUTOMATIC) connectionId_u8 = Dcm_DsldRxTable_pcu8[DcmRxPduId];
-   VAR(uint8,AUTOMATIC) idxProtocol_u8  = Dcm_DsldConnTable_pcst[connectionId_u8].protocol_num_u8;
+   VAR(uint8, AUTOMATIC) connectionId_u8 = Dcm_DsldRxTable_pcu8[DcmRxPduId];
+   VAR(uint8, AUTOMATIC) idxProtocol_u8  = Dcm_DsldConnTable_pcst[connectionId_u8].protocol_num_u8;
 
    if(BUFREQ_OK == BufRequestStatus_en)
    {
@@ -255,8 +255,8 @@ static FUNC(BufReq_ReturnType,DCM_CODE) Dcm_Lok_ProcessRequest_CheckPriority( VA
    ,     P2VAR(Type_SwcServiceCom_tLengthPdu, AUTOMATIC, DCM_APPL_DATA) RxBufferSizePtr)
 {
    VAR(BufReq_ReturnType, AUTOMATIC) bufRequestStatus_en = BUFREQ_E_NOT_OK;
-   VAR(uint8,AUTOMATIC) connectionId_u8 = Dcm_DsldRxTable_pcu8[DcmRxPduId];
-   VAR(uint8,AUTOMATIC) idxProtocol_u8  = Dcm_DsldConnTable_pcst[connectionId_u8].protocol_num_u8;
+   VAR(uint8, AUTOMATIC) connectionId_u8 = Dcm_DsldRxTable_pcu8[DcmRxPduId];
+   VAR(uint8, AUTOMATIC) idxProtocol_u8  = Dcm_DsldConnTable_pcst[connectionId_u8].protocol_num_u8;
 
    if(FALSE != Dcm_DslRxPduArray_ast[DcmRxPduId].Dcm_DslFuncTesterPresent_b)
    {
@@ -282,8 +282,8 @@ static FUNC(BufReq_ReturnType,DCM_CODE) Dcm_Lok_ProcessRequestWhileRoeEvent(
         VAR(Type_SwcServiceCom_tIdPdu, AUTOMATIC) DcmRxPduId,VAR(Type_SwcServiceCom_tLengthPdu, AUTOMATIC) TpSduLength)
 {
    VAR(BufReq_ReturnType, AUTOMATIC) bufRequestStatus_en = BUFREQ_E_NOT_OK;
-   VAR(uint8,AUTOMATIC) connectionId_u8  = Dcm_DsldRxTable_pcu8[DcmRxPduId];
-   VAR(uint8,AUTOMATIC) idxProtocol_u8   = Dcm_DsldConnTable_pcst[connectionId_u8].protocol_num_u8;
+   VAR(uint8, AUTOMATIC) connectionId_u8  = Dcm_DsldRxTable_pcu8[DcmRxPduId];
+   VAR(uint8, AUTOMATIC) idxProtocol_u8   = Dcm_DsldConnTable_pcst[connectionId_u8].protocol_num_u8;
 
 #if(DCM_CFG_PROTOCOL_PREMPTION_ENABLED != DCM_CFG_OFF)
    if(Dcm_DsldProtocol_pcst[idxProtocol_u8].premption_level_u8 == \
@@ -316,8 +316,8 @@ static FUNC(BufReq_ReturnType,DCM_CODE) Dcm_Lok_ProcessRequestWhileDslBusy( VAR(
    ,     P2VAR(Type_SwcServiceCom_tLengthPdu, AUTOMATIC, DCM_APPL_DATA) RxBufferSizePtr)
 {
    VAR(BufReq_ReturnType, AUTOMATIC) bufRequestStatus_en = BUFREQ_E_NOT_OK;
-   VAR(uint8,AUTOMATIC) connectionId_u8  = Dcm_DsldRxTable_pcu8[DcmRxPduId];
-   VAR(uint8,AUTOMATIC) idxProtocol_u8   = Dcm_DsldConnTable_pcst[connectionId_u8].protocol_num_u8;
+   VAR(uint8, AUTOMATIC) connectionId_u8  = Dcm_DsldRxTable_pcu8[DcmRxPduId];
+   VAR(uint8, AUTOMATIC) idxProtocol_u8   = Dcm_DsldConnTable_pcst[connectionId_u8].protocol_num_u8;
 
    if(FALSE != Dcm_DslRxPduArray_ast[DcmRxPduId].Dcm_DslFuncTesterPresent_b)
    {
@@ -351,8 +351,8 @@ static FUNC(BufReq_ReturnType,DCM_CODE) Dcm_Lok_ProcessRequestWhileDslFree( VAR(
    ,     P2VAR(Type_SwcServiceCom_tLengthPdu, AUTOMATIC, DCM_APPL_DATA) RxBufferSizePtr)
 {
 
-   VAR(uint8,AUTOMATIC) connectionId_u8 = Dcm_DsldRxTable_pcu8[DcmRxPduId];
-   VAR(uint8,AUTOMATIC) idxProtocol_u8  = Dcm_DsldConnTable_pcst[connectionId_u8].protocol_num_u8;
+   VAR(uint8, AUTOMATIC) connectionId_u8 = Dcm_DsldRxTable_pcu8[DcmRxPduId];
+   VAR(uint8, AUTOMATIC) idxProtocol_u8  = Dcm_DsldConnTable_pcst[connectionId_u8].protocol_num_u8;
 
     SchM_Enter_Dcm_Global_NoNest();
 
@@ -381,8 +381,8 @@ static FUNC(BufReq_ReturnType,DCM_CODE) Dcm_Lok_ProcessRequestWhileDslFree( VAR(
 static FUNC(uint8,DCM_CODE)Dcm_Lok_ValidateRequestType( VAR(Type_SwcServiceCom_tIdPdu, AUTOMATIC) DcmRxPduId
    ,     P2CONST(Type_SwcServiceCom_stInfoPdu, AUTOMATIC, DCM_APPL_DATA) infoPtr,VAR(Type_SwcServiceCom_tLengthPdu, AUTOMATIC) TpSduLength)
 {
-   VAR(uint8,AUTOMATIC) connectionId_u8 = Dcm_DsldRxTable_pcu8[DcmRxPduId];
-   VAR(uint8,AUTOMATIC) requestType_u8  = DCM_PROCESS_NO_REQUEST;
+   VAR(uint8, AUTOMATIC) connectionId_u8 = Dcm_DsldRxTable_pcu8[DcmRxPduId];
+   VAR(uint8, AUTOMATIC) requestType_u8  = DCM_PROCESS_NO_REQUEST;
     Dcm_isFuncTPOnOtherConnection_b      = FALSE;
 
    if(FALSE != Dcm_Lok_CheckFunctionalTesterPresent(DcmRxPduId,infoPtr,TpSduLength))
@@ -420,8 +420,8 @@ static FUNC(boolean,DCM_CODE) Dcm_Lok_ProcessSharedRxPduid(P2VAR(Type_SwcService
    ,     P2CONST(Type_SwcServiceCom_stInfoPdu, AUTOMATIC, DCM_APPL_DATA) infoPtr)
 {
    VAR(boolean, AUTOMATIC) processStatus_b  = TRUE;
-   VAR(uint8,AUTOMATIC) idxProtocol_u8  = 0u;
-   VAR(uint8,AUTOMATIC) protocolId_u8   = 0u;
+   VAR(uint8, AUTOMATIC) idxProtocol_u8  = 0u;
+   VAR(uint8, AUTOMATIC) protocolId_u8   = 0u;
 
    if(FALSE != Dcm_Lok_isRxPduShared(*RxPduIdPtr,infoPtr->SduDataPtr[0]))
    {
@@ -443,10 +443,10 @@ static FUNC(boolean,DCM_CODE) Dcm_Lok_ProcessSharedRxPduid(P2VAR(Type_SwcService
 static FUNC(Std_ReturnType,DCM_CODE) Dcm_Lok_CheckPermissions(P2VAR(Type_SwcServiceCom_tIdPdu, AUTOMATIC,DCM_APPL_DATA) RxPduIdPtr
    ,     P2CONST(Type_SwcServiceCom_stInfoPdu, AUTOMATIC, DCM_APPL_DATA) infoPtr,VAR(Type_SwcServiceCom_tLengthPdu, AUTOMATIC) TpSduLength)
 {
-   VAR(Std_ReturnType,AUTOMATIC) permissionsStatus  = E_NOT_OK;
-   VAR(uint8,AUTOMATIC) connectionId_u8 = 0u;
-   VAR(uint8,AUTOMATIC) idxProtocol_u8  = 0u;
-   VAR(Type_SwcServiceCom_tIdPdu,AUTOMATIC) rxPduid     = 0u;
+   VAR(Std_ReturnType, AUTOMATIC) permissionsStatus  = E_NOT_OK;
+   VAR(uint8, AUTOMATIC) connectionId_u8 = 0u;
+   VAR(uint8, AUTOMATIC) idxProtocol_u8  = 0u;
+   VAR(Type_SwcServiceCom_tIdPdu, AUTOMATIC) rxPduid     = 0u;
 
 #if(DCM_CFG_RXPDU_SHARING_ENABLED != DCM_CFG_OFF)
    if(FALSE != Dcm_Lok_ProcessSharedRxPduid(RxPduIdPtr,infoPtr))
@@ -477,7 +477,7 @@ static FUNC(boolean,DCM_CODE) Dcm_Lok_StartOfReception_CheckEnvironment(VAR(Type
    ,     P2CONST(Type_SwcServiceCom_stInfoPdu, AUTOMATIC, DCM_APPL_DATA) infoPtr
    ,     P2CONST(Type_SwcServiceCom_tLengthPdu, AUTOMATIC, DCM_APPL_DATA) RxBufferSizePtr)
 {
-   VAR(boolean,AUTOMATIC) environmentStatus_b = FALSE;
+   VAR(boolean, AUTOMATIC) environmentStatus_b = FALSE;
 
    if(FALSE == Dcm_Lok_isDcmInitalised())
    {
@@ -512,8 +512,8 @@ FUNC(BufReq_ReturnType,DCM_CODE) Dcm_StartOfReception(VAR(Type_SwcServiceCom_tId
    ,     P2CONST(Type_SwcServiceCom_stInfoPdu, AUTOMATIC, DCM_APPL_DATA) info,VAR(Type_SwcServiceCom_tLengthPdu, AUTOMATIC) TpSduLength
    ,     P2VAR(Type_SwcServiceCom_tLengthPdu, AUTOMATIC, DCM_APPL_DATA) bufferSizePtr)
 {
-   VAR(BufReq_ReturnType,AUTOMATIC) bufRequestStatus_en = BUFREQ_E_NOT_OK;
-   VAR(uint8,AUTOMATIC) idxProtocol_u8    = 0u;
+   VAR(BufReq_ReturnType, AUTOMATIC) bufRequestStatus_en = BUFREQ_E_NOT_OK;
+   VAR(uint8, AUTOMATIC) idxProtocol_u8    = 0u;
 
 if(FALSE != Dcm_Lok_StartOfReception_CheckEnvironment(id,info,bufferSizePtr))
    {

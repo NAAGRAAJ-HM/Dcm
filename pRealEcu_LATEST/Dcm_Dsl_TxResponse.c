@@ -28,20 +28,20 @@ LOCAL_INLINE FUNC(void,DCM_CODE) DCM_P2TimerStart(void){
 }
 #endif
 
-LOCAL_INLINE FUNC(boolean,DCM_CODE) Dcm_Lok_isConfirmationOnActiveConnection(VAR(Type_SwcServiceCom_tIdPdu,AUTOMATIC) DcmTxPduId)
+LOCAL_INLINE FUNC(boolean,DCM_CODE) Dcm_Lok_isConfirmationOnActiveConnection(VAR(Type_SwcServiceCom_tIdPdu, AUTOMATIC) DcmTxPduId)
 {
     return (CfgSwcServiceDcm_stDsld.ptr_txtable_pca[DcmTxPduId] == Dcm_DsldGlobal_st.dataActiveTxPduId_u8);
 }
 
 LOCAL_INLINE FUNC(boolean,DCM_CODE) Dcm_Lok_isPositiveResponseSupressed(\
-        P2CONST(Dcm_MsgContextType,AUTOMATIC,DCM_INTERN_CONST) pMsgContext)
+        P2CONST(Dcm_MsgContextType, AUTOMATIC,DCM_INTERN_CONST) pMsgContext)
 {
     return((FALSE != (pMsgContext->msgAddInfo).suppressPosResponse) && \
             (Dcm_DsldGlobal_st.cntrWaitpendCounter_u8 == 0x00u));
 }
 
 LOCAL_INLINE FUNC(boolean,DCM_CODE) Dcm_Lok_isNegativeResponseSupressed(\
-        P2CONST(Dcm_MsgContextType,AUTOMATIC,DCM_INTERN_CONST) pMsgContext,VAR(uint8,AUTOMATIC) NrcValue_u8)
+        P2CONST(Dcm_MsgContextType, AUTOMATIC,DCM_INTERN_CONST) pMsgContext,VAR(uint8, AUTOMATIC) NrcValue_u8)
 {
 
     return((pMsgContext->dcmRxPduId >= DCM_INDEX_FUNC_RX_PDUID) && (DCM_IS_KWPPROT_ACTIVE() == FALSE) && \
@@ -69,7 +69,7 @@ LOCAL_INLINE FUNC(boolean,DCM_CODE) Dcm_Lok_isNormalResponseConfirmationProcesse
 #if((DCM_CFG_KWP_ENABLED != DCM_CFG_OFF) && (DCM_CFG_SPLITRESPSUPPORTEDFORKWP != DCM_CFG_OFF))
 
 LOCAL_INLINE FUNC(boolean,DCM_CODE)Dcm_Lok_isKWPSplitResponseTimeout(void){
-   VAR(boolean,AUTOMATIC) isResponseTimeout_b = FALSE;
+   VAR(boolean, AUTOMATIC) isResponseTimeout_b = FALSE;
    VAR(Dcm_DsdStatesType_ten,DCM_VAR) stDsdStateTemp_en  = Dcm_Lok_GetDsdState();
 
    if((DCM_IS_KWPPROT_ACTIVE() != FALSE) && (Dcm_isFirstReponseSent_b!=FALSE) && \
@@ -89,7 +89,7 @@ LOCAL_INLINE FUNC(boolean,DCM_CODE) Dcm_Lok_isConfirmationForPendingResponse(voi
 
 #if((DCM_CFG_KWP_ENABLED != DCM_CFG_OFF) && (DCM_CFG_SPLITRESPSUPPORTEDFORKWP != DCM_CFG_OFF))
 
-LOCAL_INLINE FUNC(boolean,DCM_CODE) Dcm_Lok_isConfirmationForKWPResponse(VAR(Std_ReturnType,AUTOMATIC) Result)
+LOCAL_INLINE FUNC(boolean,DCM_CODE) Dcm_Lok_isConfirmationForKWPResponse(VAR(Std_ReturnType, AUTOMATIC) Result)
 {
     return ((Result == E_OK) && \
             (DCM_IS_KWPPROT_ACTIVE() != FALSE) && \
@@ -100,7 +100,7 @@ LOCAL_INLINE FUNC(boolean,DCM_CODE) Dcm_Lok_isConfirmationForKWPResponse(VAR(Std
 
 #if(DCM_CFG_ROETYPE2_ENABLED != DCM_CFG_OFF)
 
-LOCAL_INLINE FUNC(boolean,DCM_CODE) Dcm_Lok_isConfirmationForRoeType2Response(VAR(Type_SwcServiceCom_tIdPdu,AUTOMATIC) DcmTxPduId)
+LOCAL_INLINE FUNC(boolean,DCM_CODE) Dcm_Lok_isConfirmationForRoeType2Response(VAR(Type_SwcServiceCom_tIdPdu, AUTOMATIC) DcmTxPduId)
 {
     return ((Dcm_DsldConnTable_pcst[Dcm_DsldRxTable_pcu8[Dcm_Roe2MesContext_st.dcmRxPduId]].roetype2_txpdu_u8 == \
             CfgSwcServiceDcm_stDsld.ptr_txtable_pca[DcmTxPduId]) && \
@@ -113,14 +113,14 @@ LOCAL_INLINE FUNC(boolean,DCM_CODE) Dcm_Lok_CheckWaitPendCounterOverflow(void){
             || (DCM_CFG_MAX_WAITPEND == DCM_MAXNUMRESPONSEPENDING));
 }
 
-LOCAL_INLINE FUNC(boolean,DCM_CODE) Dcm_Lok_isConfirmationReceivedForNrc21Response(VAR(Type_SwcServiceCom_tIdPdu,AUTOMATIC) DcmTxPduId
-   ,     VAR(uint8,AUTOMATIC) idxRxPduId)
+LOCAL_INLINE FUNC(boolean,DCM_CODE) Dcm_Lok_isConfirmationReceivedForNrc21Response(VAR(Type_SwcServiceCom_tIdPdu, AUTOMATIC) DcmTxPduId
+   ,     VAR(uint8, AUTOMATIC) idxRxPduId)
 {
    VAR(boolean, AUTOMATIC) confirmStatus_b = FALSE;
 
-   VAR(uint8,AUTOMATIC) ConnectionId_u8     = Dcm_DsldRxTable_pcu8[idxRxPduId];
-   VAR(uint8,AUTOMATIC) idxProtocol_u8      = Dcm_DsldConnTable_pcst[ConnectionId_u8].protocol_num_u8;
-   VAR(Type_SwcServiceCom_tIdPdu,AUTOMATIC) idxTxpduid_u8   = Dcm_DsldConnTable_pcst[ConnectionId_u8].txpduid_num_u8;
+   VAR(uint8, AUTOMATIC) ConnectionId_u8     = Dcm_DsldRxTable_pcu8[idxRxPduId];
+   VAR(uint8, AUTOMATIC) idxProtocol_u8      = Dcm_DsldConnTable_pcst[ConnectionId_u8].protocol_num_u8;
+   VAR(Type_SwcServiceCom_tIdPdu, AUTOMATIC) idxTxpduid_u8   = Dcm_DsldConnTable_pcst[ConnectionId_u8].txpduid_num_u8;
 
    if(( FALSE   != Dcm_DsldProtocol_pcst[idxProtocol_u8].nrc21_b)          && \
         ( DCM_SERVICEID_DEFAULT_VALUE !=  Dcm_DslRxPduArray_ast[idxRxPduId].Dcm_DslServiceId_u8 )   && \
@@ -144,7 +144,7 @@ LOCAL_INLINE FUNC(boolean,DCM_CODE) Dcm_Lok_isResponseSentForDSCService(void){
 #if(DCM_CFG_PROTOCOL_PREMPTION_ENABLED != DCM_CFG_OFF)
 
 LOCAL_INLINE FUNC(boolean,DCM_CODE) Dcm_Lok_isHighPriorityRequestReceiving(void){
-   VAR(boolean,AUTOMATIC) isRequestReceiving_b = FALSE;
+   VAR(boolean, AUTOMATIC) isRequestReceiving_b = FALSE;
    VAR(Dcm_DsdStatesType_ten,DCM_VAR) stDsdStateTemp_en  = Dcm_Lok_GetDsdState();
 
    if(((Dcm_Lok_GetDslPreemptionState() == DSL_SUBSTATE_STOP_PROTOCOL_RECEIVING) ||\
@@ -218,8 +218,8 @@ static FUNC(void,DCM_CODE) Dcm_Lok_DsdConfirmation (void){
 #if((DCM_CFG_DSPUDSSUPPORT_ENABLED != DCM_CFG_OFF) && (DCM_CFG_DSP_DIAGNOSTICSESSIONCONTROL_ENABLED != DCM_CFG_OFF) )
 
 static FUNC(void,DCM_CODE) Dcm_Lok_SetNewSession(void){
-   VAR(uint8,AUTOMATIC) nrSessions_u8 = 0u;
-   VAR(uint8,AUTOMATIC) idxSession_u8 = 0u;
+   VAR(uint8, AUTOMATIC) nrSessions_u8 = 0u;
+   VAR(uint8, AUTOMATIC) idxSession_u8 = 0u;
 
    if(FALSE != Dcm_Lok_isResponseSentForDSCService())
    {
@@ -254,11 +254,11 @@ static FUNC(void,DCM_CODE) Dcm_Lok_SetNewSession(void){
 #endif
 
 static FUNC(Std_ReturnType,DCM_CODE) Dcm_Lok_CheckP2StarTimer(void){
-   VAR(Std_ReturnType,AUTOMATIC) halfP2timeStatus = E_NOT_OK;
-   VAR(uint32,AUTOMATIC) halfP2timer_u32   = 0u;
+   VAR(Std_ReturnType, AUTOMATIC) halfP2timeStatus = E_NOT_OK;
+   VAR(uint32, AUTOMATIC) halfP2timer_u32   = 0u;
 
 #if(DCM_CFG_OSTIMER_USE != FALSE)
-   VAR(uint32,AUTOMATIC) currentOSTimerTicks_u32 = 0u;
+   VAR(uint32, AUTOMATIC) currentOSTimerTicks_u32 = 0u;
 #endif
 
    if(Dcm_DsldGlobal_st.cntrWaitpendCounter_u8 == 0u)
@@ -296,7 +296,7 @@ static FUNC(Std_ReturnType,DCM_CODE) Dcm_Lok_CheckP2StarTimer(void){
     return(halfP2timeStatus);
 }
 
-FUNC(void,DCM_CODE) Dcm_TriggerTransmit(VAR(Type_SwcServiceCom_tIdPdu,AUTOMATIC) TxPduId,P2VAR(Type_SwcServiceCom_stInfoPdu,AUTOMATIC,DCM_INTERN_DATA) PduInfoPtr )
+FUNC(void,DCM_CODE) Dcm_TriggerTransmit(VAR(Type_SwcServiceCom_tIdPdu, AUTOMATIC) TxPduId,P2VAR(Type_SwcServiceCom_stInfoPdu, AUTOMATIC, DCM_INTERN_DATA) PduInfoPtr )
 {
 
     (void)TxPduId;
@@ -305,7 +305,7 @@ FUNC(void,DCM_CODE) Dcm_TriggerTransmit(VAR(Type_SwcServiceCom_tIdPdu,AUTOMATIC)
 
 #if((DCM_BUFQUEUE_ENABLED != DCM_CFG_OFF) && (DCM_CALLAPPLICATIONONREQRX_ENABLED != DCM_CFG_OFF))
 static FUNC(void,DCM_CODE) Dcm_Lok_InformApplicationAfterQueueComplete(
-VAR(Dcm_DsldQueHandling_ten,AUTOMATIC) QueueHandlingTemp_en
+VAR(Dcm_DsldQueHandling_ten, AUTOMATIC) QueueHandlingTemp_en
 ){
    if(QueueHandlingTemp_en == DCM_QUEUE_RUNNING){
       (void)DcmAppl_CopyRxData(
@@ -327,7 +327,7 @@ VAR(Dcm_DsldQueHandling_ten,AUTOMATIC) QueueHandlingTemp_en
 
 #if(DCM_BUFQUEUE_ENABLED != DCM_CFG_OFF)
 static FUNC(void,DCM_CODE) Dcm_Lok_ProcessRequestInQueue(void){
-   VAR(Dcm_DsldQueHandling_ten,AUTOMATIC) QueueHandlingTemp_en;
+   VAR(Dcm_DsldQueHandling_ten, AUTOMATIC) QueueHandlingTemp_en;
     SchM_Enter_Dcm_Global_NoNest();
     QueueHandlingTemp_en = Dcm_QueueStructure_st.Dcm_QueHandling_en;
     SchM_Exit_Dcm_Global_NoNest();
@@ -389,12 +389,12 @@ static FUNC(void,DCM_CODE) Dcm_Lok_ProcessRequestInQueue(void){
 }
 #endif
 
-FUNC(void,DCM_CODE) Dcm_SetNegResponse ( P2CONST(Dcm_MsgContextType,AUTOMATIC,DCM_INTERN_CONST) pMsgContext
-   ,     VAR(Dcm_NegativeResponseCodeType,AUTOMATIC) ErrorCode)
+FUNC(void,DCM_CODE) Dcm_SetNegResponse ( P2CONST(Dcm_MsgContextType, AUTOMATIC,DCM_INTERN_CONST) pMsgContext
+   ,     VAR(Dcm_NegativeResponseCodeType, AUTOMATIC) ErrorCode)
 {
 
 #if((DCM_CFG_ROETYPE2_ENABLED != DCM_CFG_OFF))
-   P2VAR(Dcm_MsgItemType,AUTOMATIC,DCM_INTERN_DATA) responseBuf_pu8 = NULL_PTR;
+   P2VAR(Dcm_MsgItemType, AUTOMATIC, DCM_INTERN_DATA) responseBuf_pu8 = NULL_PTR;
 #endif
 
    if((pMsgContext->msgAddInfo.sourceofRequest == DCM_UDS_TESTER_SOURCE) || \
@@ -449,8 +449,8 @@ FUNC(void,DCM_CODE) Dcm_SetNegResponse ( P2CONST(Dcm_MsgContextType,AUTOMATIC,DC
 #if(DCM_ROE_ENABLED != DCM_CFG_OFF)
 
 static FUNC(boolean,DCM_CODE) Dcm_Lok_UpdateTxPduIdOnRoeEvent(void){
-   VAR(boolean,AUTOMATIC) retVal_b        = TRUE;
-   VAR(uint8,AUTOMATIC) connectionId_u8   = 0u;
+   VAR(boolean, AUTOMATIC) retVal_b        = TRUE;
+   VAR(uint8, AUTOMATIC) connectionId_u8   = 0u;
 
    connectionId_u8 = Dcm_DsldRxTable_pcu8[Dcm_DsldGlobal_st.dataActiveRxPduId_u8];
 
@@ -470,9 +470,9 @@ static FUNC(boolean,DCM_CODE) Dcm_Lok_UpdateTxPduIdOnRoeEvent(void){
 }
 #endif
 
-FUNC(void,DCM_CODE) Dcm_Lok_SendResponse(P2CONST(Type_SwcServiceCom_stInfoPdu,AUTOMATIC,DCM_INTERN_DATA) adrPduStrucutre_pcst)
+FUNC(void,DCM_CODE) Dcm_Lok_SendResponse(P2CONST(Type_SwcServiceCom_stInfoPdu, AUTOMATIC, DCM_INTERN_DATA) adrPduStrucutre_pcst)
 {
-   VAR(boolean,AUTOMATIC) Result_b = TRUE;
+   VAR(boolean, AUTOMATIC) Result_b = TRUE;
 
 #if(DCM_ROE_ENABLED != DCM_CFG_OFF)
    if(Dcm_Lok_GetDslState() == DSL_STATE_ROETYPE1_RECEIVED)
@@ -526,7 +526,7 @@ FUNC(void,DCM_CODE) Dcm_Lok_SendResponse(P2CONST(Type_SwcServiceCom_stInfoPdu,AU
 }
 
 static FUNC(void,DCM_CODE) Dcm_Lok_TransmitNormalResponse(void){
-   VAR(boolean,AUTOMATIC) SendResponse_b = FALSE;
+   VAR(boolean, AUTOMATIC) SendResponse_b = FALSE;
 
    if(Dcm_DslTransmit_st.TxResponseLength_u32 == 0u)
    {
@@ -660,9 +660,9 @@ FUNC(void,DCM_CODE) Dcm_Lok_TriggerTransmit(void){
 #if(DCM_CFG_RDPI_ENABLED != DCM_CFG_OFF)
 
 static FUNC(void,DCM_CODE)Dcm_Lok_TransmitRdpiType2Response(void){
-   VAR(Std_ReturnType,AUTOMATIC) trasnsmitStatus = E_OK;
-   VAR(Type_SwcServiceCom_tIdPdu,AUTOMATIC) rdpiTxPduId = 0u;
-   VAR(uint8,AUTOMATIC) idxTxPduId_u8   = 0u;
+   VAR(Std_ReturnType, AUTOMATIC) trasnsmitStatus = E_OK;
+   VAR(Type_SwcServiceCom_tIdPdu, AUTOMATIC) rdpiTxPduId = 0u;
+   VAR(uint8, AUTOMATIC) idxTxPduId_u8   = 0u;
 
    if(Dcm_Rdpi2ResponseType_en == DCM_DSLD_POS_RESPONSE)
    {
@@ -695,7 +695,7 @@ static FUNC(void,DCM_CODE)Dcm_Lok_TransmitRdpiType2Response(void){
 #if(DCM_CFG_ROETYPE2_ENABLED != DCM_CFG_OFF)
 
 static FUNC(void,DCM_CODE)Dcm_Lok_TransmitRoeType2Response(void){
-   VAR(boolean,AUTOMATIC) TransmitSuccess_b = TRUE;
+   VAR(boolean, AUTOMATIC) TransmitSuccess_b = TRUE;
 
     Dcm_DsdRoe2State_en = DSD_WAITFORTXCONF;
 
@@ -756,11 +756,11 @@ static FUNC(void,DCM_CODE)Dcm_Lok_TransmitRoeType2Response(void){
 }
 #endif
 
-static FUNC(void,DCM_CODE)Dcm_Lok_TransmitCurrentResponse(P2CONST(Dcm_MsgContextType,AUTOMATIC,DCM_INTERN_CONST) pMsgContext)
+static FUNC(void,DCM_CODE)Dcm_Lok_TransmitCurrentResponse(P2CONST(Dcm_MsgContextType, AUTOMATIC,DCM_INTERN_CONST) pMsgContext)
 {
-   VAR(uint8,AUTOMATIC) NrcValue_u8     = 0u;
-   VAR(uint32,AUTOMATIC) bufferSize_u32 = 0u;
-   VAR(Dcm_DsdStatesType_ten,AUTOMATIC) DsdState_en = Dcm_Lok_GetDsdState();
+   VAR(uint8, AUTOMATIC) NrcValue_u8     = 0u;
+   VAR(uint32, AUTOMATIC) bufferSize_u32 = 0u;
+   VAR(Dcm_DsdStatesType_ten, AUTOMATIC) DsdState_en = Dcm_Lok_GetDsdState();
 
    if((DsdState_en == DSD_CALL_SERVICE)||(FALSE != Dcm_DsldGlobal_st.dataResponseByDsd_b))
    {
@@ -820,7 +820,7 @@ static FUNC(void,DCM_CODE)Dcm_Lok_TransmitCurrentResponse(P2CONST(Dcm_MsgContext
    }
 }
 
-FUNC(void,DCM_CODE)Dcm_ProcessingDone(P2CONST(Dcm_MsgContextType,AUTOMATIC,DCM_INTERN_CONST) pMsgContext)
+FUNC(void,DCM_CODE)Dcm_ProcessingDone(P2CONST(Dcm_MsgContextType, AUTOMATIC,DCM_INTERN_CONST) pMsgContext)
 {
    if(((pMsgContext->msgAddInfo.sourceofRequest == DCM_UDS_TESTER_SOURCE)         || \
                 (Dcm_Lok_GetDslState() == DSL_STATE_ROETYPE1_RECEIVED))            && \
@@ -846,7 +846,7 @@ FUNC(void,DCM_CODE)Dcm_ProcessingDone(P2CONST(Dcm_MsgContextType,AUTOMATIC,DCM_I
 
 #if((DCM_CFG_KWP_ENABLED != DCM_CFG_OFF) && (DCM_CFG_SPLITRESPSUPPORTEDFORKWP != DCM_CFG_OFF))
 
-FUNC(void,DCM_CODE) Dcm_KWPConfirmationForSplitResp(VAR(Dcm_ConfirmationStatusType,AUTOMATIC) status)
+FUNC(void,DCM_CODE) Dcm_KWPConfirmationForSplitResp(VAR(Dcm_ConfirmationStatusType, AUTOMATIC) status)
 {
 
     Dcm_Lok_ReloadS3Timer();
@@ -880,7 +880,7 @@ FUNC(void,DCM_CODE) Dcm_KWPConfirmationForSplitResp(VAR(Dcm_ConfirmationStatusTy
 #if((DCM_CFG_KWP_ENABLED != DCM_CFG_OFF) && (DCM_CFG_SPLITRESPSUPPORTEDFORKWP != DCM_CFG_OFF))
 
 static FUNC(void,DCM_CODE) Dcm_Lok_ProcessConfirmationForKWPResponse(void){
-   VAR(Type_SwcServiceCom_tLengthPdu,AUTOMATIC) ResponseLength = 0u;
+   VAR(Type_SwcServiceCom_tLengthPdu, AUTOMATIC) ResponseLength = 0u;
 
     DcmAppl_DcmConfirmation(Dcm_DsldMsgContext_st.idContext,Dcm_DsldMsgContext_st.dcmRxPduId
    ,     Dcm_DsldConnTable_pcst[Dcm_DsldRxTable_pcu8[Dcm_DsldMsgContext_st.dcmRxPduId]].testaddr_u16
@@ -916,7 +916,7 @@ static FUNC(void,DCM_CODE) Dcm_Lok_ProcessConfirmationForKWPResponse(void){
 }
 #endif
 
-static FUNC(void,DCM_CODE) Dcm_Lok_ProcessConfirmationForCurrentResponse (VAR(Std_ReturnType,AUTOMATIC) Result)
+static FUNC(void,DCM_CODE) Dcm_Lok_ProcessConfirmationForCurrentResponse (VAR(Std_ReturnType, AUTOMATIC) Result)
 {
    Dcm_DsldGlobal_st.dataResult_u8 = Result;
 
@@ -942,9 +942,9 @@ static FUNC(void,DCM_CODE) Dcm_Lok_ProcessConfirmationForCurrentResponse (VAR(St
 #endif
 }
 
-static FUNC(void,DCM_CODE) Dcm_Lok_ProcessConfiramationForPendingResponse (VAR(Std_ReturnType,AUTOMATIC) Result)
+static FUNC(void,DCM_CODE) Dcm_Lok_ProcessConfiramationForPendingResponse (VAR(Std_ReturnType, AUTOMATIC) Result)
 {
-   VAR(Dcm_ConfirmationStatusType,AUTOMATIC) confirmationStatus = DCM_RES_NEG_NOT_OK;
+   VAR(Dcm_ConfirmationStatusType, AUTOMATIC) confirmationStatus = DCM_RES_NEG_NOT_OK;
 
    if(E_OK == Result)
    {
@@ -972,10 +972,10 @@ static FUNC(void,DCM_CODE) Dcm_Lok_ProcessConfiramationForPendingResponse (VAR(S
    Dcm_Lok_SetDslSubState(Dcm_Lok_GetDslNextSubState());
 }
 
-static FUNC(void,DCM_CODE)Dcm_Lok_ProcessTxConfirmation(VAR(Type_SwcServiceCom_tIdPdu,AUTOMATIC) TxPduId
-   ,     VAR(Std_ReturnType,AUTOMATIC) result)
+static FUNC(void,DCM_CODE)Dcm_Lok_ProcessTxConfirmation(VAR(Type_SwcServiceCom_tIdPdu, AUTOMATIC) TxPduId
+   ,     VAR(Std_ReturnType, AUTOMATIC) result)
 {
-   VAR(uint8,AUTOMATIC) idxRxPduId_u8;
+   VAR(uint8, AUTOMATIC) idxRxPduId_u8;
 
    if(FALSE != Dcm_Lok_isConfirmationOnActiveConnection(TxPduId))
    {
@@ -1016,7 +1016,7 @@ static FUNC(void,DCM_CODE)Dcm_Lok_ProcessTxConfirmation(VAR(Type_SwcServiceCom_t
    }
 }
 
-FUNC(void,DCM_CODE) Dcm_TpTxConfirmation (VAR(Type_SwcServiceCom_tIdPdu,AUTOMATIC) id,VAR(Std_ReturnType,AUTOMATIC) result)
+FUNC(void,DCM_CODE) Dcm_TpTxConfirmation (VAR(Type_SwcServiceCom_tIdPdu, AUTOMATIC) id,VAR(Std_ReturnType, AUTOMATIC) result)
 {
    if( id >= DCM_NUM_TX_PDUID )
    {
@@ -1033,9 +1033,9 @@ FUNC(void,DCM_CODE) Dcm_TpTxConfirmation (VAR(Type_SwcServiceCom_tIdPdu,AUTOMATI
    }
 }
 
-FUNC(void,DCM_CODE) Dcm_TxConfirmation (VAR(Type_SwcServiceCom_tIdPdu,AUTOMATIC) DcmTxPduId)
+FUNC(void,DCM_CODE) Dcm_TxConfirmation (VAR(Type_SwcServiceCom_tIdPdu, AUTOMATIC) DcmTxPduId)
 {
-   VAR(uint8,AUTOMATIC) idxTxPduid_u8 = 0u;
+   VAR(uint8, AUTOMATIC) idxTxPduid_u8 = 0u;
 
    if( DcmTxPduId >= DCM_NUM_TX_PDUID )
    {

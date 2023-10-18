@@ -25,11 +25,11 @@ FUNC(void,DCM_CODE) Dcm_DcmObdMode04_Ini(void){
     Dcm_stDspObdMode04State_en = DCM_DSP_MODE04_INIT;
 }
 
-FUNC(Std_ReturnType,DCM_CODE) Dcm_DcmObdMode04 (VAR(Dcm_SrvOpStatusType,AUTOMATIC) OpStatus,P2VAR(Dcm_MsgContextType,AUTOMATIC,DCM_INTERN_DATA) pMsgContext,P2VAR(Dcm_NegativeResponseCodeType,AUTOMATIC,DCM_INTERN_DATA) dataNegRespCode_u8)
+FUNC(Std_ReturnType,DCM_CODE) Dcm_DcmObdMode04 (VAR(Dcm_SrvOpStatusType, AUTOMATIC) OpStatus,P2VAR(Dcm_MsgContextType, AUTOMATIC, DCM_INTERN_DATA) pMsgContext,P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8)
 {
-   VAR(Dcm_ReturnClearDTCType_tu8,AUTOMATIC) dataDemClrRetVal_u8;
-   VAR(Std_ReturnType,AUTOMATIC) stObdMode04Appl_u8;
-   VAR(Std_ReturnType,AUTOMATIC) dataRetVal_u8;
+   VAR(Dcm_ReturnClearDTCType_tu8, AUTOMATIC) dataDemClrRetVal_u8;
+   VAR(Std_ReturnType, AUTOMATIC) stObdMode04Appl_u8;
+   VAR(Std_ReturnType, AUTOMATIC) dataRetVal_u8;
     *dataNegRespCode_u8   = 0x0u;
     dataDemClrRetVal_u8 = DEM_CLEAR_OK;
    stObdMode04Appl_u8 = E_NOT_OK;

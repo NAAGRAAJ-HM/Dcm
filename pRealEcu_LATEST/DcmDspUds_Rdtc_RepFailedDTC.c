@@ -13,15 +13,15 @@
 #define DCM_START_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"
 
-FUNC(Std_ReturnType,DCM_CODE) Dcm_Dsp_ReportFailedDTC (VAR(Dcm_SrvOpStatusType,AUTOMATIC) OpStatus,P2VAR(Dcm_MsgContextType,AUTOMATIC,DCM_INTERN_DATA) pMsgContext,P2VAR(Dcm_NegativeResponseCodeType,AUTOMATIC,DCM_INTERN_DATA) dataNegRespCode_u8)
+FUNC(Std_ReturnType,DCM_CODE) Dcm_Dsp_ReportFailedDTC (VAR(Dcm_SrvOpStatusType, AUTOMATIC) OpStatus,P2VAR(Dcm_MsgContextType, AUTOMATIC, DCM_INTERN_DATA) pMsgContext,P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8)
 {
    VAR(uint32,     AUTOMATIC)    dataDTC_u32;
-   VAR(Dem_ReturnGetDTCByOccurrenceTimeType,AUTOMATIC)    dataRetGetDTCByOccurTime_u8;
-   VAR(Dem_ReturnGetStatusOfDTCType,AUTOMATIC)    dataRetGetStatusOfDTC_u8;
-   VAR(uint8,AUTOMATIC)                           stDTCStatus_u8;
+   VAR(Dem_ReturnGetDTCByOccurrenceTimeType, AUTOMATIC)    dataRetGetDTCByOccurTime_u8;
+   VAR(Dem_ReturnGetStatusOfDTCType, AUTOMATIC)    dataRetGetStatusOfDTC_u8;
+   VAR(uint8, AUTOMATIC)                           stDTCStatus_u8;
    VAR(uint8,     AUTOMATIC)    dataStatusAvailMask_u8;
-   VAR(uint8,AUTOMATIC)                           dataRDTCSubFunc_u8;
-   VAR(Std_ReturnType,AUTOMATIC)                  dataRetVal_u8;
+   VAR(uint8, AUTOMATIC)                           dataRDTCSubFunc_u8;
+   VAR(Std_ReturnType, AUTOMATIC)                  dataRetVal_u8;
    VAR(boolean,     AUTOMATIC) flgSubFnSupp_b;
 
     DCM_UNUSED_PARAM(OpStatus);

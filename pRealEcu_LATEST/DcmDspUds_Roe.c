@@ -42,9 +42,9 @@ static VAR(boolean,     DCM_VAR) Dcm_stDspRoeDtcOpStatusIsPending_b;
 #if(DCM_CFG_DSP_ROEDID_ENABLED != DCM_CFG_OFF)
 
 static FUNC(Std_ReturnType,DCM_CODE) Dcm_StoreRoeDidEventInfo(VAR(Std_ReturnType, AUTOMATIC) dataDoeDidIdx_u8
-   ,     P2VAR(Dcm_NegativeResponseCodeType,AUTOMATIC,DCM_INTERN_DATA) dataNegRespCode_u8)
+   ,     P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8)
 {
-   VAR(Std_ReturnType,AUTOMATIC) dataRetValue_u8;
+   VAR(Std_ReturnType, AUTOMATIC) dataRetValue_u8;
 
    if(Dcm_stDspRoeDidOpStatusIsPending_b == FALSE)
    {
@@ -100,11 +100,11 @@ static FUNC(Std_ReturnType,DCM_CODE) Dcm_StoreRoeDidEventInfo(VAR(Std_ReturnType
 }
 
 static FUNC(Std_ReturnType,DCM_CODE) Dcm_ControlRoeDidEventType(
-        P2VAR(Dcm_NegativeResponseCodeType,AUTOMATIC,DCM_INTERN_DATA) dataNegRespCode_u8)
+        P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8)
 {
 
    VAR(boolean, AUTOMATIC) dataStoreEventInfo_b;
-   VAR(Dcm_SesCtrlType,AUTOMATIC) dataCurrentSession_u8;
+   VAR(Dcm_SesCtrlType, AUTOMATIC) dataCurrentSession_u8;
    VAR(uint8, AUTOMATIC) dataidxLoop_u8;
    VAR(Std_ReturnType, AUTOMATIC) dataReturnVal_u8;
 
@@ -179,8 +179,8 @@ static FUNC(Std_ReturnType,DCM_CODE) Dcm_ControlRoeDidEventType(
 }
 
 static FUNC(Std_ReturnType,DCM_CODE) Dcm_SetUpRoeDidEvent(
-        P2VAR(Dcm_MsgContextType,AUTOMATIC,DCM_INTERN_CONST) pMsgContext
-   ,     P2VAR(Dcm_NegativeResponseCodeType,AUTOMATIC,DCM_INTERN_DATA) dataNegRespCode_u8)
+        P2VAR(Dcm_MsgContextType, AUTOMATIC,DCM_INTERN_CONST) pMsgContext
+   ,     P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8)
 {
    VAR(Std_ReturnType, AUTOMATIC) dataReturnVal_u8;
    VAR(uint16, AUTOMATIC) dataRoeDid_u16;
@@ -286,8 +286,8 @@ static FUNC(Std_ReturnType,DCM_CODE) Dcm_SetUpRoeDidEvent(
 #if(DCM_CFG_DSP_ROEONDTCSTATUSCHANGE_ENABLED != DCM_CFG_OFF)
 
 static FUNC(Std_ReturnType,DCM_CODE) Dcm_SetUpRoeDtcEvent(
-        P2VAR(Dcm_MsgContextType,AUTOMATIC,DCM_INTERN_CONST) pMsgContext
-   ,     P2VAR(Dcm_NegativeResponseCodeType,AUTOMATIC,DCM_INTERN_DATA) dataNegRespCode_u8)
+        P2VAR(Dcm_MsgContextType, AUTOMATIC,DCM_INTERN_CONST) pMsgContext
+   ,     P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8)
 {
    VAR(Std_ReturnType, AUTOMATIC) dataReturnVal_u8;
    VAR(uint8, AUTOMATIC) dataidxLoop_u8;
@@ -351,9 +351,9 @@ static FUNC(Std_ReturnType,DCM_CODE) Dcm_SetUpRoeDtcEvent(
 }
 
 static FUNC(Std_ReturnType,DCM_CODE) Dcm_StoreRoeDtcEventInfo(
-        P2VAR(Dcm_NegativeResponseCodeType,AUTOMATIC,DCM_INTERN_DATA) dataNegRespCode_u8)
+        P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8)
 {
-   VAR(Std_ReturnType,AUTOMATIC) dataRetValue_u8;
+   VAR(Std_ReturnType, AUTOMATIC) dataRetValue_u8;
 
     dataRetValue_u8=DcmAppl_DcmStoreRoeDTCInfo (DcmDspRoeDtcEvent.RoeEventId_u8
    ,     DcmDspRoeDtcStateVariable.RoeEventStatus
@@ -410,10 +410,10 @@ static FUNC(Std_ReturnType,DCM_CODE) Dcm_StoreRoeDtcEventInfo(
 }
 
 static FUNC(Std_ReturnType,DCM_CODE) Dcm_ControlRoeDtcEventType(
-        P2VAR(Dcm_NegativeResponseCodeType,AUTOMATIC,DCM_INTERN_DATA) dataNegRespCode_u8)
+        P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8)
 {
    VAR(boolean, AUTOMATIC) dataDtcStatusflag_b = FALSE;
-   VAR(Dcm_SesCtrlType,AUTOMATIC) dataCurrentSession_u8;
+   VAR(Dcm_SesCtrlType, AUTOMATIC) dataCurrentSession_u8;
    VAR(Std_ReturnType, AUTOMATIC) dataReturnVal_u8 = E_NOT_OK;
 
    if( Dcm_stDspRoeDtcOpStatusIsPending_b == FALSE)
@@ -502,8 +502,8 @@ static FUNC(void,DCM_CODE) Dcm_CheckRoeEventType(void){
    }
 }
 
-static FUNC(void,DCM_CODE) Dcm_RoeLengthCheck(P2CONST(Dcm_MsgContextType,AUTOMATIC,DCM_INTERN_CONST) pMsgContext
-   ,     P2VAR(Dcm_NegativeResponseCodeType,AUTOMATIC,DCM_INTERN_DATA) dataNegRespCode_u8)
+static FUNC(void,DCM_CODE) Dcm_RoeLengthCheck(P2CONST(Dcm_MsgContextType, AUTOMATIC,DCM_INTERN_CONST) pMsgContext
+   ,     P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8)
 {
    VAR(uint16, AUTOMATIC) dataReqLen_u16;
 
@@ -548,7 +548,7 @@ static FUNC(void,DCM_CODE) Dcm_RoeLengthCheck(P2CONST(Dcm_MsgContextType,AUTOMAT
    }
 }
 
-static FUNC(void,DCM_CODE) Dcm_ReportRoeEvents(P2VAR(Dcm_MsgContextType,AUTOMATIC,DCM_INTERN_CONST) pMsgContext)
+static FUNC(void,DCM_CODE) Dcm_ReportRoeEvents(P2VAR(Dcm_MsgContextType, AUTOMATIC,DCM_INTERN_CONST) pMsgContext)
 {
 
    VAR(uint8, AUTOMATIC) idxReportEvents_u8;
@@ -613,7 +613,7 @@ static FUNC(void,DCM_CODE) Dcm_ReportRoeEvents(P2VAR(Dcm_MsgContextType,AUTOMATI
 }
 
 static FUNC(void,DCM_CODE)Dcm_RoeCtrlConditionAndSequenceCheck(
-        P2VAR(Dcm_NegativeResponseCodeType,AUTOMATIC,DCM_INTERN_DATA) dataNegRespCode_u8)
+        P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8)
 {
 #if(DCM_CFG_DSP_ROEDID_ENABLED!=DCM_CFG_OFF)
    VAR(uint8, AUTOMATIC) dataidxLoop_u8;
@@ -755,7 +755,7 @@ FUNC(void,DCM_CODE) Dcm_DcmResponseOnEventIni (void){
 #if(DCM_CFG_DSP_ROEONDTCSTATUSCHANGE_ENABLED!=DCM_CFG_OFF)
 
 FUNC(void,DCM_CODE)Dcm_ResetRoeOnDtcevents(void){
-   VAR(Dcm_SesCtrlType,AUTOMATIC) dataCurrentSession_u8;
+   VAR(Dcm_SesCtrlType, AUTOMATIC) dataCurrentSession_u8;
     dataCurrentSession_u8 = Dcm_DsldSessionTable_pcu8[Dcm_DsldGlobal_st.idxActiveSession_u8];
 
     DcmDspRoeDtcStateVariable.SourceAddress_u16=0xFFu;
@@ -784,7 +784,7 @@ FUNC(void,DCM_CODE)Dcm_ResetRoeOnDtcevents(void){
 #if(DCM_CFG_DSP_ROEDID_ENABLED != DCM_CFG_OFF)
 
 FUNC(void,DCM_CODE) Dcm_ResetRoeDidevents(void){
-   VAR(Dcm_SesCtrlType,AUTOMATIC) dataCurrentSession_u8;
+   VAR(Dcm_SesCtrlType, AUTOMATIC) dataCurrentSession_u8;
     dataCurrentSession_u8 = Dcm_DsldSessionTable_pcu8[Dcm_DsldGlobal_st.idxActiveSession_u8];
 
     Dcm_RoeDidIdx_u8=0;
@@ -814,8 +814,8 @@ FUNC(void,DCM_CODE) Dcm_ResetRoeDidevents(void){
 #endif
 
 static FUNC(Std_ReturnType,DCM_CODE) Dcm_Lok_DcmRoe_Controlevent (
-                                                    P2VAR(Dcm_MsgContextType,AUTOMATIC,DCM_INTERN_DATA) pMsgContext
-   ,     P2VAR(Dcm_NegativeResponseCodeType,AUTOMATIC,DCM_INTERN_DATA) dataNegRespCode_u8)
+                                                    P2VAR(Dcm_MsgContextType, AUTOMATIC, DCM_INTERN_DATA) pMsgContext
+   ,     P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8)
 {
    VAR(Std_ReturnType, AUTOMATIC) dataReturnVal_u8;
 
@@ -865,7 +865,7 @@ static FUNC(Std_ReturnType,DCM_CODE) Dcm_Lok_DcmRoe_Controlevent (
 }
 
 static FUNC(Std_ReturnType,DCM_CODE) Dcm_Lok_DcmRoe_SetUpevent_WindowTime (
-        P2VAR(Dcm_NegativeResponseCodeType,AUTOMATIC,DCM_INTERN_DATA) dataNegRespCode_u8)
+        P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8)
 {
 
    if((Dcm_stRoeEventWindowTime_u8 == DCM_ROE_EVENTWINDOWTIME_INFINITE) ||
@@ -897,8 +897,8 @@ static FUNC(Std_ReturnType,DCM_CODE) Dcm_Lok_DcmRoe_SetUpevent_WindowTime (
 
 static FUNC(Std_ReturnType,DCM_CODE) Dcm_Lok_DcmRoe_SetUpevent_ONCHANGEOFDID (
 
-                                      P2VAR(Dcm_MsgContextType,AUTOMATIC,DCM_INTERN_DATA) pMsgContext
-   ,     P2VAR(Dcm_NegativeResponseCodeType,AUTOMATIC,DCM_INTERN_DATA) dataNegRespCode_u8)
+                                      P2VAR(Dcm_MsgContextType, AUTOMATIC, DCM_INTERN_DATA) pMsgContext
+   ,     P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8)
 {
    VAR(Std_ReturnType, AUTOMATIC)   dataReturnVal_u8;
 
@@ -939,8 +939,8 @@ static FUNC(Std_ReturnType,DCM_CODE) Dcm_Lok_DcmRoe_SetUpevent_ONCHANGEOFDID (
 }
 
 static FUNC(Std_ReturnType,DCM_CODE) Dcm_Lok_DcmRoe_SetUpevent_ONDTCSTATUSCHANGE (
-                                     P2VAR(Dcm_MsgContextType,AUTOMATIC,DCM_INTERN_DATA) pMsgContext
-   ,     P2VAR(Dcm_NegativeResponseCodeType,AUTOMATIC,DCM_INTERN_DATA) dataNegRespCode_u8)
+                                     P2VAR(Dcm_MsgContextType, AUTOMATIC, DCM_INTERN_DATA) pMsgContext
+   ,     P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8)
 {
    VAR(Std_ReturnType, AUTOMATIC) dataReturnVal_u8;
 
@@ -977,8 +977,8 @@ static FUNC(Std_ReturnType,DCM_CODE) Dcm_Lok_DcmRoe_SetUpevent_ONDTCSTATUSCHANGE
 }
 
 static FUNC(Std_ReturnType,DCM_CODE) Dcm_Lok_DcmRoe_SetUpevent (
-        P2VAR(Dcm_MsgContextType,AUTOMATIC,DCM_INTERN_DATA) pMsgContext
-   ,     P2VAR(Dcm_NegativeResponseCodeType,AUTOMATIC,DCM_INTERN_DATA) dataNegRespCode_u8)
+        P2VAR(Dcm_MsgContextType, AUTOMATIC, DCM_INTERN_DATA) pMsgContext
+   ,     P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8)
 {
    VAR(Std_ReturnType, AUTOMATIC) dataReturnVal_u8;
 
@@ -1019,9 +1019,9 @@ static FUNC(Std_ReturnType,DCM_CODE) Dcm_Lok_DcmRoe_SetUpevent (
     return(dataReturnVal_u8);
 }
 
-FUNC(Std_ReturnType,DCM_CODE) Dcm_DcmResponseOnEvent (VAR(Dcm_SrvOpStatusType,AUTOMATIC) OpStatus
-   ,     P2VAR(Dcm_MsgContextType,AUTOMATIC,DCM_INTERN_DATA) pMsgContext
-   ,     P2VAR(Dcm_NegativeResponseCodeType,AUTOMATIC,DCM_INTERN_DATA) dataNegRespCode_u8)
+FUNC(Std_ReturnType,DCM_CODE) Dcm_DcmResponseOnEvent (VAR(Dcm_SrvOpStatusType, AUTOMATIC) OpStatus
+   ,     P2VAR(Dcm_MsgContextType, AUTOMATIC, DCM_INTERN_DATA) pMsgContext
+   ,     P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8)
 {
 
    VAR(Std_ReturnType, AUTOMATIC) dataReturnVal_u8;

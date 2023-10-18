@@ -75,7 +75,7 @@ static FUNC(void, SWCSERVICEDCM_CODE) Dcm_Lok_RdpiInit(void){
 
 #if(DCM_CFG_RESTORING_ENABLED != DCM_CFG_OFF)
 static FUNC(void, SWCSERVICEDCM_CODE) Dcm_Lok_WarmStart(void){
-   VAR(Dcm_EcuStartModeType,AUTOMATIC) dataRetGetProgCond_u8;
+   VAR(Dcm_EcuStartModeType, AUTOMATIC) dataRetGetProgCond_u8;
 
     dataRetGetProgCond_u8 = Dcm_GetProgConditions(&Dcm_ProgConditions_st);
 

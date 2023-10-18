@@ -72,7 +72,7 @@ typedef uint8 Dcm_StatusType;
 #define DCM_UNUSED_PARAM(P)   ((void)(P))
 
 typedef uint8 Dcm_MsgItemType;
-typedef P2VAR(Dcm_MsgItemType,TYPEDEF,DCM_INTERN_DATA)  Dcm_MsgType;
+typedef P2VAR(Dcm_MsgItemType,TYPEDEF, DCM_INTERN_DATA)  Dcm_MsgType;
 typedef uint32 Dcm_MsgLenType;
 
 typedef struct{
@@ -246,8 +246,8 @@ typedef boolean (*Dcm_ModeRuleType) (uint8* ErrorCode_u8);
 typedef struct{
    uint32 allowed_session_b32;
    uint32 allowed_security_b32;
-   P2FUNC(Std_ReturnType,TYPEDEF,adrUserSubServiceModeRule_pfct) (P2VAR(Dcm_NegativeResponseCodeType,AUTOMATIC,DCM_INTERN_DATA),VAR(uint8,AUTOMATIC),VAR(uint8,AUTOMATIC));
-   P2FUNC(Std_ReturnType,TYPEDEF,SubFunc_fp) (VAR(Dcm_SrvOpStatusType,AUTOMATIC),P2VAR(Dcm_MsgContextType,AUTOMATIC,DCM_INTERN_DATA),P2VAR(Dcm_NegativeResponseCodeType,AUTOMATIC,DCM_INTERN_DATA));
+   P2FUNC(Std_ReturnType,TYPEDEF,adrUserSubServiceModeRule_pfct) (P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA),VAR(uint8, AUTOMATIC),VAR(uint8, AUTOMATIC));
+   P2FUNC(Std_ReturnType,TYPEDEF,SubFunc_fp) (VAR(Dcm_SrvOpStatusType, AUTOMATIC),P2VAR(Dcm_MsgContextType, AUTOMATIC, DCM_INTERN_DATA),P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA));
    uint8  subservice_id_u8;
    boolean isDspRDTCSubFnc_b;
 }Dcm_Dsld_SubServiceType;
@@ -255,14 +255,14 @@ typedef struct{
 typedef struct{
    uint32 allowed_session_b32;
    uint32 allowed_security_b32;
-   P2FUNC(Std_ReturnType,TYPEDEF,service_handler_fp) (VAR( Dcm_SrvOpStatusType,AUTOMATIC),P2VAR(Dcm_MsgContextType,AUTOMATIC,DCM_INTERN_DATA),P2VAR(Dcm_NegativeResponseCodeType,AUTOMATIC,DCM_INTERN_DATA));
+   P2FUNC(Std_ReturnType,TYPEDEF,service_handler_fp) (VAR( Dcm_SrvOpStatusType, AUTOMATIC),P2VAR(Dcm_MsgContextType, AUTOMATIC, DCM_INTERN_DATA),P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA));
    P2FUNC(void,TYPEDEF,Service_init_fp) (void);
    uint8 sid_u8;
    boolean  subfunction_exist_b;
    boolean servicelocator_b;
    P2CONST(Dcm_Dsld_SubServiceType,TYPEDEF,DCM_INTERN_CONST) ptr_subservice_table_pcs;
    uint8 num_sf_u8;
-   P2FUNC(Std_ReturnType,TYPEDEF,adrUserServiceModeRule_pfct) (P2VAR(Dcm_NegativeResponseCodeType,AUTOMATIC,DCM_INTERN_DATA),VAR(uint8,AUTOMATIC));
+   P2FUNC(Std_ReturnType,TYPEDEF,adrUserServiceModeRule_pfct) (P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA),VAR(uint8, AUTOMATIC));
 
     Dcm_ConfirmationApiType Dcm_ConfirmationService;
 }Dcm_Dsld_ServiceType;
@@ -346,17 +346,17 @@ while(0)                                                        \
 #endif
 #define DCM_START_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"
-extern FUNC(void,DCM_CODE) Dcm_SetNegResponse ( P2CONST(Dcm_MsgContextType,AUTOMATIC,DCM_INTERN_CONST) pMsgContext
-   ,     VAR(Dcm_NegativeResponseCodeType,AUTOMATIC) ErrorCode
+extern FUNC(void,DCM_CODE) Dcm_SetNegResponse ( P2CONST(Dcm_MsgContextType, AUTOMATIC,DCM_INTERN_CONST) pMsgContext
+   ,     VAR(Dcm_NegativeResponseCodeType, AUTOMATIC) ErrorCode
                                               );
 
-extern FUNC(void,DCM_CODE) Dcm_ProcessingDone (P2CONST(Dcm_MsgContextType,AUTOMATIC,DCM_INTERN_CONST) pMsgContext);
+extern FUNC(void,DCM_CODE) Dcm_ProcessingDone (P2CONST(Dcm_MsgContextType, AUTOMATIC,DCM_INTERN_CONST) pMsgContext);
 #define DCM_STOP_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"
 
 #define DCM_START_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"
-extern FUNC(void, DCM_CODE) Dcm_SetP3MaxMonitoring (VAR(boolean,AUTOMATIC) active);
+extern FUNC(void, DCM_CODE) Dcm_SetP3MaxMonitoring (VAR(boolean, AUTOMATIC) active);
 #define DCM_STOP_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"
 
@@ -367,11 +367,11 @@ extern FUNC(void,DCM_CODE) Dcm_GetActiveServiceTable (P2VAR(uint8, AUTOMATIC, DC
 extern FUNC(Std_ReturnType,DCM_CODE) Dcm_GetActiveProtocolRxBufferSize
                             (CONSTP2VAR(Dcm_MsgLenType, AUTOMATIC, DCM_APPL_DATA) rxBufferLength);
 extern FUNC(Std_ReturnType,DCM_CODE) Dcm_ForceRespPend(void);
-extern FUNC(boolean,DCM_CODE) Dcm_IsInfrastructureErrorPresent_b(VAR(uint8,AUTOMATIC) dataInfrastrutureCode_u8);
+extern FUNC(boolean,DCM_CODE) Dcm_IsInfrastructureErrorPresent_b(VAR(uint8, AUTOMATIC) dataInfrastrutureCode_u8);
 
 #if((DCM_CFG_RBA_DIAGADAPT_SUPPORT_ENABLED!=DCM_CFG_OFF) || (DCM_CFG_RTESUPPORT_ENABLED == DCM_CFG_OFF))
 
-extern FUNC(Std_ReturnType,DCM_CODE) Dcm_TriggerOnEvent( VAR(uint8,AUTOMATIC) RoeEventId );
+extern FUNC(Std_ReturnType,DCM_CODE) Dcm_TriggerOnEvent( VAR(uint8, AUTOMATIC) RoeEventId );
 #endif
 
 #if(DCM_CFG_RBA_DIAGADAPT_SUPPORT_ENABLED==DCM_CFG_OFF)

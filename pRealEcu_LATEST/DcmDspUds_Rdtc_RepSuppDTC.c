@@ -17,29 +17,29 @@
 #include "Dcm_Cfg_MemMap.hpp"
 
 #if((DCM_PAGEDBUFFER_ENABLED != DCM_CFG_OFF) && (DCM_CFG_RDTCPAGEDBUFFERSUPPORT != DCM_CFG_OFF))
-static FUNC(Dcm_MsgLenType, DCM_CODE)Dcm_Dsp_CalTotalResLengthForDTC(VAR(uint16,AUTOMATIC) NumOfFltDTC_u16,VAR(uint8,AUTOMATIC) reqSubfunction);
+static FUNC(Dcm_MsgLenType, DCM_CODE)Dcm_Dsp_CalTotalResLengthForDTC(VAR(uint16, AUTOMATIC) NumOfFltDTC_u16,VAR(uint8, AUTOMATIC) reqSubfunction);
 #endif
-static FUNC(uint8, DCM_CODE)Dcm_Dsp_GetDTCRequestLength(CONST(uint8,AUTOMATIC) reqSubfunction);
-static FUNC(uint8, DCM_CODE)Dcm_Dsp_CalDTCActiveMask(CONST(uint8,AUTOMATIC) statusAvailMask_u8
-   ,     CONST(uint8,AUTOMATIC) reqDtcStatus_u8
-   ,     CONST(uint8,AUTOMATIC) reqSubfunction);
-static FUNC(void, DCM_CODE)Dcm_Dsp_CalDTCKindAndOrigin(P2VAR(Dem_DTCOriginType,AUTOMATIC,DCM_INTERN_DATA) dataDtcOrigin_u8
-   ,     P2VAR(Dem_DTCKindType,AUTOMATIC,DCM_INTERN_DATA) dataDtcKind_u8
-   ,     P2VAR(uint8,AUTOMATIC,DCM_INTERN_DATA) dataDtcStatus_u8
-   ,     CONST(uint8,AUTOMATIC) reqSubfunction
-   ,     CONST(uint8,AUTOMATIC) reqDtcOriginData);
-static FUNC(void, DCM_CODE)Dcm_Dsp_FillResBytesAndLength(P2VAR(Dcm_MsgContextType,AUTOMATIC,DCM_INTERN_DATA) pMsgContext
-   ,     CONST(uint8,AUTOMATIC) reqSubfunction
-   ,     CONST(uint8,AUTOMATIC) statusAvailMask_u8);
-static FUNC(Dem_ReturnGetNextFilteredDTCType, DCM_CODE)Dcm_Dsp_FillResDtcBuffer(VAR(uint32,AUTOMATIC) dtcData_u32
-   ,     P2VAR(Dcm_MsgLenType,AUTOMATIC,DCM_INTERN_DATA) respLenNr_u32
-   ,     VAR(uint8,AUTOMATIC) stDTCStatus_u8
-   ,     P2CONST(Dcm_MsgContextType,AUTOMATIC,DCM_INTERN_DATA) pMsgContext
+static FUNC(uint8, DCM_CODE)Dcm_Dsp_GetDTCRequestLength(CONST(uint8, AUTOMATIC) reqSubfunction);
+static FUNC(uint8, DCM_CODE)Dcm_Dsp_CalDTCActiveMask(CONST(uint8, AUTOMATIC) statusAvailMask_u8
+   ,     CONST(uint8, AUTOMATIC) reqDtcStatus_u8
+   ,     CONST(uint8, AUTOMATIC) reqSubfunction);
+static FUNC(void, DCM_CODE)Dcm_Dsp_CalDTCKindAndOrigin(P2VAR(Dem_DTCOriginType, AUTOMATIC, DCM_INTERN_DATA) dataDtcOrigin_u8
+   ,     P2VAR(Dem_DTCKindType, AUTOMATIC, DCM_INTERN_DATA) dataDtcKind_u8
+   ,     P2VAR(uint8, AUTOMATIC, DCM_INTERN_DATA) dataDtcStatus_u8
+   ,     CONST(uint8, AUTOMATIC) reqSubfunction
+   ,     CONST(uint8, AUTOMATIC) reqDtcOriginData);
+static FUNC(void, DCM_CODE)Dcm_Dsp_FillResBytesAndLength(P2VAR(Dcm_MsgContextType, AUTOMATIC, DCM_INTERN_DATA) pMsgContext
+   ,     CONST(uint8, AUTOMATIC) reqSubfunction
+   ,     CONST(uint8, AUTOMATIC) statusAvailMask_u8);
+static FUNC(Dem_ReturnGetNextFilteredDTCType, DCM_CODE)Dcm_Dsp_FillResDtcBuffer(VAR(uint32, AUTOMATIC) dtcData_u32
+   ,     P2VAR(Dcm_MsgLenType, AUTOMATIC, DCM_INTERN_DATA) respLenNr_u32
+   ,     VAR(uint8, AUTOMATIC) stDTCStatus_u8
+   ,     P2CONST(Dcm_MsgContextType, AUTOMATIC, DCM_INTERN_DATA) pMsgContext
                                                                                );
 
 #if((DCM_PAGEDBUFFER_ENABLED != DCM_CFG_OFF) && (DCM_CFG_RDTCPAGEDBUFFERSUPPORT != DCM_CFG_OFF))
 
-FUNC(Std_ReturnType,DCM_CODE) Dcm_Dsp_ReportSupportedDTC (VAR(Dcm_SrvOpStatusType,AUTOMATIC) OpStatus,P2VAR(Dcm_MsgContextType,AUTOMATIC,DCM_INTERN_DATA) pMsgContext,P2VAR(Dcm_NegativeResponseCodeType,AUTOMATIC,DCM_INTERN_DATA) dataNegRespCode_u8)
+FUNC(Std_ReturnType,DCM_CODE) Dcm_Dsp_ReportSupportedDTC (VAR(Dcm_SrvOpStatusType, AUTOMATIC) OpStatus,P2VAR(Dcm_MsgContextType, AUTOMATIC, DCM_INTERN_DATA) pMsgContext,P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8)
 {
    VAR(uint32,     AUTOMATIC) dataDTC_u32;
    VAR(uint8_least,     AUTOMATIC) idxLoop_qu8;
@@ -50,7 +50,7 @@ FUNC(Std_ReturnType,DCM_CODE) Dcm_Dsp_ReportSupportedDTC (VAR(Dcm_SrvOpStatusTyp
    VAR(uint8,     AUTOMATIC) dataStatusAvailMask_u8;
    VAR(uint8,     AUTOMATIC) stDTCStatus_u8;
    VAR(Dem_ReturnGetNextFilteredDTCType,    AUTOMATIC) dataRetGetNextFiltDTC_u8;
-   VAR(Dem_ReturnGetNumberOfFilteredDTCType,AUTOMATIC) dataRetNumFltDTC_u8;
+   VAR(Dem_ReturnGetNumberOfFilteredDTCType, AUTOMATIC) dataRetNumFltDTC_u8;
    VAR(Dem_ReturnSetFilterType,     AUTOMATIC) dataRetSetDTCFilter_u8;
    VAR(uint8,     AUTOMATIC) dataSubfunc_u8;
    VAR(Dem_DTCOriginType,     AUTOMATIC) dataDemDTCOrigin_u8;
@@ -337,7 +337,7 @@ FUNC(Std_ReturnType,DCM_CODE) Dcm_Dsp_ReportSupportedDTC (VAR(Dcm_SrvOpStatusTyp
     return dataretVal_u8;
 }
 
-static FUNC(Dcm_MsgLenType, DCM_CODE)Dcm_Dsp_CalTotalResLengthForDTC(VAR(uint16,AUTOMATIC) NumOfFltDTC_u16, VAR(uint8,AUTOMATIC) reqSubfunction)
+static FUNC(Dcm_MsgLenType, DCM_CODE)Dcm_Dsp_CalTotalResLengthForDTC(VAR(uint16, AUTOMATIC) NumOfFltDTC_u16, VAR(uint8, AUTOMATIC) reqSubfunction)
 {
     Dcm_MsgLenType totalLength = 0;
 
@@ -353,7 +353,7 @@ static FUNC(Dcm_MsgLenType, DCM_CODE)Dcm_Dsp_CalTotalResLengthForDTC(VAR(uint16,
 
 #else
 
-FUNC(Std_ReturnType,DCM_CODE) Dcm_Dsp_ReportSupportedDTC (VAR(Dcm_SrvOpStatusType,AUTOMATIC) OpStatus,P2VAR(Dcm_MsgContextType,AUTOMATIC,DCM_INTERN_DATA) pMsgContext,P2VAR(Dcm_NegativeResponseCodeType,AUTOMATIC,DCM_INTERN_DATA) dataNegRespCode_u8)
+FUNC(Std_ReturnType,DCM_CODE) Dcm_Dsp_ReportSupportedDTC (VAR(Dcm_SrvOpStatusType, AUTOMATIC) OpStatus,P2VAR(Dcm_MsgContextType, AUTOMATIC, DCM_INTERN_DATA) pMsgContext,P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8)
 {
    VAR(uint32,     AUTOMATIC) dataDTC_u32;
    VAR(Dcm_MsgLenType,     AUTOMATIC) nrRespLen_u32;
@@ -506,7 +506,7 @@ FUNC(Std_ReturnType,DCM_CODE) Dcm_Dsp_ReportSupportedDTC (VAR(Dcm_SrvOpStatusTyp
 }
 #endif
 
-static FUNC(uint8, DCM_CODE)Dcm_Dsp_GetDTCRequestLength(CONST(uint8,AUTOMATIC) reqSubfunction)
+static FUNC(uint8, DCM_CODE)Dcm_Dsp_GetDTCRequestLength(CONST(uint8, AUTOMATIC) reqSubfunction)
 {
    VAR(uint8, AUTOMATIC) reqLength_u8;
 
@@ -540,7 +540,7 @@ static FUNC(uint8, DCM_CODE)Dcm_Dsp_GetDTCRequestLength(CONST(uint8,AUTOMATIC) r
     return reqLength_u8;
 }
 
-static FUNC(uint8, DCM_CODE)Dcm_Dsp_CalDTCActiveMask(CONST(uint8,AUTOMATIC) statusAvailMask_u8, CONST(uint8,AUTOMATIC) reqDtcStatus_u8,CONST(uint8,AUTOMATIC) reqSubfunction )
+static FUNC(uint8, DCM_CODE)Dcm_Dsp_CalDTCActiveMask(CONST(uint8, AUTOMATIC) statusAvailMask_u8, CONST(uint8, AUTOMATIC) reqDtcStatus_u8,CONST(uint8, AUTOMATIC) reqSubfunction )
 {
    uint8 calDTCStatus_u8 = statusAvailMask_u8;
 
@@ -567,12 +567,12 @@ static FUNC(uint8, DCM_CODE)Dcm_Dsp_CalDTCActiveMask(CONST(uint8,AUTOMATIC) stat
     return calDTCStatus_u8;
 }
 
-static FUNC(void, DCM_CODE)Dcm_Dsp_CalDTCKindAndOrigin(P2VAR(Dem_DTCOriginType,AUTOMATIC,DCM_INTERN_DATA) dataDtcOrigin_u8
-   ,     P2VAR(Dem_DTCKindType,AUTOMATIC,DCM_INTERN_DATA) dataDtcKind_u8,
+static FUNC(void, DCM_CODE)Dcm_Dsp_CalDTCKindAndOrigin(P2VAR(Dem_DTCOriginType, AUTOMATIC, DCM_INTERN_DATA) dataDtcOrigin_u8
+   ,     P2VAR(Dem_DTCKindType, AUTOMATIC, DCM_INTERN_DATA) dataDtcKind_u8,
 
-                        P2VAR(uint8,AUTOMATIC,DCM_INTERN_DATA) dataDtcStatus_u8
-   ,     CONST(uint8,AUTOMATIC) reqSubfunction
-   ,     CONST(uint8,AUTOMATIC) reqDtcOriginData
+                        P2VAR(uint8, AUTOMATIC, DCM_INTERN_DATA) dataDtcStatus_u8
+   ,     CONST(uint8, AUTOMATIC) reqSubfunction
+   ,     CONST(uint8, AUTOMATIC) reqDtcOriginData
                                                       )
 {
 
@@ -625,9 +625,9 @@ static FUNC(void, DCM_CODE)Dcm_Dsp_CalDTCKindAndOrigin(P2VAR(Dem_DTCOriginType,A
 #endif
 }
 
-static FUNC(void, DCM_CODE)Dcm_Dsp_FillResBytesAndLength(P2VAR(Dcm_MsgContextType,AUTOMATIC,DCM_INTERN_DATA) pMsgContext
-   ,     CONST(uint8,AUTOMATIC) reqSubfunction
-   ,     CONST(uint8,AUTOMATIC) statusAvailMask_u8)
+static FUNC(void, DCM_CODE)Dcm_Dsp_FillResBytesAndLength(P2VAR(Dcm_MsgContextType, AUTOMATIC, DCM_INTERN_DATA) pMsgContext
+   ,     CONST(uint8, AUTOMATIC) reqSubfunction
+   ,     CONST(uint8, AUTOMATIC) statusAvailMask_u8)
 {
 #if(DCM_CFG_DSP_RDTCSUBFUNC_0x17_ENABLED != DCM_CFG_OFF)
                 if(reqSubfunction  == DSP_REPORT_USER_DEFMEMORY_DTC_BY_STATUS_MASK)
@@ -664,10 +664,10 @@ static FUNC(void, DCM_CODE)Dcm_Dsp_FillResBytesAndLength(P2VAR(Dcm_MsgContextTyp
                 pMsgContext->resData[0] = reqSubfunction;
 }
 
-static FUNC(Dem_ReturnGetNextFilteredDTCType, DCM_CODE)Dcm_Dsp_FillResDtcBuffer(    VAR(uint32,AUTOMATIC) dtcData_u32
-   ,     P2VAR(Dcm_MsgLenType,AUTOMATIC,DCM_INTERN_DATA) respLenNr_u32
-   ,     VAR(uint8,AUTOMATIC) stDTCStatus_u8
-   ,     P2CONST(Dcm_MsgContextType,AUTOMATIC,DCM_INTERN_DATA) pMsgContext
+static FUNC(Dem_ReturnGetNextFilteredDTCType, DCM_CODE)Dcm_Dsp_FillResDtcBuffer(    VAR(uint32, AUTOMATIC) dtcData_u32
+   ,     P2VAR(Dcm_MsgLenType, AUTOMATIC, DCM_INTERN_DATA) respLenNr_u32
+   ,     VAR(uint8, AUTOMATIC) stDTCStatus_u8
+   ,     P2CONST(Dcm_MsgContextType, AUTOMATIC, DCM_INTERN_DATA) pMsgContext
                                                                                )
 {
     Dem_ReturnGetNextFilteredDTCType RetGetNextFiltDtc = DEM_FILTERED_OK;

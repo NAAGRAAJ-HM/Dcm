@@ -5,7 +5,7 @@
 
 #if(DCM_CFG_DSP_OBDMODE9_ENABLED != DCM_CFG_OFF)
 
-typedef P2FUNC(Std_ReturnType,TYPEDEF,GetInfotypeValueData_pf1)(VAR(Dcm_OpStatusType,AUTOMATIC) OpStatus,P2VAR(uint8,AUTOMATIC,DCM_INTERN_DATA) DataValueBuffer,P2VAR(uint8,AUTOMATIC,DCM_INTERN_DATA) DataValueBufferSize);
+typedef P2FUNC(Std_ReturnType,TYPEDEF,GetInfotypeValueData_pf1)(VAR(Dcm_OpStatusType, AUTOMATIC) OpStatus,P2VAR(uint8, AUTOMATIC, DCM_INTERN_DATA) DataValueBuffer,P2VAR(uint8, AUTOMATIC, DCM_INTERN_DATA) DataValueBufferSize);
 
 typedef struct{
    uint32 BitMask_u32;

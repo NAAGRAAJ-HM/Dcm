@@ -10,8 +10,8 @@ extern FUNC(void, DCM_CODE) Dcm_TpRxIndication (
    ,     VAR(Std_ReturnType, AUTOMATIC) result
 );
 
-extern FUNC(void,DCM_CODE) Dcm_TriggerTransmit(VAR(Type_SwcServiceCom_tIdPdu,AUTOMATIC) TxPduId,P2VAR(Type_SwcServiceCom_stInfoPdu,AUTOMATIC,DCM_INTERN_DATA) PduInfoPtr );
-extern FUNC(void,DCM_CODE) Dcm_TxConfirmation ( VAR(Type_SwcServiceCom_tIdPdu,AUTOMATIC) DcmTxPduId);
+extern FUNC(void,DCM_CODE) Dcm_TriggerTransmit(VAR(Type_SwcServiceCom_tIdPdu, AUTOMATIC) TxPduId,P2VAR(Type_SwcServiceCom_stInfoPdu, AUTOMATIC, DCM_INTERN_DATA) PduInfoPtr );
+extern FUNC(void,DCM_CODE) Dcm_TxConfirmation ( VAR(Type_SwcServiceCom_tIdPdu, AUTOMATIC) DcmTxPduId);
 extern FUNC(void, DCM_CODE) Dcm_TpTxConfirmation (
       VAR(Type_SwcServiceCom_tIdPdu, AUTOMATIC) id
    ,     VAR(Std_ReturnType, AUTOMATIC) result

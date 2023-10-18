@@ -25,10 +25,10 @@
 
 #define DCM_START_SEC_VAR_CLEARED_8
 #include "Dcm_Cfg_MemMap.hpp"
-extern VAR(uint8,AUTOMATIC) Dcm_DslState_u8;
-extern VAR(uint8,AUTOMATIC) Dcm_DslSubState_u8;
-extern VAR(uint8,AUTOMATIC) Dcm_DslNextState_u8;
-extern VAR(uint8,AUTOMATIC) Dcm_DslNextSubState_u8;
+extern VAR(uint8, AUTOMATIC) Dcm_DslState_u8;
+extern VAR(uint8, AUTOMATIC) Dcm_DslSubState_u8;
+extern VAR(uint8, AUTOMATIC) Dcm_DslNextState_u8;
+extern VAR(uint8, AUTOMATIC) Dcm_DslNextSubState_u8;
 #define DCM_STOP_SEC_VAR_CLEARED_8
 #include "Dcm_Cfg_MemMap.hpp"
 
@@ -41,7 +41,7 @@ LOCAL_INLINE FUNC(boolean,DCM_CODE) Dcm_Lok_isProtocolStarted(void){
 }
 
 LOCAL_INLINE FUNC(boolean,DCM_CODE) Dcm_Lok_Check_PendingResponseForKWP(void){
-   VAR(boolean,AUTOMATIC) RetVal_b = TRUE;
+   VAR(boolean, AUTOMATIC) RetVal_b = TRUE;
         RetVal_b = FALSE;
     return RetVal_b;
 }

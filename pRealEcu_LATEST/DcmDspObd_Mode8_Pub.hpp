@@ -4,12 +4,12 @@
 #define DCMDSPOBD_MODE8_PUB_H
 
 typedef  P2FUNC(Std_ReturnType,TYPEDEF,RequestControl1_pf)(
-                    P2VAR(uint8,AUTOMATIC,DCM_INTERN_DATA) Outdata_pu8
-   ,     P2CONST(uint8,AUTOMATIC,DCM_INTERN_DATA) Indata_pu8
+                    P2VAR(uint8, AUTOMATIC, DCM_INTERN_DATA) Outdata_pu8
+   ,     P2CONST(uint8, AUTOMATIC, DCM_INTERN_DATA) Indata_pu8
                      );
 typedef  P2FUNC(Std_ReturnType,TYPEDEF,RequestControl2_pf)(
-                    P2VAR(uint8,AUTOMATIC,DCM_INTERN_DATA) Outdata_pu8
-   ,     P2VAR(uint8,AUTOMATIC,DCM_INTERN_DATA) Indata_pu8
+                    P2VAR(uint8, AUTOMATIC, DCM_INTERN_DATA) Outdata_pu8
+   ,     P2VAR(uint8, AUTOMATIC, DCM_INTERN_DATA) Indata_pu8
                      );
 
 #if(DCM_CFG_DSP_OBDMODE8_ENABLED != DCM_CFG_OFF)

@@ -6,8 +6,8 @@
 #include "Dcm_Cfg_MemMap.hpp"
 LOCAL_INLINE FUNC(void,DCM_CODE) Dcm_Lok_SetComMState(
    VAR(uint8, AUTOMATIC) NetworkId,
-   VAR(Dcm_Dsld_commodeType,AUTOMATIC) ComManagerState){
-   VAR(uint8,AUTOMATIC)idxNetwork_u8;
+   VAR(Dcm_Dsld_commodeType, AUTOMATIC) ComManagerState){
+   VAR(uint8, AUTOMATIC)idxNetwork_u8;
    for(idxNetwork_u8 = 0; idxNetwork_u8 < DCM_NUM_COMM_CHANNEL;
          idxNetwork_u8++){
       if(Dcm_active_commode_e[idxNetwork_u8].ComMChannelId == NetworkId){
@@ -46,7 +46,7 @@ FUNC(Std_ReturnType,DCM_CODE) Dcm_SetActiveDiagnostic(
 }
 
 FUNC(void,DCM_CODE) Dcm_CheckActiveDiagnosticStatus(
-   VAR(uint8,AUTOMATIC) dataNetworkId){
+   VAR(uint8, AUTOMATIC) dataNetworkId){
    if(Dcm_ActiveDiagnosticState_en == DCM_COMM_ACTIVE){
         ComM_DCM_ActiveDiagnostic(dataNetworkId);
    }

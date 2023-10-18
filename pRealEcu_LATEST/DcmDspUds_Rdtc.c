@@ -80,10 +80,10 @@ FUNC(void,DCM_CODE) Dcm_Dsp_ReadDTCInfo_Ini (void){
 #endif
 }
 
-FUNC(void, DCM_CODE) Dcm_Lok_DspReadDTCInfoConfirmation(VAR(Dcm_IdContextType ,AUTOMATIC)dataIdContext_u8
-   ,     VAR(Type_SwcServiceCom_tIdPdu,AUTOMATIC)dataRxPduId_u8
-   ,     VAR(uint16,AUTOMATIC)dataSourceAddress_u16
-   ,     VAR(Dcm_ConfirmationStatusType,AUTOMATIC)status_u8)
+FUNC(void, DCM_CODE) Dcm_Lok_DspReadDTCInfoConfirmation(VAR(Dcm_IdContextType , AUTOMATIC)dataIdContext_u8
+   ,     VAR(Type_SwcServiceCom_tIdPdu, AUTOMATIC)dataRxPduId_u8
+   ,     VAR(uint16, AUTOMATIC)dataSourceAddress_u16
+   ,     VAR(Dcm_ConfirmationStatusType, AUTOMATIC)status_u8)
 {
 #if(DCM_CFG_RDTCPAGEDBUFFERSUPPORT != DCM_CFG_OFF)
 
@@ -92,14 +92,14 @@ FUNC(void, DCM_CODE) Dcm_Lok_DspReadDTCInfoConfirmation(VAR(Dcm_IdContextType ,A
     DcmAppl_DcmConfirmation(dataIdContext_u8, dataRxPduId_u8,dataSourceAddress_u16, status_u8);
 }
 
-FUNC(Std_ReturnType,DCM_CODE) SwcServiceDcm_tReadDTCInformation (VAR(Dcm_SrvOpStatusType,AUTOMATIC) OpStatus
-   ,     P2VAR(Dcm_MsgContextType,AUTOMATIC,DCM_INTERN_DATA) pMsgContext
-   ,     P2VAR(Dcm_NegativeResponseCodeType,AUTOMATIC,DCM_INTERN_DATA) dataNegRespCode_u8)
+FUNC(Std_ReturnType,DCM_CODE) SwcServiceDcm_tReadDTCInformation (VAR(Dcm_SrvOpStatusType, AUTOMATIC) OpStatus
+   ,     P2VAR(Dcm_MsgContextType, AUTOMATIC, DCM_INTERN_DATA) pMsgContext
+   ,     P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8)
 {
    VAR(uint8, AUTOMATIC)             dataRDTCSubFunc_u8;
    VAR(Std_ReturnType, AUTOMATIC)    dataServRetval_u8;
 
-   P2CONST(Dcm_Dsld_SubServiceType,AUTOMATIC,DCM_INTERN_CONST) adrSubservice_pcst;
+   P2CONST(Dcm_Dsld_SubServiceType, AUTOMATIC,DCM_INTERN_CONST) adrSubservice_pcst;
 
     *dataNegRespCode_u8 = 0x00;
     dataServRetval_u8 = DCM_E_PENDING;
@@ -173,8 +173,8 @@ FUNC(Std_ReturnType,DCM_CODE) SwcServiceDcm_tReadDTCInformation (VAR(Dcm_SrvOpSt
 
 #if(DCM_CFG_RDTCPAGEDBUFFERSUPPORT != DCM_CFG_OFF)
 
-FUNC(void,DCM_CODE) Dcm_Dsp_RDTCUpdatePage(VAR(Dcm_MsgType,AUTOMATIC) PageBufPtr
-   ,     VAR(Dcm_MsgLenType,AUTOMATIC) PageLen)
+FUNC(void,DCM_CODE) Dcm_Dsp_RDTCUpdatePage(VAR(Dcm_MsgType, AUTOMATIC) PageBufPtr
+   ,     VAR(Dcm_MsgLenType, AUTOMATIC) PageLen)
 {
 
    if(Dcm_DspRDTCSubFunc_en == DSP_RDTC_SFTXPAGE)
@@ -188,7 +188,7 @@ FUNC(void,DCM_CODE) Dcm_Dsp_RDTCUpdatePage(VAR(Dcm_MsgType,AUTOMATIC) PageBufPtr
     Dcm_DspRDTCRespBufPtr_u8 = PageBufPtr;
 }
 
-FUNC(void,DCM_CODE) Dcm_Dsp_RDTCFillZero(VAR(Dcm_MsgLenType,AUTOMATIC) RemTotalResLen )
+FUNC(void,DCM_CODE) Dcm_Dsp_RDTCFillZero(VAR(Dcm_MsgLenType, AUTOMATIC) RemTotalResLen )
 {
    VAR(uint32_least, AUTOMATIC) nrResLen_qu32 ;
    VAR(uint32_least, AUTOMATIC) dataRemBuffer_qu32;
@@ -218,9 +218,9 @@ FUNC(void,DCM_CODE) Dcm_Dsp_RDTCFillZero(VAR(Dcm_MsgLenType,AUTOMATIC) RemTotalR
 }
 
 FUNC(boolean,DCM_CODE) Dcm_IsProtocolIPCanFD(void){
-   VAR(Dcm_ProtocolType,AUTOMATIC) activeProtocol_u8 = DCM_NO_ACTIVE_PROTOCOL;
+   VAR(Dcm_ProtocolType, AUTOMATIC) activeProtocol_u8 = DCM_NO_ACTIVE_PROTOCOL;
 
-   VAR(boolean,AUTOMATIC) retValue_b = TRUE;
+   VAR(boolean, AUTOMATIC) retValue_b = TRUE;
 
     (void)Dcm_GetActiveProtocol(&activeProtocol_u8);
 

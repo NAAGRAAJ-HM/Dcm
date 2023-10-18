@@ -37,10 +37,10 @@ FUNC(void,DCM_CODE) Dcm_Dsp_EcuReset_Ini (void){
 }
 
 FUNC(void, DCM_CODE) Dcm_Lok_DspEcuResetConfirmation(
-  VAR(Dcm_IdContextType ,AUTOMATIC)dataIdContext_u8
-   ,  VAR(Type_SwcServiceCom_tIdPdu,AUTOMATIC)dataRxPduId_u8
-   ,  VAR(uint16,AUTOMATIC)dataSourceAddress_u16
-   ,  VAR(Dcm_ConfirmationStatusType,AUTOMATIC)status_u8){
+  VAR(Dcm_IdContextType , AUTOMATIC)dataIdContext_u8
+   ,  VAR(Type_SwcServiceCom_tIdPdu, AUTOMATIC)dataRxPduId_u8
+   ,  VAR(uint16, AUTOMATIC)dataSourceAddress_u16
+   ,  VAR(Dcm_ConfirmationStatusType, AUTOMATIC)status_u8){
         if((status_u8 == DCM_RES_POS_OK)||(status_u8 == DCM_RES_POS_NOT_OK)){
 #if(DCM_CFG_APPLTXCONF_REQ != DCM_CFG_OFF)
    		DcmAppl_DcmConfirmation(dataIdContext_u8,dataRxPduId_u8
@@ -68,9 +68,9 @@ FUNC(void, DCM_CODE) Dcm_Lok_DspEcuResetConfirmation(
         }
 }
 
-FUNC(Std_ReturnType,DCM_CODE) SwcServiceDcm_tEcuReset (VAR(Dcm_SrvOpStatusType,AUTOMATIC) OpStatus,P2VAR(Dcm_MsgContextType,AUTOMATIC,DCM_INTERN_DATA) pMsgContext,P2VAR(Dcm_NegativeResponseCodeType,AUTOMATIC,DCM_INTERN_DATA) dataNegRespCode_u8){
-   VAR(Std_ReturnType,AUTOMATIC) dataRetVal_u8;
-   VAR(uint8_least,AUTOMATIC) idxIndex_qu8;
+FUNC(Std_ReturnType,DCM_CODE) SwcServiceDcm_tEcuReset (VAR(Dcm_SrvOpStatusType, AUTOMATIC) OpStatus,P2VAR(Dcm_MsgContextType, AUTOMATIC, DCM_INTERN_DATA) pMsgContext,P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8){
+   VAR(Std_ReturnType, AUTOMATIC) dataRetVal_u8;
+   VAR(uint8_least, AUTOMATIC) idxIndex_qu8;
     *dataNegRespCode_u8 = 0x00;
     dataRetVal_u8=E_OK;
    if(OpStatus == DCM_CANCEL){

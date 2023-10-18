@@ -40,9 +40,9 @@ FUNC(void,DCM_CODE) Dcm_RMBAIni (void){
     Dcm_stRmbaOpstatus_u8 = DCM_INITIAL;
 }
 
-static FUNC (Std_ReturnType,DCM_CODE) Dcm_Lok_GetAddressRangeIndex_u8(VAR (uint32,AUTOMATIC) dataMemAddr_u32
-   ,     VAR (uint32,AUTOMATIC) nrMemLength_u32
-   ,     P2VAR (uint16,AUTOMATIC,DCM_INTERN_DATA) idxIndex_u16)
+static FUNC (Std_ReturnType,DCM_CODE) Dcm_Lok_GetAddressRangeIndex_u8(VAR (uint32, AUTOMATIC) dataMemAddr_u32
+   ,     VAR (uint32, AUTOMATIC) nrMemLength_u32
+   ,     P2VAR (uint16, AUTOMATIC, DCM_INTERN_DATA) idxIndex_u16)
 {
 
    VAR (uint16,     AUTOMATIC) dataSize_u16;
@@ -70,8 +70,8 @@ static FUNC (Std_ReturnType,DCM_CODE) Dcm_Lok_GetAddressRangeIndex_u8(VAR (uint3
 }
 
 LOCAL_INLINE FUNC(void,DCM_CODE) Dcm_Lok_RmbaTotalCheckLength(
-                                 P2CONST(Dcm_MsgContextType,AUTOMATIC,DCM_INTERN_DATA) pMsgContext
-   ,     P2VAR (Dcm_NegativeResponseCodeType, AUTOMATIC,DCM_INTERN_DATA) dataNegRespCode_u8)
+                                 P2CONST(Dcm_MsgContextType, AUTOMATIC, DCM_INTERN_DATA) pMsgContext
+   ,     P2VAR (Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8)
 {
    VAR(Std_ReturnType, AUTOMATIC) dataRetGetIdxRMBA_u8;
     *dataNegRespCode_u8 = 0x00;
@@ -114,9 +114,9 @@ LOCAL_INLINE FUNC(void,DCM_CODE) Dcm_Lok_RmbaTotalCheckLength(
 }
 
 LOCAL_INLINE FUNC(Dcm_RmbaSupportRet_t,DCM_CODE) Dcm_Lok_RmbaActiveSecurityLevel (
-             VAR (uint32,AUTOMATIC) dataSecurityMask_u32
-   ,     P2CONST(Dcm_RMBAConfig_tst,AUTOMATIC,DCM_INTERN_CONST)adrRmbaConfig_pcst
-   ,     P2VAR (Dcm_NegativeResponseCodeType, AUTOMATIC,DCM_INTERN_DATA) adrNegRespCode_pu8)
+             VAR (uint32, AUTOMATIC) dataSecurityMask_u32
+   ,     P2CONST(Dcm_RMBAConfig_tst, AUTOMATIC,DCM_INTERN_CONST)adrRmbaConfig_pcst
+   ,     P2VAR (Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) adrNegRespCode_pu8)
 {
    VAR (Std_ReturnType,   AUTOMATIC)       dataModeChkRetval_u8;
    VAR (Dcm_RmbaSupportRet_t, AUTOMATIC)   dataRetVal_en;
@@ -175,14 +175,14 @@ LOCAL_INLINE FUNC(Dcm_RmbaSupportRet_t,DCM_CODE) Dcm_Lok_RmbaActiveSecurityLevel
    return dataRetVal_en;
 }
 
-static FUNC (void, DCM_CODE) Dcm_Lok_RmbaAccessCheck_u8 (VAR (uint16,AUTOMATIC) idxIndex_u16
-   ,     P2CONST(Dcm_MsgContextType,AUTOMATIC,DCM_INTERN_DATA) pMsgContext
-   ,     P2VAR (Dcm_NegativeResponseCodeType, AUTOMATIC,DCM_INTERN_DATA) adrNegRespCode_pu8)
+static FUNC (void, DCM_CODE) Dcm_Lok_RmbaAccessCheck_u8 (VAR (uint16, AUTOMATIC) idxIndex_u16
+   ,     P2CONST(Dcm_MsgContextType, AUTOMATIC, DCM_INTERN_DATA) pMsgContext
+   ,     P2VAR (Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) adrNegRespCode_pu8)
 {
 
-   VAR (uint32,AUTOMATIC)                 dataSessionMask_u32;
-   VAR (uint32,AUTOMATIC)                 dataSecurityMask_u32;
-   P2CONST(Dcm_RMBAConfig_tst,AUTOMATIC,DCM_INTERN_CONST)  adrRmbaConfig_pcst;
+   VAR (uint32, AUTOMATIC)                 dataSessionMask_u32;
+   VAR (uint32, AUTOMATIC)                 dataSecurityMask_u32;
+   P2CONST(Dcm_RMBAConfig_tst, AUTOMATIC,DCM_INTERN_CONST)  adrRmbaConfig_pcst;
    VAR (Dcm_RmbaSupportRet_t, AUTOMATIC)  dataRetVal_en;
    VAR (Std_ReturnType,   AUTOMATIC)      stGetMemAccess_u8;
 
@@ -227,8 +227,8 @@ static FUNC (void, DCM_CODE) Dcm_Lok_RmbaAccessCheck_u8 (VAR (uint16,AUTOMATIC) 
 }
 
 LOCAL_INLINE FUNC(Std_ReturnType,DCM_CODE) Dcm_Lok_RmbaReadMemory(
-                                 P2VAR(Dcm_MsgContextType,AUTOMATIC,DCM_INTERN_DATA) pMsgContext
-   ,     P2VAR(Dcm_NegativeResponseCodeType,AUTOMATIC,DCM_INTERN_DATA) dataNegRespCode_u8)
+                                 P2VAR(Dcm_MsgContextType, AUTOMATIC, DCM_INTERN_DATA) pMsgContext
+   ,     P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8)
 {
    VAR (Dcm_ReadMemoryRet_t, AUTOMATIC) dataReadReturnVal_en;
    VAR(Std_ReturnType, AUTOMATIC) dataServRet_u8;
@@ -275,9 +275,9 @@ LOCAL_INLINE FUNC(Std_ReturnType,DCM_CODE) Dcm_Lok_RmbaReadMemory(
     return dataServRet_u8;
 }
 
-FUNC(Std_ReturnType,DCM_CODE) Dcm_DcmReadMemoryByAddress (VAR(Dcm_SrvOpStatusType,AUTOMATIC) OpStatus
-   ,     P2VAR(Dcm_MsgContextType,AUTOMATIC,DCM_INTERN_DATA) pMsgContext
-   ,     P2VAR(Dcm_NegativeResponseCodeType,AUTOMATIC,DCM_INTERN_DATA) dataNegRespCode_u8)
+FUNC(Std_ReturnType,DCM_CODE) Dcm_DcmReadMemoryByAddress (VAR(Dcm_SrvOpStatusType, AUTOMATIC) OpStatus
+   ,     P2VAR(Dcm_MsgContextType, AUTOMATIC, DCM_INTERN_DATA) pMsgContext
+   ,     P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8)
 {
    VAR(Std_ReturnType, AUTOMATIC) dataServRet_u8;
 

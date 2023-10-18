@@ -11,9 +11,9 @@
 #define DCM_START_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"
 
-FUNC(Std_ReturnType,DCM_CODE) SwcServiceDcm_tTesterPresent (VAR(Dcm_SrvOpStatusType,AUTOMATIC) OpStatus,P2VAR(Dcm_MsgContextType,AUTOMATIC,DCM_INTERN_DATA) pMsgContext,P2VAR(Dcm_NegativeResponseCodeType,AUTOMATIC,DCM_INTERN_DATA) dataNegRespCode_u8)
+FUNC(Std_ReturnType,DCM_CODE) SwcServiceDcm_tTesterPresent (VAR(Dcm_SrvOpStatusType, AUTOMATIC) OpStatus,P2VAR(Dcm_MsgContextType, AUTOMATIC, DCM_INTERN_DATA) pMsgContext,P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8)
 {
-   VAR(Std_ReturnType,AUTOMATIC) retVal_u8;
+   VAR(Std_ReturnType, AUTOMATIC) retVal_u8;
     retVal_u8=E_NOT_OK;
     *dataNegRespCode_u8=0;
 
@@ -61,9 +61,9 @@ FUNC(Std_ReturnType,DCM_CODE) SwcServiceDcm_tTesterPresent (VAR(Dcm_SrvOpStatusT
 #define DCM_START_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"
 
-FUNC(Std_ReturnType,DCM_CODE) SwcServiceDcm_tTesterPresentSB (VAR(Dcm_SrvOpStatusType,AUTOMATIC) OpStatus,P2VAR(Dcm_MsgContextType,AUTOMATIC,DCM_INTERN_DATA) pMsgContext,P2VAR(Dcm_NegativeResponseCodeType,AUTOMATIC,DCM_INTERN_DATA) dataNegRespCode_u8)
+FUNC(Std_ReturnType,DCM_CODE) SwcServiceDcm_tTesterPresentSB (VAR(Dcm_SrvOpStatusType, AUTOMATIC) OpStatus,P2VAR(Dcm_MsgContextType, AUTOMATIC, DCM_INTERN_DATA) pMsgContext,P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8)
 {
-   VAR(Std_ReturnType,AUTOMATIC) retVal_u8;
+   VAR(Std_ReturnType, AUTOMATIC) retVal_u8;
     retVal_u8=E_NOT_OK;
 
     DCM_UNUSED_PARAM(OpStatus);

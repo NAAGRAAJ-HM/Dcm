@@ -65,9 +65,9 @@ extern VAR(Dcm_DsldRoeIntenalType_tst,DCM_VAR) Dcm_DsldRoeScheduler_st;
 #include "Dcm_Cfg_MemMap.hpp"
 #define DCM_START_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"
-extern FUNC(void,DCM_CODE) Dcm_DslDsdRoeEventConfirmation(VAR(Dcm_ConfirmationStatusType,AUTOMATIC) dataConfirmResult_u8);
+extern FUNC(void,DCM_CODE) Dcm_DslDsdRoeEventConfirmation(VAR(Dcm_ConfirmationStatusType, AUTOMATIC) dataConfirmResult_u8);
 extern FUNC(void,DCM_CODE) Dcm_DslDsdRoeEventProcess(void);
-extern FUNC(void,DCM_CODE) Dcm_DslDsdRoeProcessConfirm(VAR(Std_ReturnType,AUTOMATIC) dataResult_u8);
+extern FUNC(void,DCM_CODE) Dcm_DslDsdRoeProcessConfirm(VAR(Std_ReturnType, AUTOMATIC) dataResult_u8);
 extern FUNC(void,DCM_CODE) Dcm_DslDsdRoeQueueResponse(void);
 extern FUNC(void,DCM_CODE) Dcm_DslDsd_ResetROEScheduler(void);
 #define DCM_STOP_SEC_CODE

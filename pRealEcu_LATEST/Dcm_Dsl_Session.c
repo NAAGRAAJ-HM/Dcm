@@ -24,17 +24,17 @@ LOCAL_INLINE FUNC(void,DCM_CODE) Dcm_Lok_ResetRoeEvents(void){
 #define DCM_START_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"
 
-static FUNC(boolean,DCM_CODE) Dcm_Lok_SetNonDefaultSesCtrlType (VAR(Dcm_SesCtrlType,AUTOMATIC) CurrentSession_u8
+static FUNC(boolean,DCM_CODE) Dcm_Lok_SetNonDefaultSesCtrlType (VAR(Dcm_SesCtrlType, AUTOMATIC) CurrentSession_u8
    ,     VAR(Dcm_SesCtrlType, AUTOMATIC) SesCtrlType_u8)
 {
-   VAR(boolean,AUTOMATIC) isSessionAvailable = FALSE;
+   VAR(boolean, AUTOMATIC) isSessionAvailable = FALSE;
 
 #if((DCM_CFG_DSPUDSSUPPORT_ENABLED != DCM_CFG_OFF) && (DCM_CFG_DSP_IOCBI_ENABLED != DCM_CFG_OFF))
-   VAR(uint32,AUTOMATIC) sessionMask_u32 = 0u;
+   VAR(uint32, AUTOMATIC) sessionMask_u32 = 0u;
 #endif
 
-   VAR(uint8,AUTOMATIC) nrSessions_u8 = 0u;
-   VAR(uint8,AUTOMATIC) idxIndex_u8   = 0u;
+   VAR(uint8, AUTOMATIC) nrSessions_u8 = 0u;
+   VAR(uint8, AUTOMATIC) idxIndex_u8   = 0u;
 
 #if(DCM_CFG_KWP_ENABLED != DCM_CFG_OFF)
    if(DCM_IS_KWPPROT_ACTIVE() != FALSE)
@@ -90,11 +90,11 @@ static FUNC(boolean,DCM_CODE) Dcm_Lok_SetNonDefaultSesCtrlType (VAR(Dcm_SesCtrlT
     return isSessionAvailable;
 }
 
-static FUNC(void,DCM_CODE) Dcm_Lok_SetDefaultSesCtrlType (VAR(Dcm_SesCtrlType,AUTOMATIC) CurrentSession_u8
+static FUNC(void,DCM_CODE) Dcm_Lok_SetDefaultSesCtrlType (VAR(Dcm_SesCtrlType, AUTOMATIC) CurrentSession_u8
    ,     VAR(Dcm_SesCtrlType, AUTOMATIC) SesCtrlType_u8)
 {
 #if(DCM_CFG_KWP_ENABLED != DCM_CFG_OFF)
-   VAR(uint8,AUTOMATIC) idxKwpTiming_u8 = 0u;
+   VAR(uint8, AUTOMATIC) idxKwpTiming_u8 = 0u;
 #endif
 
     SchM_Enter_Dcm_DsldTimer_NoNest();
@@ -146,7 +146,7 @@ static FUNC(void,DCM_CODE) Dcm_Lok_SetDefaultSesCtrlType (VAR(Dcm_SesCtrlType,AU
 
 FUNC(void,DCM_CODE) Dcm_Lok_SetSesCtrlType (VAR(Dcm_SesCtrlType, AUTOMATIC) SesCtrlType_u8)
 {
-   VAR(Dcm_SesCtrlType,AUTOMATIC) currentSession_u8 = 0u;
+   VAR(Dcm_SesCtrlType, AUTOMATIC) currentSession_u8 = 0u;
    if(FALSE != Dcm_isSessionStored_b)
    {
         currentSession_u8 = Dcm_DsldSessionTable_pcu8[Dcm_DsldGlobal_st.PreviousSessionIndex];

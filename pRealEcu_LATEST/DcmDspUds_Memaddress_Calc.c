@@ -27,9 +27,9 @@
 #define DCM_START_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"
 
-FUNC(void,DCM_CODE) Dcm_GetMemoryInfo(VAR   (uint8,AUTOMATIC) dataSize_u8
-   ,    P2CONST (uint8,AUTOMATIC,DCM_INTERN_DATA) adrReqBuf_pcu8
-   ,    P2VAR (uint32,AUTOMATIC,DCM_INTERN_DATA) adrMemAddrLength_pu32)
+FUNC(void,DCM_CODE) Dcm_GetMemoryInfo(VAR   (uint8, AUTOMATIC) dataSize_u8
+   ,    P2CONST (uint8, AUTOMATIC, DCM_INTERN_DATA) adrReqBuf_pcu8
+   ,    P2VAR (uint32, AUTOMATIC, DCM_INTERN_DATA) adrMemAddrLength_pu32)
 {
    VAR(uint8,     AUTOMATIC) idxIndex_u8=0;
    VAR(uint32,     AUTOMATIC) tempResult_u32=0;

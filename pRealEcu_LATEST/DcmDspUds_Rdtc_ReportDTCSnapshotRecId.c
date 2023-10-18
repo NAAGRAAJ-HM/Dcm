@@ -7,7 +7,7 @@
 #if(DCM_CFG_DSP_RDTCSUBFUNC_0x03_ENABLED != DCM_CFG_OFF)
 #define DCM_START_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"
-FUNC(Std_ReturnType,DCM_CODE) Dcm_Dsp_ReportDTCSnapshotRecordIdentification (VAR(Dcm_SrvOpStatusType,AUTOMATIC) OpStatus,P2VAR(Dcm_MsgContextType,AUTOMATIC,DCM_INTERN_DATA) pMsgContext,P2VAR(Dcm_NegativeResponseCodeType,AUTOMATIC,DCM_INTERN_DATA) dataNegRespCode_u8)
+FUNC(Std_ReturnType,DCM_CODE) Dcm_Dsp_ReportDTCSnapshotRecordIdentification (VAR(Dcm_SrvOpStatusType, AUTOMATIC) OpStatus,P2VAR(Dcm_MsgContextType, AUTOMATIC, DCM_INTERN_DATA) pMsgContext,P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8)
 {
    VAR(uint32,     AUTOMATIC) dataDTC_u32;
    VAR(uint16,     AUTOMATIC) nrFiltRec_u16;
@@ -16,7 +16,7 @@ FUNC(Std_ReturnType,DCM_CODE) Dcm_Dsp_ReportDTCSnapshotRecordIdentification (VAR
    VAR(Dcm_MsgLenType,     AUTOMATIC) nrResMaxDataLen_u32;
    VAR(uint8_least,     AUTOMATIC) idxLoop_qu8;
    VAR(uint8,     AUTOMATIC) dataRecordNum_u8;
-   VAR(Dem_ReturnGetNextFilteredDTCType,AUTOMATIC) dataRetGetNextFiltRec_u8;
+   VAR(Dem_ReturnGetNextFilteredDTCType, AUTOMATIC) dataRetGetNextFiltRec_u8;
 
    VAR(Dem_ReturnSetFilterType,     AUTOMATIC) dataRetSetDTCFilterForRec_u8;
    VAR(Std_ReturnType,     AUTOMATIC) dataretVal_u8;

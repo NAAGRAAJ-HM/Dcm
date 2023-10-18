@@ -56,24 +56,24 @@ VAR(Dcm_Dsp_IocbiStatusType_tst,DCM_VAR) DcmDsp_IocbiStatus_array[DCM_CFG_NUM_IO
 #include "Dcm_Cfg_MemMap.hpp"
 
 FUNC(void,DCM_CODE) Dcm_Dsp_IOCBI_Ini(void){
-   VAR(Dcm_NegativeResponseCodeType,AUTOMATIC) dataNegResCode_u8;
-   VAR(Std_ReturnType,AUTOMATIC) dataRetIocbiFunc_u8;
-   VAR(uint16_least,AUTOMATIC) idxIocbiIndex_u16;
-   P2CONST(Dcm_DIDConfig_tst,AUTOMATIC, DCM_INTERN_DATA) ptrDidConfig;
-   P2CONST(Dcm_DataInfoConfig_tst,AUTOMATIC, DCM_INTERN_DATA) ptrSigConfig;
-   P2CONST(Dcm_SignalDIDSubStructConfig_tst,AUTOMATIC, DCM_INTERN_DATA) ptrIOSigConfig;
+   VAR(Dcm_NegativeResponseCodeType, AUTOMATIC) dataNegResCode_u8;
+   VAR(Std_ReturnType, AUTOMATIC) dataRetIocbiFunc_u8;
+   VAR(uint16_least, AUTOMATIC) idxIocbiIndex_u16;
+   P2CONST(Dcm_DIDConfig_tst, AUTOMATIC, DCM_INTERN_DATA) ptrDidConfig;
+   P2CONST(Dcm_DataInfoConfig_tst, AUTOMATIC, DCM_INTERN_DATA) ptrSigConfig;
+   P2CONST(Dcm_SignalDIDSubStructConfig_tst, AUTOMATIC, DCM_INTERN_DATA) ptrIOSigConfig;
 
 #if(DCM_CFG_DSP_CONTROL_ASYNCH_FNC_ENABLED == DCM_CFG_ON)
-   P2CONST(Dcm_ExtendedDIDConfig_tst,AUTOMATIC, DCM_INTERN_DATA)ptrDidExtendedConfig;
+   P2CONST(Dcm_ExtendedDIDConfig_tst, AUTOMATIC, DCM_INTERN_DATA)ptrDidExtendedConfig;
 #endif
 
-   P2VAR(void,AUTOMATIC, DCM_INTERN_DATA) ptrIOCBIFnc;
-   VAR(uint16_least ,AUTOMATIC) idxDidSignal_u16;
+   P2VAR(void, AUTOMATIC, DCM_INTERN_DATA) ptrIOCBIFnc;
+   VAR(uint16_least , AUTOMATIC) idxDidSignal_u16;
 
 #if(DCM_CFG_DSP_CONTROLMASK_EXTERNAL_ENABLED == DCM_CFG_ON)
-   VAR(uint8 ,AUTOMATIC) ControlMask_u8;
-   VAR(uint16 ,AUTOMATIC) ControlMask_u16;
-   VAR(uint32 ,AUTOMATIC) ControlMask_u32;
+   VAR(uint8 , AUTOMATIC) ControlMask_u8;
+   VAR(uint16 , AUTOMATIC) ControlMask_u16;
+   VAR(uint32 , AUTOMATIC) ControlMask_u32;
    ControlMask_u8 = 0;
    ControlMask_u16 = 0;
    ControlMask_u32 = 0;
@@ -369,42 +369,42 @@ FUNC(void,DCM_CODE) Dcm_Dsp_IOCBI_Ini(void){
     DCM_UNUSED_PARAM(idxDidSignal_u16);
 }
 
-FUNC(Std_ReturnType,DCM_CODE) Dcm_DcmInputOutputControlByIdentifier(VAR(Dcm_SrvOpStatusType,AUTOMATIC) OpStatus,P2VAR(Dcm_MsgContextType,AUTOMATIC,DCM_INTERN_DATA) pMsgContext,P2VAR(Dcm_NegativeResponseCodeType,AUTOMATIC,DCM_INTERN_DATA) dataNegRespCode_u8)
+FUNC(Std_ReturnType,DCM_CODE) Dcm_DcmInputOutputControlByIdentifier(VAR(Dcm_SrvOpStatusType, AUTOMATIC) OpStatus,P2VAR(Dcm_MsgContextType, AUTOMATIC, DCM_INTERN_DATA) pMsgContext,P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8)
 {
-   VAR(uint32,AUTOMATIC) dataLength_u32;
-   P2CONST(Dcm_DIDConfig_tst,AUTOMATIC, DCM_INTERN_DATA)ptrDidConfig;
-   P2CONST(Dcm_DataInfoConfig_tst,AUTOMATIC, DCM_INTERN_DATA) ptrSigConfig;
-   P2CONST(Dcm_SignalDIDSubStructConfig_tst,AUTOMATIC, DCM_INTERN_DATA) ptrIOSigConfig;
-   P2CONST(Dcm_SignalDIDIocbiConfig_tst,AUTOMATIC, DCM_INTERN_DATA) ptrIOCBIsigConfig;
-   P2CONST(Dcm_ExtendedDIDConfig_tst,AUTOMATIC, DCM_INTERN_DATA)ptrDidExtendedConfig;
-   P2VAR(Dcm_Dsp_IocbiStatusType_tst,AUTOMATIC, DCM_INTERN_DATA)ptrIOCBIStatusArrayConfig;
-   P2VAR(void,AUTOMATIC, DCM_INTERN_DATA) ptrIOCBIFnc;
-   VAR(uint16,AUTOMATIC) dataSignalLength_u16;
-   VAR(uint16,AUTOMATIC) posnSigByte_u16;
-   VAR(uint16,AUTOMATIC) dataControlMaskLen_u16;
-   VAR(uint16,AUTOMATIC) dataCtlMaskOffset_u16;
-   VAR(uint16,AUTOMATIC) nrDID_u16;
-   VAR(uint16_least,AUTOMATIC) idxIocbiIndex_u16;
-   VAR(Std_ReturnType,AUTOMATIC) dataIocbiExeResult_u8;
-   VAR(Std_ReturnType,AUTOMATIC) dataRetGetDid_u8;
-   VAR(Std_ReturnType,AUTOMATIC) dataValidateIoMaskStatus_u8;
+   VAR(uint32, AUTOMATIC) dataLength_u32;
+   P2CONST(Dcm_DIDConfig_tst, AUTOMATIC, DCM_INTERN_DATA)ptrDidConfig;
+   P2CONST(Dcm_DataInfoConfig_tst, AUTOMATIC, DCM_INTERN_DATA) ptrSigConfig;
+   P2CONST(Dcm_SignalDIDSubStructConfig_tst, AUTOMATIC, DCM_INTERN_DATA) ptrIOSigConfig;
+   P2CONST(Dcm_SignalDIDIocbiConfig_tst, AUTOMATIC, DCM_INTERN_DATA) ptrIOCBIsigConfig;
+   P2CONST(Dcm_ExtendedDIDConfig_tst, AUTOMATIC, DCM_INTERN_DATA)ptrDidExtendedConfig;
+   P2VAR(Dcm_Dsp_IocbiStatusType_tst, AUTOMATIC, DCM_INTERN_DATA)ptrIOCBIStatusArrayConfig;
+   P2VAR(void, AUTOMATIC, DCM_INTERN_DATA) ptrIOCBIFnc;
+   VAR(uint16, AUTOMATIC) dataSignalLength_u16;
+   VAR(uint16, AUTOMATIC) posnSigByte_u16;
+   VAR(uint16, AUTOMATIC) dataControlMaskLen_u16;
+   VAR(uint16, AUTOMATIC) dataCtlMaskOffset_u16;
+   VAR(uint16, AUTOMATIC) nrDID_u16;
+   VAR(uint16_least, AUTOMATIC) idxIocbiIndex_u16;
+   VAR(Std_ReturnType, AUTOMATIC) dataIocbiExeResult_u8;
+   VAR(Std_ReturnType, AUTOMATIC) dataRetGetDid_u8;
+   VAR(Std_ReturnType, AUTOMATIC) dataValidateIoMaskStatus_u8;
 #if(DCM_CFG_DSP_CONTROLMASK_EXTERNAL_ENABLED == DCM_CFG_ON)
 #if((DCM_CFG_DSP_CONTROL_SYNCH_FNC_ENABLED   != DCM_CFG_OFF) || (DCM_CFG_DSP_CONTROL_ASYNCH_FNC_ENABLED   != DCM_CFG_OFF) )
-   VAR(uint8,AUTOMATIC) ControlMask_u8;
-   VAR(uint16,AUTOMATIC) ControlMask_u16;
-   VAR(uint32,AUTOMATIC) ControlMask_u32;
+   VAR(uint8, AUTOMATIC) ControlMask_u8;
+   VAR(uint16, AUTOMATIC) ControlMask_u16;
+   VAR(uint32, AUTOMATIC) ControlMask_u32;
 #endif
 #endif
-   VAR(uint8,AUTOMATIC) dataIoCtrlParam_u8;
-   VAR(uint8,AUTOMATIC) posnSigBit_u8;
-   VAR(uint8,AUTOMATIC) posnCtlMaskByte_u8;
-   VAR(uint8,AUTOMATIC) posnCtlMaskBit_u8;
-   VAR(boolean,AUTOMATIC) isModeChkRetval_b;
+   VAR(uint8, AUTOMATIC) dataIoCtrlParam_u8;
+   VAR(uint8, AUTOMATIC) posnSigBit_u8;
+   VAR(uint8, AUTOMATIC) posnCtlMaskByte_u8;
+   VAR(uint8, AUTOMATIC) posnCtlMaskBit_u8;
+   VAR(boolean, AUTOMATIC) isModeChkRetval_b;
    VAR(boolean, AUTOMATIC) flgProcessReq_b;
-   VAR(Dcm_NegativeResponseCodeType,AUTOMATIC) dataNrc_u8;
-   VAR(Std_ReturnType,AUTOMATIC)  dataretVal_u8;
+   VAR(Dcm_NegativeResponseCodeType, AUTOMATIC) dataNrc_u8;
+   VAR(Std_ReturnType, AUTOMATIC)  dataretVal_u8;
    VAR(Std_ReturnType, AUTOMATIC) dataFuncRetVal_u8;
-   VAR(Std_ReturnType,AUTOMATIC)  dataServretVal_u8;
+   VAR(Std_ReturnType, AUTOMATIC)  dataServretVal_u8;
 
     *dataNegRespCode_u8 = 0x00;
     dataNrc_u8 = 0x00;
@@ -1779,24 +1779,24 @@ FUNC(Std_ReturnType,DCM_CODE) Dcm_DcmInputOutputControlByIdentifier(VAR(Dcm_SrvO
     return dataServretVal_u8;
 }
 
-FUNC(void,DCM_CODE) Dcm_ResetActiveIoCtrl(VAR (uint32,AUTOMATIC) dataSessionMask_u32,
-VAR (uint32,AUTOMATIC) dataSecurityMask_u32,
-VAR (boolean,AUTOMATIC) flgSessChkReqd_b)
+FUNC(void,DCM_CODE) Dcm_ResetActiveIoCtrl(VAR (uint32, AUTOMATIC) dataSessionMask_u32,
+VAR (uint32, AUTOMATIC) dataSecurityMask_u32,
+VAR (boolean, AUTOMATIC) flgSessChkReqd_b)
 {
 
-   VAR(uint16 ,AUTOMATIC) idxIocbiIndex_u16;
-   VAR(uint16 ,AUTOMATIC) idxSig_u16;
-   VAR(Std_ReturnType,AUTOMATIC) dataRetIocbiFunc_u8;
-   VAR(Dcm_NegativeResponseCodeType,AUTOMATIC) dataNegResCode_u8;
-   P2CONST(Dcm_DIDConfig_tst,AUTOMATIC, DCM_INTERN_DATA) ptrDidConfig;
-   P2CONST(Dcm_DataInfoConfig_tst,AUTOMATIC, DCM_INTERN_DATA) ptrSigConfig;
-   P2CONST(Dcm_SignalDIDSubStructConfig_tst,AUTOMATIC, DCM_INTERN_DATA) ptrIOSigConfig;
-   P2CONST(Dcm_ExtendedDIDConfig_tst,AUTOMATIC, DCM_INTERN_DATA)ptrDidExtendedConfig;
-   P2VAR(void,AUTOMATIC, DCM_INTERN_DATA) ptrIOCBIFnc;
+   VAR(uint16 , AUTOMATIC) idxIocbiIndex_u16;
+   VAR(uint16 , AUTOMATIC) idxSig_u16;
+   VAR(Std_ReturnType, AUTOMATIC) dataRetIocbiFunc_u8;
+   VAR(Dcm_NegativeResponseCodeType, AUTOMATIC) dataNegResCode_u8;
+   P2CONST(Dcm_DIDConfig_tst, AUTOMATIC, DCM_INTERN_DATA) ptrDidConfig;
+   P2CONST(Dcm_DataInfoConfig_tst, AUTOMATIC, DCM_INTERN_DATA) ptrSigConfig;
+   P2CONST(Dcm_SignalDIDSubStructConfig_tst, AUTOMATIC, DCM_INTERN_DATA) ptrIOSigConfig;
+   P2CONST(Dcm_ExtendedDIDConfig_tst, AUTOMATIC, DCM_INTERN_DATA)ptrDidExtendedConfig;
+   P2VAR(void, AUTOMATIC, DCM_INTERN_DATA) ptrIOCBIFnc;
 #if(DCM_CFG_DSP_CONTROLMASK_EXTERNAL_ENABLED == DCM_CFG_ON)
-   VAR(uint8 ,AUTOMATIC) ControlMask_u8;
-   VAR(uint16 ,AUTOMATIC) ControlMask_u16;
-   VAR(uint32 ,AUTOMATIC) ControlMask_u32;
+   VAR(uint8 , AUTOMATIC) ControlMask_u8;
+   VAR(uint16 , AUTOMATIC) ControlMask_u16;
+   VAR(uint32 , AUTOMATIC) ControlMask_u32;
    ControlMask_u8 = 0;
    ControlMask_u16 = 0;
    ControlMask_u32 = 0;
@@ -1899,14 +1899,14 @@ VAR (boolean,AUTOMATIC) flgSessChkReqd_b)
     (void) flgSessChkReqd_b;
 }
 
-FUNC (Std_ReturnType,DCM_CODE) Dcm_GetLengthOfSignal(P2VAR (uint16,AUTOMATIC,DCM_INTERN_DATA) dataSigLength_u16)
+FUNC (Std_ReturnType,DCM_CODE) Dcm_GetLengthOfSignal(P2VAR (uint16, AUTOMATIC, DCM_INTERN_DATA) dataSigLength_u16)
 {
    VAR (uint32, AUTOMATIC) dataSigLength_u32;
    VAR (Std_ReturnType, AUTOMATIC) dataRetVal_u8;
-   P2CONST(Dcm_DIDConfig_tst,AUTOMATIC, DCM_INTERN_DATA)ptrDidConfig;
-   P2CONST(Dcm_DataInfoConfig_tst,AUTOMATIC, DCM_INTERN_DATA)ptrSigConfig;
-   P2CONST(Dcm_SignalDIDSubStructConfig_tst,AUTOMATIC, DCM_INTERN_DATA) ptrIOSigConfig;
-   P2VAR(void,AUTOMATIC, DCM_INTERN_DATA) ptrReadDataLenFnc;
+   P2CONST(Dcm_DIDConfig_tst, AUTOMATIC, DCM_INTERN_DATA)ptrDidConfig;
+   P2CONST(Dcm_DataInfoConfig_tst, AUTOMATIC, DCM_INTERN_DATA)ptrSigConfig;
+   P2CONST(Dcm_SignalDIDSubStructConfig_tst, AUTOMATIC, DCM_INTERN_DATA) ptrIOSigConfig;
+   P2VAR(void, AUTOMATIC, DCM_INTERN_DATA) ptrReadDataLenFnc;
 
     dataRetVal_u8 = E_NOT_OK;
     *dataSigLength_u16 = 0x0;
@@ -2012,17 +2012,17 @@ FUNC (Std_ReturnType,DCM_CODE) Dcm_GetLengthOfSignal(P2VAR (uint16,AUTOMATIC,DCM
     return dataRetVal_u8;
 }
 
-static FUNC(void,DCM_CODE) Dcm_SetFlagforIOCBI(VAR (boolean,AUTOMATIC) isFlag_b)
+static FUNC(void,DCM_CODE) Dcm_SetFlagforIOCBI(VAR (boolean, AUTOMATIC) isFlag_b)
 {
 
    s_IsIOCBISubfuncCalled_b = isFlag_b;
 }
 
  FUNC(void, DCM_CODE) Dcm_Lok_DspIOCBIConfirmation(
- VAR(Dcm_IdContextType ,AUTOMATIC)dataIdContext_u8,
- VAR(Type_SwcServiceCom_tIdPdu,AUTOMATIC)dataRxPduId_u8,
- VAR(uint16,AUTOMATIC)dataSourceAddress_u16,
- VAR(Dcm_ConfirmationStatusType,AUTOMATIC)status_u8)
+ VAR(Dcm_IdContextType , AUTOMATIC)dataIdContext_u8,
+ VAR(Type_SwcServiceCom_tIdPdu, AUTOMATIC)dataRxPduId_u8,
+ VAR(uint16, AUTOMATIC)dataSourceAddress_u16,
+ VAR(Dcm_ConfirmationStatusType, AUTOMATIC)status_u8)
 {
         if(dataIdContext_u8 == DCM_DSP_SID_INPUTOUTPUTCONTROLBYIDENTIFIER)
         {
@@ -2037,7 +2037,7 @@ DcmAppl_DcmConfirmation(dataIdContext_u8,dataRxPduId_u8,dataSourceAddress_u16
         }
 }
 
-FUNC(Std_ReturnType,DCM_CODE) Dcm_GetActiveIOCBIDid(P2VAR(uint16,AUTOMATIC,DCM_INTERN_DATA) dataDid_u16)
+FUNC(Std_ReturnType,DCM_CODE) Dcm_GetActiveIOCBIDid(P2VAR(uint16, AUTOMATIC, DCM_INTERN_DATA) dataDid_u16)
 {
 
    if(s_IsIOCBISubfuncCalled_b != FALSE)

@@ -36,8 +36,8 @@ static VAR(Dcm_OpStatusType,  DCM_VAR) Dcm_stRequestUploadOpstatus_u8;
 #include "Dcm_Cfg_MemMap.hpp"
 
 FUNC(void,DCM_CODE) Dcm_Dsp_RequestUpload_Ini (void){
-   VAR(Dcm_NegativeResponseCodeType,AUTOMATIC) dataNegResCode_u8;
-   VAR(uint32,AUTOMATIC)  dataBlockLength_u32;
+   VAR(Dcm_NegativeResponseCodeType, AUTOMATIC) dataNegResCode_u8;
+   VAR(uint32, AUTOMATIC)  dataBlockLength_u32;
 
    if(Dcm_stRequestUploadOpstatus_u8 == DCM_PENDING)
    {
@@ -52,12 +52,12 @@ FUNC(void,DCM_CODE) Dcm_Dsp_RequestUpload_Ini (void){
     Dcm_DspDeactivateRequestUploadDownloadPermission();
 }
 
-static FUNC (Std_ReturnType,DCM_CODE) Dcm_GetIndexOfRequestUploadMemory_u8(VAR   (uint32,AUTOMATIC) dataMemAddr_u32
-   ,     VAR   (uint32,AUTOMATIC) nrMemLength_u32
-   ,     P2VAR (uint16,AUTOMATIC,DCM_INTERN_DATA) idxIndex_u16);
-static FUNC (Std_ReturnType,DCM_CODE) Dcm_GetIndexOfRequestUploadMemory_u8(VAR   (uint32,AUTOMATIC) dataMemAddr_u32
-   ,     VAR   (uint32,AUTOMATIC) nrMemLength_u32
-   ,     P2VAR (uint16,AUTOMATIC,DCM_INTERN_DATA) idxIndex_u16)
+static FUNC (Std_ReturnType,DCM_CODE) Dcm_GetIndexOfRequestUploadMemory_u8(VAR   (uint32, AUTOMATIC) dataMemAddr_u32
+   ,     VAR   (uint32, AUTOMATIC) nrMemLength_u32
+   ,     P2VAR (uint16, AUTOMATIC, DCM_INTERN_DATA) idxIndex_u16);
+static FUNC (Std_ReturnType,DCM_CODE) Dcm_GetIndexOfRequestUploadMemory_u8(VAR   (uint32, AUTOMATIC) dataMemAddr_u32
+   ,     VAR   (uint32, AUTOMATIC) nrMemLength_u32
+   ,     P2VAR (uint16, AUTOMATIC, DCM_INTERN_DATA) idxIndex_u16)
 {
 
    VAR (uint16,     AUTOMATIC) dataSize_u16;
@@ -84,12 +84,12 @@ static FUNC (Std_ReturnType,DCM_CODE) Dcm_GetIndexOfRequestUploadMemory_u8(VAR  
      return (dataRetVal_u8);
 }
 
-FUNC(Std_ReturnType,DCM_CODE) Dcm_DcmRequestUpload (VAR(Dcm_SrvOpStatusType,AUTOMATIC) OpStatus,P2VAR(Dcm_MsgContextType,AUTOMATIC,DCM_INTERN_DATA) pMsgContext,P2VAR(Dcm_NegativeResponseCodeType,AUTOMATIC,DCM_INTERN_DATA) dataNegRespCode_u8)
+FUNC(Std_ReturnType,DCM_CODE) Dcm_DcmRequestUpload (VAR(Dcm_SrvOpStatusType, AUTOMATIC) OpStatus,P2VAR(Dcm_MsgContextType, AUTOMATIC, DCM_INTERN_DATA) pMsgContext,P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8)
 {
-   VAR(uint8,AUTOMATIC) dataEncryptionMethod_u8;
-   VAR(Std_ReturnType,AUTOMATIC)  dataretVal_u8 = E_NOT_OK;
-   VAR(uint16,AUTOMATIC) idxIndex_u16 = 0u;
-   VAR(uint32,AUTOMATIC)  dataBlockLength_u32;
+   VAR(uint8, AUTOMATIC) dataEncryptionMethod_u8;
+   VAR(Std_ReturnType, AUTOMATIC)  dataretVal_u8 = E_NOT_OK;
+   VAR(uint16, AUTOMATIC) idxIndex_u16 = 0u;
+   VAR(uint32, AUTOMATIC)  dataBlockLength_u32;
 
     *dataNegRespCode_u8 =0x00;
     dataBlockLength_u32=0x00;
@@ -293,10 +293,10 @@ static FUNC(void,DCM_CODE) Dcm_DspActivateRequestUploadPermission(void){
 }
 
  FUNC(void, DCM_CODE) Dcm_Lok_DspReqUploadConfirmation(
-   VAR(Dcm_IdContextType ,AUTOMATIC)dataIdContext_u8
-   ,  VAR(Type_SwcServiceCom_tIdPdu,AUTOMATIC)dataRxPduId_u8
-   ,  VAR(uint16,AUTOMATIC)dataSourceAddress_u16
-   ,  VAR(Dcm_ConfirmationStatusType,AUTOMATIC)status_u8)
+   VAR(Dcm_IdContextType , AUTOMATIC)dataIdContext_u8
+   ,  VAR(Type_SwcServiceCom_tIdPdu, AUTOMATIC)dataRxPduId_u8
+   ,  VAR(uint16, AUTOMATIC)dataSourceAddress_u16
+   ,  VAR(Dcm_ConfirmationStatusType, AUTOMATIC)status_u8)
 {
             if(status_u8 == DCM_RES_POS_OK)
             {

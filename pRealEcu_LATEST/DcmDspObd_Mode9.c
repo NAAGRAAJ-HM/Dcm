@@ -58,11 +58,11 @@ FUNC(void,DCM_CODE) Dcm_DcmObdMode09_Ini(void){
     Dcm_stOpStatus_u8 = DCM_INITIAL;
 }
 
-FUNC(Std_ReturnType, DCM_CODE) Dcm_DcmObdMode09 (VAR(Dcm_SrvOpStatusType,AUTOMATIC) OpStatus,P2VAR(Dcm_MsgContextType,AUTOMATIC,DCM_INTERN_DATA) pMsgContext,P2VAR(Dcm_NegativeResponseCodeType,AUTOMATIC,DCM_INTERN_DATA) dataNegRespCode_u8)
+FUNC(Std_ReturnType, DCM_CODE) Dcm_DcmObdMode09 (VAR(Dcm_SrvOpStatusType, AUTOMATIC) OpStatus,P2VAR(Dcm_MsgContextType, AUTOMATIC, DCM_INTERN_DATA) pMsgContext,P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8)
 {
-   P2VAR(uint8,AUTOMATIC,DCM_INTERN_DATA) adrRespBuf_pu8;
-   P2VAR(uint8,AUTOMATIC,DCM_INTERN_DATA) adrReqBuf_pu8;
-   VAR(uint8,AUTOMATIC) DataValueBufferSize_u8;
+   P2VAR(uint8, AUTOMATIC, DCM_INTERN_DATA) adrRespBuf_pu8;
+   P2VAR(uint8, AUTOMATIC, DCM_INTERN_DATA) adrReqBuf_pu8;
+   VAR(uint8, AUTOMATIC) DataValueBufferSize_u8;
    VAR(uint32, AUTOMATIC) dataInfoTypeMaskVal_u32;
    VAR(uint32, AUTOMATIC) dataCalInfotypeBitMask_u32;
    VAR(Dcm_MsgLenType, AUTOMATIC) nrReqDataLen_u32;
@@ -75,7 +75,7 @@ FUNC(Std_ReturnType, DCM_CODE) Dcm_DcmObdMode09 (VAR(Dcm_SrvOpStatusType,AUTOMAT
    VAR(uint8, AUTOMATIC) idxInfoType_u8;
    VAR(uint8, AUTOMATIC) nrMultiple_u8;
    VAR(Std_ReturnType, AUTOMATIC) dataInfotypeFnResult_u8;
-   VAR(Std_ReturnType,AUTOMATIC) dataRetVal_u8;
+   VAR(Std_ReturnType, AUTOMATIC) dataRetVal_u8;
 
     *dataNegRespCode_u8 = 0x0u;
    idxInfotypeResBuf_qu16 = 0x0u;

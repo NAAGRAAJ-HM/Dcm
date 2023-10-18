@@ -53,10 +53,10 @@ extern CONST(Dcm_DspEcuReset_tst, DCM_CONST)Dcm_DspEcuResetType_cast[DCM_CFG_DSP
 #define DCM_START_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"
 extern FUNC(void,DCM_CODE) Dcm_Lok_DspEcuResetConfirmation(
-   VAR(Dcm_IdContextType,AUTOMATIC) dataIdContext_u8
-   ,  VAR(Type_SwcServiceCom_tIdPdu,AUTOMATIC) dataRxPduId_u8
-   ,  VAR(uint16,AUTOMATIC)dataSourceAddress_u16
-   ,  VAR(Dcm_ConfirmationStatusType,AUTOMATIC)status_u8
+   VAR(Dcm_IdContextType, AUTOMATIC) dataIdContext_u8
+   ,  VAR(Type_SwcServiceCom_tIdPdu, AUTOMATIC) dataRxPduId_u8
+   ,  VAR(uint16, AUTOMATIC)dataSourceAddress_u16
+   ,  VAR(Dcm_ConfirmationStatusType, AUTOMATIC)status_u8
    													);
 #define DCM_STOP_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"

@@ -9,7 +9,7 @@
 #include "Dcm_Cfg_MemMap.hpp"
 #if((DCM_PAGEDBUFFER_ENABLED != DCM_CFG_OFF) && (DCM_CFG_RDTCPAGEDBUFFERSUPPORT != DCM_CFG_OFF))
 FUNC(Std_ReturnType,DCM_CODE) Dcm_Dsp_ReportDTCBySeverityMaskRecord
-                                  (VAR(Dcm_SrvOpStatusType,AUTOMATIC) OpStatus,P2VAR(Dcm_MsgContextType,AUTOMATIC,DCM_INTERN_DATA) pMsgContext,P2VAR(Dcm_NegativeResponseCodeType,AUTOMATIC,DCM_INTERN_DATA) dataNegRespCode_u8)
+                                  (VAR(Dcm_SrvOpStatusType, AUTOMATIC) OpStatus,P2VAR(Dcm_MsgContextType, AUTOMATIC, DCM_INTERN_DATA) pMsgContext,P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8)
 {
    VAR(uint32,     AUTOMATIC)  dataDTC_u32;
    VAR(Dcm_MsgLenType,     AUTOMATIC)  nrResDataLen_u32;
@@ -20,8 +20,8 @@ FUNC(Std_ReturnType,DCM_CODE) Dcm_Dsp_ReportDTCBySeverityMaskRecord
    VAR(uint8,     AUTOMATIC)  dataStatusAvailMask_u8;
    VAR(uint8,     AUTOMATIC)  stDTCStatus_u8;
    VAR(Dem_ReturnSetFilterType,     AUTOMATIC)  dataRetSetDTCFilter_u8;
-   VAR(Dem_ReturnGetNumberOfFilteredDTCType,AUTOMATIC) dataRetNumFltDTC_u8;
-   VAR(Dem_ReturnGetNextFilteredDTCType,AUTOMATIC)  dataretGetNextFiltDTC_u8;
+   VAR(Dem_ReturnGetNumberOfFilteredDTCType, AUTOMATIC) dataRetNumFltDTC_u8;
+   VAR(Dem_ReturnGetNextFilteredDTCType, AUTOMATIC)  dataretGetNextFiltDTC_u8;
    VAR(Dem_DTCSeverityType,     AUTOMATIC)  dataDTCSeverity_u8;
    VAR(Std_ReturnType,     AUTOMATIC)  dataretVal_u8;
    static VAR(boolean, DCM_VAR) dataPending_flag_b;
@@ -319,7 +319,7 @@ FUNC(Std_ReturnType,DCM_CODE) Dcm_Dsp_ReportDTCBySeverityMaskRecord
 #else
 
 FUNC(Std_ReturnType,DCM_CODE) Dcm_Dsp_ReportDTCBySeverityMaskRecord
-                                  (VAR(Dcm_SrvOpStatusType,AUTOMATIC) OpStatus,P2VAR(Dcm_MsgContextType,AUTOMATIC,DCM_INTERN_DATA) pMsgContext,P2VAR(Dcm_NegativeResponseCodeType,AUTOMATIC,DCM_INTERN_DATA) dataNegRespCode_u8)
+                                  (VAR(Dcm_SrvOpStatusType, AUTOMATIC) OpStatus,P2VAR(Dcm_MsgContextType, AUTOMATIC, DCM_INTERN_DATA) pMsgContext,P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8)
 {
 
    VAR(uint32,     AUTOMATIC)  dataDTC_u32;
@@ -329,7 +329,7 @@ FUNC(Std_ReturnType,DCM_CODE) Dcm_Dsp_ReportDTCBySeverityMaskRecord
    VAR(uint8,     AUTOMATIC)  dataDTCFunctionalUnit_u8;
    VAR(uint8,     AUTOMATIC)  dataStatusAvailMask_u8;
    VAR(Dem_ReturnSetFilterType,     AUTOMATIC)     dataRetSetDTCFilter_u8;
-   VAR(Dem_ReturnGetNextFilteredDTCType,AUTOMATIC)  dataretGetNextFiltDTC_u8;
+   VAR(Dem_ReturnGetNextFilteredDTCType, AUTOMATIC)  dataretGetNextFiltDTC_u8;
    VAR(uint8,     AUTOMATIC)  stDTCStatus_u8;
    VAR(Dem_DTCSeverityType,     AUTOMATIC)  dataDTCSeverity_u8;
    VAR(Std_ReturnType,     AUTOMATIC)  dataretVal_u8;

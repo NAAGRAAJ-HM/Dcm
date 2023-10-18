@@ -5,13 +5,13 @@
 
 #if(DCM_CFG_DSP_OBDMODE1_ENABLED != DCM_CFG_OFF)
 
-typedef P2FUNC(Std_ReturnType,TYPEDEF,GetPIDvalue1_pf)(P2VAR(uint8,  AUTOMATIC,DCM_INTERN_DATA) Data);
-typedef P2FUNC(Std_ReturnType,TYPEDEF,GetPIDvalue2_pf)(P2VAR(uint16, AUTOMATIC,DCM_INTERN_DATA) Data);
-typedef P2FUNC(Std_ReturnType,TYPEDEF,GetPIDvalue3_pf)(P2VAR(uint32, AUTOMATIC,DCM_INTERN_DATA) Data);
-typedef P2FUNC(Std_ReturnType,TYPEDEF,GetPIDvalue4_pf)(P2VAR(sint8,  AUTOMATIC,DCM_INTERN_DATA) Data);
-typedef P2FUNC(Std_ReturnType,TYPEDEF,GetPIDvalue5_pf)(P2VAR(sint16, AUTOMATIC,DCM_INTERN_DATA) Data);
-typedef P2FUNC(Std_ReturnType,TYPEDEF,GetPIDvalue6_pf)(P2VAR(sint32, AUTOMATIC,DCM_INTERN_DATA) Data);
-typedef P2FUNC(Std_ReturnType,TYPEDEF,GetPIDvalue7_pf)(P2VAR(boolean, AUTOMATIC,DCM_INTERN_DATA) Data);
+typedef P2FUNC(Std_ReturnType,TYPEDEF,GetPIDvalue1_pf)(P2VAR(uint8,  AUTOMATIC, DCM_INTERN_DATA) Data);
+typedef P2FUNC(Std_ReturnType,TYPEDEF,GetPIDvalue2_pf)(P2VAR(uint16, AUTOMATIC, DCM_INTERN_DATA) Data);
+typedef P2FUNC(Std_ReturnType,TYPEDEF,GetPIDvalue3_pf)(P2VAR(uint32, AUTOMATIC, DCM_INTERN_DATA) Data);
+typedef P2FUNC(Std_ReturnType,TYPEDEF,GetPIDvalue4_pf)(P2VAR(sint8,  AUTOMATIC, DCM_INTERN_DATA) Data);
+typedef P2FUNC(Std_ReturnType,TYPEDEF,GetPIDvalue5_pf)(P2VAR(sint16, AUTOMATIC, DCM_INTERN_DATA) Data);
+typedef P2FUNC(Std_ReturnType,TYPEDEF,GetPIDvalue6_pf)(P2VAR(sint32, AUTOMATIC, DCM_INTERN_DATA) Data);
+typedef P2FUNC(Std_ReturnType,TYPEDEF,GetPIDvalue7_pf)(P2VAR(boolean, AUTOMATIC, DCM_INTERN_DATA) Data);
 
 typedef enum{
    OBD_USE_DATA_SENDER_RECEIVER

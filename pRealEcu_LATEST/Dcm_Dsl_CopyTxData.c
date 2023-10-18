@@ -18,8 +18,8 @@ static P2VAR(Type_SwcServiceCom_stInfoPdu, AUTOMATIC, DCM_APPL_DATA) Dcm_PduInfo
 LOCAL_INLINE FUNC(boolean,DCM_CODE) Dcm_Lok_isRetryRequested(P2CONST(RetryInfoType, AUTOMATIC, DCM_APPL_DATA) RetryInfoPtr
    ,
    P2CONST(Type_SwcServiceCom_stInfoPdu, AUTOMATIC, DCM_APPL_DATA) PduInfoPtr,
-   P2VAR(BufReq_ReturnType,AUTOMATIC,DCM_APPL_DATA) RetValPtr){
-   VAR(boolean,AUTOMATIC) isRetryRequested_b = FALSE;
+   P2VAR(BufReq_ReturnType, AUTOMATIC,DCM_APPL_DATA) RetValPtr){
+   VAR(boolean, AUTOMATIC) isRetryRequested_b = FALSE;
    if(RetryInfoPtr != NULL_PTR){
       if(RetryInfoPtr->TpDataState == TP_DATARETRY){
          if((PduInfoPtr->SduDataPtr != NULL_PTR) && (RetryInfoPtr->TxTpDataCnt > 0u)){
@@ -34,7 +34,7 @@ LOCAL_INLINE FUNC(boolean,DCM_CODE) Dcm_Lok_isRetryRequested(P2CONST(RetryInfoTy
 }
 
 LOCAL_INLINE FUNC(boolean,DCM_CODE) Dcm_Lok_isNormalResponseAvailable(
-   VAR(Type_SwcServiceCom_tIdPdu,AUTOMATIC) DcmTxPduId){
+   VAR(Type_SwcServiceCom_tIdPdu, AUTOMATIC) DcmTxPduId){
    return((CfgSwcServiceDcm_stDsld.ptr_txtable_pca[DcmTxPduId] == Dcm_DsldGlobal_st.dataActiveTxPduId_u8) && \
            ((Dcm_Lok_GetDslState() == DSL_STATE_WAITING_FOR_TXCONFIRMATION)  || \
             (Dcm_Lok_GetDslState() == DSL_STATE_ROETYPE1_RECEIVED))
@@ -44,12 +44,12 @@ LOCAL_INLINE FUNC(boolean,DCM_CODE) Dcm_Lok_isNormalResponseAvailable(
 #define DCM_START_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"
 static FUNC(boolean,DCM_CODE) Dcm_Lok_isNrc21ResponseAvailable(
-   P2VAR(uint16,AUTOMATIC,DCM_APPL_DATA) ServiceIdPtr,
+   P2VAR(uint16, AUTOMATIC,DCM_APPL_DATA) ServiceIdPtr,
    VAR(Type_SwcServiceCom_tIdPdu, AUTOMATIC) DcmTxPduId){
    VAR(boolean, AUTOMATIC) isNrc21Available_b  = FALSE;
-   VAR(uint8,AUTOMATIC) connectionId_u8     = 0u;
-   VAR(uint8,AUTOMATIC) idxProtocol_u8      = 0u;
-   VAR(Type_SwcServiceCom_tIdPdu,AUTOMATIC) idxTxpduid_u8   = 0u;
+   VAR(uint8, AUTOMATIC) connectionId_u8     = 0u;
+   VAR(uint8, AUTOMATIC) idxProtocol_u8      = 0u;
+   VAR(Type_SwcServiceCom_tIdPdu, AUTOMATIC) idxTxpduid_u8   = 0u;
    VAR(Type_SwcServiceCom_tIdPdu, AUTOMATIC) idxPduId_u16   = 0u;
    for(idxPduId_u16 = 0; idxPduId_u16 < DCM_CFG_NUM_RX_PDUID; idxPduId_u16++){
       if(DCM_SERVICEID_DEFAULT_VALUE != Dcm_DslRxPduArray_ast[idxPduId_u16].Dcm_DslServiceId_u8){
@@ -71,8 +71,8 @@ static FUNC(BufReq_ReturnType,DCM_CODE) Dcm_Lok_ValidateCopyTxDataType (VAR(Type
    ,     P2CONST(Type_SwcServiceCom_stInfoPdu, AUTOMATIC, DCM_APPL_DATA) PduInfoPtr
    ,
    P2CONST(RetryInfoType, AUTOMATIC, DCM_APPL_DATA) RetryInfoPtr){
-   VAR(BufReq_ReturnType,AUTOMATIC) bufRequestStatus_en = BUFREQ_E_NOT_OK;
-   VAR(uint16,AUTOMATIC) serviceId_u16 = 0u;
+   VAR(BufReq_ReturnType, AUTOMATIC) bufRequestStatus_en = BUFREQ_E_NOT_OK;
+   VAR(uint16, AUTOMATIC) serviceId_u16 = 0u;
    if(FALSE != Dcm_Lok_isNormalResponseAvailable(
       DcmTxPduId)){
         Dcm_PduInfo_pst = &Dcm_DsldPduInfo_st;
@@ -120,7 +120,7 @@ FUNC(BufReq_ReturnType,DCM_CODE) Dcm_CopyTxData (VAR(Type_SwcServiceCom_tIdPdu, 
    P2CONST(Type_SwcServiceCom_stInfoPdu, AUTOMATIC, DCM_APPL_DATA) info,P2VAR(RetryInfoType, AUTOMATIC, DCM_APPL_DATA) retry
    ,
    P2VAR(Type_SwcServiceCom_tLengthPdu, AUTOMATIC, DCM_APPL_DATA) availableDataPtr){
-   VAR(BufReq_ReturnType,AUTOMATIC) bufRequestStatus_en = BUFREQ_E_NOT_OK;
+   VAR(BufReq_ReturnType, AUTOMATIC) bufRequestStatus_en = BUFREQ_E_NOT_OK;
    if(FALSE != Dcm_CopyTxData_CheckEnvironment(
       id,
       info)){

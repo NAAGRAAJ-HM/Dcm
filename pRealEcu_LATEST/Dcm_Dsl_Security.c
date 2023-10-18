@@ -6,13 +6,13 @@
 #include "Dcm_Cfg_MemMap.hpp"
 FUNC(void,DCM_CODE) Dcm_Lok_SetSecurityLevel (VAR(Dcm_SecLevelType, AUTOMATIC) dataSecurityLevel_u8)
 {
-   VAR(uint8_least,AUTOMATIC) idxIndex_qu8;
+   VAR(uint8_least, AUTOMATIC) idxIndex_qu8;
 
 #if((DCM_CFG_DSPUDSSUPPORT_ENABLED != DCM_CFG_OFF) && (DCM_CFG_DSP_IOCBI_ENABLED != DCM_CFG_OFF))
-   VAR(uint32,AUTOMATIC) dataSecurityMask_u32;
+   VAR(uint32, AUTOMATIC) dataSecurityMask_u32;
 #endif
 
-   P2CONST(uint8,AUTOMATIC,DCM_INTERN_CONST) adrSecurityLookupTable_pcu8;
+   P2CONST(uint8, AUTOMATIC,DCM_INTERN_CONST) adrSecurityLookupTable_pcu8;
 
     adrSecurityLookupTable_pcu8 = CfgSwcServiceDcm_stDsld.security_lookup_table_pcau8;
 

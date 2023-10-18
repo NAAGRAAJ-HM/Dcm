@@ -9,10 +9,10 @@
 #define DCM_START_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"
 
-FUNC(Std_ReturnType, DCM_CODE) Dcm_DcmObdMode01 (VAR(Dcm_SrvOpStatusType,AUTOMATIC) OpStatus,P2VAR(Dcm_MsgContextType,AUTOMATIC,DCM_INTERN_DATA) pMsgContext,P2VAR(Dcm_NegativeResponseCodeType,AUTOMATIC,DCM_INTERN_DATA) dataNegRespCode_u8)
+FUNC(Std_ReturnType, DCM_CODE) Dcm_DcmObdMode01 (VAR(Dcm_SrvOpStatusType, AUTOMATIC) OpStatus,P2VAR(Dcm_MsgContextType, AUTOMATIC, DCM_INTERN_DATA) pMsgContext,P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8)
 {
-   P2VAR(uint8,AUTOMATIC,DCM_INTERN_DATA) adrRespBuf_pu8;
-   P2VAR(uint8,AUTOMATIC,DCM_INTERN_DATA) adrReqBuf_pu8;
+   P2VAR(uint8, AUTOMATIC, DCM_INTERN_DATA) adrRespBuf_pu8;
+   P2VAR(uint8, AUTOMATIC, DCM_INTERN_DATA) adrReqBuf_pu8;
 #if(DCM_CFG_DSP_OBDMODE1_SINT32_SR_ENABLED != DCM_CFG_OFF)
    VAR(sint32,     AUTOMATIC) dataSignal_s32;
 #endif
@@ -49,7 +49,7 @@ FUNC(Std_ReturnType, DCM_CODE) Dcm_DcmObdMode01 (VAR(Dcm_SrvOpStatusType,AUTOMAT
 #endif
    VAR(Std_ReturnType, AUTOMATIC) dataGetPIDRetVal_u8;
    VAR(Std_ReturnType, AUTOMATIC) dataReturnValue_u8;
-   VAR(boolean,AUTOMATIC) stPIDFound_b;
+   VAR(boolean, AUTOMATIC) stPIDFound_b;
 #if(DCM_CFG_DSP_OBDMODE1_UINT8_SR_ENABLED != DCM_CFG_OFF)
    VAR(uint8,     AUTOMATIC)   dataSignal_u8;
 #endif
@@ -59,7 +59,7 @@ FUNC(Std_ReturnType, DCM_CODE) Dcm_DcmObdMode01 (VAR(Dcm_SrvOpStatusType,AUTOMAT
 #if(DCM_CFG_DSP_OBDMODE1_BOOL_SR_ENABLED != DCM_CFG_OFF)
    VAR(boolean,     AUTOMATIC)   dataSignal_b;
 #endif
-   VAR(boolean,AUTOMATIC) stInfrastructureError_b;
+   VAR(boolean, AUTOMATIC) stInfrastructureError_b;
 
 #if(DCM_CFG_DSP_OBDMODE1_SINT32_SR_ENABLED != DCM_CFG_OFF)
     dataSignal_s32 = 0x0;

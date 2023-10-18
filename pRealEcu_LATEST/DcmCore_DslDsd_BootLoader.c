@@ -13,11 +13,11 @@ static VAR(Std_ReturnType,DCM_VAR) Dcm_StoreReturnValue_u8;
 #include "Dcm_Cfg_MemMap.hpp"
 #define DCM_START_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"
-static FUNC(Std_ReturnType,DCM_CODE) Dcm_TimerRemaining(VAR(uint32,AUTOMATIC)timer,VAR(uint32,AUTOMATIC)startTime,P2VAR(Std_ReturnType,DCM_INTERN_DATA,AUTOMATIC)timerStatus);
+static FUNC(Std_ReturnType,DCM_CODE) Dcm_TimerRemaining(VAR(uint32, AUTOMATIC)timer,VAR(uint32, AUTOMATIC)startTime,P2VAR(Std_ReturnType, DCM_INTERN_DATA, AUTOMATIC)timerStatus);
 static FUNC(Std_ReturnType, DCM_CODE) Dcm_SendForcedResponsePend(void);
-static FUNC(void, DCM_CODE) Dcm_InvokeSetProgCondition(P2VAR(boolean,AUTOMATIC,DCM_INTERN_DATA) flag_b, P2VAR(Dcm_NegativeResponseCodeType,AUTOMATIC,DCM_INTERN_DATA) dataNegRespCode_u8);
+static FUNC(void, DCM_CODE) Dcm_InvokeSetProgCondition(P2VAR(boolean, AUTOMATIC, DCM_INTERN_DATA) flag_b, P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8);
 
-FUNC(void,DCM_CODE) Dcm_JumpToBootLoader(VAR(uint8,AUTOMATIC) dataBootType_u8, P2VAR(Dcm_NegativeResponseCodeType,AUTOMATIC,DCM_INTERN_DATA) dataNegRespCode_u8){
+FUNC(void,DCM_CODE) Dcm_JumpToBootLoader(VAR(uint8, AUTOMATIC) dataBootType_u8, P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8){
    VAR(uint8,     AUTOMATIC) dataProtocolId_u8;
    VAR(Dcm_SesCtrlType,  AUTOMATIC) dataSessionId_u8;
    VAR(Dcm_SecLevelType, AUTOMATIC) dataSecurityLevel_u8;
@@ -310,10 +310,10 @@ FUNC(void,DCM_CODE) Dcm_ResetBootLoader(void){
    s_Dcm_SetProgCondOpstatus_u8=DCM_INITIAL;
 }
 
-static FUNC(Std_ReturnType,DCM_CODE) Dcm_TimerRemaining(VAR(uint32,AUTOMATIC)timer,VAR(uint32,AUTOMATIC)startTime,P2VAR(Std_ReturnType,DCM_INTERN_DATA,AUTOMATIC)timerStatus){
-   VAR(Std_ReturnType,AUTOMATIC) retVal_u8 = E_OK;
+static FUNC(Std_ReturnType,DCM_CODE) Dcm_TimerRemaining(VAR(uint32, AUTOMATIC)timer,VAR(uint32, AUTOMATIC)startTime,P2VAR(Std_ReturnType, DCM_INTERN_DATA, AUTOMATIC)timerStatus){
+   VAR(Std_ReturnType, AUTOMATIC) retVal_u8 = E_OK;
 #if( DCM_CFG_OSTIMER_USE != FALSE )
-   VAR(uint32,AUTOMATIC) Dcm_GetCurrentTime_u32;
+   VAR(uint32, AUTOMATIC) Dcm_GetCurrentTime_u32;
    Dcm_GetCurrentTime_u32 =0x00u;
    if( *timerStatus == E_OK ){
         *timerStatus = Dcm_GetCounterValue(DCM_CFG_COUNTERID, (&Dcm_GetCurrentTime_u32));
@@ -342,11 +342,11 @@ static FUNC(Std_ReturnType,DCM_CODE) Dcm_TimerRemaining(VAR(uint32,AUTOMATIC)tim
 }
 
 static FUNC(Std_ReturnType, DCM_CODE) Dcm_SendForcedResponsePend(void){
-   VAR(Std_ReturnType,AUTOMATIC) dataRetValue_u8 = E_NOT_OK;
+   VAR(Std_ReturnType, AUTOMATIC) dataRetValue_u8 = E_NOT_OK;
 #if(DCM_CFG_PROTOCOL_PREMPTION_ENABLED != DCM_CFG_OFF)
    VAR(uint8, AUTOMATIC) DslPreemptionStateTemp_u8;
 #endif
-   VAR(Dcm_DsdStatesType_ten,AUTOMATIC) DsdState_en = Dcm_Lok_GetDsdState();
+   VAR(Dcm_DsdStatesType_ten, AUTOMATIC) DsdState_en = Dcm_Lok_GetDsdState();
 
    if((Dcm_DsldMsgContext_st.msgAddInfo.sourceofRequest != DCM_ROE_SOURCE) && (Dcm_DsldMsgContext_st.msgAddInfo.sourceofRequest != DCM_RDPI_SOURCE) && (DSD_CALL_SERVICE  == DsdState_en))
    {
@@ -408,7 +408,7 @@ static FUNC(Std_ReturnType, DCM_CODE) Dcm_SendForcedResponsePend(void){
     return(dataRetValue_u8);
 }
 
-static FUNC(void, DCM_CODE) Dcm_InvokeSetProgCondition(P2VAR(boolean,AUTOMATIC,DCM_INTERN_DATA) flag_b, P2VAR(Dcm_NegativeResponseCodeType,AUTOMATIC,DCM_INTERN_DATA) dataNegRespCode_u8)
+static FUNC(void, DCM_CODE) Dcm_InvokeSetProgCondition(P2VAR(boolean, AUTOMATIC, DCM_INTERN_DATA) flag_b, P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8)
 {
    VAR(Std_ReturnType,   AUTOMATIC) dataRetProgCond_u8;
 

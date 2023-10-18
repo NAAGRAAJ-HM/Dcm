@@ -30,10 +30,10 @@ FUNC(void,DCM_CODE) Dcm_Dsp_DscIni(void){
 #endif
 }
 
-FUNC(Std_ReturnType,DCM_CODE) SwcServiceDcm_tDiagnosticSessionControl (VAR(Dcm_SrvOpStatusType,AUTOMATIC) OpStatus,P2VAR(Dcm_MsgContextType,AUTOMATIC,DCM_INTERN_DATA) pMsgContext,P2VAR(Dcm_NegativeResponseCodeType,AUTOMATIC,DCM_INTERN_DATA) dataNegRespCode_u8)
+FUNC(Std_ReturnType,DCM_CODE) SwcServiceDcm_tDiagnosticSessionControl (VAR(Dcm_SrvOpStatusType, AUTOMATIC) OpStatus,P2VAR(Dcm_MsgContextType, AUTOMATIC, DCM_INTERN_DATA) pMsgContext,P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8)
 {
 #if(DCM_CFG_DSP_DSC_SESRECINRESP != DCM_CFG_OFF)
-   VAR(uint16,AUTOMATIC) dataTimingValue_u16;
+   VAR(uint16, AUTOMATIC) dataTimingValue_u16;
 #endif
    VAR(uint8_least,     AUTOMATIC) idxLoop_qu8;
    VAR(Std_ReturnType,     AUTOMATIC) dataRetVal_u8;
@@ -195,9 +195,9 @@ FUNC(Std_ReturnType,DCM_CODE) SwcServiceDcm_tDiagnosticSessionControl (VAR(Dcm_S
     return dataRetVal_u8;
 }
 
-static FUNC(void,DCM_CODE) Dcm_Dsp_DscChgSession(VAR(Dcm_ConfirmationStatusType,AUTOMATIC) status)
+static FUNC(void,DCM_CODE) Dcm_Dsp_DscChgSession(VAR(Dcm_ConfirmationStatusType, AUTOMATIC) status)
 {
-   VAR(uint8,AUTOMATIC) dataReqSess_u8;
+   VAR(uint8, AUTOMATIC) dataReqSess_u8;
 
    if( (status == DCM_RES_POS_OK) || (status == DCM_RES_POS_NOT_OK) )
    {
@@ -220,12 +220,12 @@ static FUNC(void,DCM_CODE) Dcm_Dsp_DscChgSession(VAR(Dcm_ConfirmationStatusType,
 
 #if(DCM_CFG_RESTORING_ENABLED != DCM_CFG_OFF)
 FUNC(void, DCM_CODE) Dcm_GetP2Timings(
-        P2VAR(uint32,AUTOMATIC,DCM_INTERN_DATA) dP2Timing_pu32
-   ,     P2VAR(uint32,AUTOMATIC,DCM_INTERN_DATA) dP2StarTiming_pu32
+        P2VAR(uint32, AUTOMATIC, DCM_INTERN_DATA) dP2Timing_pu32
+   ,     P2VAR(uint32, AUTOMATIC, DCM_INTERN_DATA) dP2StarTiming_pu32
    ,     VAR(Dcm_SesCtrlType, AUTOMATIC) dSessionId
 )
 {
-   VAR(uint8_least,AUTOMATIC)  idxSessionId_qu8;
+   VAR(uint8_least, AUTOMATIC)  idxSessionId_qu8;
 
    for(idxSessionId_qu8 = 0; idxSessionId_qu8 < DCM_CFG_DSP_NUMSESSIONS; idxSessionId_qu8++)
    {
@@ -254,10 +254,10 @@ FUNC(void, DCM_CODE) Dcm_GetP2Timings(
 #endif
 
 FUNC(void, DCM_CODE) Dcm_Lok_DspDscConfirmation(
-   VAR(Dcm_IdContextType ,AUTOMATIC)dataIdContext_u8
-   ,  VAR(Type_SwcServiceCom_tIdPdu,AUTOMATIC)dataRxPduId_u8
-   ,  VAR(uint16,AUTOMATIC)dataSourceAddress_u16
-   ,  VAR(Dcm_ConfirmationStatusType,AUTOMATIC)status_u8
+   VAR(Dcm_IdContextType , AUTOMATIC)dataIdContext_u8
+   ,  VAR(Type_SwcServiceCom_tIdPdu, AUTOMATIC)dataRxPduId_u8
+   ,  VAR(uint16, AUTOMATIC)dataSourceAddress_u16
+   ,  VAR(Dcm_ConfirmationStatusType, AUTOMATIC)status_u8
 ){
    if( (status_u8 == DCM_RES_POS_OK) || (status_u8 == DCM_RES_POS_NOT_OK) ){
 #if(DCM_CFG_RTESUPPORT_ENABLED != DCM_CFG_OFF)

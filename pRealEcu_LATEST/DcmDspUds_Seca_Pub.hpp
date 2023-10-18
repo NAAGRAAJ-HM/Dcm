@@ -27,25 +27,25 @@ typedef struct{
 
 typedef P2FUNC(Std_ReturnType,TYPEDEF,Dcm_GetSecurityAttemptCounter_pfct)
         (
-                VAR(Dcm_OpStatusType,AUTOMATIC) OpStatus
-   ,     P2VAR(uint8,AUTOMATIC,DCM_INTERN_DATA) AttemptCounter
+                VAR(Dcm_OpStatusType, AUTOMATIC) OpStatus
+   ,     P2VAR(uint8, AUTOMATIC, DCM_INTERN_DATA) AttemptCounter
          );
 
 typedef P2FUNC(Std_ReturnType,TYPEDEF,Dcm_SetSecurityAttemptCounter_pfct)
         (
-                VAR(Dcm_OpStatusType,AUTOMATIC) OpStatus
-   ,     VAR(uint8,AUTOMATIC) AttemptCounter
+                VAR(Dcm_OpStatusType, AUTOMATIC) OpStatus
+   ,     VAR(uint8, AUTOMATIC) AttemptCounter
          );
 
 #if(DCM_CFG_DSP_SECA_ASP_ENABLED != DCM_CFG_OFF)
 typedef P2FUNC(Std_ReturnType,TYPEDEF,Dcm_SetSecurityAttemptCounter_pfct1)(void);
 typedef P2FUNC(Std_ReturnType,TYPEDEF,Dcm_GetSecurityAttemptCounter1_pfct)
         (
-                VAR(Dcm_OpStatusType,AUTOMATIC) OpStatus
+                VAR(Dcm_OpStatusType, AUTOMATIC) OpStatus
          );
 typedef P2FUNC(Std_ReturnType,TYPEDEF,Dcm_GetSecurityAttemptCounter2_pfct)
         (
-                P2VAR(uint8,AUTOMATIC,DCM_INTERN_DATA) AttemptCounter
+                P2VAR(uint8, AUTOMATIC, DCM_INTERN_DATA) AttemptCounter
          );
 #endif
 
@@ -54,54 +54,54 @@ typedef P2FUNC(Std_ReturnType,TYPEDEF,Dcm_GetSecurityAttemptCounter2_pfct)
 
 typedef P2FUNC(Std_ReturnType,TYPEDEF,Dcm_GetSeed_ptr)
         (
-                P2CONST(uint8,AUTOMATIC,DCM_INTERN_DATA) SecurityAccessDataRecord
-   ,     VAR(Dcm_OpStatusType,AUTOMATIC) OpStatus
-   ,     P2VAR(uint8,AUTOMATIC,DCM_INTERN_DATA) Seed
-   ,     P2VAR(Dcm_NegativeResponseCodeType,AUTOMATIC,DCM_INTERN_DATA) ErrorCode
+                P2CONST(uint8, AUTOMATIC, DCM_INTERN_DATA) SecurityAccessDataRecord
+   ,     VAR(Dcm_OpStatusType, AUTOMATIC) OpStatus
+   ,     P2VAR(uint8, AUTOMATIC, DCM_INTERN_DATA) Seed
+   ,     P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) ErrorCode
         );
 
 typedef P2FUNC(Std_ReturnType,TYPEDEF,Dcm_GetSeed_ptr3)
         (
-                VAR(Dcm_OpStatusType,AUTOMATIC) OpStatus
-   ,     P2VAR(uint8,AUTOMATIC,DCM_INTERN_DATA) Seed
-   ,     P2VAR(Dcm_NegativeResponseCodeType,AUTOMATIC,DCM_INTERN_DATA) ErrorCode
+                VAR(Dcm_OpStatusType, AUTOMATIC) OpStatus
+   ,     P2VAR(uint8, AUTOMATIC, DCM_INTERN_DATA) Seed
+   ,     P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) ErrorCode
         );
 
 typedef P2FUNC(Std_ReturnType,TYPEDEF,Dcm_CompareKey_ptr1)
         (
-                P2CONST(uint8,AUTOMATIC,DCM_INTERN_DATA) Key
-   ,     VAR(Dcm_OpStatusType,AUTOMATIC) OpStatus
-   ,     P2VAR(Dcm_NegativeResponseCodeType,AUTOMATIC,DCM_INTERN_DATA) ErrorCode
+                P2CONST(uint8, AUTOMATIC, DCM_INTERN_DATA) Key
+   ,     VAR(Dcm_OpStatusType, AUTOMATIC) OpStatus
+   ,     P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) ErrorCode
         );
 
 #if(DCM_CFG_DSP_SECA_ASP_ENABLED != DCM_CFG_OFF)
 
 typedef P2FUNC(Std_ReturnType,TYPEDEF,Dcm_GetSeed_ptr5)
         (
-                P2CONST(uint8,AUTOMATIC,DCM_INTERN_DATA) SecurityAccessDataRecord
-   ,     VAR(Dcm_OpStatusType,AUTOMATIC) OpStatus
+                P2CONST(uint8, AUTOMATIC, DCM_INTERN_DATA) SecurityAccessDataRecord
+   ,     VAR(Dcm_OpStatusType, AUTOMATIC) OpStatus
         );
 
 typedef P2FUNC(Std_ReturnType,TYPEDEF,Dcm_GetSeed_ptr6)
         (
-                VAR(Dcm_OpStatusType,AUTOMATIC) OpStatus
+                VAR(Dcm_OpStatusType, AUTOMATIC) OpStatus
         );
 
 typedef P2FUNC(Std_ReturnType,TYPEDEF,Dcm_GetSeed_ptr7)
         (
-                P2VAR(uint8,AUTOMATIC,DCM_INTERN_DATA) Seed
-   ,     P2VAR(Dcm_NegativeResponseCodeType,AUTOMATIC,DCM_INTERN_DATA) ErrorCode
+                P2VAR(uint8, AUTOMATIC, DCM_INTERN_DATA) Seed
+   ,     P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) ErrorCode
         );
 
 typedef P2FUNC(Std_ReturnType,TYPEDEF,Dcm_CompareKey_ptr4)
         (
-                P2CONST(uint8,AUTOMATIC,DCM_INTERN_DATA) Key
-   ,     VAR(Dcm_OpStatusType,AUTOMATIC) OpStatus
+                P2CONST(uint8, AUTOMATIC, DCM_INTERN_DATA) Key
+   ,     VAR(Dcm_OpStatusType, AUTOMATIC) OpStatus
         );
 
 typedef P2FUNC(Std_ReturnType,TYPEDEF,Dcm_CompareKey_ptr5)
         (
-                P2VAR(Dcm_NegativeResponseCodeType,AUTOMATIC,DCM_INTERN_DATA) ErrorCode
+                P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) ErrorCode
         );
 
 #endif
@@ -111,21 +111,21 @@ typedef P2FUNC(Std_ReturnType,TYPEDEF,Dcm_CompareKey_ptr5)
 
 typedef P2FUNC(Std_ReturnType,TYPEDEF,Dcm_GetSeed_ptr4)
         (
-                VAR(Dcm_SecLevelType,AUTOMATIC) SecLevel_u8
-   ,     VAR(uint32,AUTOMATIC) Seedlen_u32
-   ,     VAR(uint32,AUTOMATIC) AccDataRecsize_u32
-   ,     P2VAR(uint8,AUTOMATIC,DCM_INTERN_DATA) SecurityAccessDataRecord
-   ,     P2VAR(uint8,AUTOMATIC,DCM_INTERN_DATA) Seed
-   ,     VAR(Dcm_OpStatusType,AUTOMATIC) OpStatus
-   ,     P2VAR(Dcm_NegativeResponseCodeType,AUTOMATIC,DCM_INTERN_DATA) ErrorCode
+                VAR(Dcm_SecLevelType, AUTOMATIC) SecLevel_u8
+   ,     VAR(uint32, AUTOMATIC) Seedlen_u32
+   ,     VAR(uint32, AUTOMATIC) AccDataRecsize_u32
+   ,     P2VAR(uint8, AUTOMATIC, DCM_INTERN_DATA) SecurityAccessDataRecord
+   ,     P2VAR(uint8, AUTOMATIC, DCM_INTERN_DATA) Seed
+   ,     VAR(Dcm_OpStatusType, AUTOMATIC) OpStatus
+   ,     P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) ErrorCode
         );
 
 typedef P2FUNC(Std_ReturnType,TYPEDEF,Dcm_CompareKey_ptr3)
         (
-                VAR(uint32,AUTOMATIC) Key_size_u32
-   ,     P2VAR(uint8,AUTOMATIC,DCM_INTERN_DATA) Key
-   ,     VAR(Dcm_OpStatusType,AUTOMATIC) OpStatus
-   ,     P2VAR(Dcm_NegativeResponseCodeType,AUTOMATIC,DCM_INTERN_DATA) ErrorCode
+                VAR(uint32, AUTOMATIC) Key_size_u32
+   ,     P2VAR(uint8, AUTOMATIC, DCM_INTERN_DATA) Key
+   ,     VAR(Dcm_OpStatusType, AUTOMATIC) OpStatus
+   ,     P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) ErrorCode
         );
 #endif
 

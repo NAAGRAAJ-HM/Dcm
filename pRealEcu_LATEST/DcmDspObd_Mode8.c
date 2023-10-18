@@ -10,10 +10,10 @@
 #define DCM_START_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"
 
-FUNC(Std_ReturnType, DCM_CODE) Dcm_DcmObdMode08 (VAR(Dcm_SrvOpStatusType,AUTOMATIC) OpStatus,P2VAR(Dcm_MsgContextType,AUTOMATIC,DCM_INTERN_DATA) pMsgContext,P2VAR(Dcm_NegativeResponseCodeType,AUTOMATIC,DCM_INTERN_DATA) dataNegRespCode_u8)
+FUNC(Std_ReturnType, DCM_CODE) Dcm_DcmObdMode08 (VAR(Dcm_SrvOpStatusType, AUTOMATIC) OpStatus,P2VAR(Dcm_MsgContextType, AUTOMATIC, DCM_INTERN_DATA) pMsgContext,P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8)
 {
-   P2VAR(uint8,AUTOMATIC,DCM_INTERN_DATA) adrRespBuf_pu8;
-   P2VAR(uint8,AUTOMATIC,DCM_INTERN_DATA) adrReqBuf_pu8;
+   P2VAR(uint8, AUTOMATIC, DCM_INTERN_DATA) adrRespBuf_pu8;
+   P2VAR(uint8, AUTOMATIC, DCM_INTERN_DATA) adrReqBuf_pu8;
    VAR(uint32,     AUTOMATIC) dataTidMaskVal_u32;
    VAR(uint32,     AUTOMATIC) dataCalTidBitMask_u32;
    VAR(Dcm_MsgLenType, AUTOMATIC) nrReqDataLen_u32;

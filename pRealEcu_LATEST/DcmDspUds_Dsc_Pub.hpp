@@ -25,10 +25,10 @@ Dcm_Dsp_Session_t;
 #include "Dcm_Cfg_MemMap.hpp"
 
 extern FUNC(void, DCM_CODE) Dcm_Lok_DspDscConfirmation(
-   VAR(Dcm_IdContextType ,AUTOMATIC)dataIdContext_u8
-   ,  VAR(Type_SwcServiceCom_tIdPdu,AUTOMATIC)dataRxPduId_u8
-   ,  VAR(uint16,AUTOMATIC)dataSourceAddress_u16
-   ,  VAR(Dcm_ConfirmationStatusType,AUTOMATIC)status_u8
+   VAR(Dcm_IdContextType , AUTOMATIC)dataIdContext_u8
+   ,  VAR(Type_SwcServiceCom_tIdPdu, AUTOMATIC)dataRxPduId_u8
+   ,  VAR(uint16, AUTOMATIC)dataSourceAddress_u16
+   ,  VAR(Dcm_ConfirmationStatusType, AUTOMATIC)status_u8
    											   );
 #define DCM_STOP_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"
@@ -42,8 +42,8 @@ extern CONST(Dcm_Dsp_Session_t, DCM_CONST) Dcm_Dsp_Session[DCM_CFG_DSP_NUMSESSIO
 #include "Dcm_Cfg_MemMap.hpp"
 
 extern FUNC(void, DCM_CODE) Dcm_GetP2Timings(
-                                                P2VAR(uint32,AUTOMATIC,DCM_INTERN_DATA) dP2Timing_pu32
-   ,     P2VAR(uint32,AUTOMATIC,DCM_INTERN_DATA) dP2StarTiming_pu32
+                                                P2VAR(uint32, AUTOMATIC, DCM_INTERN_DATA) dP2Timing_pu32
+   ,     P2VAR(uint32, AUTOMATIC, DCM_INTERN_DATA) dP2StarTiming_pu32
    ,     VAR(Dcm_SesCtrlType, AUTOMATIC) dSessionId
                                             );
 #define DCM_STOP_SEC_CODE

@@ -6,11 +6,11 @@
 #define DCM_START_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"
 FUNC(void,DCM_CODE) Dcm_GetKwpTimingValues(
-                                           VAR(Dcm_TimerModeType,AUTOMATIC) TimerMode
-   ,     P2VAR(Dcm_Dsld_KwpTimerServerType,AUTOMATIC,DCM_APPL_DATA) TimerServerCurrent
+                                           VAR(Dcm_TimerModeType, AUTOMATIC) TimerMode
+   ,     P2VAR(Dcm_Dsld_KwpTimerServerType, AUTOMATIC,DCM_APPL_DATA) TimerServerCurrent
                                           )
 {
-   VAR(uint8,AUTOMATIC) idxLimitTmg_u8;
+   VAR(uint8, AUTOMATIC) idxLimitTmg_u8;
 
    if(TimerServerCurrent != NULL_PTR)
    {

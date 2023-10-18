@@ -70,9 +70,9 @@ FUNC (void,DCM_CODE) Dcm_ResetAsynchFlags(void){
 }
 #endif
 
-FUNC(void,DCM_CODE) Dcm_ConvBitsToBytes(P2VAR (uint32,AUTOMATIC,DCM_INTERN_DATA)DataLenInBits)
+FUNC(void,DCM_CODE) Dcm_ConvBitsToBytes(P2VAR (uint32, AUTOMATIC, DCM_INTERN_DATA)DataLenInBits)
 {
-   VAR(uint32,AUTOMATIC) dataLen_u32;
+   VAR(uint32, AUTOMATIC) dataLen_u32;
 
     dataLen_u32 = (uint32)(*DataLenInBits/8u);
    if((*DataLenInBits%8u) != 0u)
@@ -84,7 +84,7 @@ FUNC(void,DCM_CODE) Dcm_ConvBitsToBytes(P2VAR (uint32,AUTOMATIC,DCM_INTERN_DATA)
    }
 }
 
-FUNC(void,DCM_CODE) Dcm_ResetDIDIndexstruct (P2VAR(Dcm_DIDIndexType_tst ,AUTOMATIC,DCM_INTERN_DATA) idxDidIndexType_st)
+FUNC(void,DCM_CODE) Dcm_ResetDIDIndexstruct (P2VAR(Dcm_DIDIndexType_tst , AUTOMATIC, DCM_INTERN_DATA) idxDidIndexType_st)
 {
    idxDidIndexType_st->dataNegRespCode_u8=0x0;
 
@@ -103,24 +103,24 @@ FUNC(void,DCM_CODE) Dcm_ResetDIDIndexstruct (P2VAR(Dcm_DIDIndexType_tst ,AUTOMAT
    idxDidIndexType_st->flgNvmReadPending_b = FALSE;
 }
 
-FUNC (Std_ReturnType,DCM_CODE) Dcm_GetLengthOfDIDIndex (P2VAR   (Dcm_DIDIndexType_tst ,AUTOMATIC,DCM_INTERN_DATA)idxDidIndexType_st
-   ,     P2VAR (uint32,AUTOMATIC,DCM_INTERN_DATA)    length_u32
-   ,     VAR   (uint16,AUTOMATIC) did_u16)
+FUNC (Std_ReturnType,DCM_CODE) Dcm_GetLengthOfDIDIndex (P2VAR   (Dcm_DIDIndexType_tst , AUTOMATIC, DCM_INTERN_DATA)idxDidIndexType_st
+   ,     P2VAR (uint32, AUTOMATIC, DCM_INTERN_DATA)    length_u32
+   ,     VAR   (uint16, AUTOMATIC) did_u16)
 {
    VAR (Std_ReturnType, AUTOMATIC) dataRetVal_u8;
    VAR (uint32, AUTOMATIC) dataSigLength_u32;
    VAR (uint16, AUTOMATIC) dataSigLength_u16;
-   P2CONST(Dcm_DIDConfig_tst,AUTOMATIC, DCM_INTERN_DATA)ptrDidConfig;
+   P2CONST(Dcm_DIDConfig_tst, AUTOMATIC, DCM_INTERN_DATA)ptrDidConfig;
 
 #if((DCM_CFG_DSP_READ_VARIABLE_LENGTH!=DCM_CFG_OFF) || (DCM_CFG_DSP_IOCTRL_VARIABLE_LENGTH!=DCM_CFG_OFF))
    VAR (uint16, AUTOMATIC) idxSig_u16;
-   P2CONST(Dcm_DataInfoConfig_tst,AUTOMATIC, DCM_INTERN_DATA)ptrSigConfig;
-   P2CONST(Dcm_SignalDIDSubStructConfig_tst,AUTOMATIC, DCM_INTERN_DATA) ptrControlSigConfig;
-   P2VAR(void,AUTOMATIC, DCM_INTERN_DATA)  ptrDIDFnc;
+   P2CONST(Dcm_DataInfoConfig_tst, AUTOMATIC, DCM_INTERN_DATA)ptrSigConfig;
+   P2CONST(Dcm_SignalDIDSubStructConfig_tst, AUTOMATIC, DCM_INTERN_DATA) ptrControlSigConfig;
+   P2VAR(void, AUTOMATIC, DCM_INTERN_DATA)  ptrDIDFnc;
 #endif
 
 #if(DCM_CFG_DIDRANGE_EXTENSION != DCM_CFG_OFF)
-   P2CONST (Dcm_DIDRangeConfig_tst,AUTOMATIC, DCM_INTERN_DATA) ptrDIDRangeConfig;
+   P2CONST (Dcm_DIDRangeConfig_tst, AUTOMATIC, DCM_INTERN_DATA) ptrDIDRangeConfig;
 #endif
 
     dataRetVal_u8 = E_NOT_OK;
@@ -378,13 +378,13 @@ FUNC (Std_ReturnType,DCM_CODE) Dcm_GetLengthOfDIDIndex (P2VAR   (Dcm_DIDIndexTyp
      (DCM_CFG_DSP_DYNAMICALLYDEFINEIDENTIFIER_ENABLED != DCM_CFG_OFF))
 
 FUNC (Std_ReturnType,DCM_CODE) Dcm_GetDIDRangeStatus (
-                                        VAR (uint16,AUTOMATIC) did
-   ,     P2VAR (Dcm_DIDIndexType_tst,AUTOMATIC,DCM_INTERN_DATA) idxDidIndexType_st
+                                        VAR (uint16, AUTOMATIC) did
+   ,     P2VAR (Dcm_DIDIndexType_tst, AUTOMATIC, DCM_INTERN_DATA) idxDidIndexType_st
                                       )
 {
-   P2CONST (Dcm_DIDRangeConfig_tst,AUTOMATIC, DCM_INTERN_DATA) ptrDIDRangeConfig;
+   P2CONST (Dcm_DIDRangeConfig_tst, AUTOMATIC, DCM_INTERN_DATA) ptrDIDRangeConfig;
    VAR (Std_ReturnType, AUTOMATIC) dataDIDExists_u8;
-   VAR (uint16,AUTOMATIC) idxRange_u16;
+   VAR (uint16, AUTOMATIC) idxRange_u16;
    VAR (Dcm_DidSupportedType, AUTOMATIC) isDIDAvailable_u8;
    VAR (boolean, AUTOMATIC) isInfrastructureErrorPresent_b = FALSE;
 
@@ -437,8 +437,8 @@ FUNC (Std_ReturnType,DCM_CODE) Dcm_GetDIDRangeStatus (
 #if(DCM_CFG_DIDSUPPORT != DCM_CFG_OFF )
 
 FUNC (Std_ReturnType,DCM_CODE) Dcm_GetIndexOfDID (
-                                                VAR (uint16,AUTOMATIC) did
-   ,     P2VAR (Dcm_DIDIndexType_tst,AUTOMATIC,DCM_INTERN_DATA) idxDidIndexType_st
+                                                VAR (uint16, AUTOMATIC) did
+   ,     P2VAR (Dcm_DIDIndexType_tst, AUTOMATIC, DCM_INTERN_DATA) idxDidIndexType_st
                                                   )
 {
    VAR (uint32,     AUTOMATIC) posnDid_u32;
@@ -523,14 +523,14 @@ FUNC (Std_ReturnType,DCM_CODE) Dcm_GetIndexOfDID (
 
 #if((DCM_CFG_DSP_READDATABYIDENTIFIER_ENABLED != DCM_CFG_OFF)||(DCM_CFG_DSP_WRITEDATABYIDENTIFIER_ENABLED != DCM_CFG_OFF)||(DCM_CFG_DSP_DYNAMICALLYDEFINEIDENTIFIER_ENABLED != DCM_CFG_OFF))
 
-FUNC (Dcm_SupportRet_t,DCM_CODE) Dcm_GetSupportOfIndex( P2VAR   (Dcm_DIDIndexType_tst ,AUTOMATIC,DCM_INTERN_DATA)   idxDidIndexType_st
-   ,     VAR (Dcm_Direction_t,AUTOMATIC) direction
-   ,     P2VAR (Dcm_NegativeResponseCodeType, AUTOMATIC,DCM_INTERN_DATA) dataNegRespCode_u8)
+FUNC (Dcm_SupportRet_t,DCM_CODE) Dcm_GetSupportOfIndex( P2VAR   (Dcm_DIDIndexType_tst , AUTOMATIC, DCM_INTERN_DATA)   idxDidIndexType_st
+   ,     VAR (Dcm_Direction_t, AUTOMATIC) direction
+   ,     P2VAR (Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8)
 {
-   VAR (uint32,AUTOMATIC) dataSessionMask_u32;
-   VAR (uint32,AUTOMATIC) dataSecurityMask_u32;
+   VAR (uint32, AUTOMATIC) dataSessionMask_u32;
+   VAR (uint32, AUTOMATIC) dataSecurityMask_u32;
    VAR (uint16, AUTOMATIC) dataDid_u16;
-   P2CONST(Dcm_ExtendedDIDConfig_tst,AUTOMATIC,DCM_INTERN_CONST) adrExtendedConfig_pcst;
+   P2CONST(Dcm_ExtendedDIDConfig_tst, AUTOMATIC,DCM_INTERN_CONST) adrExtendedConfig_pcst;
    VAR (Dcm_SupportRet_t, AUTOMATIC) dataRetVal_u8;
    VAR (Std_ReturnType,   AUTOMATIC) dataCondChkRetVal_u8;
 #if((DCM_CFG_DSP_READDATABYIDENTIFIER_ENABLED != DCM_CFG_OFF)|| (DCM_CFG_DSP_WRITEDATABYIDENTIFIER_ENABLED != DCM_CFG_OFF))
@@ -538,10 +538,10 @@ FUNC (Dcm_SupportRet_t,DCM_CODE) Dcm_GetSupportOfIndex( P2VAR   (Dcm_DIDIndexTyp
 #endif
    VAR (boolean,   AUTOMATIC) flgModeRetVal_b;
    VAR (Dcm_NegativeResponseCodeType,   AUTOMATIC) dataNrc_u8;
-   P2CONST(Dcm_DIDConfig_tst,AUTOMATIC, DCM_INTERN_DATA)ptrDidConfig;
-   P2CONST(Dcm_DataInfoConfig_tst,AUTOMATIC, DCM_INTERN_DATA)ptrSigConfig;
-   P2CONST(Dcm_SignalDIDSubStructConfig_tst,AUTOMATIC, DCM_INTERN_DATA) ptrControlSigConfig;
-   P2VAR(void,AUTOMATIC, DCM_INTERN_DATA)  ptrDIDFnc;
+   P2CONST(Dcm_DIDConfig_tst, AUTOMATIC, DCM_INTERN_DATA)ptrDidConfig;
+   P2CONST(Dcm_DataInfoConfig_tst, AUTOMATIC, DCM_INTERN_DATA)ptrSigConfig;
+   P2CONST(Dcm_SignalDIDSubStructConfig_tst, AUTOMATIC, DCM_INTERN_DATA) ptrControlSigConfig;
+   P2VAR(void, AUTOMATIC, DCM_INTERN_DATA)  ptrDIDFnc;
 
     dataRetVal_u8 = DCM_SUPPORT_OK;
     ptrDidConfig = &Dcm_DIDConfig[idxDidIndexType_st->idxIndex_u16];
@@ -832,8 +832,8 @@ FUNC (Dcm_SupportRet_t,DCM_CODE) Dcm_GetSupportOfIndex( P2VAR   (Dcm_DIDIndexTyp
 
 #if((DCM_CFG_DSP_IOCBI_ENABLED != DCM_CFG_OFF)||(DCM_CFG_DSP_DYNAMICALLYDEFINEIDENTIFIER_ENABLED != DCM_CFG_OFF)||(DCM_CFG_DSP_READDATABYPERIODICIDENTIFIER_ENABLED != DCM_CFG_OFF) || (DCM_CFG_DSP_READDATABYIDENTIFIER_ENABLED != DCM_CFG_OFF))
 
-FUNC (Std_ReturnType,DCM_CODE) Dcm_GetDIDData (P2VAR (Dcm_DIDIndexType_tst,AUTOMATIC,DCM_INTERN_DATA) idxDidIndexType_st
-   ,     P2VAR (uint8, AUTOMATIC,DCM_INTERN_DATA) targetBuffer)
+FUNC (Std_ReturnType,DCM_CODE) Dcm_GetDIDData (P2VAR (Dcm_DIDIndexType_tst, AUTOMATIC, DCM_INTERN_DATA) idxDidIndexType_st
+   ,     P2VAR (uint8, AUTOMATIC, DCM_INTERN_DATA) targetBuffer)
 {
 #if((DCM_CFG_DSP_READ_VARIABLE_LENGTH!=DCM_CFG_OFF) || (DCM_CFG_DSP_IOCTRL_VARIABLE_LENGTH!=DCM_CFG_OFF))
    VAR (uint16, AUTOMATIC) datasignallength_u16;
@@ -862,20 +862,20 @@ VAR(uint16,DCM_VAR) idxRange_u16;
    VAR (sint8,  AUTOMATIC) dataSignal_s8;
 #endif
 #if(DCM_CFG_DSP_READ_BOOLEAN_SR_ENABLED != DCM_CFG_OFF)
-   VAR (boolean,AUTOMATIC) dataSignal_b;
+   VAR (boolean, AUTOMATIC) dataSignal_b;
 #endif
 #if(DCM_CFG_DSP_READ_UINT8_SR_ENABLED != DCM_CFG_OFF)
    VAR (uint8,  AUTOMATIC) dataSignal_u8;
 #endif
 
-   P2CONST(Dcm_DIDConfig_tst,AUTOMATIC, DCM_INTERN_DATA)ptrDidConfig;
-   P2CONST(Dcm_DataInfoConfig_tst,AUTOMATIC, DCM_INTERN_DATA)ptrSigConfig;
+   P2CONST(Dcm_DIDConfig_tst, AUTOMATIC, DCM_INTERN_DATA)ptrDidConfig;
+   P2CONST(Dcm_DataInfoConfig_tst, AUTOMATIC, DCM_INTERN_DATA)ptrSigConfig;
 #if((DCM_CFG_DSP_READ_VARIABLE_LENGTH!=DCM_CFG_OFF) || (DCM_CFG_DSP_IOCTRL_VARIABLE_LENGTH!=DCM_CFG_OFF))
-   P2CONST(Dcm_SignalDIDSubStructConfig_tst,AUTOMATIC, DCM_INTERN_DATA) ptrControlSigConfig;
+   P2CONST(Dcm_SignalDIDSubStructConfig_tst, AUTOMATIC, DCM_INTERN_DATA) ptrControlSigConfig;
 #endif
-   P2VAR(void,AUTOMATIC, DCM_INTERN_DATA)  ptrDIDFnc;
+   P2VAR(void, AUTOMATIC, DCM_INTERN_DATA)  ptrDIDFnc;
 #if(DCM_CFG_DIDRANGE_EXTENSION != DCM_CFG_OFF)
-   P2CONST (Dcm_DIDRangeConfig_tst,AUTOMATIC, DCM_INTERN_DATA) ptrDIDRangeConfig;
+   P2CONST (Dcm_DIDRangeConfig_tst, AUTOMATIC, DCM_INTERN_DATA) ptrDIDRangeConfig;
 #endif
 
 #if(DCM_CFG_DSP_NVRAM_ENABLED != DCM_CFG_OFF)
@@ -1444,7 +1444,7 @@ VAR(uint16,DCM_VAR) idxRange_u16;
         }
         else{
 #if(DCM_CFG_DIDRANGE_EXTENSION != DCM_CFG_OFF)
-            VAR(uint16,AUTOMATIC) dataSignallength_u16;
+            VAR(uint16, AUTOMATIC) dataSignallength_u16;
 
             for(idxRange_u16=0;idxRange_u16<DCM_CFG_NUMOFDIDRANGES;idxRange_u16++)
             {
@@ -1500,9 +1500,9 @@ VAR(uint16,DCM_VAR) idxRange_u16;
 
 #if((DCM_CFG_DSP_READDATABYIDENTIFIER_ENABLED != DCM_CFG_OFF)|| (DCM_CFG_DSP_WRITEDATABYIDENTIFIER_ENABLED != DCM_CFG_OFF) ||(DCM_CFG_DSP_IOCBI_ENABLED != DCM_CFG_OFF))
 
-FUNC(Std_ReturnType,DCM_CODE) Dcm_GetActiveDid(P2VAR(uint16,AUTOMATIC,DCM_INTERN_DATA) dataDid_u16)
+FUNC(Std_ReturnType,DCM_CODE) Dcm_GetActiveDid(P2VAR(uint16, AUTOMATIC, DCM_INTERN_DATA) dataDid_u16)
 {
-   VAR(Std_ReturnType,AUTOMATIC) dataRetVal_u8;
+   VAR(Std_ReturnType, AUTOMATIC) dataRetVal_u8;
 
     dataRetVal_u8 = E_NOT_OK;
 

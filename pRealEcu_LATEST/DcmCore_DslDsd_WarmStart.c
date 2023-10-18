@@ -21,10 +21,10 @@ VAR(Dcm_ProgConditionsType,DCM_VAR) Dcm_ProgConditions_st;
 #include "Dcm_Cfg_MemMap.hpp"
 
 FUNC(uint8,DCM_CODE) Dcm_GetActiveConnectionIdx_u8 (void){
-   VAR(uint8_least,AUTOMATIC)  idxProtcol_qu8;
-   VAR(uint8_least,AUTOMATIC)  idxSession_qu8;
-   VAR(uint8_least,AUTOMATIC)  idxIndex1_qu8;
-   VAR(uint8_least,AUTOMATIC)  idxIndex2_qu8;
+   VAR(uint8_least, AUTOMATIC)  idxProtcol_qu8;
+   VAR(uint8_least, AUTOMATIC)  idxSession_qu8;
+   VAR(uint8_least, AUTOMATIC)  idxIndex1_qu8;
+   VAR(uint8_least, AUTOMATIC)  idxIndex2_qu8;
    VAR(uint8, AUTOMATIC)       idxConn_u8;
    idxConn_u8 = 0;
 
@@ -91,13 +91,13 @@ FUNC(uint8,DCM_CODE) Dcm_GetActiveConnectionIdx_u8 (void){
 }
 
 FUNC(void,DCM_CODE) Dcm_DslDsdWarmStart(void){
-   VAR(uint8_least,AUTOMATIC)  idxProtcol_qu8;
-   VAR(uint8_least,AUTOMATIC)  idxSession_qu8;
+   VAR(uint8_least, AUTOMATIC)  idxProtcol_qu8;
+   VAR(uint8_least, AUTOMATIC)  idxSession_qu8;
    VAR(uint8,     AUTOMATIC)  dataSessionId_u8;
-   VAR(uint8_least,AUTOMATIC)  nrReqLength_qu8;
-   VAR(uint8_least,AUTOMATIC)  idxIndex1_qu8;
-   VAR(uint8_least,AUTOMATIC)  idxIndex2_qu8;
-   P2CONST(Dcm_Dsld_protocol_tableType,AUTOMATIC,DCM_INTERN_CONST) protocol_table_pcs;
+   VAR(uint8_least, AUTOMATIC)  nrReqLength_qu8;
+   VAR(uint8_least, AUTOMATIC)  idxIndex1_qu8;
+   VAR(uint8_least, AUTOMATIC)  idxIndex2_qu8;
+   P2CONST(Dcm_Dsld_protocol_tableType, AUTOMATIC,DCM_INTERN_CONST) protocol_table_pcs;
     Dcm_SesChgOnWarmResp_b =FALSE;
    if(Dcm_ProgConditions_st.StoreType != DCM_NOTVALID_TYPE)
    {

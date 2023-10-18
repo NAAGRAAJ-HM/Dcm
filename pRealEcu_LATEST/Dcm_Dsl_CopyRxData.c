@@ -42,7 +42,7 @@ static FUNC(void,DCM_CODE)Dcm_Lok_CopyDataToRxBuffer(VAR(Type_SwcServiceCom_tIdP
 static FUNC(void,DCM_CODE)Dcm_Lok_ProvideRxBufferSize(VAR(Type_SwcServiceCom_tIdPdu, AUTOMATIC) DcmRxPduId
    ,
    P2VAR(Type_SwcServiceCom_tLengthPdu, AUTOMATIC, DCM_APPL_DATA) RxBufferSizePtr){
-   VAR(uint8,AUTOMATIC) idxProtocol_u8  = Dcm_DsldConnTable_pcst[Dcm_DsldRxTable_pcu8[DcmRxPduId]].protocol_num_u8;
+   VAR(uint8, AUTOMATIC) idxProtocol_u8  = Dcm_DsldConnTable_pcst[Dcm_DsldRxTable_pcu8[DcmRxPduId]].protocol_num_u8;
    if(FALSE != Dcm_DslRxPduArray_ast[DcmRxPduId].Dcm_DslCopyRxData_b){
        *(RxBufferSizePtr) = Dcm_DslRxPduArray_ast[DcmRxPduId].Dcm_DslRxPduBuffer_st.SduLength;
    }
@@ -55,7 +55,7 @@ static FUNC(BufReq_ReturnType,DCM_CODE)Dcm_Lok_ProcessCopyRxData(VAR(Type_SwcSer
    ,     P2CONST(Type_SwcServiceCom_stInfoPdu, AUTOMATIC, DCM_APPL_DATA) PduInfoPtr
    ,
    P2VAR(Type_SwcServiceCom_tLengthPdu, AUTOMATIC, DCM_APPL_DATA) RxBufferSizePtr){
-   VAR(BufReq_ReturnType,AUTOMATIC) bufRequestStatus_en = BUFREQ_E_NOT_OK;
+   VAR(BufReq_ReturnType, AUTOMATIC) bufRequestStatus_en = BUFREQ_E_NOT_OK;
    if(FALSE != Dcm_Lok_isValidRequestReceived(
       DcmRxPduId)){
         Dcm_Lok_CopyDataToRxBuffer(DcmRxPduId,PduInfoPtr,RxBufferSizePtr);
@@ -79,7 +79,7 @@ static FUNC(boolean,DCM_CODE) Dcm_Lok_CopyRxData_CheckEnvironment(VAR(Type_SwcSe
    ,     P2CONST(Type_SwcServiceCom_stInfoPdu, AUTOMATIC, DCM_APPL_DATA) PduInfoPtr
    ,
    P2CONST(Type_SwcServiceCom_tLengthPdu, AUTOMATIC, DCM_APPL_DATA) RxBufferSizePtr){
-   VAR(boolean,AUTOMATIC) environmentStatus_b = FALSE;
+   VAR(boolean, AUTOMATIC) environmentStatus_b = FALSE;
    if(DcmRxPduId >= DCM_CFG_NUM_RX_PDUID){
         DCM_DET_ERROR(DCM_COPYRXDATA_ID , DCM_E_DCMRXPDUID_RANGE_EXCEED)
    }
@@ -99,7 +99,7 @@ FUNC(BufReq_ReturnType,DCM_CODE) Dcm_CopyRxData( VAR(Type_SwcServiceCom_tIdPdu, 
    ,  P2CONST(Type_SwcServiceCom_stInfoPdu, AUTOMATIC, DCM_APPL_DATA) PduInfoPtr
    ,
    P2VAR(Type_SwcServiceCom_tLengthPdu, AUTOMATIC, DCM_APPL_DATA) bufferSizePtr){
-   VAR(BufReq_ReturnType,AUTOMATIC) bufRequestStatus_en = BUFREQ_E_NOT_OK;
+   VAR(BufReq_ReturnType, AUTOMATIC) bufRequestStatus_en = BUFREQ_E_NOT_OK;
    if(FALSE != Dcm_Lok_CopyRxData_CheckEnvironment(
       id,
       PduInfoPtr,

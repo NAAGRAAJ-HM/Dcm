@@ -28,7 +28,7 @@ extern VAR (uint16,DCM_VAR) Dcm_ReadSignalLength_u16;
 
 #define DCM_START_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"
-extern FUNC (Std_ReturnType,DCM_CODE) Dcm_GetLengthOfSignal (P2VAR (uint16,AUTOMATIC,DCM_INTERN_DATA)	dataSigLength_u16);
+extern FUNC (Std_ReturnType,DCM_CODE) Dcm_GetLengthOfSignal (P2VAR (uint16, AUTOMATIC, DCM_INTERN_DATA)	dataSigLength_u16);
 #define DCM_STOP_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"
 

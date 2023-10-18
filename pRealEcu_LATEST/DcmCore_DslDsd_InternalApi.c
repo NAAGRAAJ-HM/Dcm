@@ -31,8 +31,8 @@ FUNC(uint32, DCM_CODE) Dcm_DsldGetActiveSessionMask_u32 (void){
 }
 
 FUNC(Std_ReturnType,DCM_CODE) Dcm_ForceRespPend(void){
-   VAR(Std_ReturnType,AUTOMATIC) dataRetValue_u8 = E_NOT_OK;
-   VAR(Dcm_DsdStatesType_ten,AUTOMATIC) DsdState_en = Dcm_Lok_GetDsdState();
+   VAR(Std_ReturnType, AUTOMATIC) dataRetValue_u8 = E_NOT_OK;
+   VAR(Dcm_DsdStatesType_ten, AUTOMATIC) DsdState_en = Dcm_Lok_GetDsdState();
 
    if((Dcm_DsldMsgContext_st.msgAddInfo.sourceofRequest != DCM_ROE_SOURCE) && (Dcm_DsldMsgContext_st.msgAddInfo.sourceofRequest != DCM_RDPI_SOURCE) && (DSD_CALL_SERVICE  == DsdState_en))
    {
@@ -54,9 +54,9 @@ FUNC(Std_ReturnType,DCM_CODE) Dcm_ForceRespPend(void){
     return(dataRetValue_u8);
 }
 
-FUNC(boolean,DCM_CODE) Dcm_IsInfrastructureErrorPresent_b(VAR(uint8,AUTOMATIC) dataInfrastrutureCode_u8)
+FUNC(boolean,DCM_CODE) Dcm_IsInfrastructureErrorPresent_b(VAR(uint8, AUTOMATIC) dataInfrastrutureCode_u8)
 {
-   VAR(boolean,AUTOMATIC) stInfrastructStatus_b;
+   VAR(boolean, AUTOMATIC) stInfrastructStatus_b;
    if((dataInfrastrutureCode_u8 & 0x80u) != (0x00u))
    {
 

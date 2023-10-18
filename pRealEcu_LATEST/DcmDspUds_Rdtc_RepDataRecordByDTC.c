@@ -24,13 +24,13 @@ static VAR(boolean,     DCM_VAR) s_IsRecordSupported;
 #define DCM_START_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"
 
-FUNC(Std_ReturnType,DCM_CODE) Dcm_Dsp_ReportDataRecordByDTCNumber (VAR(Dcm_SrvOpStatusType,AUTOMATIC) Opstatus,P2VAR(Dcm_MsgContextType,AUTOMATIC,DCM_INTERN_DATA) pMsgContext,P2VAR(Dcm_NegativeResponseCodeType,AUTOMATIC,DCM_INTERN_DATA) dataNegRespCode_u8)
+FUNC(Std_ReturnType,DCM_CODE) Dcm_Dsp_ReportDataRecordByDTCNumber (VAR(Dcm_SrvOpStatusType, AUTOMATIC) Opstatus,P2VAR(Dcm_MsgContextType, AUTOMATIC, DCM_INTERN_DATA) pMsgContext,P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8)
 {
 
-   VAR(Dcm_MsgLenType,AUTOMATIC) dataRemainBuffer_u32;
-   VAR(Dcm_MsgLenType,AUTOMATIC) dataFillRespLen_u32;
-   VAR(uint8_least,AUTOMATIC) idxLoop_qu8;
-   VAR(uint8,AUTOMATIC) nrReqLength_u8 = 0x00u;
+   VAR(Dcm_MsgLenType, AUTOMATIC) dataRemainBuffer_u32;
+   VAR(Dcm_MsgLenType, AUTOMATIC) dataFillRespLen_u32;
+   VAR(uint8_least, AUTOMATIC) idxLoop_qu8;
+   VAR(uint8, AUTOMATIC) nrReqLength_u8 = 0x00u;
 #if((DCM_CFG_DSP_RDTCSUBFUNC_0x04_ENABLED != DCM_CFG_OFF)||(DCM_CFG_DSP_RDTCSUBFUNC_0x18_ENABLED != DCM_CFG_OFF))
    VAR (uint16,     AUTOMATIC) nrSizeOfFreezeFrame_u16;
    VAR(Dem_ReturnGetFreezeFrameDataByDTCType,   AUTOMATIC) dataRetGetFFDataRecByDTC_u8;
@@ -41,7 +41,7 @@ FUNC(Std_ReturnType,DCM_CODE) Dcm_Dsp_ReportDataRecordByDTCNumber (VAR(Dcm_SrvOp
    VAR( uint8,     AUTOMATIC) stDTCStatus_u8;
    VAR(Std_ReturnType,     AUTOMATIC) dataRetEnableDTCRecUpdate_u8;
 #if((DCM_CFG_DSP_RDTCSUBFUNC_0x06_ENABLED != DCM_CFG_OFF) || (DCM_CFG_DSP_RDTCSUBFUNC_0x10_ENABLED != DCM_CFG_OFF)||(DCM_CFG_DSP_RDTCSUBFUNC_0x19_ENABLED != DCM_CFG_OFF))
-   VAR(Dem_ReturnGetExtendedDataRecordByDTCType,AUTOMATIC) dataRetGetExtDataRecByDTC_u8;
+   VAR(Dem_ReturnGetExtendedDataRecordByDTCType, AUTOMATIC) dataRetGetExtDataRecByDTC_u8;
 #endif
 
    VAR(boolean,     AUTOMATIC) isPendingReturned_b;

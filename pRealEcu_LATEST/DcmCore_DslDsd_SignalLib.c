@@ -5,8 +5,8 @@
 #if((DCM_CFG_ROUTINEARRAY_INSIG != DCM_CFG_OFF)||(DCM_CFG_ROUTINEARRAY_OUTSIG != DCM_CFG_OFF)||(DCM_CFG_RCRANGE_ROUTINEARRAY_INSIG != DCM_CFG_OFF)||(DCM_CFG_RCRANGE_ROUTINEARRAY_INSIG != DCM_CFG_OFF))
 #define DCM_START_SEC_CONST_8
 #include "Dcm_Cfg_MemMap.hpp"
-static const VAR(uint8,AUTOMATIC) CalArraySize_u8[6] = {8,16,32,8,16,32};
-static  const VAR(uint8,AUTOMATIC) EndianessConvLUT_u8[6] = {0,1,0,1,2,3};
+static const VAR(uint8, AUTOMATIC) CalArraySize_u8[6] = {8,16,32,8,16,32};
+static  const VAR(uint8, AUTOMATIC) EndianessConvLUT_u8[6] = {0,1,0,1,2,3};
 #define DCM_STOP_SEC_CONST_8
 #include "Dcm_Cfg_MemMap.hpp"
 #endif
@@ -23,9 +23,9 @@ static  const VAR(uint8,AUTOMATIC) EndianessConvLUT_u8[6] = {0,1,0,1,2,3};
      (DCM_CFG_RCRANGE_ROUTINEARRAY_OUTSIG != DCM_CFG_OFF) || \
      (DCM_CFG_RBA_DEM_SR_ENABLED != DCM_CFG_OFF))
 
-static FUNC(boolean,DCM_CODE) Dcm_IsEndiannessConversionNecessary(VAR(uint8,AUTOMATIC) dataEndianness_u8)
+static FUNC(boolean,DCM_CODE) Dcm_IsEndiannessConversionNecessary(VAR(uint8, AUTOMATIC) dataEndianness_u8)
 {
-   VAR(boolean,AUTOMATIC) flagConvStatus_b;
+   VAR(boolean, AUTOMATIC) flagConvStatus_b;
     flagConvStatus_b = FALSE;
    if((LOW_BYTE_FIRST==CPU_BYTE_ORDER) && (DCM_BIG_ENDIAN==dataEndianness_u8))
    {
@@ -45,16 +45,16 @@ static FUNC(boolean,DCM_CODE) Dcm_IsEndiannessConversionNecessary(VAR(uint8,AUTO
 #if(((DCM_CFG_DSP_WRITEDATABYIDENTIFIER_ENABLED != DCM_CFG_OFF) && (DCM_CFG_DSP_WRITE_SR_ENABLED != DCM_CFG_OFF ))   ||     \
      (DCM_CFG_DSP_ROUTINECONTROL_ENABLED != DCM_CFG_OFF) && ((DCM_CFG_ROUTINEVARLENGTH==DCM_CFG_OFF)||(DCM_CFG_RCRANGE_ROUTINEVARLENGTH==DCM_CFG_OFF)))
 
-FUNC(uint32,DCM_CODE) Dcm_GetSignal_u32(VAR(uint8,AUTOMATIC) xDataType_u8
-   ,     VAR(uint16,AUTOMATIC) posnStart_u16
+FUNC(uint32,DCM_CODE) Dcm_GetSignal_u32(VAR(uint8, AUTOMATIC) xDataType_u8
+   ,     VAR(uint16, AUTOMATIC) posnStart_u16
    ,     P2CONST(uint8, AUTOMATIC, DCM_INTERN_DATA) adrReqBuffer_u8
-   ,     VAR(uint8,AUTOMATIC) dataEndianness_u8)
+   ,     VAR(uint8, AUTOMATIC) dataEndianness_u8)
 {
 
-   VAR(uint16,AUTOMATIC) dataByteNum_u16;
-   VAR(uint16,AUTOMATIC) dataSignal_u16;
-   VAR(uint32,AUTOMATIC) dataSignal_u32;
-   VAR(boolean,AUTOMATIC) flagConvStatus_b;
+   VAR(uint16, AUTOMATIC) dataByteNum_u16;
+   VAR(uint16, AUTOMATIC) dataSignal_u16;
+   VAR(uint32, AUTOMATIC) dataSignal_u32;
+   VAR(boolean, AUTOMATIC) flagConvStatus_b;
     dataByteNum_u16 = (uint16)((uint32)posnStart_u16/8u);
     dataSignal_u32  = 0;
     dataSignal_u16 = 0;
@@ -118,15 +118,15 @@ FUNC(uint32,DCM_CODE) Dcm_GetSignal_u32(VAR(uint8,AUTOMATIC) xDataType_u8
      ((DCM_CFG_DSP_ROUTINECONTROL_ENABLED != DCM_CFG_OFF)&&((DCM_CFG_ROUTINEVARLENGTH==DCM_CFG_OFF)||(DCM_CFG_RCRANGE_ROUTINEVARLENGTH==DCM_CFG_OFF)))||\
      (DCM_CFG_RBA_DEM_SR_ENABLED != DCM_CFG_OFF))
 
-FUNC(void,DCM_CODE) Dcm_StoreSignal(VAR(uint8,AUTOMATIC) xDataType_u8
-   ,     VAR(uint16,AUTOMATIC) posnStart_u16
+FUNC(void,DCM_CODE) Dcm_StoreSignal(VAR(uint8, AUTOMATIC) xDataType_u8
+   ,     VAR(uint16, AUTOMATIC) posnStart_u16
    ,     P2VAR(uint8, AUTOMATIC, DCM_INTERN_DATA) adrRespBuffer_u8
-   ,     VAR(uint32,AUTOMATIC) dataSignalValue_u32
-   ,     VAR(uint8,AUTOMATIC) dataEndianness_u8)
+   ,     VAR(uint32, AUTOMATIC) dataSignalValue_u32
+   ,     VAR(uint8, AUTOMATIC) dataEndianness_u8)
 {
-   VAR(uint16,AUTOMATIC) dataByteNum_u16;
-   VAR(uint16,AUTOMATIC) dataSignalValue_u16;
-   VAR(boolean,AUTOMATIC) flagConvStatus_b;
+   VAR(uint16, AUTOMATIC) dataByteNum_u16;
+   VAR(uint16, AUTOMATIC) dataSignalValue_u16;
+   VAR(boolean, AUTOMATIC) flagConvStatus_b;
     dataByteNum_u16 = (uint16)((uint32)posnStart_u16/8u);
     flagConvStatus_b = FALSE;
     flagConvStatus_b=Dcm_IsEndiannessConversionNecessary(dataEndianness_u8);
@@ -183,7 +183,7 @@ FUNC(void,DCM_CODE) Dcm_StoreSignal(VAR(uint8,AUTOMATIC) xDataType_u8
 #if( (DCM_CFG_ROUTINEARRAY_INSIG != DCM_CFG_OFF)  || (DCM_CFG_ROUTINEARRAY_OUTSIG != DCM_CFG_OFF) || \
 (DCM_CFG_RCRANGE_ROUTINEARRAY_INSIG != DCM_CFG_OFF)||(DCM_CFG_RCRANGE_ROUTINEARRAY_INSIG != DCM_CFG_OFF) )
 #if((DCM_CFG_ROUTINEARRAY_INSIG != DCM_CFG_OFF) || (DCM_CFG_RCRANGE_ROUTINEARRAY_INSIG != DCM_CFG_OFF))
-static FUNC(void,DCM_CODE) StoreRcBuffer(VAR(uint8,AUTOMATIC) xDataType_u8,VAR(uint16,AUTOMATIC) IndexSig_u16, VAR(uint16,AUTOMATIC) dataSignal_u16)
+static FUNC(void,DCM_CODE) StoreRcBuffer(VAR(uint8, AUTOMATIC) xDataType_u8,VAR(uint16, AUTOMATIC) IndexSig_u16, VAR(uint16, AUTOMATIC) dataSignal_u16)
 {
    if(xDataType_u8 == DCM_UINT16_N)
    {
@@ -196,14 +196,14 @@ static FUNC(void,DCM_CODE) StoreRcBuffer(VAR(uint8,AUTOMATIC) xDataType_u8,VAR(u
 
 FUNC(void,DCM_CODE) Dcm_RcSetSignalArray(P2CONST(Dcm_DspRoutineSignalInfo_tst, AUTOMATIC, DCM_INTERN_DATA) adrSignal_pcst,P2CONST(uint8, AUTOMATIC, DCM_INTERN_DATA) adrReqBuffer_u8)
 {
-     VAR(uint8,AUTOMATIC)  xDataType_u8;
-     VAR(uint16,AUTOMATIC) DataLen_u16;
-     VAR(uint16,AUTOMATIC) IndexSig_u16;
-     VAR(uint16,AUTOMATIC) IndexReqData_u16;
-     VAR(boolean,AUTOMATIC) flagConvStatus_b;
-     VAR(uint16,AUTOMATIC) idx;
-     VAR(uint16,AUTOMATIC) dataSignal_u16;
-     VAR(uint32,AUTOMATIC) dataSignal_u32;
+     VAR(uint8, AUTOMATIC)  xDataType_u8;
+     VAR(uint16, AUTOMATIC) DataLen_u16;
+     VAR(uint16, AUTOMATIC) IndexSig_u16;
+     VAR(uint16, AUTOMATIC) IndexReqData_u16;
+     VAR(boolean, AUTOMATIC) flagConvStatus_b;
+     VAR(uint16, AUTOMATIC) idx;
+     VAR(uint16, AUTOMATIC) dataSignal_u16;
+     VAR(uint32, AUTOMATIC) dataSignal_u32;
      dataSignal_u32 = 0;
      dataSignal_u16 = 0;
      xDataType_u8 = adrSignal_pcst->dataType_u8;

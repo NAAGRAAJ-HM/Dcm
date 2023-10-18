@@ -6,11 +6,11 @@
 #define DCM_START_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"
 FUNC(Dcm_StatusType,DCM_CODE) Dcm_PrepareKwpTimingValues(
-                                        P2CONST(Dcm_Dsld_KwpTimerServerType,AUTOMATIC,DCM_APPL_CONST) TimerServerNew
+                                        P2CONST(Dcm_Dsld_KwpTimerServerType, AUTOMATIC,DCM_APPL_CONST) TimerServerNew
                                                         )
 {
-   VAR(uint8,AUTOMATIC) idxLimitTmg_u8;
-   VAR(Dcm_StatusType,AUTOMATIC) dataReturnValue_u8;
+   VAR(uint8, AUTOMATIC) idxLimitTmg_u8;
+   VAR(Dcm_StatusType, AUTOMATIC) dataReturnValue_u8;
 
     dataReturnValue_u8 = DCM_E_TI_PREPARE_LIMITS;
 

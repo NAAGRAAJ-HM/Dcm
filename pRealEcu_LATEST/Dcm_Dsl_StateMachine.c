@@ -17,12 +17,12 @@ const Dcm_DslStateType  Dcm_ProcessDslState[DCM_NUMBER_OF_DSL_STATES];
 #define DCM_START_SEC_VAR_CLEARED_8
 #include "Dcm_Cfg_MemMap.hpp"
 VAR(uint8,DCM_VAR) Dcm_DslWaitPendBuffer_au8[8];
-VAR(uint8,AUTOMATIC) Dcm_DslState_u8;
-VAR(uint8,AUTOMATIC) Dcm_DslSubState_u8;
-VAR(uint8,AUTOMATIC) Dcm_DslNextState_u8;
-VAR(uint8,AUTOMATIC) Dcm_DslNextSubState_u8;
+VAR(uint8, AUTOMATIC) Dcm_DslState_u8;
+VAR(uint8, AUTOMATIC) Dcm_DslSubState_u8;
+VAR(uint8, AUTOMATIC) Dcm_DslNextState_u8;
+VAR(uint8, AUTOMATIC) Dcm_DslNextSubState_u8;
 #if(DCM_CFG_PROTOCOL_PREMPTION_ENABLED != DCM_CFG_OFF)
-VAR(uint8,AUTOMATIC) Dcm_DslPreemptionState_u8;
+VAR(uint8, AUTOMATIC) Dcm_DslPreemptionState_u8;
 #endif
 #define DCM_STOP_SEC_VAR_CLEARED_8
 #include "Dcm_Cfg_MemMap.hpp"
@@ -35,7 +35,7 @@ VAR(Dcm_DsldTimingsType_tst,DCM_VAR) Dcm_DsldTimer_st;
 VAR(Dcm_QueueStructure_tst,DCM_VAR) Dcm_QueueStructure_st;
 #endif
 #if(DCM_CFG_PROTOCOL_PREMPTION_ENABLED != DCM_CFG_OFF)
-static VAR(Std_ReturnType,AUTOMATIC) stCancelTx_u8;
+static VAR(Std_ReturnType, AUTOMATIC) stCancelTx_u8;
 #endif
 #define DCM_STOP_SEC_VAR_CLEARED_UNSPECIFIED
 #include "Dcm_Cfg_MemMap.hpp"
@@ -54,7 +54,7 @@ VAR(boolean,DCM_VAR) Dcm_isGeneralRejectSent_b;
 #if(DCM_CFG_PROTOCOL_PREMPTION_ENABLED != DCM_CFG_OFF)
 static VAR(boolean,DCM_VAR) flgRoeOn_b;
 #if(DCM_ROE_ENABLED != DCM_CFG_OFF)
-       static VAR(boolean,AUTOMATIC) flgPersistRoe_b;
+       static VAR(boolean, AUTOMATIC) flgPersistRoe_b;
 #endif
 #endif
 #define DCM_STOP_SEC_VAR_CLEARED_BOOLEAN
@@ -71,10 +71,10 @@ VAR(StatusType,DCM_VAR) Dcm_P2OrS3TimerStatus_uchr;
 
 #if(DCM_BUFQUEUE_ENABLED != DCM_CFG_OFF)
 
-FUNC(P2VAR(Dcm_MsgItemType,AUTOMATIC,DCM_INTERN_DATA),DCM_CODE) Dcm_Lok_ProvideFreeBuffer(
-        VAR(uint8,AUTOMATIC) idxProtocolIndex_u8,VAR(boolean,AUTOMATIC) isQueuedReq_b)
+FUNC(P2VAR(Dcm_MsgItemType, AUTOMATIC, DCM_INTERN_DATA),DCM_CODE) Dcm_Lok_ProvideFreeBuffer(
+        VAR(uint8, AUTOMATIC) idxProtocolIndex_u8,VAR(boolean, AUTOMATIC) isQueuedReq_b)
 {
-   P2VAR(uint8,AUTOMATIC,DCM_INTERN_DATA) RxBuffer_pu8 = NULL_PTR;
+   P2VAR(uint8, AUTOMATIC, DCM_INTERN_DATA) RxBuffer_pu8 = NULL_PTR;
 
    if(isQueuedReq_b == TRUE)
    {
@@ -99,7 +99,7 @@ FUNC(P2VAR(Dcm_MsgItemType,AUTOMATIC,DCM_INTERN_DATA),DCM_CODE) Dcm_Lok_ProvideF
 }
 #endif
 
-FUNC(P2VAR(Dcm_MsgItemType,AUTOMATIC,DCM_INTERN_DATA),DCM_CODE) Dcm_GetActiveBuffer(void){
+FUNC(P2VAR(Dcm_MsgItemType, AUTOMATIC, DCM_INTERN_DATA),DCM_CODE) Dcm_GetActiveBuffer(void){
 
 #if(DCM_BUFQUEUE_ENABLED != DCM_CFG_OFF)
     return Dcm_DsldGlobal_st.adrBufferPtr_pu8;
@@ -108,7 +108,7 @@ FUNC(P2VAR(Dcm_MsgItemType,AUTOMATIC,DCM_INTERN_DATA),DCM_CODE) Dcm_GetActiveBuf
 #endif
 }
 
-static FUNC(void,DCM_CODE) Dcm_Lok_SetIntermediateResponse(VAR(uint8,AUTOMATIC) dataNegativeResponse_u8)
+static FUNC(void,DCM_CODE) Dcm_Lok_SetIntermediateResponse(VAR(uint8, AUTOMATIC) dataNegativeResponse_u8)
 {
 
     Dcm_Lok_SetDslState(DSL_STATE_WAITING_FOR_TXCONFIRMATION);
@@ -170,7 +170,7 @@ static FUNC(void,DCM_CODE) Dcm_Lok_Check_ProtocolPreemptionStatus(void){
 #if(DCM_CFG_KWP_ENABLED != DCM_CFG_OFF)
 
 static FUNC(void,DCM_CODE) Dcm_Lok_SetDefaultTimerValues(void){
-   VAR(uint8,AUTOMATIC) idxKwpTiming_u8 = 0u;
+   VAR(uint8, AUTOMATIC) idxKwpTiming_u8 = 0u;
 
     SchM_Enter_Dcm_DsldTimer_NoNest();
    if(DCM_IS_KWPPROT_ACTIVE() != FALSE)
@@ -193,7 +193,7 @@ static FUNC(void,DCM_CODE) Dcm_Lok_SetDefaultTimerValues(void){
 #endif
 
 static FUNC(Std_ReturnType,DCM_CODE) Dcm_Lok_StartProtocol(void){
-   VAR(Std_ReturnType,AUTOMATIC) startProtocolStatus = E_NOT_OK;
+   VAR(Std_ReturnType, AUTOMATIC) startProtocolStatus = E_NOT_OK;
    if((Dcm_CurProtocol_u8 != DCM_NO_ACTIVE_PROTOCOL) && (!Dcm_isStopProtocolInvoked_b)){
         Dcm_StopProtocol(Dcm_CurProtocol_u8);
    }
@@ -222,8 +222,8 @@ static FUNC(Std_ReturnType,DCM_CODE) Dcm_Lok_StartProtocol(void){
 }
 
 static FUNC(void,DCM_CODE) Dcm_Lok_SendNrcforStartProtocolFailure(void){
-   VAR(Dcm_NegativeResponseCodeType,AUTOMATIC) dataNrc_u8 = 0x22;
-   P2VAR(Dcm_MsgItemType,AUTOMATIC,DCM_INTERN_DATA) adrRxBuffer_pu8 = NULL_PTR;
+   VAR(Dcm_NegativeResponseCodeType, AUTOMATIC) dataNrc_u8 = 0x22;
+   P2VAR(Dcm_MsgItemType, AUTOMATIC, DCM_INTERN_DATA) adrRxBuffer_pu8 = NULL_PTR;
 
     Dcm_DsldGlobal_st.adrActiveTxBuffer_tpu8 = (&(Dcm_DsldProtocol_pcst[Dcm_DsldGlobal_st.idxCurrentProtocol_u8]))->tx_buffer_pa;
     Dcm_DsldGlobal_st.dataResponseByDsd_b = TRUE;
@@ -366,8 +366,8 @@ static FUNC(void,DCM_CODE) Dcm_Lok_StopLowPriorityProtocol(void){
 
 static FUNC(void,DCM_CODE) Dcm_Lok_DslSubState_StopProtocol(void){
 
-   VAR(uint8,AUTOMATIC) idxConnection_u8 = Dcm_DsldRxTable_pcu8[Dcm_DsldGlobal_st.dataActiveRxPduId_u8];
-   VAR(uint8,AUTOMATIC) idxProtocol_u8   = Dcm_DsldConnTable_pcst[idxConnection_u8].protocol_num_u8;
+   VAR(uint8, AUTOMATIC) idxConnection_u8 = Dcm_DsldRxTable_pcu8[Dcm_DsldGlobal_st.dataActiveRxPduId_u8];
+   VAR(uint8, AUTOMATIC) idxProtocol_u8   = Dcm_DsldConnTable_pcst[idxConnection_u8].protocol_num_u8;
 
     Dcm_Lok_StopLowPriorityProtocol();
 
@@ -406,8 +406,8 @@ static FUNC(void,DCM_CODE) Dcm_Lok_DslSubState_StopRoe(void){
    if(flgPersistRoe_b != FALSE)
    {
 
-        VAR(uint8,AUTOMATIC) idxConnection_u8 = Dcm_DsldRxTable_pcu8[Dcm_DsldGlobal_st.dataActiveRxPduId_u8];
-        VAR(uint8,AUTOMATIC) idxProtocol_u8   = Dcm_DsldConnTable_pcst[idxConnection_u8].protocol_num_u8;
+        VAR(uint8, AUTOMATIC) idxConnection_u8 = Dcm_DsldRxTable_pcu8[Dcm_DsldGlobal_st.dataActiveRxPduId_u8];
+        VAR(uint8, AUTOMATIC) idxProtocol_u8   = Dcm_DsldConnTable_pcst[idxConnection_u8].protocol_num_u8;
 
         DcmAppl_DcmConfirmation(Dcm_DsldGlobal_st.dataSid_u8
    ,     Dcm_DsldMsgContext_st.dcmRxPduId
@@ -557,7 +557,7 @@ static FUNC(void,DCM_CODE) Dcm_Lok_DslSubState_StartProtocol(void){
    }
 }
 
-static FUNC(void,DCM_CODE) Dcm_Lok_DslSubState_S3_OR_P3_Timeout(VAR(uint8,AUTOMATIC) idxActiveSession_u8){
+static FUNC(void,DCM_CODE) Dcm_Lok_DslSubState_S3_OR_P3_Timeout(VAR(uint8, AUTOMATIC) idxActiveSession_u8){
 #if(DCM_CFG_KWP_ENABLED != DCM_CFG_OFF)
    if(DCM_IS_KWPPROT_ACTIVE() != FALSE){
         Dcm_DsldGlobal_st.flgCommActive_b  = FALSE;
@@ -592,7 +592,7 @@ static FUNC(void,DCM_CODE) Dcm_Lok_DslSubState_S3_OR_P3_TimeMoniotor(void){
 
 #if(DCM_PAGEDBUFFER_ENABLED != DCM_CFG_OFF)
 static FUNC(void,DCM_CODE) Dcm_Lok_DslState_PagedBufferTransmission(void){
-   VAR(uint16,AUTOMATIC) pageLen_u16 = 0u;
+   VAR(uint16, AUTOMATIC) pageLen_u16 = 0u;
    if(Dcm_Lok_GetDslSubState() == DSL_SUBSTATE_WAIT_FOR_DATA){
         if(Dcm_Lok_GetDsdState() == DSD_WAITFORTXCONF){
             DCM_TimerStart(Dcm_DsldGlobal_st.dataPagedBufferTimeout_u32, DCM_PAGEDBUFFER_TIMEOUT
@@ -614,7 +614,7 @@ static FUNC(void,DCM_CODE) Dcm_Lok_DslState_PagedBufferTransmission(void){
 #endif
 
 static FUNC(void,DCM_CODE) Dcm_Lok_DslState_WaitingForTxConfirmation(void){
-   VAR(uint8,AUTOMATIC) Dcm_DslStateTemp_u8 = 0u;
+   VAR(uint8, AUTOMATIC) Dcm_DslStateTemp_u8 = 0u;
     (void)Dcm_DslStateTemp_u8;
 }
 
@@ -667,12 +667,12 @@ static FUNC(void,DCM_CODE) Dcm_Lok_DslState_ProtocolPreemption(void){
 #endif
 
 static FUNC(void,DCM_CODE) Dcm_Lok_DslState_WaitingForRxIndication(void){
-   VAR(uint8,AUTOMATIC) Dcm_DslStateTemp_u8 = 0u;
+   VAR(uint8, AUTOMATIC) Dcm_DslStateTemp_u8 = 0u;
     (void)Dcm_DslStateTemp_u8;
 }
 
 static FUNC(void,DCM_CODE) Dcm_Lok_DslState_Idle(void){
-   VAR(uint8,AUTOMATIC) idxActiveSession_u8 = 0u;
+   VAR(uint8, AUTOMATIC) idxActiveSession_u8 = 0u;
 
     SchM_Enter_Dcm_Global_NoNest();
    idxActiveSession_u8 = Dcm_DsldGlobal_st.idxActiveSession_u8;
@@ -694,7 +694,7 @@ static FUNC(void,DCM_CODE) Dcm_Lok_DslState_Idle(void){
 }
 
 FUNC(void,DCM_CODE) Dcm_Lok_DslStateMachine(void){
-   VAR(uint8,AUTOMATIC) DslStateTemp_u8 = 0u;
+   VAR(uint8, AUTOMATIC) DslStateTemp_u8 = 0u;
 
 #if(DCM_CFG_PROTOCOL_PREMPTION_ENABLED != DCM_CFG_OFF)
     Dcm_Lok_Check_ProtocolPreemptionStatus();
