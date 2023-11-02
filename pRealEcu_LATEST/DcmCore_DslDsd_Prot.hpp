@@ -1,34 +1,22 @@
-#ifndef DCMCORE_DSLDSD_PROT_H
-#define DCMCORE_DSLDSD_PROT_H
+#pragma once
 
-#if(DCM_CFG_DET_SUPPORT_ENABLED != DCM_CFG_OFF)
 #include "Det.hpp"
-#endif
-
 #include "Dcm_Dsd.hpp"
 
 #define DCM_ENDIANNESSCONVERSION16(data) ((data) = rba_BswSrv_ByteOrderSwap16((uint16)(data)))
-
 #define DCM_ENDIANNESSCONVERSION32(data) ((data) = rba_BswSrv_ByteOrderSwap32(data))
 
 #define DCM_MEMCOPY(xDest_pv,xSrc_pcv,numBytes_u32)         (void)LibAutosar_vptrMemCopy((xDest_pv),(xSrc_pcv),(uint32)(numBytes_u32))
 #define DCM_MEMSET(xDest_pv,xPattern_u32,numBytes_u32)              (void)rba_BswSrv_MemSet((xDest_pv),(xPattern_u32),(uint32)(numBytes_u32))
 #define DCM_UNUSED_PARAM(P)   ((void)(P))
 
-#if(DCM_CFG_STORING_ENABLED != DCM_CFG_OFF)||(DCM_CFG_RESTORING_ENABLED != DCM_CFG_OFF)
-
 #define DCM_NOTVALID_TYPE     0x00u
 #define DCM_WARMREQUEST_TYPE  0x01u
 #define DCM_WARMINIT_TYPE     0x02u
 #define DCM_WARMRESPONSE_TYPE 0x03u
-#define DCM_START_SEC_VAR_CLEARED_UNSPECIFIED
-#include "Dcm_Cfg_MemMap.hpp"
-extern VAR(Dcm_ProgConditionsType, DCM_VAR) Dcm_ProgConditions_st;
-#define DCM_STOP_SEC_VAR_CLEARED_UNSPECIFIED
-#include "Dcm_Cfg_MemMap.hpp"
-#endif
 
-#if(DCM_CFG_STORING_ENABLED != DCM_CFG_OFF)
+extern VAR(Dcm_ProgConditionsType, DCM_VAR) Dcm_ProgConditions_st;
+
 typedef enum{
     DCM_BOOT_IDLE = 0
    ,   DCM_BOOT_PROCESS_RESET
@@ -46,21 +34,15 @@ typedef enum{
 #define DCM_JUMPTOOEMBOOTLOADER            0x00u
 #define DCM_JUMPTOSYSSUPPLIERBOOTLOADER 0x01u
 #define DCM_JUMPDRIVETODRIVE            0x02u
-#define DCM_START_SEC_VAR_CLEARED_UNSPECIFIED
-#include "Dcm_Cfg_MemMap.hpp"
+
 extern VAR(Dcm_BootLoaderStates_ten, DCM_VAR) Dcm_BootLoaderState_en;
-#define DCM_STOP_SEC_VAR_CLEARED_UNSPECIFIED
-#include "Dcm_Cfg_MemMap.hpp"
-#define DCM_START_SEC_CODE
-#include "Dcm_Cfg_MemMap.hpp"
+
 extern FUNC(void, DCM_CODE) Dcm_JumpToBootLoader(
        VAR(uint8,     AUTOMATIC                 ) dataBootType_u8
    , P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8
 );
+
 extern FUNC(void, DCM_CODE) Dcm_ResetBootLoader(void);
-#define DCM_STOP_SEC_CODE
-#include "Dcm_Cfg_MemMap.hpp"
-#endif
 
 #define DCM_OBDMODE01_ID    0x81u
 #define DCM_OBDMODE02_ID    0x82u
@@ -69,9 +51,7 @@ extern FUNC(void, DCM_CODE) Dcm_ResetBootLoader(void);
 #define DCM_OBDMODE06_ID    0x86u
 #define DCM_OBDMODE08_ID    0x88u
 #define DCM_OBDMODE09_ID    0x89u
-
 #define DCM_RDBI_ID         0x8Au
-
 #define DCM_WARMSTART_ID        0x8Bu
 #define DCM_BOOTLOADER_ID       0x8Cu
 #define DCM_COPYRXDATA_ID       0x8Du
@@ -103,7 +83,6 @@ extern FUNC(void, DCM_CODE) Dcm_ResetBootLoader(void);
 #define DCM_SETSESSIONLEVEL     0xA7u
 #define DCM_RDTC_ID             0xA8u
 #define DCM_TXCONFIRMATION_ID   0xAAu
-
 #define DCM_E_INTERFACE_TIMEOUT                   0x01u
 #define DCM_E_INTERFACE_RETURN_VALUE              0x02u
 #define DCM_E_INTERFACE_BUFFER_OVERFLOW           0x03u
@@ -131,7 +110,6 @@ extern FUNC(void, DCM_CODE) Dcm_ResetBootLoader(void);
 #define DCM_E_NO_WRITE_ACCESS                     0x1Bu
 #define DCM_E_RET_E_INFRASTRUCTURE_ERROR          0x1Cu
 #define DCM_E_INVALID_CONTROL_DATA                0x1Du
-
 #define DCM_E_RET_E_NOT_OK                        0x1Eu
 #define DCM_E_DCMRXPDUID_RANGE_EXCEED             0x20u
 #define DCM_E_DCMTXPDUID_RANGE_EXCEED             0x21u
@@ -144,17 +122,10 @@ extern FUNC(void, DCM_CODE) Dcm_ResetBootLoader(void);
 #define DCM_MAXNUMRESPONSEPENDING                 0xFFu
 typedef uint8  Dcm_ReturnClearDTCType_tu8;
 
-#define DCM_START_SEC_VAR_CLEARED_8
-#include "Dcm_Cfg_MemMap.hpp"
 extern VAR(Std_ReturnType, DCM_VAR) Dcm_retVal_u8;
-
-#define DCM_STOP_SEC_VAR_CLEARED_8
-#include "Dcm_Cfg_MemMap.hpp"
 
 #define DCM_DET_ERROR(DCM_ApiId, DCM_ErrorId) (void)Det_ReportError(DCM_MODULE_ID, DCM_INSTANCE_ID, DCM_ApiId, DCM_ErrorId);
 
-#define DCM_START_SEC_CODE
-#include "Dcm_Cfg_MemMap.hpp"
 extern FUNC(uint32, DCM_CODE) Dcm_DsldGetActiveSecurityMask_u32 (void);
 extern FUNC(uint32, DCM_CODE) Dcm_DsldGetActiveSessionMask_u32  (void);
 
@@ -174,13 +145,9 @@ extern FUNC(void, DCM_CODE) Dcm_Lok_SetSecurityLevel(
 extern FUNC(void, DCM_CODE) Dcm_Lok_ProcessResetToDefaultSession   (void);
 extern FUNC(void, DCM_CODE) Dcm_Lok_ResetDefaultSessionRequestFlag (void);
 
-#if(DCM_CFG_STORING_ENABLED != DCM_CFG_OFF)
 extern FUNC(void, DCM_CODE) Dcm_Lok_ConfirmationRespPendForBootloader(
    VAR(Dcm_ConfirmationStatusType, AUTOMATIC) Status_u8
 );
-#endif
-#define DCM_STOP_SEC_CODE
-#include "Dcm_Cfg_MemMap.hpp"
 
 #define DCM_TimerStop(timer)            ((timer)=0xFFFFFFFFu)
 #define DCM_TimerElapsed(timer)         ((timer)==0u)
@@ -265,97 +232,33 @@ typedef struct{
    boolean  isForceResponsePendRequested_b;
 }Dcm_DslTxType_tst;
 
-#define DCM_START_SEC_CODE
-#include "Dcm_Cfg_MemMap.hpp"
 extern FUNC(void, DCM_CODE) Dcm_CheckActiveDiagnosticStatus(VAR(uint8, AUTOMATIC) dataNetworkId);
-#define DCM_STOP_SEC_CODE
-#include "Dcm_Cfg_MemMap.hpp"
 
-#define DCM_START_SEC_VAR_CLEARED_8
-#include "Dcm_Cfg_MemMap.hpp"
 extern VAR(uint8, DCM_VAR) Dcm_DslWaitPendBuffer_au8[8];
 extern VAR(uint8, DCM_VAR) Dcm_CurProtocol_u8;
 extern VAR(Dcm_SesCtrlType, DCM_VAR) Dcm_CC_ActiveSession_u8;
-#define DCM_STOP_SEC_VAR_CLEARED_8
-#include "Dcm_Cfg_MemMap.hpp"
-#define DCM_START_SEC_VAR_CLEARED_UNSPECIFIED
-#include "Dcm_Cfg_MemMap.hpp"
 extern P2CONST(Dcm_Dsld_protocol_tableType, DCM_VAR, DCM_INTERN_CONST) Dcm_DsldProtocol_pcst;
 extern P2CONST(uint8,     DCM_VAR, DCM_INTERN_CONST) Dcm_DsldRxTable_pcu8;
-#define DCM_STOP_SEC_VAR_CLEARED_UNSPECIFIED
-#include "Dcm_Cfg_MemMap.hpp"
-#define DCM_START_SEC_VAR_CLEARED_UNSPECIFIED
-#include "Dcm_Cfg_MemMap.hpp"
 extern VAR(Dcm_DslRxPduArray_tst, DCM_VAR) Dcm_DslRxPduArray_ast[DCM_CFG_NUM_RX_PDUID];
-#define DCM_STOP_SEC_VAR_CLEARED_UNSPECIFIED
-#include "Dcm_Cfg_MemMap.hpp"
-#define DCM_START_SEC_VAR_CLEARED_BOOLEAN
-#include "Dcm_Cfg_MemMap.hpp"
 extern VAR(boolean, DCM_VAR) Dcm_isFuncTPOnOtherConnection_b;
 extern VAR(boolean, DCM_VAR) Dcm_isInitialised_b;
 extern VAR(boolean, DCM_VAR) Dcm_acceptRequests_b;
 extern VAR(boolean, DCM_VAR) Dcm_isCancelTransmitInvoked_b;
 extern VAR(boolean, DCM_VAR) Dcm_isStopProtocolInvoked_b;
-#define DCM_STOP_SEC_VAR_CLEARED_BOOLEAN
-#include "Dcm_Cfg_MemMap.hpp"
-#if(DCM_CFG_RESTORING_ENABLED != DCM_CFG_OFF)
-#define DCM_START_SEC_VAR_CLEARED_BOOLEAN
-#include "Dcm_Cfg_MemMap.hpp"
+
 extern VAR(boolean, DCM_VAR) Dcm_ReadyForBoot_b;
 extern VAR(boolean, DCM_VAR) Dcm_SesChgOnWarmResp_b;
-#define DCM_STOP_SEC_VAR_CLEARED_BOOLEAN
-#include "Dcm_Cfg_MemMap.hpp"
-#endif
-#define DCM_START_SEC_VAR_CLEARED_UNSPECIFIED
-#include "Dcm_Cfg_MemMap.hpp"
 extern P2CONST(Dcm_Dsld_connType, DCM_VAR, DCM_INTERN_CONST) Dcm_DsldConnTable_pcst;
-#define DCM_STOP_SEC_VAR_CLEARED_UNSPECIFIED
-#include "Dcm_Cfg_MemMap.hpp"
-#define DCM_START_SEC_VAR_CLEARED_UNSPECIFIED
-#include "Dcm_Cfg_MemMap.hpp"
 extern VAR(Dcm_DsldInternalStructureType_tst, DCM_VAR) Dcm_DsldGlobal_st;
-
-#define DCM_STOP_SEC_VAR_CLEARED_UNSPECIFIED
-#include "Dcm_Cfg_MemMap.hpp"
-#define DCM_START_SEC_VAR_CLEARED_UNSPECIFIED
-#include "Dcm_Cfg_MemMap.hpp"
 extern VAR(Dcm_DsldTimingsType_tst, DCM_VAR) Dcm_DsldTimer_st;
-#define DCM_STOP_SEC_VAR_CLEARED_UNSPECIFIED
-#include "Dcm_Cfg_MemMap.hpp"
-#define DCM_START_SEC_VAR_CLEARED_BOOLEAN
-#include "Dcm_Cfg_MemMap.hpp"
 extern VAR(boolean, DCM_VAR) Dcm_isGeneralRejectSent_b;
 extern VAR(boolean, DCM_VAR) Dcm_isSessionStored_b;
-
-#define DCM_STOP_SEC_VAR_CLEARED_BOOLEAN
-#include "Dcm_Cfg_MemMap.hpp"
-#define DCM_START_SEC_VAR_CLEARED_UNSPECIFIED
-#include "Dcm_Cfg_MemMap.hpp"
 extern VAR(Type_SwcServiceCom_stInfoPdu, DCM_VAR) Dcm_DsldPduInfo_st;
 extern VAR(Dcm_DslTxType_tst, DCM_VAR) Dcm_DslTransmit_st;
-#define DCM_STOP_SEC_VAR_CLEARED_UNSPECIFIED
-#include "Dcm_Cfg_MemMap.hpp"
-#define DCM_START_SEC_VAR_CLEARED_UNSPECIFIED
-#include "Dcm_Cfg_MemMap.hpp"
 extern P2CONST(Dcm_Dsld_ServiceType, DCM_VAR, DCM_INTERN_CONST) Dcm_DsldSrvTable_pcst;
-#define DCM_STOP_SEC_VAR_CLEARED_UNSPECIFIED
-#include "Dcm_Cfg_MemMap.hpp"
-#define DCM_START_SEC_VAR_CLEARED_UNSPECIFIED
-#include "Dcm_Cfg_MemMap.hpp"
 extern VAR(Dcm_MsgContextType, DCM_VAR) Dcm_DsldMsgContext_st;
-#define DCM_STOP_SEC_VAR_CLEARED_UNSPECIFIED
-#include "Dcm_Cfg_MemMap.hpp"
-#define DCM_START_SEC_VAR_CLEARED_UNSPECIFIED
-#include "Dcm_Cfg_MemMap.hpp"
 extern P2CONST(uint8, DCM_VAR, DCM_INTERN_CONST) Dcm_DsldSessionTable_pcu8;
-#define DCM_STOP_SEC_VAR_CLEARED_UNSPECIFIED
-#include "Dcm_Cfg_MemMap.hpp"
-
-#define DCM_START_SEC_VAR_CLEARED_8
-#include "Dcm_Cfg_MemMap.hpp"
 extern VAR(StatusType, DCM_VAR) Dcm_P2OrS3TimerStatus_uchr;
-#define DCM_STOP_SEC_VAR_CLEARED_8
-#include "Dcm_Cfg_MemMap.hpp"
 
 #define DCM_START_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"
@@ -443,5 +346,4 @@ LOCAL_INLINE FUNC(boolean, DCM_CODE) DCM_IS_KWPPROT_ACTIVE(void){
     return retval_b;
 }
 
-#endif
 

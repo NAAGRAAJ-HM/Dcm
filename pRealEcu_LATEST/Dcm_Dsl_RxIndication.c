@@ -11,12 +11,12 @@ VAR(Type_SwcServiceCom_stInfoPdu,DCM_VAR) Dcm_DsldPduInfo_st;
 #define DCM_STOP_SEC_VAR_CLEARED_UNSPECIFIED
 #include "Dcm_Cfg_MemMap.hpp"
 
-LOCAL_INLINE FUNC(boolean,DCM_CODE) Dcm_Lok_CheckLowPriorityRequestReceived(
+LOCAL_INLINE FUNC(boolean, DCM_CODE) Dcm_Lok_CheckLowPriorityRequestReceived(
    VAR(Type_SwcServiceCom_tIdPdu, AUTOMATIC) DcmRxPduId){
    return (Dcm_DsldProtocol_pcst[Dcm_DsldConnTable_pcst[Dcm_DsldRxTable_pcu8[DcmRxPduId]].protocol_num_u8].nrc21_b);
 }
 
-LOCAL_INLINE FUNC(void,DCM_CODE) Dcm_Lok_StartP2Timer(void){
+LOCAL_INLINE FUNC(void, DCM_CODE) Dcm_Lok_StartP2Timer(void){
    DCM_TimerStart(
       Dcm_DsldGlobal_st.dataTimeoutMonitor_u32,
       (Dcm_DsldTimer_st.dataTimeoutP2max_u32 - Dcm_DsldProtocol_pcst[Dcm_DsldGlobal_st.idxCurrentProtocol_u8].dataP2TmrAdjust),
@@ -24,7 +24,7 @@ LOCAL_INLINE FUNC(void,DCM_CODE) Dcm_Lok_StartP2Timer(void){
       Dcm_P2OrS3TimerStatus_uchr)
 }
 
-LOCAL_INLINE FUNC(Type_SwcServiceCom_tLengthPdu,DCM_CODE) Dcm_Lok_GetRequestLength(VAR(Type_SwcServiceCom_tIdPdu, AUTOMATIC) DcmRxPduId)
+LOCAL_INLINE FUNC(Type_SwcServiceCom_tLengthPdu, DCM_CODE) Dcm_Lok_GetRequestLength(VAR(Type_SwcServiceCom_tIdPdu, AUTOMATIC) DcmRxPduId)
 {
    VAR(Type_SwcServiceCom_tLengthPdu, AUTOMATIC) RequestLength = Dcm_DsldGlobal_st.dataRequestLength_u16;
    (void)DcmRxPduId;
@@ -43,7 +43,7 @@ FUNC(void, DCM_CODE) Dcm_Lok_ResetCopyRxDataStatus(
    }
 }
 
-static FUNC(void,DCM_CODE) Dcm_Lok_DiscardRequest(VAR(Type_SwcServiceCom_tIdPdu, AUTOMATIC) DcmRxPduId
+static FUNC(void, DCM_CODE) Dcm_Lok_DiscardRequest(VAR(Type_SwcServiceCom_tIdPdu, AUTOMATIC) DcmRxPduId
 ,
    VAR(Std_ReturnType, AUTOMATIC) Result){
    if(FALSE != Dcm_DslRxPduArray_ast[DcmRxPduId].Dcm_DslCopyRxData_b){
@@ -62,16 +62,14 @@ static FUNC(void,DCM_CODE) Dcm_Lok_DiscardRequest(VAR(Type_SwcServiceCom_tIdPdu,
    }
 }
 
-static FUNC(void,DCM_CODE) Dcm_Lok_ReloadP2maxValue(
+static FUNC(void, DCM_CODE) Dcm_Lok_ReloadP2maxValue(
    VAR(Type_SwcServiceCom_tIdPdu, AUTOMATIC) DcmRxPduId,
    VAR(uint8, AUTOMATIC) idxProtocol_u8){
    (void)idxProtocol_u8;
-#if((DCM_CFG_KWP_ENABLED == DCM_CFG_OFF) && (DCM_CFG_PROTOCOL_PREMPTION_ENABLED == DCM_CFG_OFF))
    (void)DcmRxPduId;
-#endif
 }
 
-static FUNC(void,DCM_CODE) Dcm_Lok_ProcessRequest(
+static FUNC(void, DCM_CODE) Dcm_Lok_ProcessRequest(
    VAR(Type_SwcServiceCom_tIdPdu, AUTOMATIC) DcmRxPduId){
    VAR(uint8, AUTOMATIC) idxProtocol_u8 = Dcm_DsldConnTable_pcst[Dcm_DsldRxTable_pcu8[DcmRxPduId]].protocol_num_u8;
    Dcm_Lok_ReloadP2maxValue(
@@ -86,7 +84,7 @@ static FUNC(void,DCM_CODE) Dcm_Lok_ProcessRequest(
    }
 }
 
-static FUNC(void,DCM_CODE) Dcm_Lok_SendNrc21(
+static FUNC(void, DCM_CODE) Dcm_Lok_SendNrc21(
    VAR(Type_SwcServiceCom_tIdPdu, AUTOMATIC) DcmRxPduId){
    VAR(Type_SwcServiceCom_stInfoPdu, AUTOMATIC) pduInfo_st = {
       NULL_PTR,
@@ -106,7 +104,7 @@ static FUNC(void,DCM_CODE) Dcm_Lok_SendNrc21(
    }
 }
 
-static FUNC(void,DCM_CODE) Dcm_Lok_CheckDiagnosticStatus(VAR(Type_SwcServiceCom_tIdPdu, AUTOMATIC) DcmRxPduId
+static FUNC(void, DCM_CODE) Dcm_Lok_CheckDiagnosticStatus(VAR(Type_SwcServiceCom_tIdPdu, AUTOMATIC) DcmRxPduId
 ,
    VAR(uint8, AUTOMATIC) idxProtocol_u8,
    P2CONST(uint8, AUTOMATIC, DCM_INTERN_DATA) RxBuffer_pu8){
@@ -127,7 +125,7 @@ static FUNC(void,DCM_CODE) Dcm_Lok_CheckDiagnosticStatus(VAR(Type_SwcServiceCom_
    }
 }
 
-static FUNC(void,DCM_CODE) Dcm_Lok_UpdateDSLstate(
+static FUNC(void, DCM_CODE) Dcm_Lok_UpdateDSLstate(
    VAR(Type_SwcServiceCom_tIdPdu, AUTOMATIC) DcmRxPduId){
    if(Dcm_DsldConnTable_pcst[Dcm_DsldRxTable_pcu8[DcmRxPduId]].protocol_num_u8 == Dcm_DsldGlobal_st.idxCurrentProtocol_u8){
       Dcm_Lok_SetDslState(
@@ -138,7 +136,7 @@ static FUNC(void,DCM_CODE) Dcm_Lok_UpdateDSLstate(
    }
 }
 
-static FUNC(boolean,DCM_CODE) Dcm_Lok_isFunctionalTesterPresentProcessed(VAR(Type_SwcServiceCom_tIdPdu, AUTOMATIC) DcmRxPduId){
+static FUNC(boolean, DCM_CODE) Dcm_Lok_isFunctionalTesterPresentProcessed(VAR(Type_SwcServiceCom_tIdPdu, AUTOMATIC) DcmRxPduId){
    VAR(boolean, AUTOMATIC) processStatus_b = FALSE;
    if(FALSE != Dcm_DslRxPduArray_ast[DcmRxPduId].Dcm_DslFuncTesterPresent_b){
       if(FALSE == Dcm_isRequestTobeProcessedByDSP(
@@ -163,7 +161,7 @@ static FUNC(boolean,DCM_CODE) Dcm_Lok_isFunctionalTesterPresentProcessed(VAR(Typ
    return processStatus_b;
 }
 
-static FUNC(void,DCM_CODE) Dcm_Lok_ProcessRxIndication(
+static FUNC(void, DCM_CODE) Dcm_Lok_ProcessRxIndication(
    VAR(Type_SwcServiceCom_tIdPdu, AUTOMATIC) DcmRxPduId){
    VAR(uint8, AUTOMATIC) idxProtocol_u8 = Dcm_DsldConnTable_pcst[Dcm_DsldRxTable_pcu8[DcmRxPduId]].protocol_num_u8;
    P2VAR(uint8, AUTOMATIC, DCM_INTERN_DATA) rxBuffer_pu8 = NULL_PTR;
@@ -184,11 +182,9 @@ static FUNC(void,DCM_CODE) Dcm_Lok_ProcessRxIndication(
       }
    }
    else{
-#if(DCM_CALLAPPLICATIONONREQRX_ENABLED!=DCM_CFG_OFF)
       (void)DcmAppl_TpRxIndication(
          DcmRxPduId,
          E_OK);
-#endif
       Dcm_DslRxPduArray_ast[DcmRxPduId].Dcm_DslServiceId_u8 = DCM_SERVICEID_DEFAULT_VALUE;
       if(FALSE == Dcm_Lok_isFunctionalTesterPresentProcessed(
          DcmRxPduId)){
@@ -198,7 +194,7 @@ static FUNC(void,DCM_CODE) Dcm_Lok_ProcessRxIndication(
    }
 }
 
-FUNC(void,DCM_CODE) Dcm_TpRxIndication(
+FUNC(void, DCM_CODE) Dcm_TpRxIndication(
    VAR(Type_SwcServiceCom_tIdPdu, AUTOMATIC) id,
    VAR(Std_ReturnType, AUTOMATIC) result){
    if(id >= DCM_CFG_NUM_RX_PDUID){

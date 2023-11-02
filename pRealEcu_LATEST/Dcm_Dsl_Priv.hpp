@@ -1,5 +1,4 @@
-#ifndef DCM_DSL_PRIV_H
-#define DCM_DSL_PRIV_H
+#pragma once
 
 #define DCM_OBDSERVICEID_0x01                        (0x01u)
 #define DCM_OBDSERVICEID_0x0A                        (0x0Au)
@@ -32,18 +31,16 @@ extern VAR(uint8, AUTOMATIC) Dcm_DslNextSubState_u8;
 #define DCM_STOP_SEC_VAR_CLEARED_8
 #include "Dcm_Cfg_MemMap.hpp"
 
-LOCAL_INLINE FUNC(boolean,DCM_CODE) Dcm_Lok_isForcePendingResponse(void){
+LOCAL_INLINE FUNC(boolean, DCM_CODE) Dcm_Lok_isForcePendingResponse(void){
     return (Dcm_DslTransmit_st.isForceResponsePendRequested_b);
 }
 
-LOCAL_INLINE FUNC(boolean,DCM_CODE) Dcm_Lok_isProtocolStarted(void){
+LOCAL_INLINE FUNC(boolean, DCM_CODE) Dcm_Lok_isProtocolStarted(void){
     return (Dcm_DsldGlobal_st.flgCommActive_b);
 }
 
-LOCAL_INLINE FUNC(boolean,DCM_CODE) Dcm_Lok_Check_PendingResponseForKWP(void){
+LOCAL_INLINE FUNC(boolean, DCM_CODE) Dcm_Lok_Check_PendingResponseForKWP(void){
    VAR(boolean, AUTOMATIC) RetVal_b = TRUE;
         RetVal_b = FALSE;
     return RetVal_b;
 }
-
-#endif

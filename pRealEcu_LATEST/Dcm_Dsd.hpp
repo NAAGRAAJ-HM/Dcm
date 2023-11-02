@@ -1,5 +1,4 @@
-#ifndef DCM_DSD_H
-#define DCM_DSD_H
+#pragma once
 
 #include "ComStack_Types.hpp"
 #include "Dcm_Types.hpp"
@@ -37,5 +36,3 @@ LOCAL_INLINE void Dcm_Lok_SetDsdState(
    Dcm_DsdStatesType_ten State){
    stDsdState_en = State;
 }
-
-#endif

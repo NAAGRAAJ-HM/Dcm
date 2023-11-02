@@ -55,7 +55,6 @@ LOCAL_INLINE Std_ReturnType Dcm_Lok_DsdVerifyData_StateMachine(void){
             stDsdSubState_u8 = DSDSUBSTATE_SUPPLIER_NOTIFICATION;
             }
 
-#if(DCM_CFG_SUPPLIER_NOTIFICATION_ENABLED != DCM_CFG_OFF)
         case DSDSUBSTATE_SUPPLIER_NOTIFICATION:
              VerificationResult_u8 = (Dcm_DsldMsgContext_st.msgAddInfo.sourceofRequest == DCM_UDS_TESTER_SOURCE)?   \
                                       Dcm_Lok_DsdNotification(DCM_SUPPLIERNOTIFICATION):E_OK;
@@ -67,7 +66,6 @@ LOCAL_INLINE Std_ReturnType Dcm_Lok_DsdVerifyData_StateMachine(void){
              else{
                  break;
              }
-#endif
 
         case DSDSUBSTATE_SUBFUNCTION_CHECK:
             if(Dcm_Lok_IsSubFunctionSupported())

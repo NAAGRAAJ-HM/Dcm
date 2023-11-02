@@ -1,7 +1,4 @@
-
-
-#ifndef DCM_TYPES_H
-#define DCM_TYPES_H
+#pragma once
 
 #include "Rte_Dcm_Type.hpp"
 
@@ -225,12 +222,11 @@
 #ifndef     DCM_AR_4_0_2
 #define DCM_AR_4_0_2                DCM_PRV_AR_4_0_2
 #endif
+
 #ifndef     DCM_AR_4_0_2_HYBRID
 #define DCM_AR_4_0_2_HYBRID         DCM_PRV_AR_4_0_2_HYBRID
 #endif
+
 #ifndef     DCM_AR_3_2_1
 #define DCM_AR_3_2_1                DCM_PRV_AR_3_2_1
 #endif
-
-#endif
-

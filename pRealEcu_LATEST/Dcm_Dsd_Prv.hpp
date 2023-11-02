@@ -1,5 +1,4 @@
-#ifndef DCM_DSD_PRV_H
-#define DCM_DSD_PRV_H
+#pragma once
 
 #include "DcmCore_DslDsd_Inf.hpp"
 #include "DcmCore_DslDsd_Pub.hpp"
@@ -117,7 +116,6 @@ LOCAL_INLINE Std_ReturnType Dcm_Lok_DsdVerifySubFncID(
     return VerificationResult_u8;
 }
 
-#if(DCM_CFG_SUPPLIER_NOTIFICATION_ENABLED != DCM_CFG_OFF)
 LOCAL_INLINE Std_ReturnType Dcm_Lok_DsdSupplierNotification(const uint8* const RequestData
    ,     Type_SwcServiceCom_tLengthPdu RequestLength,uint8 RequestType
    ,
@@ -148,7 +146,6 @@ LOCAL_INLINE Std_ReturnType Dcm_Lok_DsdSupplierNotification(const uint8* const R
    }
     return Supplier_ReturnValue;
 }
-#endif
 
 LOCAL_INLINE void Dcm_Lok_DsdInitiateResponseTransmission(Std_ReturnType ServiceResult_u8
    ,
@@ -227,7 +224,6 @@ LOCAL_INLINE void Dcm_Lok_DsdProcessService(void){
    }
 }
 
-#if((DCM_CFG_SUPPLIER_NOTIFICATION_ENABLED != DCM_CFG_OFF)||(DCM_CFG_MANUFACTURER_NOTIFICATION_ENABLED != DCM_CFG_OFF))
 LOCAL_INLINE Std_ReturnType Dcm_Lok_DsdNotification(
    boolean Indication_Flag){
    Type_SwcServiceCom_tLengthPdu RequestLength = (Type_SwcServiceCom_tLengthPdu)Dcm_DsldMsgContext_st.reqDataLen;
@@ -238,14 +234,11 @@ LOCAL_INLINE Std_ReturnType Dcm_Lok_DsdNotification(
    uint8 Result_u8 = E_NOT_OK;
    if(Indication_Flag == DCM_MANUFACTURERNOTIFICATION){
    }
-#if(DCM_CFG_SUPPLIER_NOTIFICATION_ENABLED != DCM_CFG_OFF)
    else{
         Result_u8 = Dcm_Lok_DsdSupplierNotification(RequestData,RequestLength,RequestType,DcmRxPduId,SourceAddress);
    }
-#endif
     return Result_u8;
 }
-#endif
 
 LOCAL_INLINE Std_ReturnType Dcm_Lok_DsdCheckSubFunction(void){
    uint8 idxSubservice_u8;
@@ -273,11 +266,9 @@ LOCAL_INLINE Std_ReturnType Dcm_Lok_DsdCheckSubFunction(void){
             ErrorCode = DCM_E_SUBFUNCTIONNOTSUPPORTEDINACTIVESESSION;
         }
    }
-#if((DCM_CFG_DSPUDSSUPPORT_ENABLED != DCM_CFG_OFF ) && (DCM_CFG_DSP_SECURITYACCESS_ENABLED != DCM_CFG_OFF ))
    if((ErrorCode != 0x00u) && (service_pcs->sid_u8 == DCM_SECURITYACCESS_SID) && (service_pcs->servicelocator_b != FALSE)){
         Dcm_ResetAccessType();
    }
-#endif
    if(VerificationResult_u8 != E_OK){
         Dcm_Lok_DsdSendNegativeResponse(ErrorCode);
    }
@@ -306,4 +297,3 @@ LOCAL_INLINE void Dcm_Lok_DsdServiceTableInit(void){
     Dcm_DsldMsgContext_st.reqData = &(adrRxBuffer_pu8[DCM_REQUESTBUFFER_INDEX+DCM_SID_LENGTH]);
     Dcm_DsldMsgContext_st.resData = &(Dcm_DsldGlobal_st.adrActiveTxBuffer_tpu8[DCM_RESPONSEBUFFER_INDEX]);
 }
-#endif
