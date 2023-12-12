@@ -46,7 +46,7 @@ typedef struct{
 typedef uint8 Dcm_EcuStartModeType;
 #define DCM_COLD_START   0x0u
 #define DCM_WARM_START   0x1u
-#define DCM_VENDOR_ID                   6u
+#define DCM_VENDOR_ID                   1u
 #define DCM_MODULE_ID                   0x35u
 #define DCM_INSTANCE_ID                 0x00u
 #define DCM_AR_RELEASE_MAJOR_VERSION    4u
