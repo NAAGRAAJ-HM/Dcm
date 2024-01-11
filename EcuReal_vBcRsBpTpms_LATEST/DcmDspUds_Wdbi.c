@@ -40,7 +40,7 @@ static VAR(Std_ReturnType, AUTOMATIC)   dataRetWriteFunc_u8;
 #define DCM_START_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"
 
-static FUNC(void,DCM_CODE) Dcm_Lok_WDBIINIT_Pending(
+static FUNC(void, DCM_CODE) Dcm_Lok_WDBIINIT_Pending(
    void){
    VAR(Dcm_NegativeResponseCodeType, AUTOMATIC) dataNegResCode;
    P2VAR(void, AUTOMATIC, DCM_INTERN_DATA)  ptrWriteFnc;
@@ -74,7 +74,7 @@ static FUNC(void,DCM_CODE) Dcm_Lok_WDBIINIT_Pending(
         }
 }
 
-FUNC(void,DCM_CODE) Dcm_Dcm_WDBIInit (void){
+FUNC(void, DCM_CODE) Dcm_Dcm_WDBIInit (void){
     dataRetWriteFunc_u8=0x00;
    if((Dcm_stDspWdbiOpStatus_u8 == DCM_PENDING) && (s_Dcm_idxwdbiDidIndexType.dataRange_b == FALSE)){
        Dcm_Lok_WDBIINIT_Pending();
@@ -87,7 +87,7 @@ FUNC(void,DCM_CODE) Dcm_Dcm_WDBIInit (void){
     Dcm_ResetDIDIndexstruct(&s_Dcm_idxwdbiDidIndexType);
 }
 
-static FUNC(void,DCM_CODE) Dcm_Lok_WriteASYNCDID
+static FUNC(void, DCM_CODE) Dcm_Lok_WriteASYNCDID
                            (P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8
    ,     P2CONST(Dcm_MsgContextType, AUTOMATIC,DCM_INTERN_CONST) pMsgContext,
 
@@ -103,7 +103,7 @@ static FUNC(void,DCM_CODE) Dcm_Lok_WriteASYNCDID
      }
  }
 
-static FUNC(void,DCM_CODE) Dcm_Lok_WriteDidUsePort
+static FUNC(void, DCM_CODE) Dcm_Lok_WriteDidUsePort
                            (P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8
    ,     P2CONST(Dcm_MsgContextType, AUTOMATIC,DCM_INTERN_CONST) pMsgContext
    ,     P2VAR(void, AUTOMATIC, DCM_INTERN_CONST)  ptrWriteFnc
@@ -118,7 +118,7 @@ static FUNC(void,DCM_CODE) Dcm_Lok_WriteDidUsePort
    }
 }
 
-static FUNC(void,DCM_CODE) Dcm_Lok_WriteNormalDID(
+static FUNC(void, DCM_CODE) Dcm_Lok_WriteNormalDID(
    P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8,
    P2CONST(Dcm_MsgContextType, AUTOMATIC,DCM_INTERN_CONST) pMsgContext){
   P2CONST(Dcm_DIDConfig_tst, AUTOMATIC, DCM_INTERN_DATA)ptrDidConfig = &Dcm_DIDConfig[s_Dcm_idxwdbiDidIndexType.idxIndex_u16];
@@ -160,7 +160,7 @@ static FUNC(void,DCM_CODE) Dcm_Lok_WriteNormalDID(
    }
 }
 
-static FUNC(void,DCM_CODE) Dcm_Lok_WriteDidMaxLenCheck(
+static FUNC(void, DCM_CODE) Dcm_Lok_WriteDidMaxLenCheck(
    P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8,
    P2CONST(Dcm_MsgContextType, AUTOMATIC,DCM_INTERN_CONST) pMsgContext){
 VAR(uint16, AUTOMATIC)  nrLenDataRec_u16;
@@ -184,7 +184,7 @@ VAR(uint16, AUTOMATIC)  nrLenDataRec_u16;
            }
 }
 
-static FUNC(void,DCM_CODE) Dcm_Priv_DidWriteSupport(
+static FUNC(void, DCM_CODE) Dcm_Priv_DidWriteSupport(
    P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8
    ,     P2CONST(Dcm_MsgContextType, AUTOMATIC,DCM_INTERN_CONST) pMsgContext
 ){
@@ -208,7 +208,7 @@ P2CONST(Dcm_ExtendedDIDConfig_tst, AUTOMATIC,DCM_INTERN_CONST) adrExtendedConfig
    }
 }
 
-static FUNC(Std_ReturnType,DCM_CODE) Dcm_Priv_DidWriteFuncAvailableCheck(
+static FUNC(Std_ReturnType, DCM_CODE) Dcm_Priv_DidWriteFuncAvailableCheck(
    P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8){
 VAR(Std_ReturnType, AUTOMATIC) dataRetVal_u8 = E_NOT_OK;
 VAR(uint16, AUTOMATIC)  idxDidSignal_u16 = 0;
@@ -239,7 +239,7 @@ P2VAR(void, AUTOMATIC, DCM_INTERN_DATA)  ptrWriteFnc = NULL_PTR;
  return dataRetVal_u8;
 }
 
-static FUNC(void,DCM_CODE) Dcm_Lok_DidAvailableCheck(
+static FUNC(void, DCM_CODE) Dcm_Lok_DidAvailableCheck(
    P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8){
    VAR(Std_ReturnType, AUTOMATIC)   dataRetGetDID_u8 = E_NOT_OK;
     dataRetGetDID_u8 = Dcm_GetIndexOfDID(s_dataDID_u16, &s_Dcm_idxwdbiDidIndexType);
@@ -259,7 +259,7 @@ static FUNC(void,DCM_CODE) Dcm_Lok_DidAvailableCheck(
 
 #define DCM_DSP_WDBI_MINREQLEN 0x03u
 
-static FUNC(void,DCM_CODE) Dcm_Lok_WdbiStateProcessing(
+static FUNC(void, DCM_CODE) Dcm_Lok_WdbiStateProcessing(
    P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8
    ,     P2CONST(Dcm_MsgContextType, AUTOMATIC,DCM_INTERN_CONST) pMsgContext
 ){
@@ -282,7 +282,7 @@ static FUNC(void,DCM_CODE) Dcm_Lok_WdbiStateProcessing(
    }
 }
 
-static FUNC(Std_ReturnType,DCM_CODE) Dcm_Lok_WriteDIDServevice_status(
+static FUNC(Std_ReturnType, DCM_CODE) Dcm_Lok_WriteDIDServevice_status(
    P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8
    ,     P2VAR(Dcm_MsgContextType, AUTOMATIC, DCM_INTERN_DATA) pMsgContext
 ){
@@ -317,7 +317,7 @@ VAR(Std_ReturnType, AUTOMATIC) dataRetVal_u8 = E_NOT_OK;
 return dataRetVal_u8;
 }
 
-FUNC(Std_ReturnType,DCM_CODE) SwcServiceDcm_tWriteDataByIdentifier(
+FUNC(Std_ReturnType, DCM_CODE) SwcServiceDcm_tWriteDataByIdentifier(
    VAR(Dcm_SrvOpStatusType, AUTOMATIC) OpStatus,
    P2VAR(Dcm_MsgContextType, AUTOMATIC, DCM_INTERN_DATA) pMsgContext,
    P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8){
@@ -338,7 +338,7 @@ FUNC(Std_ReturnType,DCM_CODE) SwcServiceDcm_tWriteDataByIdentifier(
         return dataRetVal_u8;
 }
 
-FUNC(Std_ReturnType,DCM_CODE) Dcm_GetActiveWDBIDid(
+FUNC(Std_ReturnType, DCM_CODE) Dcm_GetActiveWDBIDid(
    P2VAR(uint16, AUTOMATIC, DCM_INTERN_DATA) dataDid_u16){
    VAR(Std_ReturnType, AUTOMATIC) dataRetVal_u8;
     dataRetVal_u8 = E_NOT_OK;

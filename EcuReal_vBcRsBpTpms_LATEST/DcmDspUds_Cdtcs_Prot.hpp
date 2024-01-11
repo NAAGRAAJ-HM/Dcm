@@ -11,7 +11,7 @@ extern VAR( boolean, DCM_VAR)  Dcm_DspCDTCStatus_b;
 
 #define DCM_START_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"
-extern FUNC(void,DCM_CODE) Dcm_CDTCModeStatusCheck(void);
+extern FUNC(void, DCM_CODE) Dcm_CDTCModeStatusCheck(void);
 #define DCM_STOP_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"
 

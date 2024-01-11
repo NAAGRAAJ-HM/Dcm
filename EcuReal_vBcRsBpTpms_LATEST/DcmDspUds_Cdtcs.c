@@ -11,11 +11,11 @@ VAR( boolean, DCM_VAR)  Dcm_DspCDTCStatus_b;
 
 #define DCM_START_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"
-FUNC(void,DCM_CODE) Dcm_Dsp_CDTCSIni(void){
+FUNC(void, DCM_CODE) Dcm_Dsp_CDTCSIni(void){
     Dcm_DspCDTCStatus_b = TRUE;
 }
 
-FUNC(Std_ReturnType,DCM_CODE) SwcServiceDcm_tControlDTCSetting(
+FUNC(Std_ReturnType, DCM_CODE) SwcServiceDcm_tControlDTCSetting(
         VAR(Dcm_SrvOpStatusType,          AUTOMATIC                 ) OpStatus
    ,  P2VAR(Dcm_MsgContextType,           AUTOMATIC, DCM_INTERN_DATA) pMsgContext
    ,  P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8
@@ -210,7 +210,7 @@ FUNC(void, DCM_CODE) Dcm_ControlDtcSettingExit(void){
    }
 }
 
-FUNC(void,DCM_CODE) Dcm_CDTCModeStatusCheck(void){
+FUNC(void, DCM_CODE) Dcm_CDTCModeStatusCheck(void){
    VAR(uint8,                           AUTOMATIC) dataNegRespCode_u8;
    VAR(Dem_ReturnControlDTCSettingType, AUTOMATIC) dataDemRetVal_u8;
    dataNegRespCode_u8 = 0x00;

@@ -90,7 +90,7 @@ FUNC(uint8,DCM_CODE) Dcm_GetActiveConnectionIdx_u8 (void){
     return idxConn_u8;
 }
 
-FUNC(void,DCM_CODE) Dcm_DslDsdWarmStart(void){
+FUNC(void, DCM_CODE) Dcm_DslDsdWarmStart(void){
    VAR(uint8_least, AUTOMATIC)  idxProtcol_qu8;
    VAR(uint8_least, AUTOMATIC)  idxSession_qu8;
    VAR(uint8,     AUTOMATIC)  dataSessionId_u8;

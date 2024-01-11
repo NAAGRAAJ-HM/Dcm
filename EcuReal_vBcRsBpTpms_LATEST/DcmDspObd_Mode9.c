@@ -34,7 +34,7 @@ static VAR(Dcm_DspMode09Type_ten,DCM_VAR) Dcm_stDspMode09_en;
 #define DCM_START_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"
 
-FUNC(void,DCM_CODE) Dcm_DcmObdMode09_Ini(void){
+FUNC(void, DCM_CODE) Dcm_DcmObdMode09_Ini(void){
 
    if(Dcm_stDspMode09_en == DCM_DSP_MODE09_RUNNING)
    {

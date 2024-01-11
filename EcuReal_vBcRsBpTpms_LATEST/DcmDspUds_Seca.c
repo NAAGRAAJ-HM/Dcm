@@ -54,18 +54,18 @@ static VAR(boolean, DCM_VAR)      Dcm_Lok_Dcm_SecaRteCallPlaced_b;
 
 #if( DCM_CFG_DSP_SECA_ASP_ENABLED != DCM_CFG_OFF)
 
-FUNC (void,DCM_CODE) Dcm_ResetAsynchSecaFlag(void){
+FUNC (void, DCM_CODE) Dcm_ResetAsynchSecaFlag(void){
 
      Dcm_Lok_Dcm_SecaRteCallPlaced_b = FALSE;
 }
 #endif
 
 #if(DCM_CFG_DSP_SECA_STORESEED != DCM_CFG_OFF)
-static FUNC(void,DCM_CODE) Dcm_Lok_NewSecurityLevelToUnlock
+static FUNC(void, DCM_CODE) Dcm_Lok_NewSecurityLevelToUnlock
                             (P2VAR(Dcm_SrvOpStatusType, AUTOMATIC, DCM_INTERN_DATA) OpStatus,\
                               P2VAR(Dcm_MsgContextType, AUTOMATIC,DCM_INTERN_CONST) pMsgContext)
 #else
-static FUNC(void,DCM_CODE) Dcm_Lok_NewSecurityLevelToUnlock
+static FUNC(void, DCM_CODE) Dcm_Lok_NewSecurityLevelToUnlock
                             (P2VAR(Dcm_SrvOpStatusType, AUTOMATIC, DCM_INTERN_DATA) OpStatus,\
                               P2CONST(Dcm_MsgContextType, AUTOMATIC,DCM_INTERN_CONST) pMsgContext)
 #endif
@@ -124,7 +124,7 @@ static FUNC(void,DCM_CODE) Dcm_Lok_NewSecurityLevelToUnlock
    }
 }
 
-static FUNC(void,DCM_CODE) Dcm_Lok_ReqSecIsCurrentSecurityLevel
+static FUNC(void, DCM_CODE) Dcm_Lok_ReqSecIsCurrentSecurityLevel
                            (P2VAR(Dcm_SrvOpStatusType, AUTOMATIC, DCM_INTERN_DATA) OpStatus,\
                             P2VAR(Dcm_MsgContextType, AUTOMATIC,DCM_INTERN_CONST) pMsgContext)
 {
@@ -147,7 +147,7 @@ static FUNC(void,DCM_CODE) Dcm_Lok_ReqSecIsCurrentSecurityLevel
     Dcm_Lok_secaServRetValue_u8=E_OK;
 }
 
-static FUNC(void,DCM_CODE) Dcm_Lok_CurrentSecurityLevel
+static FUNC(void, DCM_CODE) Dcm_Lok_CurrentSecurityLevel
                             (P2VAR(Dcm_MsgContextType, AUTOMATIC,DCM_INTERN_CONST) pMsgContext,\
                                 P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8)
 {
@@ -176,7 +176,7 @@ static FUNC(void,DCM_CODE) Dcm_Lok_CurrentSecurityLevel
    }
 }
 
-static FUNC(void,DCM_CODE) Dcm_Lok_SecurityLevelConfigured
+static FUNC(void, DCM_CODE) Dcm_Lok_SecurityLevelConfigured
                            (P2VAR(Dcm_MsgContextType, AUTOMATIC,DCM_INTERN_CONST) pMsgContext,\
                            P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8)
 {
@@ -205,7 +205,7 @@ static FUNC(void,DCM_CODE) Dcm_Lok_SecurityLevelConfigured
    }
 }
 
-static FUNC(void,DCM_CODE) Dcm_Lok_SecaSeedRequest (P2VAR(Dcm_MsgContextType, AUTOMATIC,DCM_INTERN_CONST) pMsgContext,\
+static FUNC(void, DCM_CODE) Dcm_Lok_SecaSeedRequest (P2VAR(Dcm_MsgContextType, AUTOMATIC,DCM_INTERN_CONST) pMsgContext,\
                                   P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8)
 {
 
@@ -245,7 +245,7 @@ static FUNC(void,DCM_CODE) Dcm_Lok_SecaSeedRequest (P2VAR(Dcm_MsgContextType, AU
 #endif
 }
 
-static FUNC(void,DCM_CODE) Dcm_Lok_ReqSecaLvlConfigured
+static FUNC(void, DCM_CODE) Dcm_Lok_ReqSecaLvlConfigured
                             (P2VAR(Dcm_SrvOpStatusType, AUTOMATIC, DCM_INTERN_DATA) OpStatus,\
                               P2CONST(Dcm_MsgContextType, AUTOMATIC,DCM_INTERN_CONST) pMsgContext,\
                                 P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8)
@@ -281,7 +281,7 @@ static FUNC(void,DCM_CODE) Dcm_Lok_ReqSecaLvlConfigured
    }
 }
 
-static FUNC(void,DCM_CODE) Dcm_Lok_ChkForReqSecaLvl
+static FUNC(void, DCM_CODE) Dcm_Lok_ChkForReqSecaLvl
                            (P2CONST(Dcm_MsgContextType, AUTOMATIC,DCM_INTERN_CONST) pMsgContext,\
                             P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8)
 {
@@ -308,7 +308,7 @@ static FUNC(void,DCM_CODE) Dcm_Lok_ChkForReqSecaLvl
    }
 }
 
-static FUNC(void,DCM_CODE) Dcm_Lok_SecaRequestState(P2VAR(Dcm_MsgContextType, AUTOMATIC,DCM_INTERN_CONST) pMsgContext,\
+static FUNC(void, DCM_CODE) Dcm_Lok_SecaRequestState(P2VAR(Dcm_MsgContextType, AUTOMATIC,DCM_INTERN_CONST) pMsgContext,\
                               P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8)
 {
 
@@ -330,7 +330,7 @@ static FUNC(void,DCM_CODE) Dcm_Lok_SecaRequestState(P2VAR(Dcm_MsgContextType, AU
    }
 }
 
-static FUNC(void,DCM_CODE) Dcm_Lok_SecaCmpKeyPnding
+static FUNC(void, DCM_CODE) Dcm_Lok_SecaCmpKeyPnding
                            (P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8)
 {
     *dataNegRespCode_u8 =0x00u;
@@ -340,7 +340,7 @@ static FUNC(void,DCM_CODE) Dcm_Lok_SecaCmpKeyPnding
 
 #if(DCM_CFG_DSP_USE_ASYNCH_CLIENT_SERVER != DCM_CFG_OFF)
 #if(DCM_CFG_DSP_SECA_ASP_ENABLED != DCM_CFG_OFF)
-static FUNC(void,DCM_CODE) Dcm_Lok_SecaAsyncServerPt(P2CONST(Dcm_MsgContextType, AUTOMATIC,DCM_INTERN_CONST) pMsgContext,\
+static FUNC(void, DCM_CODE) Dcm_Lok_SecaAsyncServerPt(P2CONST(Dcm_MsgContextType, AUTOMATIC,DCM_INTERN_CONST) pMsgContext,\
                                     P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8)
 {
 
@@ -389,7 +389,7 @@ static FUNC(void,DCM_CODE) Dcm_Lok_SecaAsyncServerPt(P2CONST(Dcm_MsgContextType,
 #endif
 #endif
 
-static FUNC(void,DCM_CODE) Dcm_Lok_SecaCheckdataStValidKeyChk
+static FUNC(void, DCM_CODE) Dcm_Lok_SecaCheckdataStValidKeyChk
                            (P2CONST(Dcm_MsgContextType, AUTOMATIC,DCM_INTERN_CONST) pMsgContext,\
                            P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8)
 {
@@ -422,7 +422,7 @@ static FUNC(void,DCM_CODE) Dcm_Lok_SecaCheckdataStValidKeyChk
 }
 
 #if(DCM_CFG_DSP_SECA_ASP_ENABLED != DCM_CFG_OFF)
-static FUNC(void,DCM_CODE) Dcm_Lok_SecaUseAsynchronousServerCallPoint (void){
+static FUNC(void, DCM_CODE) Dcm_Lok_SecaUseAsynchronousServerCallPoint (void){
 
    if(!Dcm_Lok_Dcm_SecaRteCallPlaced_b)
    {
@@ -469,11 +469,11 @@ static FUNC(void,DCM_CODE) Dcm_Lok_SecaUseAsynchronousServerCallPoint (void){
 #endif
 
 #if((DCM_CFG_DSP_USE_ASYNCH_CLIENT_SERVER != DCM_CFG_OFF) && (DCM_CFG_DSP_SECA_ATTEMPT_COUNTER!=DCM_CFG_OFF))
-static FUNC(void,DCM_CODE) Dcm_Lok_SecaValidKeyNotificationToAppIsOk
+static FUNC(void, DCM_CODE) Dcm_Lok_SecaValidKeyNotificationToAppIsOk
                            (P2VAR(Dcm_SrvOpStatusType, AUTOMATIC, DCM_INTERN_DATA) OpStatus,\
                            P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8)
 #else
-static FUNC(void,DCM_CODE) Dcm_Lok_SecaValidKeyNotificationToAppIsOk
+static FUNC(void, DCM_CODE) Dcm_Lok_SecaValidKeyNotificationToAppIsOk
                            (P2VAR(Dcm_SrvOpStatusType, AUTOMATIC, DCM_INTERN_DATA) OpStatus)
 #endif
 {
@@ -530,7 +530,7 @@ static FUNC(void,DCM_CODE) Dcm_Lok_SecaValidKeyNotificationToAppIsOk
    }
 }
 
-static FUNC(void,DCM_CODE) Dcm_Lok_SecaUnlockSecurityLvl(P2VAR(Dcm_SrvOpStatusType, AUTOMATIC, DCM_INTERN_DATA) OpStatus,\
+static FUNC(void, DCM_CODE) Dcm_Lok_SecaUnlockSecurityLvl(P2VAR(Dcm_SrvOpStatusType, AUTOMATIC, DCM_INTERN_DATA) OpStatus,\
                                        P2VAR(Dcm_MsgContextType, AUTOMATIC,DCM_INTERN_CONST) pMsgContext,\
                                        P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8)
 {
@@ -557,10 +557,10 @@ static FUNC(void,DCM_CODE) Dcm_Lok_SecaUnlockSecurityLvl(P2VAR(Dcm_SrvOpStatusTy
 }
 
 #if((DCM_CFG_DSP_USE_ASYNCH_CLIENT_SERVER != DCM_CFG_OFF) && (DCM_CFG_DSP_SECA_ATTEMPT_COUNTER!=DCM_CFG_OFF))
-static FUNC(void,DCM_CODE) Dcm_Lok_SecaCmpKeyFailed (P2VAR(Dcm_SrvOpStatusType, AUTOMATIC, DCM_INTERN_DATA) OpStatus,\
+static FUNC(void, DCM_CODE) Dcm_Lok_SecaCmpKeyFailed (P2VAR(Dcm_SrvOpStatusType, AUTOMATIC, DCM_INTERN_DATA) OpStatus,\
                                 P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8)
 #else
-static FUNC(void,DCM_CODE) Dcm_Lok_SecaCmpKeyFailed (P2VAR(Dcm_SrvOpStatusType, AUTOMATIC, DCM_INTERN_DATA) OpStatus)
+static FUNC(void, DCM_CODE) Dcm_Lok_SecaCmpKeyFailed (P2VAR(Dcm_SrvOpStatusType, AUTOMATIC, DCM_INTERN_DATA) OpStatus)
 #endif
 {
 #if((DCM_CFG_DSP_SECA_ATTEMPT_COUNTER!=DCM_CFG_OFF)&&(DCM_CFG_DSP_USE_ASYNCH_CLIENT_SERVER != DCM_CFG_OFF))
@@ -628,13 +628,13 @@ static FUNC(void,DCM_CODE) Dcm_Lok_SecaCmpKeyFailed (P2VAR(Dcm_SrvOpStatusType, 
    }
 }
 
-static FUNC(void,DCM_CODE) Dcm_Lok_SecaCmpKeyNotOk (P2VAR(Dcm_SrvOpStatusType, AUTOMATIC, DCM_INTERN_DATA) OpStatus)
+static FUNC(void, DCM_CODE) Dcm_Lok_SecaCmpKeyNotOk (P2VAR(Dcm_SrvOpStatusType, AUTOMATIC, DCM_INTERN_DATA) OpStatus)
 {
     Dcm_DspSecaOpStatus_u8 = DCM_INITIAL;
     *OpStatus = DCM_PROCESSSERVICE;
 }
 
-static FUNC(void,DCM_CODE) Dcm_Lok_SecaCmpKeyNegResp
+static FUNC(void, DCM_CODE) Dcm_Lok_SecaCmpKeyNegResp
                            (P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8)
 {
    if(*dataNegRespCode_u8 == 0x00u)
@@ -645,7 +645,7 @@ static FUNC(void,DCM_CODE) Dcm_Lok_SecaCmpKeyNegResp
     Dcm_DspSecaOpStatus_u8 = DCM_INITIAL;
 }
 
-static FUNC(void,DCM_CODE) Dcm_Lok_SecaCmpKeyStatusChk (P2VAR(Dcm_SrvOpStatusType, AUTOMATIC, DCM_INTERN_DATA) OpStatus,\
+static FUNC(void, DCM_CODE) Dcm_Lok_SecaCmpKeyStatusChk (P2VAR(Dcm_SrvOpStatusType, AUTOMATIC, DCM_INTERN_DATA) OpStatus,\
                                                     P2VAR(Dcm_MsgContextType, AUTOMATIC,DCM_INTERN_CONST) pMsgContext,\
                                        P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8)
 {
@@ -675,7 +675,7 @@ static FUNC(void,DCM_CODE) Dcm_Lok_SecaCmpKeyStatusChk (P2VAR(Dcm_SrvOpStatusTyp
    }
 }
 
-static FUNC(void,DCM_CODE) Dcm_Lok_SecaCmpKey (P2VAR(Dcm_SrvOpStatusType, AUTOMATIC, DCM_INTERN_DATA) OpStatus,\
+static FUNC(void, DCM_CODE) Dcm_Lok_SecaCmpKey (P2VAR(Dcm_SrvOpStatusType, AUTOMATIC, DCM_INTERN_DATA) OpStatus,\
                                            P2VAR(Dcm_MsgContextType, AUTOMATIC,DCM_INTERN_CONST) pMsgContext,\
                               P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8)
 {
@@ -706,7 +706,7 @@ static FUNC(void,DCM_CODE) Dcm_Lok_SecaCmpKey (P2VAR(Dcm_SrvOpStatusType, AUTOMA
 }
 
 #if(DCM_CFG_DSP_SECA_ASP_ENABLED != DCM_CFG_OFF)
-static FUNC(void,DCM_CODE) Dcm_Lok_SecaAsyncServerCallPointChkForGetSeed
+static FUNC(void, DCM_CODE) Dcm_Lok_SecaAsyncServerCallPointChkForGetSeed
                             (P2VAR(Dcm_MsgContextType, AUTOMATIC,DCM_INTERN_CONST) pMsgContext,\
                              P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8)
 {
@@ -764,7 +764,7 @@ static FUNC(void,DCM_CODE) Dcm_Lok_SecaAsyncServerCallPointChkForGetSeed
 #endif
 
 #if(DCM_CFG_DSP_USE_ASYNCH_CLIENT_SERVER != DCM_CFG_OFF)
-static FUNC(void,DCM_CODE) Dcm_Lok_GenerateSeedAsynchClientServer
+static FUNC(void, DCM_CODE) Dcm_Lok_GenerateSeedAsynchClientServer
                            (P2VAR(Dcm_MsgContextType, AUTOMATIC,DCM_INTERN_CONST) pMsgContext,\
                             P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8)
 {
@@ -798,7 +798,7 @@ static FUNC(void,DCM_CODE) Dcm_Lok_GenerateSeedAsynchClientServer
 #endif
 
 #if(DCM_CFG_DSP_USE_ASYNCH_FNC != DCM_CFG_OFF)
-static FUNC(void,DCM_CODE) Dcm_Lok_GenerateSeedAsynchFnc
+static FUNC(void, DCM_CODE) Dcm_Lok_GenerateSeedAsynchFnc
                             (P2VAR(Dcm_MsgContextType, AUTOMATIC,DCM_INTERN_CONST) pMsgContext,\
                                 P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8)
 {
@@ -833,7 +833,7 @@ static FUNC(void,DCM_CODE) Dcm_Lok_GenerateSeedAsynchFnc
 }
 #endif
 
-static FUNC(void,DCM_CODE)Dcm_Lok_GetSeedReturnedWoError(P2VAR(Dcm_SrvOpStatusType, AUTOMATIC, DCM_INTERN_DATA) OpStatus,\
+static FUNC(void, DCM_CODE)Dcm_Lok_GetSeedReturnedWoError(P2VAR(Dcm_SrvOpStatusType, AUTOMATIC, DCM_INTERN_DATA) OpStatus,\
                                        P2VAR(Dcm_MsgContextType, AUTOMATIC,DCM_INTERN_CONST) pMsgContext,\
                                        P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8)
 {
@@ -861,7 +861,7 @@ static FUNC(void,DCM_CODE)Dcm_Lok_GetSeedReturnedWoError(P2VAR(Dcm_SrvOpStatusTy
     Dcm_Lok_secaServRetValue_u8=E_OK;
 }
 
-static FUNC(void,DCM_CODE) Dcm_Lok_SecaGenSeed (P2VAR(Dcm_MsgContextType, AUTOMATIC,DCM_INTERN_CONST) pMsgContext,\
+static FUNC(void, DCM_CODE) Dcm_Lok_SecaGenSeed (P2VAR(Dcm_MsgContextType, AUTOMATIC,DCM_INTERN_CONST) pMsgContext,\
                                P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8)
 {
     Dcm_Lok_ptrSecurityConfig_p= &Dcm_Dsp_Security[Dcm_DspSecTabIdx_u8];
@@ -910,7 +910,7 @@ static FUNC(void,DCM_CODE) Dcm_Lok_SecaGenSeed (P2VAR(Dcm_MsgContextType, AUTOMA
 
 #if(DCM_CFG_DSP_SECA_ATTEMPT_COUNTER!=DCM_CFG_OFF)
 #if(DCM_CFG_DSP_SECA_ASP_ENABLED != DCM_CFG_OFF)
-static FUNC(void,DCM_CODE) Dcm_Lok_SecaUseAsyncServerCallPointForSetSecaAttptCntr(void){
+static FUNC(void, DCM_CODE) Dcm_Lok_SecaUseAsyncServerCallPointForSetSecaAttptCntr(void){
 
    if(!Dcm_Lok_Dcm_SecaRteCallPlaced_b)
    {
@@ -957,7 +957,7 @@ static FUNC(void,DCM_CODE) Dcm_Lok_SecaUseAsyncServerCallPointForSetSecaAttptCnt
 #endif
 
 #if(DCM_CFG_DSP_SECA_ATTEMPT_COUNTER!=DCM_CFG_OFF)
-static FUNC(void,DCM_CODE) Dcm_Lok_SecaStoreDelayCountTrue(P2VAR(Dcm_SrvOpStatusType, AUTOMATIC, DCM_INTERN_DATA)OpStatus)
+static FUNC(void, DCM_CODE) Dcm_Lok_SecaStoreDelayCountTrue(P2VAR(Dcm_SrvOpStatusType, AUTOMATIC, DCM_INTERN_DATA)OpStatus)
 {
     Dcm_Lok_ptrSecurityConfig_p = &Dcm_Dsp_Security[Dcm_Lok_idxSecTab_qu8];
    if((Dcm_Lok_ptrSecurityConfig_p->Dsp_SetAttempCounter_fp!=NULL_PTR))
@@ -988,10 +988,10 @@ static FUNC(void,DCM_CODE) Dcm_Lok_SecaStoreDelayCountTrue(P2VAR(Dcm_SrvOpStatus
 #endif
 
 #if(DCM_CFG_DSP_SECA_ATTEMPT_COUNTER!=DCM_CFG_OFF)
-   static FUNC(void,DCM_CODE) Dcm_Lok_SecaStoreDelayCountFalseCmpKeyOk
+   static FUNC(void, DCM_CODE) Dcm_Lok_SecaStoreDelayCountFalseCmpKeyOk
                             (P2VAR(Dcm_SrvOpStatusType, AUTOMATIC, DCM_INTERN_DATA) OpStatus)
 #else
-   static FUNC(void,DCM_CODE) Dcm_Lok_SecaStoreDelayCountFalseCmpKeyOk (void)
+   static FUNC(void, DCM_CODE) Dcm_Lok_SecaStoreDelayCountFalseCmpKeyOk (void)
 #endif
 {
 
@@ -1034,10 +1034,10 @@ static FUNC(void,DCM_CODE) Dcm_Lok_SecaStoreDelayCountTrue(P2VAR(Dcm_SrvOpStatus
 }
 
 #if(DCM_CFG_DSP_SECA_ATTEMPT_COUNTER!=DCM_CFG_OFF)
-   static FUNC(void,DCM_CODE) Dcm_Lok_SecaStoreDelayCountFalseCmpKeyFailed
+   static FUNC(void, DCM_CODE) Dcm_Lok_SecaStoreDelayCountFalseCmpKeyFailed
                             (P2VAR(Dcm_SrvOpStatusType, AUTOMATIC, DCM_INTERN_DATA) OpStatus)
 #else
-   static FUNC(void,DCM_CODE) Dcm_Lok_SecaStoreDelayCountFalseCmpKeyFailed (void)
+   static FUNC(void, DCM_CODE) Dcm_Lok_SecaStoreDelayCountFalseCmpKeyFailed (void)
 #endif
 {
 
@@ -1080,10 +1080,10 @@ static FUNC(void,DCM_CODE) Dcm_Lok_SecaStoreDelayCountTrue(P2VAR(Dcm_SrvOpStatus
 }
 
 #if(DCM_CFG_DSP_SECA_ATTEMPT_COUNTER!=DCM_CFG_OFF)
-   static FUNC(void,DCM_CODE) Dcm_Lok_SecaStoreDelayCountFalse
+   static FUNC(void, DCM_CODE) Dcm_Lok_SecaStoreDelayCountFalse
                                 (P2VAR(Dcm_SrvOpStatusType, AUTOMATIC, DCM_INTERN_DATA) OpStatus)
 #else
-   static FUNC(void,DCM_CODE) Dcm_Lok_SecaStoreDelayCountFalse (void)
+   static FUNC(void, DCM_CODE) Dcm_Lok_SecaStoreDelayCountFalse (void)
 #endif
 {
    if(Dcm_Lok_stCmpKey_u8 == E_OK)
@@ -1105,9 +1105,9 @@ static FUNC(void,DCM_CODE) Dcm_Lok_SecaStoreDelayCountTrue(P2VAR(Dcm_SrvOpStatus
 }
 
 #if(DCM_CFG_DSP_SECA_ATTEMPT_COUNTER!=DCM_CFG_OFF)
-   static FUNC(void,DCM_CODE)  Dcm_Lok_SecaPending (P2VAR(Dcm_SrvOpStatusType, AUTOMATIC, DCM_INTERN_DATA) OpStatus)
+   static FUNC(void, DCM_CODE)  Dcm_Lok_SecaPending (P2VAR(Dcm_SrvOpStatusType, AUTOMATIC, DCM_INTERN_DATA) OpStatus)
 #else
-   static FUNC(void,DCM_CODE)  Dcm_Lok_SecaPending (void)
+   static FUNC(void, DCM_CODE)  Dcm_Lok_SecaPending (void)
 #endif
 {
     Dcm_Lok_ptrSecurityConfig_p = &Dcm_Dsp_Security[Dcm_Lok_idxSecTab_qu8];
@@ -1126,7 +1126,7 @@ static FUNC(void,DCM_CODE) Dcm_Lok_SecaStoreDelayCountTrue(P2VAR(Dcm_SrvOpStatus
    }
 }
 
-   static FUNC(void,DCM_CODE) Dcm_Lok_SecaCheckData (P2VAR(Dcm_SrvOpStatusType, AUTOMATIC, DCM_INTERN_DATA) OpStatus,\
+   static FUNC(void, DCM_CODE) Dcm_Lok_SecaCheckData (P2VAR(Dcm_SrvOpStatusType, AUTOMATIC, DCM_INTERN_DATA) OpStatus,\
                                     P2VAR(Dcm_MsgContextType, AUTOMATIC,DCM_INTERN_CONST) pMsgContext,\
                                     P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8)
 {
@@ -1154,7 +1154,7 @@ static FUNC(void,DCM_CODE) Dcm_Lok_SecaStoreDelayCountTrue(P2VAR(Dcm_SrvOpStatus
    }
 }
 
-static FUNC(void,DCM_CODE) Dcm_Lok_SecaProcessStCmpKeyOk (P2VAR(Dcm_SrvOpStatusType, AUTOMATIC, DCM_INTERN_DATA) OpStatus)
+static FUNC(void, DCM_CODE) Dcm_Lok_SecaProcessStCmpKeyOk (P2VAR(Dcm_SrvOpStatusType, AUTOMATIC, DCM_INTERN_DATA) OpStatus)
 {
 #if(DCM_CFG_DSP_SECA_STORESEED != DCM_CFG_OFF)
 
@@ -1175,7 +1175,7 @@ static FUNC(void,DCM_CODE) Dcm_Lok_SecaProcessStCmpKeyOk (P2VAR(Dcm_SrvOpStatusT
 #endif
 }
 
-static FUNC(void,DCM_CODE) Dcm_Lok_SecaProcessStCmpKeyFailed
+static FUNC(void, DCM_CODE) Dcm_Lok_SecaProcessStCmpKeyFailed
                             (P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8)
 {
     Dcm_Lok_ptrSecurityConfig_p = &Dcm_Dsp_Security[Dcm_Lok_idxSecTab_qu8];
@@ -1220,7 +1220,7 @@ static FUNC(void,DCM_CODE) Dcm_Lok_SecaProcessStCmpKeyFailed
    }
 }
 
-static FUNC(void,DCM_CODE) Dcm_Lok_SecaProcesStCmpKeyNotOk
+static FUNC(void, DCM_CODE) Dcm_Lok_SecaProcesStCmpKeyNotOk
                             (P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8)
 {
    if(*dataNegRespCode_u8 == 0x00u)
@@ -1233,7 +1233,7 @@ static FUNC(void,DCM_CODE) Dcm_Lok_SecaProcesStCmpKeyNotOk
    }
 }
 
-static FUNC(void,DCM_CODE) Dcm_Lok_SecaProcessService
+static FUNC(void, DCM_CODE) Dcm_Lok_SecaProcessService
                             (P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8)
 {
    if(Dcm_Lok_stCmpKey_u8 == E_OK)
@@ -1253,7 +1253,7 @@ static FUNC(void,DCM_CODE) Dcm_Lok_SecaProcessService
    }
 }
 
-static FUNC(void,DCM_CODE) Dcm_Lok_SecaStateProcessing (P2VAR(Dcm_SrvOpStatusType, AUTOMATIC, DCM_INTERN_DATA) OpStatus,\
+static FUNC(void, DCM_CODE) Dcm_Lok_SecaStateProcessing (P2VAR(Dcm_SrvOpStatusType, AUTOMATIC, DCM_INTERN_DATA) OpStatus,\
                                     P2VAR(Dcm_MsgContextType, AUTOMATIC,DCM_INTERN_CONST) pMsgContext,\
                                     P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8)
 {
@@ -1274,7 +1274,7 @@ static FUNC(void,DCM_CODE) Dcm_Lok_SecaStateProcessing (P2VAR(Dcm_SrvOpStatusTyp
    }
 }
 
-FUNC(Std_ReturnType,DCM_CODE) SwcServiceDcm_tSecurityAccess (VAR(Dcm_SrvOpStatusType, AUTOMATIC) OpStatus,\
+FUNC(Std_ReturnType, DCM_CODE) SwcServiceDcm_tSecurityAccess (VAR(Dcm_SrvOpStatusType, AUTOMATIC) OpStatus,\
                                     P2VAR(Dcm_MsgContextType, AUTOMATIC, DCM_INTERN_DATA) pMsgContext,\
                                     P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8)
 {
@@ -1315,13 +1315,13 @@ FUNC(Std_ReturnType,DCM_CODE) SwcServiceDcm_tSecurityAccess (VAR(Dcm_SrvOpStatus
     return localdataServRetValue_u8;
 }
 
-FUNC(void,DCM_CODE) Dcm_ResetAccessType (void){
+FUNC(void, DCM_CODE) Dcm_ResetAccessType (void){
     Dcm_DspSecAccType_u8=0;
 }
 
 #if(DCM_CFG_DSP_SECA_STORESEED != DCM_CFG_OFF)
 
-FUNC (void,DCM_CODE) Dcm_Dsp_SecaClearSeed (void){
+FUNC (void, DCM_CODE) Dcm_Dsp_SecaClearSeed (void){
    VAR (uint8_least, AUTOMATIC) idxSecTab_qu8;
    VAR (uint32, AUTOMATIC) SeedIdx_u32;
    VAR (uint32, AUTOMATIC) Seedlen_u32;

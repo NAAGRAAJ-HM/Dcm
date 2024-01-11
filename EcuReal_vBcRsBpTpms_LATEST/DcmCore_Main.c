@@ -105,15 +105,15 @@ VAR(boolean,DCM_VAR) Dcm_isStopProtocolInvoked_b;
 #define DCM_START_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"
 
-FUNC(void,DCM_CODE) Dcm_Lok_DSL_Mainfunction(void);
+FUNC(void, DCM_CODE) Dcm_Lok_DSL_Mainfunction(void);
 
-static FUNC(void,DCM_CODE) Dcm_Lok_Statemachine_Init (void){
+static FUNC(void, DCM_CODE) Dcm_Lok_Statemachine_Init (void){
     Dcm_Lok_DSL_Mainfunction();
     Dcm_Lok_DsdStateMachine();
 }
 
 #if(DCM_CFG_VIN_SUPPORTED != DCM_CFG_OFF)
-static FUNC(void,DCM_CODE) Dcm_Lok_MainVINinit (void){
+static FUNC(void, DCM_CODE) Dcm_Lok_MainVINinit (void){
 
           if(Dcm_VinReceived_b != TRUE)
           {
@@ -131,7 +131,7 @@ static FUNC(void,DCM_CODE) Dcm_Lok_MainVINinit (void){
 }
 #endif
 
-static FUNC(void,DCM_CODE) Dcm_Lok_UdsMainFunction(void){
+static FUNC(void, DCM_CODE) Dcm_Lok_UdsMainFunction(void){
 #if(DCM_CFG_DSP_CONTROLDTCSETTING_ENABLED != DCM_CFG_OFF)
 
             Dcm_CDTCModeStatusCheck();
@@ -148,7 +148,7 @@ static FUNC(void,DCM_CODE) Dcm_Lok_UdsMainFunction(void){
 #endif
 }
 
-FUNC(void,DCM_CODE) Dcm_Lok_DSL_Mainfunction(void){
+FUNC(void, DCM_CODE) Dcm_Lok_DSL_Mainfunction(void){
 
         Dcm_Lok_ProcessResetToDefaultSession();
 
@@ -165,7 +165,7 @@ FUNC(void,DCM_CODE) Dcm_Lok_DSL_Mainfunction(void){
 }
 
 #if(DCM_CFG_RESTORING_ENABLED != DCM_CFG_OFF)
-static FUNC(void,DCM_CODE) Dcm_Lok_Main_Warmstart(void){
+static FUNC(void, DCM_CODE) Dcm_Lok_Main_Warmstart(void){
 
    VAR(Std_ReturnType, AUTOMATIC) stGetPermTxWarmResp_u8;
 
@@ -220,7 +220,7 @@ static FUNC(void,DCM_CODE) Dcm_Lok_Main_Warmstart(void){
 }
 #endif
 
-FUNC(void,DCM_CODE) infSwcServiceDcmSwcServiceSchM_vMainFunction(void){
+FUNC(void, DCM_CODE) infSwcServiceDcmSwcServiceSchM_vMainFunction(void){
 
    if(Dcm_acceptRequests_b != FALSE)
    {

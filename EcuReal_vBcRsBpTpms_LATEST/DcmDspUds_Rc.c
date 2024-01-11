@@ -70,7 +70,7 @@ static VAR(boolean, DCM_VAR)                                                s_Is
 #define DCM_START_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"
 
-FUNC(void,DCM_CODE) Dcm_Dsp_RC_Ini (void)
+FUNC(void, DCM_CODE) Dcm_Dsp_RC_Ini (void)
 {
    VAR(uint16, AUTOMATIC) idxLoop_qu16;
     Dcm_RCOpStatus_u8 = DCM_CANCEL;
@@ -162,7 +162,7 @@ FUNC(void,DCM_CODE) Dcm_Dsp_RC_Ini (void)
 
 #if(DCM_CFG_RC_RANGE_NUMRIDS > 0u)
 
-static FUNC(Std_ReturnType,DCM_CODE) Dcm_Lok_RcIsRIDRangeRoutine(P2VAR(boolean, AUTOMATIC, DCM_INTERN_DATA) flgRidSupported_b
+static FUNC(Std_ReturnType, DCM_CODE) Dcm_Lok_RcIsRIDRangeRoutine(P2VAR(boolean, AUTOMATIC, DCM_INTERN_DATA) flgRidSupported_b
    ,     VAR(uint16, AUTOMATIC)dataRId_u16
    ,     P2VAR(uint16, AUTOMATIC, DCM_INTERN_DATA) idxLoop_qu16
    ,     P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) NRC_u8)
@@ -238,7 +238,7 @@ static FUNC(Std_ReturnType,DCM_CODE) Dcm_Lok_RcIsRIDRangeRoutine(P2VAR(boolean, 
 
 #if(DCM_CFG_RC_NUMRIDS > 0u)
 
-static FUNC(Std_ReturnType,DCM_CODE) Dcm_Lok_RcIsRIDSingleRoutine(P2VAR(boolean, AUTOMATIC, DCM_INTERN_DATA) flgRidSupported_b
+static FUNC(Std_ReturnType, DCM_CODE) Dcm_Lok_RcIsRIDSingleRoutine(P2VAR(boolean, AUTOMATIC, DCM_INTERN_DATA) flgRidSupported_b
    ,     VAR(uint16, AUTOMATIC)dataRId_u16
    ,     P2VAR(uint16, AUTOMATIC, DCM_INTERN_DATA) idxLoop_qu16
    ,     P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) NRC_u8)
@@ -348,7 +348,7 @@ static FUNC(boolean,DCM_CODE) Dcm_Lok_RcIsRIDSupported (VAR(uint16, AUTOMATIC)da
 
 #if(DCM_CFG_RC_NUMRIDS > 0u)
 
-static FUNC(Std_ReturnType,DCM_CODE) Dcm_Lok_RcProcessRoutine(P2VAR(Dcm_MsgContextType, AUTOMATIC, DCM_INTERN_DATA) pMsgContext
+static FUNC(Std_ReturnType, DCM_CODE) Dcm_Lok_RcProcessRoutine(P2VAR(Dcm_MsgContextType, AUTOMATIC, DCM_INTERN_DATA) pMsgContext
    ,     P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8
    ,     VAR(uint16, AUTOMATIC) dataRId_u16)
 {
@@ -604,7 +604,7 @@ static FUNC(Std_ReturnType,DCM_CODE) Dcm_Lok_RcProcessRoutine(P2VAR(Dcm_MsgConte
     return dataRetVal_u8;
 }
 
-static FUNC(Std_ReturnType,DCM_CODE) Dcm_Lok_RcPendingRoutine(P2VAR(Dcm_MsgContextType, AUTOMATIC, DCM_INTERN_DATA) pMsgContext
+static FUNC(Std_ReturnType, DCM_CODE) Dcm_Lok_RcPendingRoutine(P2VAR(Dcm_MsgContextType, AUTOMATIC, DCM_INTERN_DATA) pMsgContext
    ,     P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8)
 {
    P2CONST(Dcm_DspRoutineSignalInfo_tst, AUTOMATIC, DCM_INTERN_CONST)  adrSignal_pcst;
@@ -730,7 +730,7 @@ static FUNC(Std_ReturnType,DCM_CODE) Dcm_Lok_RcPendingRoutine(P2VAR(Dcm_MsgConte
 
 #if(DCM_CFG_RC_RANGE_NUMRIDS > 0u)
 
-static FUNC(Std_ReturnType,DCM_CODE) Dcm_Lok_RcProcessRangeRoutine(P2VAR(Dcm_MsgContextType, AUTOMATIC, DCM_INTERN_DATA) pMsgContext
+static FUNC(Std_ReturnType, DCM_CODE) Dcm_Lok_RcProcessRangeRoutine(P2VAR(Dcm_MsgContextType, AUTOMATIC, DCM_INTERN_DATA) pMsgContext
    ,     P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8
    ,     VAR(uint16, AUTOMATIC) dataRId_u16)
 {
@@ -987,7 +987,7 @@ static FUNC(Std_ReturnType,DCM_CODE) Dcm_Lok_RcProcessRangeRoutine(P2VAR(Dcm_Msg
     return dataRetVal_u8;
 }
 
-static FUNC(Std_ReturnType,DCM_CODE) Dcm_Lok_RcPendingRangeRoutine(P2VAR(Dcm_MsgContextType, AUTOMATIC, DCM_INTERN_DATA) pMsgContext
+static FUNC(Std_ReturnType, DCM_CODE) Dcm_Lok_RcPendingRangeRoutine(P2VAR(Dcm_MsgContextType, AUTOMATIC, DCM_INTERN_DATA) pMsgContext
    ,     P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8)
 {
    P2CONST(Dcm_DspRoutineSignalInfo_tst, AUTOMATIC, DCM_INTERN_CONST)  adrSignal_pcst;
@@ -1111,7 +1111,7 @@ static FUNC(Std_ReturnType,DCM_CODE) Dcm_Lok_RcPendingRangeRoutine(P2VAR(Dcm_Msg
 }
 #endif
 
-FUNC(Std_ReturnType,DCM_CODE) SwcServiceDcm_tRoutineControl(VAR(Dcm_SrvOpStatusType, AUTOMATIC) OpStatus,P2VAR(Dcm_MsgContextType, AUTOMATIC, DCM_INTERN_DATA) pMsgContext,P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8)
+FUNC(Std_ReturnType, DCM_CODE) SwcServiceDcm_tRoutineControl(VAR(Dcm_SrvOpStatusType, AUTOMATIC) OpStatus,P2VAR(Dcm_MsgContextType, AUTOMATIC, DCM_INTERN_DATA) pMsgContext,P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8)
 {
    VAR(uint16, AUTOMATIC) dataRId_u16;
 
@@ -1203,7 +1203,7 @@ FUNC(Std_ReturnType,DCM_CODE) SwcServiceDcm_tRoutineControl(VAR(Dcm_SrvOpStatusT
 
 #if(DCM_CFG_RC_NUMRIDS > 0u)
 #if(DCM_CFG_STOPSUPPORTED != DCM_CFG_OFF)
-static FUNC(void,DCM_CODE) Dcm_DcmcallStopRoutine(VAR(uint16, AUTOMATIC) idxLoop_qu16)
+static FUNC(void, DCM_CODE) Dcm_DcmcallStopRoutine(VAR(uint16, AUTOMATIC) idxLoop_qu16)
 {
    VAR(Std_ReturnType, AUTOMATIC) dataRetType_u8;
 
@@ -1227,7 +1227,7 @@ static FUNC(void,DCM_CODE) Dcm_DcmcallStopRoutine(VAR(uint16, AUTOMATIC) idxLoop
 
 #if(DCM_CFG_RC_RANGE_NUMRIDS > 0u)
 #if(DCM_CFG_RCRANGE_STOPSUPPORTED != DCM_CFG_OFF)
-static FUNC(void,DCM_CODE) Dcm_DcmCallStopRoutineRange(VAR(uint16, AUTOMATIC) idxLoop_qu16)
+static FUNC(void, DCM_CODE) Dcm_DcmCallStopRoutineRange(VAR(uint16, AUTOMATIC) idxLoop_qu16)
 {
    VAR(Std_ReturnType, AUTOMATIC) dataRetType_u8;
 
@@ -1250,7 +1250,7 @@ static FUNC(void,DCM_CODE) Dcm_DcmCallStopRoutineRange(VAR(uint16, AUTOMATIC) id
 #endif
 #endif
 
-FUNC(void,DCM_CODE) Dcm_RoutineSetSesCtrlType (VAR(Dcm_SesCtrlType, AUTOMATIC) dataSesCtrlType_u8)
+FUNC(void, DCM_CODE) Dcm_RoutineSetSesCtrlType (VAR(Dcm_SesCtrlType, AUTOMATIC) dataSesCtrlType_u8)
 {
 
    VAR (uint16, AUTOMATIC) idxLoop_qu16;
@@ -1314,7 +1314,7 @@ FUNC(void,DCM_CODE) Dcm_RoutineSetSesCtrlType (VAR(Dcm_SesCtrlType, AUTOMATIC) d
 #endif
 }
 
-static FUNC(void,DCM_CODE) Dcm_SetFlagforRC(VAR (boolean, AUTOMATIC) isFlag_b)
+static FUNC(void, DCM_CODE) Dcm_SetFlagforRC(VAR (boolean, AUTOMATIC) isFlag_b)
  {
 
    s_IsRCSubfunctionCalled_b = isFlag_b;
@@ -1337,7 +1337,7 @@ static FUNC(void,DCM_CODE) Dcm_SetFlagforRC(VAR (boolean, AUTOMATIC) isFlag_b)
      }
 }
 
-FUNC(Std_ReturnType,DCM_CODE) Dcm_GetActiveRid(P2VAR(uint16, AUTOMATIC, DCM_INTERN_DATA) dataRid_u16)
+FUNC(Std_ReturnType, DCM_CODE) Dcm_GetActiveRid(P2VAR(uint16, AUTOMATIC, DCM_INTERN_DATA) dataRid_u16)
 {
    VAR(Std_ReturnType, AUTOMATIC) RetVal;
 

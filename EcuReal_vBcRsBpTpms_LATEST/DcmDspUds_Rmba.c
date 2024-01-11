@@ -27,7 +27,7 @@ static VAR (uint8,  DCM_VAR) Dcm_dataMemaddrsize_u8;
 #define DCM_START_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"
 
-FUNC(void,DCM_CODE) Dcm_RMBAIni (void){
+FUNC(void, DCM_CODE) Dcm_RMBAIni (void){
 
    if(DCM_PENDING == Dcm_stRmbaOpstatus_u8 )
    {
@@ -40,7 +40,7 @@ FUNC(void,DCM_CODE) Dcm_RMBAIni (void){
     Dcm_stRmbaOpstatus_u8 = DCM_INITIAL;
 }
 
-static FUNC (Std_ReturnType,DCM_CODE) Dcm_Lok_GetAddressRangeIndex_u8(VAR (uint32, AUTOMATIC) dataMemAddr_u32
+static FUNC (Std_ReturnType, DCM_CODE) Dcm_Lok_GetAddressRangeIndex_u8(VAR (uint32, AUTOMATIC) dataMemAddr_u32
    ,     VAR (uint32, AUTOMATIC) nrMemLength_u32
    ,     P2VAR (uint16, AUTOMATIC, DCM_INTERN_DATA) idxIndex_u16)
 {
@@ -69,7 +69,7 @@ static FUNC (Std_ReturnType,DCM_CODE) Dcm_Lok_GetAddressRangeIndex_u8(VAR (uint3
     return (dataRetVal_u8);
 }
 
-LOCAL_INLINE FUNC(void,DCM_CODE) Dcm_Lok_RmbaTotalCheckLength(
+LOCAL_INLINE FUNC(void, DCM_CODE) Dcm_Lok_RmbaTotalCheckLength(
                                  P2CONST(Dcm_MsgContextType, AUTOMATIC, DCM_INTERN_DATA) pMsgContext
    ,     P2VAR (Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8)
 {
@@ -226,7 +226,7 @@ static FUNC (void, DCM_CODE) Dcm_Lok_RmbaAccessCheck_u8 (VAR (uint16, AUTOMATIC)
    }
 }
 
-LOCAL_INLINE FUNC(Std_ReturnType,DCM_CODE) Dcm_Lok_RmbaReadMemory(
+LOCAL_INLINE FUNC(Std_ReturnType, DCM_CODE) Dcm_Lok_RmbaReadMemory(
                                  P2VAR(Dcm_MsgContextType, AUTOMATIC, DCM_INTERN_DATA) pMsgContext
    ,     P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8)
 {
@@ -275,7 +275,7 @@ LOCAL_INLINE FUNC(Std_ReturnType,DCM_CODE) Dcm_Lok_RmbaReadMemory(
     return dataServRet_u8;
 }
 
-FUNC(Std_ReturnType,DCM_CODE) Dcm_DcmReadMemoryByAddress (VAR(Dcm_SrvOpStatusType, AUTOMATIC) OpStatus
+FUNC(Std_ReturnType, DCM_CODE) Dcm_DcmReadMemoryByAddress (VAR(Dcm_SrvOpStatusType, AUTOMATIC) OpStatus
    ,     P2VAR(Dcm_MsgContextType, AUTOMATIC, DCM_INTERN_DATA) pMsgContext
    ,     P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8)
 {

@@ -27,7 +27,7 @@
 #define DCM_START_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"
 
-FUNC(void,DCM_CODE) Dcm_GetMemoryInfo(VAR   (uint8, AUTOMATIC) dataSize_u8
+FUNC(void, DCM_CODE) Dcm_GetMemoryInfo(VAR   (uint8, AUTOMATIC) dataSize_u8
    ,    P2CONST (uint8, AUTOMATIC, DCM_INTERN_DATA) adrReqBuf_pcu8
    ,    P2VAR (uint32, AUTOMATIC, DCM_INTERN_DATA) adrMemAddrLength_pu32)
 {
@@ -52,7 +52,7 @@ FUNC(void,DCM_CODE) Dcm_GetMemoryInfo(VAR   (uint8, AUTOMATIC) dataSize_u8
 #define DCM_START_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"
 
-FUNC(void,DCM_CODE) Dcm_UpdateTransferRequestCount(void){
+FUNC(void, DCM_CODE) Dcm_UpdateTransferRequestCount(void){
 
    if((Dcm_DataTransfer_st.isUploadStarted_b!=FALSE)||(Dcm_DataTransfer_st.isDownloadStarted_b!=FALSE))
    {

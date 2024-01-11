@@ -24,7 +24,7 @@ static VAR(boolean,     DCM_VAR) s_IsRecordSupported;
 #define DCM_START_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"
 
-FUNC(Std_ReturnType,DCM_CODE) Dcm_Dsp_ReportDataRecordByDTCNumber (VAR(Dcm_SrvOpStatusType, AUTOMATIC) Opstatus,P2VAR(Dcm_MsgContextType, AUTOMATIC, DCM_INTERN_DATA) pMsgContext,P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8)
+FUNC(Std_ReturnType, DCM_CODE) Dcm_Dsp_ReportDataRecordByDTCNumber (VAR(Dcm_SrvOpStatusType, AUTOMATIC) Opstatus,P2VAR(Dcm_MsgContextType, AUTOMATIC, DCM_INTERN_DATA) pMsgContext,P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8)
 {
 
    VAR(Dcm_MsgLenType, AUTOMATIC) dataRemainBuffer_u32;

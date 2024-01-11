@@ -19,7 +19,7 @@ static VAR(Std_ReturnType, AUTOMATIC)  s_dataRetVal_u8;
 #define DCM_START_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"
 
-static FUNC(void,DCM_CODE) Dcm_PrivDTCLengthCheck(P2VAR(Dcm_SrvOpStatusType, AUTOMATIC, DCM_INTERN_DATA) OpStatus,\
+static FUNC(void, DCM_CODE) Dcm_PrivDTCLengthCheck(P2VAR(Dcm_SrvOpStatusType, AUTOMATIC, DCM_INTERN_DATA) OpStatus,\
                                                   P2CONST(Dcm_MsgContextType, AUTOMATIC,DCM_INTERN_CONST) pMsgContext,\
                                                   P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8)
 {
@@ -47,7 +47,7 @@ static FUNC(void,DCM_CODE) Dcm_PrivDTCLengthCheck(P2VAR(Dcm_SrvOpStatusType, AUT
    }
 }
 
-static FUNC(void,DCM_CODE) Dcm_PrivClearDTCInformation( P2VAR(Dcm_SrvOpStatusType, AUTOMATIC, DCM_INTERN_DATA) OpStatus,\
+static FUNC(void, DCM_CODE) Dcm_PrivClearDTCInformation( P2VAR(Dcm_SrvOpStatusType, AUTOMATIC, DCM_INTERN_DATA) OpStatus,\
                                                         P2VAR(Dcm_MsgContextType, AUTOMATIC, DCM_INTERN_DATA) pMsgContext,\
                                                         P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8)
 {
@@ -90,7 +90,7 @@ static FUNC(void,DCM_CODE) Dcm_PrivClearDTCInformation( P2VAR(Dcm_SrvOpStatusTyp
    }
 }
 
-static FUNC(void,DCM_CODE)  DCM_PrivDTCConditionCheckfunc(P2VAR(Dcm_SrvOpStatusType, AUTOMATIC, DCM_INTERN_DATA) OpStatus,\
+static FUNC(void, DCM_CODE)  DCM_PrivDTCConditionCheckfunc(P2VAR(Dcm_SrvOpStatusType, AUTOMATIC, DCM_INTERN_DATA) OpStatus,\
                                                           P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8)
 {
 VAR(Dcm_ReturnClearDTCType_tu8, AUTOMATIC) dataDemClrRetVal_u8;
@@ -180,7 +180,7 @@ VAR(Dcm_ReturnClearDTCType_tu8, AUTOMATIC) dataDemClrRetVal_u8;
 #endif
 }
 
-FUNC(void,DCM_CODE) Dcm_Dsp_CDIIni(void){
+FUNC(void, DCM_CODE) Dcm_Dsp_CDIIni(void){
 
    if(Dcm_SrvOpstatus_u8 != DCM_INITIAL)
    {
@@ -190,7 +190,7 @@ FUNC(void,DCM_CODE) Dcm_Dsp_CDIIni(void){
     Dcm_SrvOpstatus_u8 = DCM_INITIAL;
 }
 
-FUNC(Std_ReturnType,DCM_CODE) SwcServiceDcm_tClearDiagnosticInformation (VAR(Dcm_SrvOpStatusType, AUTOMATIC) OpStatus,\
+FUNC(Std_ReturnType, DCM_CODE) SwcServiceDcm_tClearDiagnosticInformation (VAR(Dcm_SrvOpStatusType, AUTOMATIC) OpStatus,\
                                                                  P2VAR(Dcm_MsgContextType, AUTOMATIC, DCM_INTERN_DATA) pMsgContext,\
                                                                  P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8)
 {

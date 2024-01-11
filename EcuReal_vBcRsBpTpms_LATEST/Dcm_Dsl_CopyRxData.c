@@ -22,7 +22,7 @@ LOCAL_INLINE FUNC(boolean,DCM_CODE) Dcm_Lok_isLowPriorityRequestReceived(
             (DCM_CHKFULLCOMM_MODE(Dcm_DsldConnTable_pcst[Dcm_DsldRxTable_pcu8[DcmRxPduId]].channel_idx_u8)));
 }
 
-static FUNC(void,DCM_CODE)Dcm_Lok_CopyDataToRxBuffer(VAR(Type_SwcServiceCom_tIdPdu, AUTOMATIC) DcmRxPduId
+static FUNC(void, DCM_CODE)Dcm_Lok_CopyDataToRxBuffer(VAR(Type_SwcServiceCom_tIdPdu, AUTOMATIC) DcmRxPduId
    ,     P2CONST(Type_SwcServiceCom_stInfoPdu, AUTOMATIC, DCM_APPL_DATA) PduInfoPtr
    ,
    P2VAR(Type_SwcServiceCom_tLengthPdu, AUTOMATIC, DCM_APPL_DATA) RxBufferSizePtr){
@@ -39,7 +39,7 @@ static FUNC(void,DCM_CODE)Dcm_Lok_CopyDataToRxBuffer(VAR(Type_SwcServiceCom_tIdP
    *(RxBufferSizePtr) = Dcm_DslRxPduArray_ast[DcmRxPduId].Dcm_DslRxPduBuffer_st.SduLength;
 }
 
-static FUNC(void,DCM_CODE)Dcm_Lok_ProvideRxBufferSize(VAR(Type_SwcServiceCom_tIdPdu, AUTOMATIC) DcmRxPduId
+static FUNC(void, DCM_CODE)Dcm_Lok_ProvideRxBufferSize(VAR(Type_SwcServiceCom_tIdPdu, AUTOMATIC) DcmRxPduId
    ,
    P2VAR(Type_SwcServiceCom_tLengthPdu, AUTOMATIC, DCM_APPL_DATA) RxBufferSizePtr){
    VAR(uint8, AUTOMATIC) idxProtocol_u8  = Dcm_DsldConnTable_pcst[Dcm_DsldRxTable_pcu8[DcmRxPduId]].protocol_num_u8;

@@ -42,7 +42,7 @@ extern VAR (Dcm_TransferData_tst,DCM_VAR) Dcm_TransferData_st;
 #include "Dcm_Cfg_MemMap.hpp"
 extern FUNC(boolean,DCM_CODE) Dcm_GetRequestUploadStatus(void);
 extern FUNC(boolean,DCM_CODE) Dcm_GetRequestDownloadStatus(void);
-extern FUNC(void,DCM_CODE)    Dcm_DspDeactivateRequestUploadDownloadPermission(void);
+extern FUNC(void, DCM_CODE)    Dcm_DspDeactivateRequestUploadDownloadPermission(void);
 #define DCM_STOP_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"
 #endif
@@ -51,14 +51,14 @@ extern FUNC(void,DCM_CODE)    Dcm_DspDeactivateRequestUploadDownloadPermission(v
                                                      (DCM_CFG_DSP_REQUESTDOWNLOAD_ENABLED != DCM_CFG_OFF)))
 #define DCM_START_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"
-extern FUNC(void,DCM_CODE) Dcm_UpdateTransferRequestCount(void);
+extern FUNC(void, DCM_CODE) Dcm_UpdateTransferRequestCount(void);
 #define DCM_STOP_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"
 #endif
 
 #define DCM_START_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"
-extern FUNC(void,DCM_CODE) Dcm_Lok_DspReqUploadConfirmation(
+extern FUNC(void, DCM_CODE) Dcm_Lok_DspReqUploadConfirmation(
    VAR(Dcm_IdContextType, AUTOMATIC) dataIdContext_u8
    ,  VAR(Type_SwcServiceCom_tIdPdu, AUTOMATIC) dataRxPduId_u8
    ,  VAR(uint16, AUTOMATIC)dataSourceAddress_u16
@@ -69,7 +69,7 @@ extern FUNC(void,DCM_CODE) Dcm_Lok_DspReqUploadConfirmation(
 
 #define DCM_START_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"
-extern FUNC(void,DCM_CODE) Dcm_GetMemoryInfo(VAR(uint8, AUTOMATIC) dataSize_u8
+extern FUNC(void, DCM_CODE) Dcm_GetMemoryInfo(VAR(uint8, AUTOMATIC) dataSize_u8
    ,   P2CONST (uint8, AUTOMATIC, DCM_INTERN_DATA) adrReqBuf_pcu8
    ,   P2VAR (uint32, AUTOMATIC, DCM_INTERN_DATA) adrMemAddrLength_pu32);
 #define DCM_STOP_SEC_CODE
@@ -80,7 +80,7 @@ extern FUNC(void,DCM_CODE) Dcm_GetMemoryInfo(VAR(uint8, AUTOMATIC) dataSize_u8
 #if( DCM_CFG_DSP_REQUESTTRANSFEREXIT_ENABLED != DCM_CFG_OFF)
 #define DCM_START_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"
-extern FUNC(void,DCM_CODE) Dcm_Lok_DspReqTrfExitConfirmation(
+extern FUNC(void, DCM_CODE) Dcm_Lok_DspReqTrfExitConfirmation(
    VAR(Dcm_IdContextType, AUTOMATIC) dataIdContext_u8
    ,  VAR(Type_SwcServiceCom_tIdPdu, AUTOMATIC) dataRxPduId_u8
    ,  VAR(uint16, AUTOMATIC)dataSourceAddress_u16
@@ -93,7 +93,7 @@ extern FUNC(void,DCM_CODE) Dcm_Lok_DspReqTrfExitConfirmation(
 #if( DCM_CFG_DSP_REQUESTDOWNLOAD_ENABLED != DCM_CFG_OFF)
 #define DCM_START_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"
-extern FUNC(void,DCM_CODE) Dcm_Lok_DspReqDownloadConfirmation(
+extern FUNC(void, DCM_CODE) Dcm_Lok_DspReqDownloadConfirmation(
    VAR(Dcm_IdContextType, AUTOMATIC) dataIdContext_u8
    ,  VAR(Type_SwcServiceCom_tIdPdu, AUTOMATIC) dataRxPduId_u8
    ,  VAR(uint16, AUTOMATIC)dataSourceAddress_u16

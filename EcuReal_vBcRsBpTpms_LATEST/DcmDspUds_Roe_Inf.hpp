@@ -49,11 +49,11 @@ typedef struct{
 
 extern VAR(Dcm_DsldRoeIntenalType_tst,DCM_VAR) Dcm_DsldRoeScheduler_st;
 
-extern FUNC(void,DCM_CODE) Dcm_DslDsdRoeEventConfirmation(VAR(Dcm_ConfirmationStatusType, AUTOMATIC) dataConfirmResult_u8);
-extern FUNC(void,DCM_CODE) Dcm_DslDsdRoeEventProcess(void);
-extern FUNC(void,DCM_CODE) Dcm_DslDsdRoeProcessConfirm(VAR(Std_ReturnType, AUTOMATIC) dataResult_u8);
-extern FUNC(void,DCM_CODE) Dcm_DslDsdRoeQueueResponse(void);
-extern FUNC(void,DCM_CODE) Dcm_DslDsd_ResetROEScheduler(void);
+extern FUNC(void, DCM_CODE) Dcm_DslDsdRoeEventConfirmation(VAR(Dcm_ConfirmationStatusType, AUTOMATIC) dataConfirmResult_u8);
+extern FUNC(void, DCM_CODE) Dcm_DslDsdRoeEventProcess(void);
+extern FUNC(void, DCM_CODE) Dcm_DslDsdRoeProcessConfirm(VAR(Std_ReturnType, AUTOMATIC) dataResult_u8);
+extern FUNC(void, DCM_CODE) Dcm_DslDsdRoeQueueResponse(void);
+extern FUNC(void, DCM_CODE) Dcm_DslDsd_ResetROEScheduler(void);
 #endif
 
 #if(DCM_CFG_ROETYPE2_ENABLED != DCM_CFG_OFF)
@@ -73,11 +73,11 @@ extern P2CONST(Dcm_ProtocolExtendedInfo_type,DCM_VAR,DCM_INTERN_CONST) Dcm_DsldR
 #endif
 
 #if(DCM_CFG_ROETYPE2_ENABLED != DCM_CFG_OFF)
-FUNC(void,DCM_CODE) Dcm_DsldRoe2StateMachine(void);
+FUNC(void, DCM_CODE) Dcm_DsldRoe2StateMachine(void);
 #endif
 
 #if((DCM_CFG_DSPUDSSUPPORT_ENABLED != DCM_CFG_OFF) && (DCM_ROE_ENABLED != DCM_CFG_OFF) && (DCM_CFG_DSP_RESPONSEONEVENT_ENABLED != DCM_CFG_OFF))
-LOCAL_INLINE FUNC(void,DCM_CODE) Dcm_Lok_RoeMainFunction (void){
+LOCAL_INLINE FUNC(void, DCM_CODE) Dcm_Lok_RoeMainFunction (void){
 #if(DCM_CFG_ROETYPE2_ENABLED != DCM_CFG_OFF)
         if(Dcm_DsdRoe2State_en != DSD_IDLE){
             Dcm_DsldRoe2StateMachine();

@@ -174,12 +174,12 @@ extern VAR( uint32, DCM_VAR) Dcm_Dsp_SecaGlobaltimer_u32;
 #include "Dcm_Cfg_MemMap.hpp"
 #define DCM_START_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"
-extern FUNC(void,DCM_CODE) Dcm_Dsp_SecaPowerOnDelayIni(void);
+extern FUNC(void, DCM_CODE) Dcm_Dsp_SecaPowerOnDelayIni(void);
 
-extern FUNC(void,DCM_CODE) Dcm_Dsp_SecaSessIni(void);
+extern FUNC(void, DCM_CODE) Dcm_Dsp_SecaSessIni(void);
 #if(DCM_CFG_DSP_SECA_ATTEMPT_COUNTER!=DCM_CFG_OFF)
 
-extern FUNC(void,DCM_CODE) Dcm_Dsp_RestoreDelayCount(void);
+extern FUNC(void, DCM_CODE) Dcm_Dsp_RestoreDelayCount(void);
 
 #endif
 #define DCM_STOP_SEC_CODE

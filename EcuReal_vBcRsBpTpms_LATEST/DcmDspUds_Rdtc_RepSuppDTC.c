@@ -39,7 +39,7 @@ static FUNC(Dem_ReturnGetNextFilteredDTCType, DCM_CODE)Dcm_Dsp_FillResDtcBuffer(
 
 #if((DCM_PAGEDBUFFER_ENABLED != DCM_CFG_OFF) && (DCM_CFG_RDTCPAGEDBUFFERSUPPORT != DCM_CFG_OFF))
 
-FUNC(Std_ReturnType,DCM_CODE) Dcm_Dsp_ReportSupportedDTC (VAR(Dcm_SrvOpStatusType, AUTOMATIC) OpStatus,P2VAR(Dcm_MsgContextType, AUTOMATIC, DCM_INTERN_DATA) pMsgContext,P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8)
+FUNC(Std_ReturnType, DCM_CODE) Dcm_Dsp_ReportSupportedDTC (VAR(Dcm_SrvOpStatusType, AUTOMATIC) OpStatus,P2VAR(Dcm_MsgContextType, AUTOMATIC, DCM_INTERN_DATA) pMsgContext,P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8)
 {
    VAR(uint32,     AUTOMATIC) dataDTC_u32;
    VAR(uint8_least,     AUTOMATIC) idxLoop_qu8;
@@ -353,7 +353,7 @@ static FUNC(Dcm_MsgLenType, DCM_CODE)Dcm_Dsp_CalTotalResLengthForDTC(VAR(uint16,
 
 #else
 
-FUNC(Std_ReturnType,DCM_CODE) Dcm_Dsp_ReportSupportedDTC (VAR(Dcm_SrvOpStatusType, AUTOMATIC) OpStatus,P2VAR(Dcm_MsgContextType, AUTOMATIC, DCM_INTERN_DATA) pMsgContext,P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8)
+FUNC(Std_ReturnType, DCM_CODE) Dcm_Dsp_ReportSupportedDTC (VAR(Dcm_SrvOpStatusType, AUTOMATIC) OpStatus,P2VAR(Dcm_MsgContextType, AUTOMATIC, DCM_INTERN_DATA) pMsgContext,P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8)
 {
    VAR(uint32,     AUTOMATIC) dataDTC_u32;
    VAR(Dcm_MsgLenType,     AUTOMATIC) nrRespLen_u32;

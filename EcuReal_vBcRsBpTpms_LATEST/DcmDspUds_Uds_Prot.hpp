@@ -9,11 +9,11 @@
 
 #if(RBA_DCMPMA_CFG_PLANTMODEACTIVATION_ENABLED !=  DCM_CFG_OFF)
 
-extern FUNC(Std_ReturnType,DCM_CODE) Dcm_SetActiveServiceTable(VAR(uint8, AUTOMATIC) Sid_tableid_u8);
+extern FUNC(Std_ReturnType, DCM_CODE) Dcm_SetActiveServiceTable(VAR(uint8, AUTOMATIC) Sid_tableid_u8);
 #endif
 
 #if( (DCM_CFG_DSPUDSSUPPORT_ENABLED != DCM_CFG_OFF) && (DCM_CFG_DSP_CONTROLDTCSETTING_ENABLED != DCM_CFG_OFF) )
-extern FUNC(void,DCM_CODE) Dcm_ControlDtcSettingExit(void);
+extern FUNC(void, DCM_CODE) Dcm_ControlDtcSettingExit(void);
 #endif
 
 #if((DCM_CFG_DSP_READDATABYIDENTIFIER_ENABLED != DCM_CFG_OFF)          ||  \
@@ -21,19 +21,19 @@ extern FUNC(void,DCM_CODE) Dcm_ControlDtcSettingExit(void);
      (DCM_CFG_DSP_DYNAMICALLYDEFINEIDENTIFIER_ENABLED != DCM_CFG_OFF)   ||  \
      (DCM_CFG_RDPI_ENABLED != DCM_CFG_OFF)                              ||  \
      (DCM_CFG_DSP_IOCBI_ENABLED != DCM_CFG_OFF))
-extern FUNC(void,DCM_CODE) Dcm_ResetDIDIndexstruct (P2VAR(Dcm_DIDIndexType_tst , AUTOMATIC, DCM_INTERN_DATA) idxDidIndexType_st);
+extern FUNC(void, DCM_CODE) Dcm_ResetDIDIndexstruct (P2VAR(Dcm_DIDIndexType_tst , AUTOMATIC, DCM_INTERN_DATA) idxDidIndexType_st);
 #endif
 
 #if(DCM_CFG_DSP_READ_ASP_ENABLED != DCM_CFG_OFF)
-extern FUNC (void,DCM_CODE) Dcm_ResetAsynchFlags(void);
+extern FUNC (void, DCM_CODE) Dcm_ResetAsynchFlags(void);
 #endif
 
 #if(DCM_CFG_DSP_SECA_ASP_ENABLED != DCM_CFG_OFF)
-extern FUNC (void,DCM_CODE) Dcm_ResetAsynchSecaFlag(void);
+extern FUNC (void, DCM_CODE) Dcm_ResetAsynchSecaFlag(void);
 #endif
 
 #if((DCM_CFG_DIDRANGE_EXTENSION != DCM_CFG_OFF)||(DCM_CFG_DIDSUPPORT != DCM_CFG_OFF ))
-extern FUNC(void,DCM_CODE) Dcm_ConvBitsToBytes(P2VAR (uint32, AUTOMATIC, DCM_INTERN_DATA)DataLenInBits) ;
+extern FUNC(void, DCM_CODE) Dcm_ConvBitsToBytes(P2VAR (uint32, AUTOMATIC, DCM_INTERN_DATA)DataLenInBits) ;
 #endif
 #define DCM_STOP_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"
@@ -155,7 +155,7 @@ typedef struct{
 #if(DCM_CFG_DSP_ROEONDTCSTATUSCHANGE_ENABLED!=DCM_CFG_OFF)
 #define DCM_START_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"
-extern FUNC(void,DCM_CODE)Dcm_ResetRoeOnDtcevents(void);
+extern FUNC(void, DCM_CODE)Dcm_ResetRoeOnDtcevents(void);
 #define DCM_STOP_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"
 #endif
@@ -366,35 +366,35 @@ typedef P2FUNC(Std_ReturnType,TYPEDEF,ReadFunc9_ptr)(VAR(Dcm_OpStatusType, AUTOM
 #if(DCM_CFG_DSP_READDATABYIDENTIFIER_ENABLED != DCM_CFG_OFF)
 #define DCM_START_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"
-extern FUNC(Std_ReturnType,DCM_CODE) Dcm_GetActiveRDBIDid(P2VAR(uint16, AUTOMATIC, DCM_INTERN_DATA) dataDid_u16);
+extern FUNC(Std_ReturnType, DCM_CODE) Dcm_GetActiveRDBIDid(P2VAR(uint16, AUTOMATIC, DCM_INTERN_DATA) dataDid_u16);
 #define DCM_STOP_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"
 #endif
 #if(DCM_CFG_DSP_WRITEDATABYIDENTIFIER_ENABLED != DCM_CFG_OFF)
 #define DCM_START_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"
-extern FUNC(Std_ReturnType,DCM_CODE) Dcm_GetActiveWDBIDid(P2VAR(uint16, AUTOMATIC, DCM_INTERN_DATA) dataDid_u16);
+extern FUNC(Std_ReturnType, DCM_CODE) Dcm_GetActiveWDBIDid(P2VAR(uint16, AUTOMATIC, DCM_INTERN_DATA) dataDid_u16);
 #define DCM_STOP_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"
 #endif
 #if(DCM_CFG_DSP_IOCBI_ENABLED != DCM_CFG_OFF)
 #define DCM_START_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"
-extern FUNC(Std_ReturnType,DCM_CODE) Dcm_GetActiveIOCBIDid(P2VAR(uint16, AUTOMATIC, DCM_INTERN_DATA) dataDid_u16);
+extern FUNC(Std_ReturnType, DCM_CODE) Dcm_GetActiveIOCBIDid(P2VAR(uint16, AUTOMATIC, DCM_INTERN_DATA) dataDid_u16);
 #define DCM_STOP_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"
 #endif
 #if(DCM_CFG_DSP_READDATABYPERIODICIDENTIFIER_ENABLED != DCM_CFG_OFF)
 #define DCM_START_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"
-extern FUNC(Std_ReturnType,DCM_CODE) Dcm_RdpiIsDidCondtionChkReadSupported(P2VAR(Dcm_DIDIndexType_tst , AUTOMATIC, DCM_INTERN_DATA) idxDidIndexType_st);
+extern FUNC(Std_ReturnType, DCM_CODE) Dcm_RdpiIsDidCondtionChkReadSupported(P2VAR(Dcm_DIDIndexType_tst , AUTOMATIC, DCM_INTERN_DATA) idxDidIndexType_st);
 #define DCM_STOP_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"
 #endif
 #if(DCM_CFG_DSP_DYNAMICALLYDEFINEIDENTIFIER_ENABLED != DCM_CFG_OFF)
 #define DCM_START_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"
-extern FUNC(Std_ReturnType,DCM_CODE) Dcm_GetActiveDDDid(P2VAR (uint16, AUTOMATIC, DCM_INTERN_DATA) dataDid_u16);
+extern FUNC(Std_ReturnType, DCM_CODE) Dcm_GetActiveDDDid(P2VAR (uint16, AUTOMATIC, DCM_INTERN_DATA) dataDid_u16);
 #define DCM_STOP_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"
 #endif
@@ -465,7 +465,7 @@ extern VAR(boolean ,DCM_VAR) Dcm_PeriodicSchedulerRunning_b;
 #if((DCM_CFG_DSP_ROEDID_ENABLED != DCM_CFG_OFF))
 #define DCM_START_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"
-extern FUNC(void,DCM_CODE) Dcm_ResetRoeDidevents(void);
+extern FUNC(void, DCM_CODE) Dcm_ResetRoeDidevents(void);
 #define DCM_STOP_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"
 #endif
@@ -480,14 +480,14 @@ extern VAR (uint8,DCM_VAR) Dcm_RoeDidIdx_u8;
 #if(( DCM_CFG_DSP_SECURITYACCESS_ENABLED != DCM_CFG_OFF ) && (DCM_CFG_DSP_SECA_STORESEED != DCM_CFG_OFF))
 #define DCM_START_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"
-extern FUNC (void,DCM_CODE) Dcm_Dsp_SecaClearSeed (void);
+extern FUNC (void, DCM_CODE) Dcm_Dsp_SecaClearSeed (void);
 #define DCM_STOP_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"
 #endif
 #if( ( DCM_CFG_DSPUDSSUPPORT_ENABLED != DCM_CFG_OFF ) && ( DCM_CFG_DSP_SECURITYACCESS_ENABLED != DCM_CFG_OFF ))
 #define DCM_START_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"
-extern FUNC(void,DCM_CODE) Dcm_ResetAccessType (void);
+extern FUNC(void, DCM_CODE) Dcm_ResetAccessType (void);
 #define DCM_STOP_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"
 #endif

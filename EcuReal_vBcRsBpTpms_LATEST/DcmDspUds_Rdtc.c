@@ -63,7 +63,7 @@ VAR(Dcm_MsgType,    DCM_VAR)  Dcm_DspRDTCRespBufPtr_u8;
 #define DCM_START_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"
 
-FUNC(void,DCM_CODE) Dcm_Dsp_ReadDTCInfo_Ini (void){
+FUNC(void, DCM_CODE) Dcm_Dsp_ReadDTCInfo_Ini (void){
     Dem_DcmCancelOperation();
 
     Dcm_SrvOpstatus_u8 = DCM_INITIAL;
@@ -90,7 +90,7 @@ FUNC(void, DCM_CODE) Dcm_Lok_DspReadDTCInfoConfirmation(VAR(Dcm_IdContextType , 
     DcmAppl_DcmConfirmation(dataIdContext_u8, dataRxPduId_u8,dataSourceAddress_u16, status_u8);
 }
 
-FUNC(Std_ReturnType,DCM_CODE) SwcServiceDcm_tReadDTCInformation (VAR(Dcm_SrvOpStatusType, AUTOMATIC) OpStatus
+FUNC(Std_ReturnType, DCM_CODE) SwcServiceDcm_tReadDTCInformation (VAR(Dcm_SrvOpStatusType, AUTOMATIC) OpStatus
    ,     P2VAR(Dcm_MsgContextType, AUTOMATIC, DCM_INTERN_DATA) pMsgContext
    ,     P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8)
 {
@@ -171,7 +171,7 @@ FUNC(Std_ReturnType,DCM_CODE) SwcServiceDcm_tReadDTCInformation (VAR(Dcm_SrvOpSt
 
 #if(DCM_CFG_RDTCPAGEDBUFFERSUPPORT != DCM_CFG_OFF)
 
-FUNC(void,DCM_CODE) Dcm_Dsp_RDTCUpdatePage(VAR(Dcm_MsgType, AUTOMATIC) PageBufPtr
+FUNC(void, DCM_CODE) Dcm_Dsp_RDTCUpdatePage(VAR(Dcm_MsgType, AUTOMATIC) PageBufPtr
    ,     VAR(Dcm_MsgLenType, AUTOMATIC) PageLen)
 {
 
@@ -186,7 +186,7 @@ FUNC(void,DCM_CODE) Dcm_Dsp_RDTCUpdatePage(VAR(Dcm_MsgType, AUTOMATIC) PageBufPt
     Dcm_DspRDTCRespBufPtr_u8 = PageBufPtr;
 }
 
-FUNC(void,DCM_CODE) Dcm_Dsp_RDTCFillZero(VAR(Dcm_MsgLenType, AUTOMATIC) RemTotalResLen )
+FUNC(void, DCM_CODE) Dcm_Dsp_RDTCFillZero(VAR(Dcm_MsgLenType, AUTOMATIC) RemTotalResLen )
 {
    VAR(uint32_least, AUTOMATIC) nrResLen_qu32 ;
    VAR(uint32_least, AUTOMATIC) dataRemBuffer_qu32;

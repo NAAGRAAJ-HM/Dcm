@@ -118,7 +118,7 @@ FUNC(uint32,DCM_CODE) Dcm_GetSignal_u32(VAR(uint8, AUTOMATIC) xDataType_u8
      ((DCM_CFG_DSP_ROUTINECONTROL_ENABLED != DCM_CFG_OFF)&&((DCM_CFG_ROUTINEVARLENGTH==DCM_CFG_OFF)||(DCM_CFG_RCRANGE_ROUTINEVARLENGTH==DCM_CFG_OFF)))||\
      (DCM_CFG_RBA_DEM_SR_ENABLED != DCM_CFG_OFF))
 
-FUNC(void,DCM_CODE) Dcm_StoreSignal(VAR(uint8, AUTOMATIC) xDataType_u8
+FUNC(void, DCM_CODE) Dcm_StoreSignal(VAR(uint8, AUTOMATIC) xDataType_u8
    ,     VAR(uint16, AUTOMATIC) posnStart_u16
    ,     P2VAR(uint8, AUTOMATIC, DCM_INTERN_DATA) adrRespBuffer_u8
    ,     VAR(uint32, AUTOMATIC) dataSignalValue_u32
@@ -183,7 +183,7 @@ FUNC(void,DCM_CODE) Dcm_StoreSignal(VAR(uint8, AUTOMATIC) xDataType_u8
 #if( (DCM_CFG_ROUTINEARRAY_INSIG != DCM_CFG_OFF)  || (DCM_CFG_ROUTINEARRAY_OUTSIG != DCM_CFG_OFF) || \
 (DCM_CFG_RCRANGE_ROUTINEARRAY_INSIG != DCM_CFG_OFF)||(DCM_CFG_RCRANGE_ROUTINEARRAY_INSIG != DCM_CFG_OFF) )
 #if((DCM_CFG_ROUTINEARRAY_INSIG != DCM_CFG_OFF) || (DCM_CFG_RCRANGE_ROUTINEARRAY_INSIG != DCM_CFG_OFF))
-static FUNC(void,DCM_CODE) StoreRcBuffer(VAR(uint8, AUTOMATIC) xDataType_u8,VAR(uint16, AUTOMATIC) IndexSig_u16, VAR(uint16, AUTOMATIC) dataSignal_u16)
+static FUNC(void, DCM_CODE) StoreRcBuffer(VAR(uint8, AUTOMATIC) xDataType_u8,VAR(uint16, AUTOMATIC) IndexSig_u16, VAR(uint16, AUTOMATIC) dataSignal_u16)
 {
    if(xDataType_u8 == DCM_UINT16_N)
    {
@@ -194,7 +194,7 @@ static FUNC(void,DCM_CODE) StoreRcBuffer(VAR(uint8, AUTOMATIC) xDataType_u8,VAR(
    }
 }
 
-FUNC(void,DCM_CODE) Dcm_RcSetSignalArray(P2CONST(Dcm_DspRoutineSignalInfo_tst, AUTOMATIC, DCM_INTERN_DATA) adrSignal_pcst,P2CONST(uint8, AUTOMATIC, DCM_INTERN_DATA) adrReqBuffer_u8)
+FUNC(void, DCM_CODE) Dcm_RcSetSignalArray(P2CONST(Dcm_DspRoutineSignalInfo_tst, AUTOMATIC, DCM_INTERN_DATA) adrSignal_pcst,P2CONST(uint8, AUTOMATIC, DCM_INTERN_DATA) adrReqBuffer_u8)
 {
      VAR(uint8, AUTOMATIC)  xDataType_u8;
      VAR(uint16, AUTOMATIC) DataLen_u16;

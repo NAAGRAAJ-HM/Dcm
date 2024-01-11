@@ -31,7 +31,7 @@ VAR (Dcm_OpStatusType, DCM_VAR) Dcm_DspSecaOpStatus_u8;
 #define DCM_START_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"
 
-FUNC (void,DCM_CODE) Dcm_Dsp_SecaIni (void){
+FUNC (void, DCM_CODE) Dcm_Dsp_SecaIni (void){
 
 #if((DCM_CFG_DSP_USE_ASYNCH_CLIENT_SERVER != DCM_CFG_OFF) || (DCM_CFG_DSP_USE_ASYNCH_FNC != DCM_CFG_OFF))
 
@@ -152,7 +152,7 @@ FUNC (void,DCM_CODE) Dcm_Dsp_SecaIni (void){
     Dcm_Dsp_SecaSessIni();
 }
 
-FUNC (void,DCM_CODE) Dcm_Dsp_SecaPowerOnDelayIni (void){
+FUNC (void, DCM_CODE) Dcm_Dsp_SecaPowerOnDelayIni (void){
    VAR (uint8_least, AUTOMATIC) idxSecTab_qu8;
    VAR (uint32, AUTOMATIC) dataDelayOnPowerOn_u32;
 
@@ -195,7 +195,7 @@ FUNC (void,DCM_CODE) Dcm_Dsp_SecaPowerOnDelayIni (void){
     return;
 }
 
-FUNC (void,DCM_CODE) Dcm_Dsp_SecaSessIni (void){
+FUNC (void, DCM_CODE) Dcm_Dsp_SecaSessIni (void){
 
     Dcm_SrvOpstatus_u8 = DCM_INITIAL;
     //Dcm_DspSecaStatus_en = DCM_DSP_SECA_REQUEST;

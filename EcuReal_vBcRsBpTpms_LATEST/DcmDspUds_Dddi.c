@@ -84,8 +84,8 @@ static FUNC(boolean,DCM_CODE)Dcm_DddiCheckOverflow(VAR(uint32, AUTOMATIC) MemLen
   return flag_b;
 }
 
-static FUNC(Std_ReturnType,DCM_CODE) Dcm_GetDynamicSignalConfiguration(uint16 DidIndex_u16);
-static FUNC(Std_ReturnType,DCM_CODE) Dcm_GetDynamicSignalConfiguration(uint16 DidIndex_u16)
+static FUNC(Std_ReturnType, DCM_CODE) Dcm_GetDynamicSignalConfiguration(uint16 DidIndex_u16);
+static FUNC(Std_ReturnType, DCM_CODE) Dcm_GetDynamicSignalConfiguration(uint16 DidIndex_u16)
 {
    VAR (uint32,     AUTOMATIC) dataSigLength_u32;
    VAR (uint16,     AUTOMATIC) dataSigLength_u16;
@@ -234,7 +234,7 @@ static FUNC(Std_ReturnType, DCM_CODE) Dcm_isDDDIDSupported(uint16 DynamicIdentif
 }
 #endif
 
-FUNC (void,DCM_CODE) Dcm_DDDI_Ini (void){
+FUNC (void, DCM_CODE) Dcm_DDDI_Ini (void){
 #if(DCM_CFG_DSP_DDDISTORINGTONVRAM_ENABLED == DCM_CFG_OFF)
    VAR (uint32, AUTOMATIC) idxLoop_u32;
 
@@ -294,7 +294,7 @@ FUNC (void,DCM_CODE) Dcm_DDDI_Ini (void){
     (void)NegResCode_u8;
 }
 
-FUNC (Std_ReturnType,DCM_CODE) Dcm_DcmDDDI (VAR(Dcm_SrvOpStatusType, AUTOMATIC) OpStatus,P2VAR(Dcm_MsgContextType, AUTOMATIC, DCM_INTERN_DATA) pMsgContext,P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8)
+FUNC (Std_ReturnType, DCM_CODE) Dcm_DcmDDDI (VAR(Dcm_SrvOpStatusType, AUTOMATIC) OpStatus,P2VAR(Dcm_MsgContextType, AUTOMATIC, DCM_INTERN_DATA) pMsgContext,P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8)
 {
    VAR (uint8, AUTOMATIC) dataSubFunction_u8;
 #if(DCM_CFG_DSP_DDDISTORINGTONVRAM_ENABLED != DCM_CFG_OFF)
@@ -875,7 +875,7 @@ FUNC (Std_ReturnType,DCM_CODE) Dcm_DcmDDDI (VAR(Dcm_SrvOpStatusType, AUTOMATIC) 
     return dataRetVal_u8;
 }
 
-FUNC (void,DCM_CODE) Dcm_DddiResetCompleteContext(P2VAR(Dcm_DddiIdContext_tst, AUTOMATIC, DCM_INTERN_DATA) adrContext_pst)
+FUNC (void, DCM_CODE) Dcm_DddiResetCompleteContext(P2VAR(Dcm_DddiIdContext_tst, AUTOMATIC, DCM_INTERN_DATA) adrContext_pst)
 {
 
     adrContext_pst->nrCurrentlyDefinedRecords_u16=0;
@@ -883,7 +883,7 @@ FUNC (void,DCM_CODE) Dcm_DddiResetCompleteContext(P2VAR(Dcm_DddiIdContext_tst, A
     adrContext_pst->idxCurrentRecord_u16=0;
 }
 
-FUNC (void,DCM_CODE) Dcm_DddiResetProcessingInfoInContext (
+FUNC (void, DCM_CODE) Dcm_DddiResetProcessingInfoInContext (
         P2VAR(Dcm_DddiIdContext_tst, AUTOMATIC, DCM_INTERN_DATA) adrPtrToContext_pst
 )
 {
@@ -892,7 +892,7 @@ FUNC (void,DCM_CODE) Dcm_DddiResetProcessingInfoInContext (
     adrPtrToContext_pst->idxCurrentRecord_u16=0;
 }
 
-FUNC (Std_ReturnType,DCM_CODE) Dcm_DddiReadById_u8 (P2CONST (Dcm_DddiDefId_tst, AUTOMATIC,DCM_INTERN_CONST) adrRecord_pst
+FUNC (Std_ReturnType, DCM_CODE) Dcm_DddiReadById_u8 (P2CONST (Dcm_DddiDefId_tst, AUTOMATIC,DCM_INTERN_CONST) adrRecord_pst
    ,     P2VAR (uint16, AUTOMATIC, DCM_INTERN_DATA) adrLength_pu16
    ,     P2VAR (uint8, AUTOMATIC, DCM_INTERN_DATA) adrData_pu8)
 {
@@ -961,7 +961,7 @@ FUNC (Std_ReturnType,DCM_CODE) Dcm_DddiReadById_u8 (P2CONST (Dcm_DddiDefId_tst, 
     return dataRetVal_u8;
 }
 
-FUNC (Std_ReturnType,DCM_CODE) Dcm_DddiRead_u8 (P2CONST (Dcm_DddiMainConfig_tst, AUTOMATIC,DCM_INTERN_CONST) adrConfig_pcst
+FUNC (Std_ReturnType, DCM_CODE) Dcm_DddiRead_u8 (P2CONST (Dcm_DddiMainConfig_tst, AUTOMATIC,DCM_INTERN_CONST) adrConfig_pcst
    ,     P2VAR (uint8, AUTOMATIC, DCM_INTERN_DATA) adrData_pu8
    ,     P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8)
 {
@@ -1082,7 +1082,7 @@ FUNC (Std_ReturnType,DCM_CODE) Dcm_DddiRead_u8 (P2CONST (Dcm_DddiMainConfig_tst,
     return dataRetVal_u8;
 }
 
-FUNC (Std_ReturnType,DCM_CODE) Dcm_DspGetIndexOfDDDI_u8 (VAR (uint16, AUTOMATIC) dataDid_u16
+FUNC (Std_ReturnType, DCM_CODE) Dcm_DspGetIndexOfDDDI_u8 (VAR (uint16, AUTOMATIC) dataDid_u16
    ,     P2VAR (uint16, AUTOMATIC, DCM_INTERN_DATA) idxIndex_u16)
 {
    VAR (uint32,     AUTOMATIC) posnValue_u32;
@@ -1131,7 +1131,7 @@ FUNC (Std_ReturnType,DCM_CODE) Dcm_DspGetIndexOfDDDI_u8 (VAR (uint16, AUTOMATIC)
     return (dataRetVal_u8);
 }
 
-FUNC (Std_ReturnType,DCM_CODE) Dcm_DcmDddiAddIdRecords_u8 (VAR (uint16, AUTOMATIC)nrBlocks_u16
+FUNC (Std_ReturnType, DCM_CODE) Dcm_DcmDddiAddIdRecords_u8 (VAR (uint16, AUTOMATIC)nrBlocks_u16
    ,     VAR (uint16, AUTOMATIC) nrCurrentlyDefinedRecords_u16
    ,     P2CONST (uint8, AUTOMATIC,DCM_INTERN_CONST) adrSourceBuffer_pcu8
    ,     P2VAR (Dcm_DddiRecord_tst, AUTOMATIC, DCM_INTERN_DATA) adrRecord_pst
@@ -1502,7 +1502,7 @@ FUNC (Std_ReturnType,DCM_CODE) Dcm_DcmDddiAddIdRecords_u8 (VAR (uint16, AUTOMATI
     return dataRetVal_u8;
 }
 
-FUNC (Std_ReturnType,DCM_CODE) Dcm_DcmDddiAddMemRecords_u8 (VAR (uint16, AUTOMATIC)nrBlocks_u16
+FUNC (Std_ReturnType, DCM_CODE) Dcm_DcmDddiAddMemRecords_u8 (VAR (uint16, AUTOMATIC)nrBlocks_u16
    ,     VAR (uint16, AUTOMATIC)nrCurrentlyDefinedRecords_u16
    ,     P2CONST (uint8, AUTOMATIC,DCM_INTERN_CONST) adrSourceBuffer_pcu8
    ,     P2VAR (Dcm_DddiRecord_tst, AUTOMATIC, DCM_INTERN_DATA) adrRecord_pst
@@ -1666,7 +1666,7 @@ FUNC (Std_ReturnType,DCM_CODE) Dcm_DcmDddiAddMemRecords_u8 (VAR (uint16, AUTOMAT
     return dataRetVal_u8;
 }
 
-FUNC (Std_ReturnType,DCM_CODE) Dcm_DddiGetLen_u8 (P2CONST (Dcm_DddiMainConfig_tst, AUTOMATIC,DCM_INTERN_CONST) adrConfig_pcst
+FUNC (Std_ReturnType, DCM_CODE) Dcm_DddiGetLen_u8 (P2CONST (Dcm_DddiMainConfig_tst, AUTOMATIC,DCM_INTERN_CONST) adrConfig_pcst
    ,     P2VAR (uint32, AUTOMATIC, DCM_INTERN_DATA) adrLen_pu32)
 {
    VAR (uint32, AUTOMATIC) idxCurrentRecord_u16 = 0;
@@ -1711,7 +1711,7 @@ FUNC (Std_ReturnType,DCM_CODE) Dcm_DddiGetLen_u8 (P2CONST (Dcm_DddiMainConfig_ts
     return dataRetVal_u8;
 }
 
-FUNC (Std_ReturnType,DCM_CODE) Dcm_DddiGetCondition_u8(P2CONST (Dcm_DddiMainConfig_tst, AUTOMATIC,DCM_INTERN_CONST) adrConfig_pcst
+FUNC (Std_ReturnType, DCM_CODE) Dcm_DddiGetCondition_u8(P2CONST (Dcm_DddiMainConfig_tst, AUTOMATIC,DCM_INTERN_CONST) adrConfig_pcst
    ,     P2VAR (Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8)
 {
    VAR (Std_ReturnType, AUTOMATIC) dataRetVal_u8=E_OK;
@@ -1814,14 +1814,14 @@ FUNC (Std_ReturnType,DCM_CODE) Dcm_DddiGetCondition_u8(P2CONST (Dcm_DddiMainConf
     return dataRetVal_u8;
 }
 
-FUNC(Std_ReturnType,DCM_CODE) Dcm_GetActiveDDDid(P2VAR(uint16, AUTOMATIC, DCM_INTERN_DATA) dataDid_u16)
+FUNC(Std_ReturnType, DCM_CODE) Dcm_GetActiveDDDid(P2VAR(uint16, AUTOMATIC, DCM_INTERN_DATA) dataDid_u16)
 {
 
     *dataDid_u16 = s_ActiveDDDI_u16;
     return (E_OK);
 }
 
-FUNC(Std_ReturnType,DCM_CODE) Dcm_GetActiveSourceDataId(P2VAR(uint16, AUTOMATIC, DCM_INTERN_DATA) dataSrcDid_u16,P2VAR(uint8, AUTOMATIC, DCM_INTERN_DATA) posnSrcDataRec_u8, P2VAR(uint8, AUTOMATIC, DCM_INTERN_DATA) adrMemSize_u8)
+FUNC(Std_ReturnType, DCM_CODE) Dcm_GetActiveSourceDataId(P2VAR(uint16, AUTOMATIC, DCM_INTERN_DATA) dataSrcDid_u16,P2VAR(uint8, AUTOMATIC, DCM_INTERN_DATA) posnSrcDataRec_u8, P2VAR(uint8, AUTOMATIC, DCM_INTERN_DATA) adrMemSize_u8)
 {
 
    VAR (Std_ReturnType, AUTOMATIC) dataRetVal_u8=E_NOT_OK;

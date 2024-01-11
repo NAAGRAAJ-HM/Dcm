@@ -14,7 +14,7 @@
 #define DCM_START_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"
 
-FUNC(Std_ReturnType,DCM_CODE) Dcm_Dsp_ReportNumberOfDTC (VAR(Dcm_SrvOpStatusType, AUTOMATIC) OpStatus,P2VAR(Dcm_MsgContextType, AUTOMATIC, DCM_INTERN_DATA) pMsgContext,P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8)
+FUNC(Std_ReturnType, DCM_CODE) Dcm_Dsp_ReportNumberOfDTC (VAR(Dcm_SrvOpStatusType, AUTOMATIC) OpStatus,P2VAR(Dcm_MsgContextType, AUTOMATIC, DCM_INTERN_DATA) pMsgContext,P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8)
 {
    VAR(uint16,     AUTOMATIC) nrFltDTC_u16;
    VAR(uint8,     AUTOMATIC) dataRDTCSubFunc_u8;

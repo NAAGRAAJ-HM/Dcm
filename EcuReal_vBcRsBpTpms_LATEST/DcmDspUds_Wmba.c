@@ -31,7 +31,7 @@ static VAR (uint8,  DCM_VAR) Dcm_nrMemAddrSize_u8;
 #define DCM_START_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"
 
-FUNC(void,DCM_CODE) Dcm_WMBAIni (void){
+FUNC(void, DCM_CODE) Dcm_WMBAIni (void){
    if(DCM_PENDING == Dcm_stWmbaOpstatus_u8)
    {
         (void)(DcmAppl_Dcm_WriteMemory(DCM_CANCEL,Dcm_WMBAConfig_cast[Dcm_idxDspWmba_u16].dataMemoryValue_u8
@@ -44,7 +44,7 @@ FUNC(void,DCM_CODE) Dcm_WMBAIni (void){
     Dcm_stWmbaOpstatus_u8 = DCM_INITIAL;
 }
 
-static FUNC (Std_ReturnType,DCM_CODE) Dcm_Lok_GetAddressRangeIndex_u8(VAR (uint32, AUTOMATIC) dataMemAddr_u32
+static FUNC (Std_ReturnType, DCM_CODE) Dcm_Lok_GetAddressRangeIndex_u8(VAR (uint32, AUTOMATIC) dataMemAddr_u32
    ,     VAR   (uint32, AUTOMATIC) dataMemLength_u32
    ,     P2VAR (uint16, AUTOMATIC, DCM_INTERN_DATA) idxLoop_u8)
 {
@@ -74,7 +74,7 @@ static FUNC (Std_ReturnType,DCM_CODE) Dcm_Lok_GetAddressRangeIndex_u8(VAR (uint3
     return (dataRetVal_en);
 }
 
-LOCAL_INLINE FUNC(void,DCM_CODE) Dcm_Lok_WMBATotalCheckLength (
+LOCAL_INLINE FUNC(void, DCM_CODE) Dcm_Lok_WMBATotalCheckLength (
                                        P2CONST(Dcm_MsgContextType, AUTOMATIC, DCM_INTERN_DATA) pMsgContext
    ,     P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8)
 {
@@ -119,7 +119,7 @@ LOCAL_INLINE FUNC(void,DCM_CODE) Dcm_Lok_WMBATotalCheckLength (
    }
 }
 
-LOCAL_INLINE FUNC(Std_ReturnType,DCM_CODE) Dcm_Lok_WMBAUpdateStatus (
+LOCAL_INLINE FUNC(Std_ReturnType, DCM_CODE) Dcm_Lok_WMBAUpdateStatus (
                                        P2VAR(Dcm_MsgContextType, AUTOMATIC, DCM_INTERN_DATA) pMsgContext
    ,     P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8)
 
@@ -283,7 +283,7 @@ static FUNC (Dcm_WmbaSupportRet_t,DCM_CODE) Dcm_Lok_WmbaAccessCheck_u8 (VAR (uin
     return dataRetVal_en;
 }
 
-FUNC(Std_ReturnType,DCM_CODE) Dcm_DcmWriteMemoryByAddress (VAR(Dcm_SrvOpStatusType, AUTOMATIC) OpStatus
+FUNC(Std_ReturnType, DCM_CODE) Dcm_DcmWriteMemoryByAddress (VAR(Dcm_SrvOpStatusType, AUTOMATIC) OpStatus
    ,     P2VAR(Dcm_MsgContextType, AUTOMATIC, DCM_INTERN_DATA) pMsgContext
    ,     P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8)
 {

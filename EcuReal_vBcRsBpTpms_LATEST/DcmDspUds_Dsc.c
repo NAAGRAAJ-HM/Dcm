@@ -21,7 +21,7 @@ static VAR(Dcm_SesCtrlType,DCM_VAR) s_stDspDscActiveSession_u8;
 #define DCM_START_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"
 
-FUNC(void,DCM_CODE) Dcm_Dsp_DscIni(void){
+FUNC(void, DCM_CODE) Dcm_Dsp_DscIni(void){
 
     Dcm_stDsc_en = DCM_DSP_DSC_INIT;
 #if(DCM_CFG_STORING_ENABLED != DCM_CFG_OFF)
@@ -30,7 +30,7 @@ FUNC(void,DCM_CODE) Dcm_Dsp_DscIni(void){
 #endif
 }
 
-FUNC(Std_ReturnType,DCM_CODE) SwcServiceDcm_tDiagnosticSessionControl (VAR(Dcm_SrvOpStatusType, AUTOMATIC) OpStatus,P2VAR(Dcm_MsgContextType, AUTOMATIC, DCM_INTERN_DATA) pMsgContext,P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8)
+FUNC(Std_ReturnType, DCM_CODE) SwcServiceDcm_tDiagnosticSessionControl (VAR(Dcm_SrvOpStatusType, AUTOMATIC) OpStatus,P2VAR(Dcm_MsgContextType, AUTOMATIC, DCM_INTERN_DATA) pMsgContext,P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8)
 {
 #if(DCM_CFG_DSP_DSC_SESRECINRESP != DCM_CFG_OFF)
    VAR(uint16, AUTOMATIC) dataTimingValue_u16;
@@ -195,7 +195,7 @@ FUNC(Std_ReturnType,DCM_CODE) SwcServiceDcm_tDiagnosticSessionControl (VAR(Dcm_S
     return dataRetVal_u8;
 }
 
-static FUNC(void,DCM_CODE) Dcm_Dsp_DscChgSession(VAR(Dcm_ConfirmationStatusType, AUTOMATIC) status)
+static FUNC(void, DCM_CODE) Dcm_Dsp_DscChgSession(VAR(Dcm_ConfirmationStatusType, AUTOMATIC) status)
 {
    VAR(uint8, AUTOMATIC) dataReqSess_u8;
 

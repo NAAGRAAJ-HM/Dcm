@@ -15,7 +15,7 @@ static VAR(Dcm_DspObdMode04Type_ten,DCM_VAR) Dcm_stDspObdMode04State_en;
 #define DCM_START_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"
 
-FUNC(void,DCM_CODE) Dcm_DcmObdMode04_Ini(void){
+FUNC(void, DCM_CODE) Dcm_DcmObdMode04_Ini(void){
 
    if((Dcm_stDspObdMode04State_en != DCM_DSP_MODE04_INIT) && (Dcm_stDspObdMode04State_en != DCM_DSP_MODE04_UNINIT))
    {
@@ -25,7 +25,7 @@ FUNC(void,DCM_CODE) Dcm_DcmObdMode04_Ini(void){
     Dcm_stDspObdMode04State_en = DCM_DSP_MODE04_INIT;
 }
 
-FUNC(Std_ReturnType,DCM_CODE) Dcm_DcmObdMode04 (VAR(Dcm_SrvOpStatusType, AUTOMATIC) OpStatus,P2VAR(Dcm_MsgContextType, AUTOMATIC, DCM_INTERN_DATA) pMsgContext,P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8)
+FUNC(Std_ReturnType, DCM_CODE) Dcm_DcmObdMode04 (VAR(Dcm_SrvOpStatusType, AUTOMATIC) OpStatus,P2VAR(Dcm_MsgContextType, AUTOMATIC, DCM_INTERN_DATA) pMsgContext,P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8)
 {
    VAR(Dcm_ReturnClearDTCType_tu8, AUTOMATIC) dataDemClrRetVal_u8;
    VAR(Std_ReturnType, AUTOMATIC) stObdMode04Appl_u8;

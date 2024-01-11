@@ -37,24 +37,24 @@ extern VAR(Dcm_DynamicSignalConfig_tst, DCM_VAR) Dcm_DynamicSignalConfig_cast[];
 #define DCM_START_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"
 extern FUNC(uint16,DCM_CODE) Dcm_DddiCalculateTableSize_u16(void);
-FUNC(void,DCM_CODE) Dcm_DddiResetCompleteContext(P2VAR(Dcm_DddiIdContext_tst, AUTOMATIC, DCM_INTERN_DATA) adrContext_pst);
-FUNC(void,DCM_CODE) Dcm_DddiResetProcessingInfoInContext(P2VAR(Dcm_DddiIdContext_tst, AUTOMATIC, DCM_INTERN_DATA) adrPtrToContext_pst);
+FUNC(void, DCM_CODE) Dcm_DddiResetCompleteContext(P2VAR(Dcm_DddiIdContext_tst, AUTOMATIC, DCM_INTERN_DATA) adrContext_pst);
+FUNC(void, DCM_CODE) Dcm_DddiResetProcessingInfoInContext(P2VAR(Dcm_DddiIdContext_tst, AUTOMATIC, DCM_INTERN_DATA) adrPtrToContext_pst);
 
-FUNC(Std_ReturnType,DCM_CODE) Dcm_DddiReadById_u8(P2CONST(Dcm_DddiDefId_tst, AUTOMATIC,DCM_INTERN_CONST) adrRecord_pst
+FUNC(Std_ReturnType, DCM_CODE) Dcm_DddiReadById_u8(P2CONST(Dcm_DddiDefId_tst, AUTOMATIC,DCM_INTERN_CONST) adrRecord_pst
    ,     P2VAR(uint16, AUTOMATIC, DCM_INTERN_DATA) adrLength_pu16
    ,     P2VAR(uint8, AUTOMATIC, DCM_INTERN_DATA) adrData_pu8);
 
-FUNC(Std_ReturnType,DCM_CODE) Dcm_DddiRead_u8(P2CONST(Dcm_DddiMainConfig_tst, AUTOMATIC,DCM_INTERN_CONST) adrConfig_pcst
+FUNC(Std_ReturnType, DCM_CODE) Dcm_DddiRead_u8(P2CONST(Dcm_DddiMainConfig_tst, AUTOMATIC,DCM_INTERN_CONST) adrConfig_pcst
    ,     P2VAR(uint8, AUTOMATIC, DCM_INTERN_DATA) adrData_pu8
    ,     P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8);
 
-FUNC(Std_ReturnType,DCM_CODE) Dcm_DddiGetLen_u8(P2CONST(Dcm_DddiMainConfig_tst, AUTOMATIC,DCM_INTERN_CONST) adrConfig_pcst
+FUNC(Std_ReturnType, DCM_CODE) Dcm_DddiGetLen_u8(P2CONST(Dcm_DddiMainConfig_tst, AUTOMATIC,DCM_INTERN_CONST) adrConfig_pcst
    ,     P2VAR(uint32, AUTOMATIC, DCM_INTERN_DATA) adrLen_pu32);
 
-FUNC(Std_ReturnType,DCM_CODE) Dcm_DddiGetCondition_u8(P2CONST(Dcm_DddiMainConfig_tst, AUTOMATIC,DCM_INTERN_CONST) adrConfig_pcst
+FUNC(Std_ReturnType, DCM_CODE) Dcm_DddiGetCondition_u8(P2CONST(Dcm_DddiMainConfig_tst, AUTOMATIC,DCM_INTERN_CONST) adrConfig_pcst
    ,     P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8);
 
-FUNC(Std_ReturnType,DCM_CODE) Dcm_DspGetIndexOfDDDI_u8(VAR(uint16, AUTOMATIC) dataDid_u16, P2VAR(uint16, AUTOMATIC, DCM_INTERN_DATA) idxIndex_u16);
+FUNC(Std_ReturnType, DCM_CODE) Dcm_DspGetIndexOfDDDI_u8(VAR(uint16, AUTOMATIC) dataDid_u16, P2VAR(uint16, AUTOMATIC, DCM_INTERN_DATA) idxIndex_u16);
 
 #define DCM_STOP_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"
@@ -103,7 +103,7 @@ extern VAR (uint32,DCM_VAR) Dcm_AddIdCurrentLength_u32;
 #include "Dcm_Cfg_MemMap.hpp"
 #define DCM_START_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"
-FUNC(Std_ReturnType,DCM_CODE) Dcm_DcmDddiAddIdRecords_u8( VAR(uint16, AUTOMATIC)nrBlocks_u16
+FUNC(Std_ReturnType, DCM_CODE) Dcm_DcmDddiAddIdRecords_u8( VAR(uint16, AUTOMATIC)nrBlocks_u16
    ,     VAR(uint16, AUTOMATIC)nrCurrentlyDefinedRecords_u16
    ,     P2CONST(uint8, AUTOMATIC,DCM_INTERN_CONST) adrSourceBuffer_pcu8
    ,     P2VAR(Dcm_DddiRecord_tst, AUTOMATIC, DCM_INTERN_DATA) adrRecord_pst
@@ -130,7 +130,7 @@ extern VAR(uint16 ,DCM_VAR) Dcm_AddMemCurrentBlockIndex_u16;
 #include "Dcm_Cfg_MemMap.hpp"
 #define DCM_START_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"
-FUNC(Std_ReturnType,DCM_CODE) Dcm_DcmDddiAddMemRecords_u8(VAR(uint16, AUTOMATIC)nrBlocks_u16
+FUNC(Std_ReturnType, DCM_CODE) Dcm_DcmDddiAddMemRecords_u8(VAR(uint16, AUTOMATIC)nrBlocks_u16
    ,     VAR(uint16, AUTOMATIC)nrCurrentlyDefinedRecords_u16
    ,     P2CONST(uint8, AUTOMATIC,DCM_INTERN_CONST) adrSourceBuffer_pcu8
    ,     P2VAR(Dcm_DddiRecord_tst, AUTOMATIC, DCM_INTERN_DATA) adrRecord_pst

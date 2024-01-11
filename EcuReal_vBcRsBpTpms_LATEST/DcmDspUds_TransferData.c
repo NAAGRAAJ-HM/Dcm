@@ -33,7 +33,7 @@ static FUNC(uint32,DCM_CODE) Dcm_GetLastBlockSize(void);
 static FUNC(Std_ReturnType, AUTOMATIC)Dcm_CheckNRCfromApplication(VAR(uint32, AUTOMATIC) dataLengthReceived_u32
    ,     P2VAR (Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegResponseCode_u8);
 
-FUNC(void,DCM_CODE) Dcm_Dsp_TransferDataIni(void){
+FUNC(void, DCM_CODE) Dcm_Dsp_TransferDataIni(void){
 
    if((DCM_PENDING == s_stTransferOpstatus_u8 ) && (Dcm_DataTransfer_st.isUploadStarted_b != FALSE))
    {
@@ -70,9 +70,9 @@ FUNC(void,DCM_CODE) Dcm_Dsp_TransferDataIni(void){
     Dcm_DspDeactivateRequestUploadDownloadPermission();
 }
 
-static FUNC(void,DCM_CODE) Dcm_CheckNrcForTransferData(P2CONST(Dcm_MsgContextType, AUTOMATIC, DCM_INTERN_DATA) pMsgContext
+static FUNC(void, DCM_CODE) Dcm_CheckNrcForTransferData(P2CONST(Dcm_MsgContextType, AUTOMATIC, DCM_INTERN_DATA) pMsgContext
    ,     P2VAR (Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegResponseCode_u8);
-static FUNC(void,DCM_CODE) Dcm_CheckNrcForTransferData(P2CONST(Dcm_MsgContextType, AUTOMATIC, DCM_INTERN_DATA) pMsgContext
+static FUNC(void, DCM_CODE) Dcm_CheckNrcForTransferData(P2CONST(Dcm_MsgContextType, AUTOMATIC, DCM_INTERN_DATA) pMsgContext
    ,     P2VAR (Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegResponseCode_u8)
 {
    VAR(uint8, AUTOMATIC) dataReceivedBlockSequenceNr_u8;
@@ -166,7 +166,7 @@ static FUNC(void,DCM_CODE) Dcm_CheckNrcForTransferData(P2CONST(Dcm_MsgContextTyp
    }
 }
 
-FUNC(Std_ReturnType,DCM_CODE) SwcServiceDcm_tTransferData(VAR(Dcm_SrvOpStatusType, AUTOMATIC) OpStatus
+FUNC(Std_ReturnType, DCM_CODE) SwcServiceDcm_tTransferData(VAR(Dcm_SrvOpStatusType, AUTOMATIC) OpStatus
    ,     P2VAR(Dcm_MsgContextType, AUTOMATIC, DCM_INTERN_DATA) pMsgContext
    ,     P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8)
 {
@@ -522,7 +522,7 @@ static FUNC(Std_ReturnType, AUTOMATIC)Dcm_CheckNRCfromApplication(VAR(uint32, AU
     return dataReturnValue_u8;
 }
 
-FUNC(void,DCM_CODE) Dcm_DspDeactivateRequestUploadDownloadPermission(void){
+FUNC(void, DCM_CODE) Dcm_DspDeactivateRequestUploadDownloadPermission(void){
 
     Dcm_DataTransfer_st.isDownloadStarted_b       = FALSE;
 

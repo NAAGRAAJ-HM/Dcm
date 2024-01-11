@@ -35,7 +35,7 @@ static VAR(Dcm_SrvOpStatusType,  DCM_VAR) Dcm_stRequestDownloadOpstatus_u8;
 #define DCM_START_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"
 
-FUNC(void,DCM_CODE) Dcm_Dsp_RequestDownload_Ini (void){
+FUNC(void, DCM_CODE) Dcm_Dsp_RequestDownload_Ini (void){
    VAR(Dcm_NegativeResponseCodeType, AUTOMATIC) dataNegResCode_u8;
    VAR(uint32, AUTOMATIC)  dataBlockLength_u32;
 
@@ -52,10 +52,10 @@ FUNC(void,DCM_CODE) Dcm_Dsp_RequestDownload_Ini (void){
     Dcm_DspDeactivateRequestUploadDownloadPermission();
 }
 
-static FUNC (Std_ReturnType,DCM_CODE) Dcm_GetIndexOfRequestDownloadMemory_u8(VAR   (uint32, AUTOMATIC) dataMemAddr_u32
+static FUNC (Std_ReturnType, DCM_CODE) Dcm_GetIndexOfRequestDownloadMemory_u8(VAR   (uint32, AUTOMATIC) dataMemAddr_u32
    ,     VAR   (uint32, AUTOMATIC) nrMemLength_u32
    ,     P2VAR (uint16, AUTOMATIC, DCM_INTERN_DATA) idxIndex_u16);
-static FUNC (Std_ReturnType,DCM_CODE) Dcm_GetIndexOfRequestDownloadMemory_u8(VAR   (uint32, AUTOMATIC) dataMemAddr_u32
+static FUNC (Std_ReturnType, DCM_CODE) Dcm_GetIndexOfRequestDownloadMemory_u8(VAR   (uint32, AUTOMATIC) dataMemAddr_u32
    ,     VAR   (uint32, AUTOMATIC) nrMemLength_u32
    ,     P2VAR (uint16, AUTOMATIC, DCM_INTERN_DATA) idxIndex_u16)
 {
@@ -84,7 +84,7 @@ static FUNC (Std_ReturnType,DCM_CODE) Dcm_GetIndexOfRequestDownloadMemory_u8(VAR
      return (dataRetVal_u8);
 }
 
-FUNC(Std_ReturnType,DCM_CODE) SwcServiceDcm_tRequestDownload (VAR(Dcm_SrvOpStatusType, AUTOMATIC) OpStatus,P2VAR(Dcm_MsgContextType, AUTOMATIC, DCM_INTERN_DATA) pMsgContext,P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8)
+FUNC(Std_ReturnType, DCM_CODE) SwcServiceDcm_tRequestDownload (VAR(Dcm_SrvOpStatusType, AUTOMATIC) OpStatus,P2VAR(Dcm_MsgContextType, AUTOMATIC, DCM_INTERN_DATA) pMsgContext,P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8)
 {
    VAR(uint8, AUTOMATIC) dataEncryptionMethod_u8;
    VAR(Std_ReturnType, AUTOMATIC)  dataretVal_u8;
@@ -283,7 +283,7 @@ FUNC(Std_ReturnType,DCM_CODE) SwcServiceDcm_tRequestDownload (VAR(Dcm_SrvOpStatu
     return dataretVal_u8;
 }
 
-static FUNC(void,DCM_CODE) Dcm_DspActivateRequestDownloadPermission(void){
+static FUNC(void, DCM_CODE) Dcm_DspActivateRequestDownloadPermission(void){
 
     Dcm_DataTransfer_st.isDownloadStarted_b  = TRUE;
 

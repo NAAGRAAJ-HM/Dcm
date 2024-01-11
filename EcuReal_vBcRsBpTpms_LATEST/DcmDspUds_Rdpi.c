@@ -18,14 +18,14 @@ static VAR(uint8,     DCM_VAR) s_nrPeriodicId_u8;
 #define DCM_START_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"
 
-FUNC(void,DCM_CODE)Dcm_Dsp_RdpiIni   (void){
+FUNC(void, DCM_CODE)Dcm_Dsp_RdpiIni   (void){
 
     Dcm_stDspRdpiState_en = DCM_DSP_RDPI_INIT;
    s_Dcm_DspCondChkRdOpStatus_u8=DCM_INITIAL;
 }
 
-static FUNC(Std_ReturnType,DCM_CODE)Dcm_RdpiIsTransmissionModeSupported(VAR(uint8, AUTOMATIC) dataTransmissionMode_u8);
-static FUNC(Std_ReturnType,DCM_CODE)Dcm_RdpiIsTransmissionModeSupported(VAR(uint8, AUTOMATIC) dataTransmissionMode_u8)
+static FUNC(Std_ReturnType, DCM_CODE)Dcm_RdpiIsTransmissionModeSupported(VAR(uint8, AUTOMATIC) dataTransmissionMode_u8);
+static FUNC(Std_ReturnType, DCM_CODE)Dcm_RdpiIsTransmissionModeSupported(VAR(uint8, AUTOMATIC) dataTransmissionMode_u8)
 {
    VAR(Std_ReturnType,     AUTOMATIC) dataRetVal_u8;
 
@@ -52,7 +52,7 @@ static FUNC(Std_ReturnType,DCM_CODE)Dcm_RdpiIsTransmissionModeSupported(VAR(uint
     return dataRetVal_u8;
 }
 
-FUNC(Std_ReturnType,DCM_CODE) Dcm_RdpiIsDidCondtionChkReadSupported(P2VAR(Dcm_DIDIndexType_tst , AUTOMATIC, DCM_INTERN_DATA) idxDidIndexType_st)
+FUNC(Std_ReturnType, DCM_CODE) Dcm_RdpiIsDidCondtionChkReadSupported(P2VAR(Dcm_DIDIndexType_tst , AUTOMATIC, DCM_INTERN_DATA) idxDidIndexType_st)
 {
    VAR(uint16,     AUTOMATIC) idxIndex_u16;
    VAR (Std_ReturnType,   AUTOMATIC) dataCondChkRetVal_u8;
@@ -105,10 +105,10 @@ FUNC(Std_ReturnType,DCM_CODE) Dcm_RdpiIsDidCondtionChkReadSupported(P2VAR(Dcm_DI
     return dataCondChkRetVal_u8;
 }
 
-static FUNC(void,DCM_CODE) Dcm_ResetRdpiStateVariables(VAR(uint8, AUTOMATIC)idxIndex_u8, VAR(Dcm_RdpiTxModeType_ten, AUTOMATIC) dataOverflowValue_en
+static FUNC(void, DCM_CODE) Dcm_ResetRdpiStateVariables(VAR(uint8, AUTOMATIC)idxIndex_u8, VAR(Dcm_RdpiTxModeType_ten, AUTOMATIC) dataOverflowValue_en
    ,     VAR(uint16, AUTOMATIC)dataId_u16, VAR(uint16, AUTOMATIC) idxPeriodicId_u16
    ,     VAR(uint32, AUTOMATIC) cntrTime_u32,VAR(boolean, AUTOMATIC) dataRange_b);
-static FUNC(void,DCM_CODE) Dcm_ResetRdpiStateVariables(VAR(uint8, AUTOMATIC)idxIndex_u8, VAR(Dcm_RdpiTxModeType_ten, AUTOMATIC) dataOverflowValue_en
+static FUNC(void, DCM_CODE) Dcm_ResetRdpiStateVariables(VAR(uint8, AUTOMATIC)idxIndex_u8, VAR(Dcm_RdpiTxModeType_ten, AUTOMATIC) dataOverflowValue_en
    ,     VAR(uint16, AUTOMATIC)dataId_u16, VAR(uint16, AUTOMATIC) idxPeriodicId_u16
    ,     VAR(uint32, AUTOMATIC) cntrTime_u32,VAR(boolean, AUTOMATIC) dataRange_b)
 {
@@ -119,7 +119,7 @@ static FUNC(void,DCM_CODE) Dcm_ResetRdpiStateVariables(VAR(uint8, AUTOMATIC)idxI
                     Dcm_PeriodicInfo_st[idxIndex_u8].dataRange_b=dataRange_b;
 }
 
-FUNC(Std_ReturnType,DCM_CODE) Dcm_DcmReadDataByPeriodicIdentifier(VAR(Dcm_SrvOpStatusType, AUTOMATIC) OpStatus,P2VAR(Dcm_MsgContextType, AUTOMATIC, DCM_INTERN_DATA) pMsgContext,P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8)
+FUNC(Std_ReturnType, DCM_CODE) Dcm_DcmReadDataByPeriodicIdentifier(VAR(Dcm_SrvOpStatusType, AUTOMATIC) OpStatus,P2VAR(Dcm_MsgContextType, AUTOMATIC, DCM_INTERN_DATA) pMsgContext,P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8)
 {
    VAR (Dcm_DIDIndexType_tst,     AUTOMATIC) s_Dcm_idxDidIndexType_st;
    VAR (uint32, AUTOMATIC) dataSessionMask_u32;

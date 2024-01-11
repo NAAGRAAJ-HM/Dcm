@@ -33,7 +33,7 @@ static boolean s_VIN_DcmReadDataConditionsRteCallPlaced_b;
 #define DCM_START_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"
 
-FUNC (Std_ReturnType,DCM_CODE) Dcm_GetVin (P2VAR(uint8, AUTOMATIC, DCM_APPL_DATA) Data)
+FUNC (Std_ReturnType, DCM_CODE) Dcm_GetVin (P2VAR(uint8, AUTOMATIC, DCM_APPL_DATA) Data)
 {
     Std_ReturnType dataStatusReturn_u8 = E_NOT_OK;
    uint8 indexVinBuff = 0;

@@ -82,7 +82,7 @@ static FUNC(uint8,DCM_CODE) Dcm_Lok_DspChkSubnetID_u8(VAR(NetworkHandleType, AUT
 
 #endif
 
-static FUNC(Std_ReturnType,DCM_CODE) Dcm_Lok_CC_Check(P2CONST(Dcm_MsgContextType, AUTOMATIC, DCM_INTERN_DATA) pMsgContext
+static FUNC(Std_ReturnType, DCM_CODE) Dcm_Lok_CC_Check(P2CONST(Dcm_MsgContextType, AUTOMATIC, DCM_INTERN_DATA) pMsgContext
    ,     P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8)
 {
    VAR(uint8, AUTOMATIC) dataCommType_u8;
@@ -159,7 +159,7 @@ static FUNC(Std_ReturnType,DCM_CODE) Dcm_Lok_CC_Check(P2CONST(Dcm_MsgContextType
    return retVal_u8;
 }
 
-FUNC(Std_ReturnType,DCM_CODE) SwcServiceDcm_tCommunicationControl (VAR(Dcm_SrvOpStatusType, AUTOMATIC) OpStatus
+FUNC(Std_ReturnType, DCM_CODE) SwcServiceDcm_tCommunicationControl (VAR(Dcm_SrvOpStatusType, AUTOMATIC) OpStatus
    ,     P2VAR(Dcm_MsgContextType, AUTOMATIC, DCM_INTERN_DATA) pMsgContext
    ,     P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8)
 {
@@ -189,7 +189,7 @@ FUNC(Std_ReturnType,DCM_CODE) SwcServiceDcm_tCommunicationControl (VAR(Dcm_SrvOp
     return retVal_u8;
 }
 
-static FUNC(void,DCM_CODE) Dcm_Lok_DspCommunicationControlSwitchMode(void){
+static FUNC(void, DCM_CODE) Dcm_Lok_DspCommunicationControlSwitchMode(void){
    VAR(uint8, AUTOMATIC)idxIndex_u8;
    if( Dcm_nrSubNet_u8 == 0)
    {
@@ -292,7 +292,7 @@ static FUNC(boolean, DCM_CODE) Dcm_Lok_CCMmodeStatusCheck(void){
     return flgStatus_b;
 }
 
-static FUNC(void,DCM_CODE) Dcm_Lok_ResetCommunicationMode(void){
+static FUNC(void, DCM_CODE) Dcm_Lok_ResetCommunicationMode(void){
    VAR(uint8, AUTOMATIC)    idxLoop_u8;
    VAR(boolean, AUTOMATIC)  stStatus_b;
 
@@ -353,7 +353,7 @@ static FUNC(void,DCM_CODE) Dcm_Lok_ResetCommunicationMode(void){
 #endif
 }
 
-FUNC(void,DCM_CODE) Dcm_Lok_CC_Mainfunction (void){
+FUNC(void, DCM_CODE) Dcm_Lok_CC_Mainfunction (void){
 
    VAR(Dcm_SesCtrlType,DCM_VAR) ActiveSession_u8;
    VAR(Std_ReturnType, AUTOMATIC) retVal_u8;

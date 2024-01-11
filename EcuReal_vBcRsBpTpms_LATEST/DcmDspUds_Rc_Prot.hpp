@@ -165,8 +165,8 @@ extern P2VAR(uint8,DCM_VAR, DCM_INTERN_DATA) 							Dcm_RCOutPtr_pu8;
 #define DCM_START_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"
 extern FUNC(uint32,DCM_CODE) Dcm_RCGetSigVal_u32 ( VAR(uint8, AUTOMATIC) dataSigType_en, VAR(uint16, AUTOMATIC) idxSignalIndex_u16);
-extern FUNC(void,DCM_CODE) Dcm_RCSetSigVal ( VAR(uint8, AUTOMATIC) dataSigType_en, VAR(uint16, AUTOMATIC) idxSignalIndex_u16, VAR(uint32, AUTOMATIC) dataSigVal_u32);
-extern FUNC(void,DCM_CODE) Dcm_RoutineSetSesCtrlType (VAR(Dcm_SesCtrlType, AUTOMATIC) dataSesCtrlType_u8);
+extern FUNC(void, DCM_CODE) Dcm_RCSetSigVal ( VAR(uint8, AUTOMATIC) dataSigType_en, VAR(uint16, AUTOMATIC) idxSignalIndex_u16, VAR(uint32, AUTOMATIC) dataSigVal_u32);
+extern FUNC(void, DCM_CODE) Dcm_RoutineSetSesCtrlType (VAR(Dcm_SesCtrlType, AUTOMATIC) dataSesCtrlType_u8);
 extern FUNC(void, DCM_CODE) Dcm_Lok_DspRCConfirmation(
    VAR(Dcm_IdContextType , AUTOMATIC)dataIdContext_u8
    ,  VAR(Type_SwcServiceCom_tIdPdu, AUTOMATIC)dataRxPduId_u8
@@ -174,10 +174,10 @@ extern FUNC(void, DCM_CODE) Dcm_Lok_DspRCConfirmation(
    ,  VAR(Dcm_ConfirmationStatusType, AUTOMATIC)status_u8
    											   );
 #if(DCM_CFG_ROUTINEARRAY_INSIG != DCM_CFG_OFF)
-extern FUNC(void,DCM_CODE) Dcm_RcSetSignalArray(P2CONST(Dcm_DspRoutineSignalInfo_tst, AUTOMATIC, DCM_INTERN_DATA) adrSignal_pcst,P2CONST(uint8, AUTOMATIC, DCM_INTERN_DATA) adrReqBuffer_u8);
+extern FUNC(void, DCM_CODE) Dcm_RcSetSignalArray(P2CONST(Dcm_DspRoutineSignalInfo_tst, AUTOMATIC, DCM_INTERN_DATA) adrSignal_pcst,P2CONST(uint8, AUTOMATIC, DCM_INTERN_DATA) adrReqBuffer_u8);
 #endif
 #if(DCM_CFG_ROUTINEARRAY_OUTSIG != DCM_CFG_OFF)
-extern FUNC(void,DCM_CODE) Dcm_RcStoreSignalArray(P2CONST(Dcm_DspRoutineSignalInfo_tst, AUTOMATIC, DCM_INTERN_DATA) adrSignal_pcst,P2VAR(uint8, AUTOMATIC, DCM_INTERN_DATA) adrResBuffer_u8);
+extern FUNC(void, DCM_CODE) Dcm_RcStoreSignalArray(P2CONST(Dcm_DspRoutineSignalInfo_tst, AUTOMATIC, DCM_INTERN_DATA) adrSignal_pcst,P2VAR(uint8, AUTOMATIC, DCM_INTERN_DATA) adrResBuffer_u8);
 #endif
 #define DCM_STOP_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"

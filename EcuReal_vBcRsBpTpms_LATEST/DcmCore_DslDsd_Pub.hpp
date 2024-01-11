@@ -346,11 +346,11 @@ while(0)                                                        \
 #endif
 #define DCM_START_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"
-extern FUNC(void,DCM_CODE) Dcm_SetNegResponse ( P2CONST(Dcm_MsgContextType, AUTOMATIC,DCM_INTERN_CONST) pMsgContext
+extern FUNC(void, DCM_CODE) Dcm_SetNegResponse ( P2CONST(Dcm_MsgContextType, AUTOMATIC,DCM_INTERN_CONST) pMsgContext
    ,     VAR(Dcm_NegativeResponseCodeType, AUTOMATIC) ErrorCode
                                               );
 
-extern FUNC(void,DCM_CODE) Dcm_ProcessingDone (P2CONST(Dcm_MsgContextType, AUTOMATIC,DCM_INTERN_CONST) pMsgContext);
+extern FUNC(void, DCM_CODE) Dcm_ProcessingDone (P2CONST(Dcm_MsgContextType, AUTOMATIC,DCM_INTERN_CONST) pMsgContext);
 #define DCM_STOP_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"
 
@@ -363,15 +363,15 @@ extern FUNC(void, DCM_CODE) Dcm_SetP3MaxMonitoring (VAR(boolean, AUTOMATIC) acti
 #define Dcm_SetS3MaxMonitoring Dcm_SetP3MaxMonitoring
 #define DCM_START_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"
-extern FUNC(void,DCM_CODE) Dcm_GetActiveServiceTable (P2VAR(uint8, AUTOMATIC, DCM_APPL_DATA) ActiveServiceTable);
-extern FUNC(Std_ReturnType,DCM_CODE) Dcm_GetActiveProtocolRxBufferSize
+extern FUNC(void, DCM_CODE) Dcm_GetActiveServiceTable (P2VAR(uint8, AUTOMATIC, DCM_APPL_DATA) ActiveServiceTable);
+extern FUNC(Std_ReturnType, DCM_CODE) Dcm_GetActiveProtocolRxBufferSize
                             (CONSTP2VAR(Dcm_MsgLenType, AUTOMATIC, DCM_APPL_DATA) rxBufferLength);
-extern FUNC(Std_ReturnType,DCM_CODE) Dcm_ForceRespPend(void);
+extern FUNC(Std_ReturnType, DCM_CODE) Dcm_ForceRespPend(void);
 extern FUNC(boolean,DCM_CODE) Dcm_IsInfrastructureErrorPresent_b(VAR(uint8, AUTOMATIC) dataInfrastrutureCode_u8);
 
 #if((DCM_CFG_RBA_DIAGADAPT_SUPPORT_ENABLED!=DCM_CFG_OFF) || (DCM_CFG_RTESUPPORT_ENABLED == DCM_CFG_OFF))
 
-extern FUNC(Std_ReturnType,DCM_CODE) Dcm_TriggerOnEvent( VAR(uint8, AUTOMATIC) RoeEventId );
+extern FUNC(Std_ReturnType, DCM_CODE) Dcm_TriggerOnEvent( VAR(uint8, AUTOMATIC) RoeEventId );
 #endif
 
 #if(DCM_CFG_RBA_DIAGADAPT_SUPPORT_ENABLED==DCM_CFG_OFF)

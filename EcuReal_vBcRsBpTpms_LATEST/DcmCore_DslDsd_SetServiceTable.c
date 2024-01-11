@@ -5,7 +5,7 @@
 #if(RBA_DCMPMA_CFG_PLANTMODEACTIVATION_ENABLED !=  DCM_CFG_OFF)
 #define DCM_START_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"
-FUNC(Std_ReturnType,DCM_CODE) Dcm_SetActiveServiceTable(VAR(uint8, AUTOMATIC) Sid_tableid_u8){
+FUNC(Std_ReturnType, DCM_CODE) Dcm_SetActiveServiceTable(VAR(uint8, AUTOMATIC) Sid_tableid_u8){
    VAR(Std_ReturnType, AUTOMATIC) dataReturnValue_u8;
    VAR(uint8, AUTOMATIC) tempNrc_u8;
    VAR(Std_ReturnType, AUTOMATIC) stCancelTx_u8;

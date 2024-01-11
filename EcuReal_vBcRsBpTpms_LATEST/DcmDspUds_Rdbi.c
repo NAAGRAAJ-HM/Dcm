@@ -86,7 +86,7 @@ static VAR (uint32,DCM_VAR) s_datalengthinfo_u32;
 
 #define DCM_START_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"
-FUNC (void,DCM_CODE) Dcm_Dsp_RdbiIni (void){
+FUNC (void, DCM_CODE) Dcm_Dsp_RdbiIni (void){
    VAR(Dcm_NegativeResponseCodeType, AUTOMATIC) dataNegResCode_u8;
    VAR(Std_ReturnType, AUTOMATIC) dataCondChkRetVal_u8;
    VAR(Std_ReturnType, AUTOMATIC) dataReadIfcRetVal_u8;
@@ -443,7 +443,7 @@ FUNC (Dcm_GetDataRet_ten,DCM_CODE) Dcm_GetData_en (P2CONST (uint8, AUTOMATIC,DCM
     return dataRetVal_u8;
 }
 
-FUNC (Std_ReturnType,DCM_CODE) SwcServiceDcm_tReadDataByIdentifier(
+FUNC (Std_ReturnType, DCM_CODE) SwcServiceDcm_tReadDataByIdentifier(
    VAR(Dcm_SrvOpStatusType, AUTOMATIC) OpStatus,
    P2VAR(Dcm_MsgContextType, AUTOMATIC, DCM_INTERN_DATA) pMsgContext,
    P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8){
@@ -579,7 +579,7 @@ FUNC (Std_ReturnType,DCM_CODE) SwcServiceDcm_tReadDataByIdentifier(
     return dataRetVal_u8;
 }
 
-FUNC(Std_ReturnType,DCM_CODE) Dcm_GetActiveRDBIDid(
+FUNC(Std_ReturnType, DCM_CODE) Dcm_GetActiveRDBIDid(
    P2VAR(uint16, AUTOMATIC, DCM_INTERN_DATA) dataDid_u16){
    VAR(Std_ReturnType, AUTOMATIC) dataRetVal_u8;
    P2CONST(Dcm_DIDConfig_tst, AUTOMATIC, DCM_INTERN_DATA)ptrDidConfig;

@@ -29,12 +29,12 @@ extern CONST(Dcm_Dsp_RDTCInfoType,DCM_CONST) DcmDspRDTCInfo[DCM_CFG_NUMRDTCSUBFU
 #define DCM_START_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"
 
-extern FUNC(void,DCM_CODE) Dcm_Dsp_RDTCUpdatePage(
+extern FUNC(void, DCM_CODE) Dcm_Dsp_RDTCUpdatePage(
                                                     VAR(Dcm_MsgType, AUTOMATIC) PageBufPtr
    ,     VAR(Dcm_MsgLenType, AUTOMATIC) PageLen
                                                  );
 
-extern FUNC(void,DCM_CODE) Dcm_Dsp_RDTCFillZero (VAR(Dcm_MsgLenType, AUTOMATIC) RemTotalResLen);
+extern FUNC(void, DCM_CODE) Dcm_Dsp_RDTCFillZero (VAR(Dcm_MsgLenType, AUTOMATIC) RemTotalResLen);
 extern FUNC(boolean,DCM_CODE) Dcm_IsProtocolIPCanFD(void);
 
 #define DCM_STOP_SEC_CODE

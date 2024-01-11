@@ -210,7 +210,7 @@ extern VAR(Dcm_Dsp_IocbiStatusType_tst,DCM_VAR) DcmDsp_IocbiStatus_array[DCM_CFG
 #include "Dcm_Cfg_MemMap.hpp"
 #define DCM_START_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"
-extern FUNC(void,DCM_CODE) Dcm_ResetActiveIoCtrl(VAR (uint32, AUTOMATIC) dataSessionMask_u32
+extern FUNC(void, DCM_CODE) Dcm_ResetActiveIoCtrl(VAR (uint32, AUTOMATIC) dataSessionMask_u32
    ,   VAR (uint32, AUTOMATIC) dataSecurityMask_u32
    ,   VAR (boolean, AUTOMATIC) flgSessChkReqd_b);
 extern FUNC(void, DCM_CODE) Dcm_Lok_DspIOCBIConfirmation(
