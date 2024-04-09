@@ -31,7 +31,7 @@ extern "C"
 #define cDidActiveSession     0xF186u
 #define cDidSerialNumber      0xF18Cu
 #define cDidVin               0xF190u
-#define cDidRivianHwPN        0xF191u
+#define cDidRAJAHwPN        0xF191u
 #define cDidProgImgBM         0xF010u
 #define cDidProgImgBL         0xF011u
 #define cDidProgImgBLUP       0xF012u
@@ -88,8 +88,8 @@ extern uint16 FblDiagGetLengthOfDataForRoutineControl(uint16 ushRid);
 
 #if(SEED_KEY_ALGORITHM == SEED_KEY_USE_HMAC_SHA256)
 static const uint16 aushAuthList[NO_OF_SID][NO_OF_DID_RID] = {
-   { cSidReadDataByIdent     , cDidBootSwFingerprint, cDidApplSwFingerprint, cDidProgImgBL      , cDidProgImgAPP1  , cDidManufSuppMode   , cDidBoardPartNumber   , cDidBoardSerNumber       , cDidSerialNumber, cDidRivianHwPN, cDidAuxId , cDidModeId, cDidVin }
-   ,  { cSidWriteDataByIdent    , cDidBootSwFingerprint, cDidApplSwFingerprint, cDidModuleToProgram, cDidManufSuppMode, cDidBoardPartNumber , cDidBoardSerNumber    , cDidSerialNumber         , cDidRivianHwPN  , cDidAuxId     , cDidModeId, cDidVin   , 0 }
+   { cSidReadDataByIdent     , cDidBootSwFingerprint, cDidApplSwFingerprint, cDidProgImgBL      , cDidProgImgAPP1  , cDidManufSuppMode   , cDidBoardPartNumber   , cDidBoardSerNumber       , cDidSerialNumber, cDidRAJAHwPN, cDidAuxId , cDidModeId, cDidVin }
+   ,  { cSidWriteDataByIdent    , cDidBootSwFingerprint, cDidApplSwFingerprint, cDidModuleToProgram, cDidManufSuppMode, cDidBoardPartNumber , cDidBoardSerNumber    , cDidSerialNumber         , cDidRAJAHwPN  , cDidAuxId     , cDidModeId, cDidVin   , 0 }
    ,  { cSidRoutineControl      , cRidSelfTest         , cRidEraseMemory      , cRidKeyExchange    , cRidAppHwidCheck , cRidCheckValidModule, cRidInitGenealogyBlock, cRidCompAndStoreSignature, 0, 0, 0, 0, 0 }
    ,  { cSidEcuReset            , cSubFuncHardReset    , cSubFuncSoftReset    , cSubFuncHRwoResp   , cSubFuncSRwoResp , cSubFuncResUDSTimer , 0, 0, 0, 0, 0, 0, 0 }
 };
