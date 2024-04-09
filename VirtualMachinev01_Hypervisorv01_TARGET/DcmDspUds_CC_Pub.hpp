@@ -7,17 +7,17 @@
 
 typedef struct{
 #if(DCM_CFG_RTESUPPORT_ENABLED!=DCM_CFG_OFF)
-   P2FUNC(Std_ReturnType,TYPEDEF,switch_fp)	(VAR(Dcm_CommunicationModeType, AUTOMATIC));
-   P2FUNC(boolean,TYPEDEF,checkmode_fp)	(void);
+   P2FUNC(Std_ReturnType,TYPEDEF,switch_fp)   (VAR(Dcm_CommunicationModeType, AUTOMATIC));
+   P2FUNC(boolean,TYPEDEF,checkmode_fp)   (void);
 #endif
-   NetworkHandleType 						SpecificSubNetId_u8;
-   uint8   								SpecificComMChannelId;
+   NetworkHandleType                   SpecificSubNetId_u8;
+   uint8                           SpecificComMChannelId;
 }Dcm_Dsld_SpecificSubnetInfo;
 
 typedef struct{
 #if(DCM_CFG_RTESUPPORT_ENABLED!=DCM_CFG_OFF)
-   P2FUNC(Std_ReturnType,TYPEDEF,switch_fp)	(VAR(Dcm_CommunicationModeType, AUTOMATIC));
-   P2FUNC(boolean,TYPEDEF,checkmode_fp)	(void);
+   P2FUNC(Std_ReturnType,TYPEDEF,switch_fp)   (VAR(Dcm_CommunicationModeType, AUTOMATIC));
+   P2FUNC(boolean,TYPEDEF,checkmode_fp)   (void);
 #endif
 
    uint8   AllComMChannelId;

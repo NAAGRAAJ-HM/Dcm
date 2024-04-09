@@ -19,10 +19,9 @@ extern FUNC(void, DCM_CODE) Dcm_Lok_DspCommCntrlConfirmation(
    ,  VAR(Type_SwcServiceCom_tIdPdu, AUTOMATIC)dataRxPduId_u8
    ,  VAR(uint16, AUTOMATIC)dataSourceAddress_u16
    ,  VAR(Dcm_ConfirmationStatusType, AUTOMATIC)status_u8
-   													 );
+                                           );
 
-LOCAL_INLINE boolean Dcm_Lok_CC_IsSupportedInSession( VAR(Dcm_SesCtrlType,DCM_VAR) ActiveSession_u8)
-{
+LOCAL_INLINE boolean Dcm_Lok_CC_IsSupportedInSession( VAR(Dcm_SesCtrlType,DCM_VAR) ActiveSession_u8){
 
    VAR(uint8_least, AUTOMATIC) idxIndex_qu8;
    VAR(uint8, AUTOMATIC) nrSessions_u8;

@@ -57,7 +57,7 @@ extern FUNC(void, DCM_CODE) Dcm_Lok_DspEcuResetConfirmation(
    ,  VAR(Type_SwcServiceCom_tIdPdu, AUTOMATIC) dataRxPduId_u8
    ,  VAR(uint16, AUTOMATIC)dataSourceAddress_u16
    ,  VAR(Dcm_ConfirmationStatusType, AUTOMATIC)status_u8
-   													);
+                                          );
 #define DCM_STOP_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"
 #endif

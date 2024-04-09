@@ -6,14 +6,14 @@ typedef   P2FUNC(Std_ReturnType,TYPEDEF,WriteFncRange1_pfct)( VAR(uint16, AUTOMA
    ,    VAR(Dcm_OpStatusType, AUTOMATIC) OpStatus
    ,    VAR(uint16, AUTOMATIC) DataLength
    ,    P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) ErrorCode
-   	);
+      );
 
 typedef   P2FUNC(Std_ReturnType,TYPEDEF,WriteFncRange2_pfct)( VAR(uint16, AUTOMATIC) DID
    ,     P2CONST(uint8, AUTOMATIC, DCM_INTERN_DATA) Data
    ,    VAR(Dcm_OpStatusType, AUTOMATIC) OpStatus
    ,    VAR(uint16, AUTOMATIC) DataLength
    ,    P2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) ErrorCode
-   	);
+      );
 
 typedef P2FUNC(Std_ReturnType,TYPEDEF,WdbiFnc1_pfct)
                                    (P2CONST(uint8, AUTOMATIC, DCM_INTERN_DATA) Data

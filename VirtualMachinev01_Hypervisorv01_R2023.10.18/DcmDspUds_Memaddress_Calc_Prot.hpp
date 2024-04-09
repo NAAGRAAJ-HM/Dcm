@@ -4,7 +4,7 @@
 #define DCMDSPUDS_MEMADDRESS_CALC_PROT_H
 
 #if((DCM_CFG_DSPUDSSUPPORT_ENABLED != DCM_CFG_OFF) && ((DCM_CFG_DSP_READMEMORYBYADDRESS_ENABLED != DCM_CFG_OFF) || \
-   												   (DCM_CFG_DSP_WRITEMEMORYBYADDRESS_ENABLED != DCM_CFG_OFF)|| \
+                                          (DCM_CFG_DSP_WRITEMEMORYBYADDRESS_ENABLED != DCM_CFG_OFF)|| \
                                                        (DCM_CFG_DSP_REQUESTUPLOAD_ENABLED != DCM_CFG_OFF)       || \
                                                        (DCM_CFG_DSP_TRANSFERDATA_ENABLED !=DCM_CFG_OFF)))
 
@@ -63,7 +63,7 @@ extern FUNC(void,DCM_CODE) Dcm_Lok_DspReqUploadConfirmation(
    ,  VAR(Type_SwcServiceCom_tIdPdu, AUTOMATIC) dataRxPduId_u8
    ,  VAR(uint16, AUTOMATIC)dataSourceAddress_u16
    ,  VAR(Dcm_ConfirmationStatusType, AUTOMATIC) status_u8
-   													);
+                                          );
 #define DCM_STOP_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"
 
@@ -85,7 +85,7 @@ extern FUNC(void,DCM_CODE) Dcm_Lok_DspReqTrfExitConfirmation(
    ,  VAR(Type_SwcServiceCom_tIdPdu, AUTOMATIC) dataRxPduId_u8
    ,  VAR(uint16, AUTOMATIC)dataSourceAddress_u16
    ,  VAR(Dcm_ConfirmationStatusType, AUTOMATIC)status_u8
-   									                   );
+                                                 );
 #define DCM_STOP_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"
 #endif
@@ -98,7 +98,7 @@ extern FUNC(void,DCM_CODE) Dcm_Lok_DspReqDownloadConfirmation(
    ,  VAR(Type_SwcServiceCom_tIdPdu, AUTOMATIC) dataRxPduId_u8
    ,  VAR(uint16, AUTOMATIC)dataSourceAddress_u16
    ,  VAR(Dcm_ConfirmationStatusType, AUTOMATIC)status_u8
-   													     );
+                                               );
 #define DCM_STOP_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"
 #endif

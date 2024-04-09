@@ -280,9 +280,9 @@ typedef struct{
    Type_SwcServiceCom_tIdPdu roetype2_txpdu_u8;
    Type_SwcServiceCom_tIdPdu rdpitype2_txpdu_u8;
    uint16 testaddr_u16;
- 	uint8   channel_idx_u8;
- 	uint8   ConnectionIndex_u8;
- 	uint8   NumberOfTxpdu_u8;
+    uint8   channel_idx_u8;
+    uint8   ConnectionIndex_u8;
+    uint8   NumberOfTxpdu_u8;
 }Dcm_Dsld_connType;
 
 typedef struct{

@@ -12,7 +12,7 @@ typedef enum{
    ,   DCM_DSP_RMBA_READDATAREC
 }Dcm_DspRmbaStates_ten;
 
-#define DCM_DSP_RMBA_MINREQLEN 		0x03u
+#define DCM_DSP_RMBA_MINREQLEN       0x03u
 #endif
 
 #endif

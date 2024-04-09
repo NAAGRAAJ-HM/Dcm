@@ -5,11 +5,11 @@
 
 #if(DCM_CFG_DSP_ROUTINECONTROL_ENABLED != DCM_CFG_OFF)
 
-#define 	DCM_RC_STARTROUTINE 		1u
-#define 	DCM_RC_STOPROUTINE			2u
-#define 	DCM_RC_REQUESTRESULTS		3u
+#define    DCM_RC_STARTROUTINE       1u
+#define    DCM_RC_STOPROUTINE         2u
+#define    DCM_RC_REQUESTRESULTS      3u
 
-#define 	DCM_RC_INVLDSIGINDEX		0u
+#define    DCM_RC_INVLDSIGINDEX      0u
 
 #define DSP_RC_MINREQLEN            0x03u
 #define DSP_RC_SUBFUNCTION_ONE      0x01u
@@ -44,24 +44,24 @@ typedef struct{
    CONSTP2CONST(Dcm_DspRoutineSignalInfo_tst, TYPEDEF, DCM_INTERN_CONST) adrStartOutSignalRef_cpcst;
    CONSTP2CONST(Dcm_DspRoutineSignalInfo_tst, TYPEDEF, DCM_INTERN_CONST) adrStopOutSignalRef_cpcst;
    CONSTP2CONST(Dcm_DspRoutineSignalInfo_tst, TYPEDEF, DCM_INTERN_CONST) adrReqRsltOutSignalRef_cpcst;
-   uint16   	dataCtrlOptRecSizeStart_u16;
-   uint16   	dataCtrlOptRecSizeStop_u16;
-   uint16   	dataCtrlOptRecSizeReqRslt_u16;
-   uint16   	dataStsOptRecSizeStart_u16;
-   uint16   	dataStsOptRecSizeStop_u16;
-   uint16   	dataStsOptRecSizeReqRslt_u16;
-   uint16  	dataMinCtrlOptRecSizeStart_u16;
-   uint16   	dataMinCtrlOptRecSizeStop_u16;
-   uint16   	dataMinCtrlOptRecSizeReqRslt_u16;
-   uint16  	dataMinStsOptRecSizeStart_u16;
-   uint16  	dataMinStsOptRecSizeStop_u16;
-   uint16  	dataMinStsOptRecSizeReqRslt_u16;
-   uint8		nrStartInSignals_u8;
-   uint8		nrStopInSignals_u8;
-   uint8		nrReqRslInSignals_u8;
-   uint8		nrStartOutSignals_u8;
-   uint8		nrStopOutSignals_u8;
-   uint8		nrReqRsltOutSignals_u8;
+   uint16      dataCtrlOptRecSizeStart_u16;
+   uint16      dataCtrlOptRecSizeStop_u16;
+   uint16      dataCtrlOptRecSizeReqRslt_u16;
+   uint16      dataStsOptRecSizeStart_u16;
+   uint16      dataStsOptRecSizeStop_u16;
+   uint16      dataStsOptRecSizeReqRslt_u16;
+   uint16     dataMinCtrlOptRecSizeStart_u16;
+   uint16      dataMinCtrlOptRecSizeStop_u16;
+   uint16      dataMinCtrlOptRecSizeReqRslt_u16;
+   uint16     dataMinStsOptRecSizeStart_u16;
+   uint16     dataMinStsOptRecSizeStop_u16;
+   uint16     dataMinStsOptRecSizeReqRslt_u16;
+   uint8      nrStartInSignals_u8;
+   uint8      nrStopInSignals_u8;
+   uint8      nrReqRslInSignals_u8;
+   uint8      nrStartOutSignals_u8;
+   uint8      nrStopOutSignals_u8;
+   uint8      nrReqRsltOutSignals_u8;
 }Dcm_DspRoutineInfoType_tst;
 
 typedef enum{
@@ -76,9 +76,9 @@ typedef enum{
 typedef P2FUNC(Std_ReturnType,TYPEDEF,IsRIDAvailFnc_pf) (VAR(uint16, AUTOMATIC) RID_u16);
 #endif
 typedef struct{
-   uint16    	dataRId_u16;
-   boolean   	dataFixedLen_b;
-   boolean   	UsePort;
+   uint16       dataRId_u16;
+   boolean      dataFixedLen_b;
+   boolean      UsePort;
 #if(DCM_CFG_DSP_NUMISRIDAVAIL>0)
    uint16      idxRIDSupportedFnc_u16;
 #endif
@@ -90,9 +90,9 @@ typedef struct{
    boolean     flgReqSequenceErrorSupported_b;
 #if(DCM_CFG_POSTBUILD_SUPPORT != DCM_CFG_OFF)
 
-   uint8 		dataConfigMask_u8;
+   uint8       dataConfigMask_u8;
 #endif
-   boolean		dataReqRslt_b;
+   boolean      dataReqRslt_b;
 }Dcm_DspRoutineType_tst;
 #endif
 
@@ -143,23 +143,23 @@ extern CONST(Dcm_DspRoutineRangeType_tst, DCM_CONST) Dcm_DspRoutineRange_cast[DC
 #include "Dcm_Cfg_MemMap.hpp"
 #define DCM_START_SEC_VAR_CLEARED_8
 #include "Dcm_Cfg_MemMap.hpp"
-extern VAR(Dcm_NegativeResponseCodeType,DCM_VAR) 						Dcm_RCNegResCode_u8;
+extern VAR(Dcm_NegativeResponseCodeType,DCM_VAR)                   Dcm_RCNegResCode_u8;
 #define DCM_STOP_SEC_VAR_CLEARED_8
 #include "Dcm_Cfg_MemMap.hpp"
 #define DCM_START_SEC_VAR_CLEARED_16
 #include "Dcm_Cfg_MemMap.hpp"
-extern VAR(uint16,DCM_VAR) 											Dcm_RCCurrDataLength_u16;
+extern VAR(uint16,DCM_VAR)                                  Dcm_RCCurrDataLength_u16;
 #define DCM_STOP_SEC_VAR_CLEARED_16
 #include "Dcm_Cfg_MemMap.hpp"
 #define DCM_START_SEC_VAR_CLEARED_8
 #include "Dcm_Cfg_MemMap.hpp"
-extern VAR(Dcm_OpStatusType,DCM_VAR)									Dcm_RCOpStatus_u8;
+extern VAR(Dcm_OpStatusType,DCM_VAR)                           Dcm_RCOpStatus_u8;
 #define DCM_STOP_SEC_VAR_CLEARED_8
 #include "Dcm_Cfg_MemMap.hpp"
 #define DCM_START_SEC_VAR_CLEARED_UNSPECIFIED
 #include "Dcm_Cfg_MemMap.hpp"
-extern P2VAR(uint8,DCM_VAR, DCM_INTERN_DATA) 							Dcm_RCInPtr_pu8;
-extern P2VAR(uint8,DCM_VAR, DCM_INTERN_DATA) 							Dcm_RCOutPtr_pu8;
+extern P2VAR(uint8,DCM_VAR, DCM_INTERN_DATA)                      Dcm_RCInPtr_pu8;
+extern P2VAR(uint8,DCM_VAR, DCM_INTERN_DATA)                      Dcm_RCOutPtr_pu8;
 #define DCM_STOP_SEC_VAR_CLEARED_UNSPECIFIED
 #include "Dcm_Cfg_MemMap.hpp"
 #define DCM_START_SEC_CODE
@@ -172,7 +172,7 @@ extern FUNC(void, DCM_CODE) Dcm_Lok_DspRCConfirmation(
    ,  VAR(Type_SwcServiceCom_tIdPdu, AUTOMATIC)dataRxPduId_u8
    ,  VAR(uint16, AUTOMATIC)dataSourceAddress_u16
    ,  VAR(Dcm_ConfirmationStatusType, AUTOMATIC)status_u8
-   											   );
+                                       );
 #if(DCM_CFG_ROUTINEARRAY_INSIG != DCM_CFG_OFF)
 extern FUNC(void, DCM_CODE) Dcm_RcSetSignalArray(P2CONST(Dcm_DspRoutineSignalInfo_tst, AUTOMATIC, DCM_INTERN_DATA) adrSignal_pcst,P2CONST(uint8, AUTOMATIC, DCM_INTERN_DATA) adrReqBuffer_u8);
 #endif

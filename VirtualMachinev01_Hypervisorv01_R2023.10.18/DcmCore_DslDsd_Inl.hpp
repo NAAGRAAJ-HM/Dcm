@@ -8,15 +8,13 @@ LOCAL_INLINE FUNC(void, DCM_CODE) Dcm_Lok_ReloadS3Timer (void){
 LOCAL_INLINE FUNC(Std_ReturnType,DCM_CODE) Dcm_StartProtocol(VAR(Dcm_ProtocolType, AUTOMATIC) ProtocolID);
 LOCAL_INLINE FUNC(void,DCM_CODE) Dcm_StopProtocol(VAR(Dcm_ProtocolType, AUTOMATIC) ProtocolID);
 
-LOCAL_INLINE  FUNC(Std_ReturnType,DCM_CODE) Dcm_StartProtocol(VAR(Dcm_ProtocolType, AUTOMATIC) ProtocolID)
-{
+LOCAL_INLINE  FUNC(Std_ReturnType,DCM_CODE) Dcm_StartProtocol(VAR(Dcm_ProtocolType, AUTOMATIC) ProtocolID){
    VAR(Std_ReturnType, AUTOMATIC) dataReturnType_u8;
     dataReturnType_u8 = DcmAppl_DcmStartProtocol(ProtocolID);
     return(dataReturnType_u8);
 }
 
-LOCAL_INLINE  FUNC(void,DCM_CODE) Dcm_StopProtocol(VAR(Dcm_ProtocolType, AUTOMATIC) ProtocolID)
-{
+LOCAL_INLINE  FUNC(void,DCM_CODE) Dcm_StopProtocol(VAR(Dcm_ProtocolType, AUTOMATIC) ProtocolID){
     (void)DcmAppl_DcmStopProtocol(ProtocolID);
 }
 
@@ -38,8 +36,7 @@ LOCAL_INLINE FUNC(Std_ReturnType,DCM_CODE) Dcm_ConfirmationRespPend(
 
 LOCAL_INLINE FUNC(Std_ReturnType,DCM_CODE) Dcm_ConfirmationRespPend(
         VAR(Dcm_ConfirmationStatusType, AUTOMATIC) status
-)
-{
+){
     return(E_OK);
 }
 

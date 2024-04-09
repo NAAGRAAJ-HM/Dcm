@@ -15,14 +15,14 @@ typedef P2FUNC(Std_ReturnType,TYPEDEF,GetDTRvalue_pf1)(VAR(Dcm_OpStatusType, AUT
    ,     P2VAR(uint16, AUTOMATIC, DCM_INTERN_DATA) Minlimit
    ,     P2VAR(uint16, AUTOMATIC, DCM_INTERN_DATA) Maxlimit
    ,     P2VAR(uint8, AUTOMATIC, DCM_INTERN_DATA)Status
-   															);
+                                                );
 
 typedef P2FUNC(Std_ReturnType,TYPEDEF,GetDTRvalue_pf2)(
-   													P2VAR(uint16, AUTOMATIC, DCM_INTERN_DATA) Testval
+                                          P2VAR(uint16, AUTOMATIC, DCM_INTERN_DATA) Testval
    ,  P2VAR(uint16, AUTOMATIC, DCM_INTERN_DATA) Minlimit
    ,  P2VAR(uint16, AUTOMATIC, DCM_INTERN_DATA) Maxlimit
    ,  P2VAR(uint8, AUTOMATIC, DCM_INTERN_DATA)Status
-   												   );
+                                          );
 
 #if(DCM_CFG_DSP_OBDMODE6_ENABLED != DCM_CFG_OFF)
 

@@ -115,9 +115,9 @@ typedef enum{
 }Dcm_Direction_t;
 
 #endif
-#if((DCM_CFG_DSP_READDATABYIDENTIFIER_ENABLED != DCM_CFG_OFF)		||	\
-     (DCM_CFG_DSP_WRITEDATABYIDENTIFIER_ENABLED != DCM_CFG_OFF) 	||	\
-    (DCM_CFG_DSP_IOCBI_ENABLED != DCM_CFG_OFF) 					|| 	\
+#if((DCM_CFG_DSP_READDATABYIDENTIFIER_ENABLED != DCM_CFG_OFF)      ||   \
+     (DCM_CFG_DSP_WRITEDATABYIDENTIFIER_ENABLED != DCM_CFG_OFF)    ||   \
+    (DCM_CFG_DSP_IOCBI_ENABLED != DCM_CFG_OFF)                ||    \
     (DCM_CFG_DSP_DYNAMICALLYDEFINEIDENTIFIER_ENABLED != DCM_CFG_OFF))
 
 typedef enum{
@@ -148,16 +148,16 @@ typedef struct{
 #include "Dcm_Cfg_MemMap.hpp"
 
 extern FUNC (Std_ReturnType, DCM_CODE) Dcm_GetIndexOfDID (
-   													VAR (uint16, AUTOMATIC) did
+                                          VAR (uint16, AUTOMATIC) did
    ,  P2VAR (Dcm_DIDIndexType_tst, AUTOMATIC, DCM_INTERN_DATA) idxDidIndexType_st
-   													 );
+                                           );
 
-#if((DCM_CFG_DSP_READDATABYIDENTIFIER_ENABLED != DCM_CFG_OFF)				||		\
-    (DCM_CFG_DSP_WRITEDATABYIDENTIFIER_ENABLED != DCM_CFG_OFF)				||		\
+#if((DCM_CFG_DSP_READDATABYIDENTIFIER_ENABLED != DCM_CFG_OFF)            ||      \
+    (DCM_CFG_DSP_WRITEDATABYIDENTIFIER_ENABLED != DCM_CFG_OFF)            ||      \
     (DCM_CFG_DSP_DYNAMICALLYDEFINEIDENTIFIER_ENABLED != DCM_CFG_OFF))
 
-extern FUNC (Dcm_SupportRet_t,DCM_CODE) Dcm_GetSupportOfIndex( P2VAR   (Dcm_DIDIndexType_tst , AUTOMATIC, DCM_INTERN_DATA) 	idxDidIndexType_st
-   ,     VAR (Dcm_Direction_t, AUTOMATIC) 		direction
+extern FUNC (Dcm_SupportRet_t,DCM_CODE) Dcm_GetSupportOfIndex( P2VAR   (Dcm_DIDIndexType_tst , AUTOMATIC, DCM_INTERN_DATA)    idxDidIndexType_st
+   ,     VAR (Dcm_Direction_t, AUTOMATIC)       direction
    ,     P2VAR (Dcm_NegativeResponseCodeType, AUTOMATIC, DCM_INTERN_DATA) dataNegRespCode_u8);
 
 #endif
@@ -172,9 +172,9 @@ extern FUNC(Std_ReturnType, DCM_CODE) Dcm_GetDIDRangeStatus (
                                                             );
 #endif
 
-extern 	FUNC (Std_ReturnType, DCM_CODE) Dcm_GetLengthOfDIDIndex(P2VAR   (Dcm_DIDIndexType_tst , AUTOMATIC, DCM_INTERN_DATA)idxDidIndexType_st
-   ,     													   P2VAR (uint32, AUTOMATIC, DCM_INTERN_DATA)	length_u32
-   ,     													   VAR   (uint16, AUTOMATIC) did_u16);
+extern    FUNC (Std_ReturnType, DCM_CODE) Dcm_GetLengthOfDIDIndex(P2VAR   (Dcm_DIDIndexType_tst , AUTOMATIC, DCM_INTERN_DATA)idxDidIndexType_st
+   ,                                               P2VAR (uint32, AUTOMATIC, DCM_INTERN_DATA)   length_u32
+   ,                                               VAR   (uint16, AUTOMATIC) did_u16);
 
 #if((DCM_CFG_DSP_READDATABYIDENTIFIER_ENABLED != DCM_CFG_OFF)|| (DCM_CFG_DSP_WRITEDATABYIDENTIFIER_ENABLED != DCM_CFG_OFF) ||(DCM_CFG_DSP_IOCBI_ENABLED != DCM_CFG_OFF))
 
@@ -184,13 +184,13 @@ extern FUNC(Std_ReturnType, DCM_CODE) Dcm_GetActiveSourceDataId(P2VAR(uint16, AU
 
 #endif
 
-#if((DCM_CFG_DSP_IOCBI_ENABLED != DCM_CFG_OFF)							||		    \
-    (DCM_CFG_DSP_DYNAMICALLYDEFINEIDENTIFIER_ENABLED != DCM_CFG_OFF)	||		    \
-   		 (DCM_CFG_DSP_READDATABYPERIODICIDENTIFIER_ENABLED != DCM_CFG_OFF) ||   \
-   		 (DCM_CFG_DSP_READDATABYIDENTIFIER_ENABLED != DCM_CFG_OFF))
+#if((DCM_CFG_DSP_IOCBI_ENABLED != DCM_CFG_OFF)                     ||          \
+    (DCM_CFG_DSP_DYNAMICALLYDEFINEIDENTIFIER_ENABLED != DCM_CFG_OFF)   ||          \
+          (DCM_CFG_DSP_READDATABYPERIODICIDENTIFIER_ENABLED != DCM_CFG_OFF) ||   \
+          (DCM_CFG_DSP_READDATABYIDENTIFIER_ENABLED != DCM_CFG_OFF))
 
 extern FUNC (Std_ReturnType, DCM_CODE) Dcm_GetDIDData (P2VAR (Dcm_DIDIndexType_tst, AUTOMATIC, DCM_INTERN_DATA) idxDidIndexType_st,
- 	  	   	   	   	   	   	   	   	   	   	   	   	  P2VAR (uint8, AUTOMATIC, DCM_INTERN_DATA) targetBuffer);
+                                                                             P2VAR (uint8, AUTOMATIC, DCM_INTERN_DATA) targetBuffer);
 #endif
 
 #define DCM_STOP_SEC_CODE
