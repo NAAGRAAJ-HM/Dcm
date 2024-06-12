@@ -328,7 +328,6 @@ extern FUNC(void, DCM_CODE) Dcm_StoreSignal(
 #define DCM_STOP_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"
 
-
 LOCAL_INLINE FUNC(void, DCM_CODE) Dcm_DspConfirmation(
       VAR(Dcm_IdContextType,     AUTOMATIC) dataIdContext_u8
    ,  VAR(Type_SwcServiceCom_tIdPdu,     AUTOMATIC) dataRxPduId_u8
@@ -345,5 +344,4 @@ LOCAL_INLINE FUNC(boolean, DCM_CODE) DCM_IS_KWPPROT_ACTIVE(void){
    boolean retval_b = FALSE;
     return retval_b;
 }
-
 

@@ -83,7 +83,6 @@ static VAR (uint32,DCM_VAR) s_datalengthinfo_u32;
 #define DCM_STOP_SEC_VAR_CLEARED_32
 #include "Dcm_Cfg_MemMap.hpp"
 
-
 #define DCM_START_SEC_CODE
 #include "Dcm_Cfg_MemMap.hpp"
 FUNC (void, DCM_CODE) Dcm_Dsp_RdbiIni (void){

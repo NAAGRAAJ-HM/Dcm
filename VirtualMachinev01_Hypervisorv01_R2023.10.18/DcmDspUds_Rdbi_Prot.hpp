@@ -76,6 +76,5 @@ extern FUNC(Dcm_GetDataRet_ten,DCM_CODE) Dcm_GetData_en(
    ,     VAR(uint32,                       DCM_INTERN_DATA            ) adrTotalLength_pu32
 );
 
-
 #endif
 
